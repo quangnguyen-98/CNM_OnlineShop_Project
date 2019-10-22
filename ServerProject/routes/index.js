@@ -50,6 +50,25 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/sanPhams', function(req, res, next) {
+  var param = {
+    TableName: "SanPham",
+    ProjectionExpression:"#yr, TenSanPham, DanhMuc.ID_DanhMMuc, DanhMuc.TenDanhMuc, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, Anh.AvtDetail3, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
+    ExpressionAttributeNames:{
+      "#yr":"ID_SanPham",
+    }
+  };
 
+  docClient.scan(param,function (err,data) {
+    if (err) {
+      console.error(err);
+      res.end();
+    }
+    else{
+      console.log("Thành công!");
+      res.json(data);
+    }
+  });
+});
 
 module.exports = router;
