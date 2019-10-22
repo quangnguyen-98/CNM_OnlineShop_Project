@@ -1,0 +1,48 @@
+[
+  {
+    "ID_HoaDon": 1,
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang": 4,
+      "Nam": 2019
+    },
+    "ID_KhachHang": 1,
+    "ChiTietHoaDon": {
+      "ID_ChiTietHoaDon": 1,
+      "ID_SanPham": [1,2],
+      "SoLuong": {
+        "1": 2,
+        "2": 4
+      },
+      "GiaTien": {
+        "1": 30000,
+        "2": 20000
+    }
+    },
+    "TongTien":20000,
+    "TrangThaiThanhToan":"false"
+  },
+  {
+    "ID_HoaDon": 2,
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang": 5,
+      "Nam": 2019
+    },
+    "ID_KhachHang": 1,
+    "ChiTietHoaDon": {
+      "ID_ChiTietHoaDon": 1,
+      "ID_SanPham": [1,2],
+      "SoLuong": {
+        "1": 2,
+        "2": 4
+      },
+      "GiaTien": {
+        "1": 30000,
+        "2": 20000
+      }
+    },
+    "TongTien":20000,
+    "TrangThaiThanhToan":"false"
+  }
+]

@@ -1,0 +1,54 @@
+[
+  {
+    "ID_Chucnang": 1,
+    "TenChucNang": "QuangCao",
+    "ThanhPhan": {
+        "ID_QuangCao": 1,
+        "TieuDe": "Giày vans mới nhất 2019",
+        "MoTa": "Vào mùa thu 2019, vanss đã cho ra rất...",
+        "Image": "htttp://...",
+        "Link": "htttp://..."
+    }
+  },
+  {
+    "ID_Chucnang": 2,
+    "TenChucNang": "MenuChinh",
+    "ThanhPhan": {
+      "ID_MenuChinh": 1,
+      "TenMenu": "Quần",
+      "Link": "htttp://..."
+
+    }
+  },
+  {
+    "ID_Chucnang": 3,
+    "TenChucNang": "MenuCCon",
+    "ThanhPhan": {
+      "ID_Menu": 1,
+      "TenMenu": "Quần dài",
+      "Link": "htttp://...",
+      "ID_MenuChinh": 1
+
+    }
+  },
+  {
+    "ID_Chucnang": 4,
+    "TenChucNang": "LienHe",
+    "ThanhPhan": {
+      "ID_LienHe": 1,
+      "TenNguoiGui": "Nguyễn Minh Tài",
+      "NoiDung": "Shop nên xem lại sản phẩm của mình,..."
+
+    }
+  },
+  {
+    "ID_Chucnang": 5,
+    "TenChucNang": "Footer",
+    "ThanhPhan": {
+      "TenShop": "HQBoutique",
+      "DiaChi": "SG",
+      "SoDienThoai": "19001560"
+
+    }
+  }
+]

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<header>
+  <h3>This is header</h3>
+</header>
+<main>
+  <h1><%= title %></h1>
+  List of programming languages
+  <ul>
+    <% list.forEach(function(item) { %>
+      <li><%= item.name %></li>
+    <% }); %>
+  </ul>
+</main>
+<footer>
+  <h3>This is footer</h3>
+</footer>
+</body>
+</html>

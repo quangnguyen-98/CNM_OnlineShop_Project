@@ -1,0 +1,46 @@
+[
+  {
+    "ID_SanPham": 1,
+    "TenSanPham": "Quần jean 001",
+    "DanhMuc": {
+        "ID_DanhMuc": 1,
+        "TenDanhMuc": "Quần"
+    },
+    "MoTa": "Đây là quần jean 001",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "avatar": "http://...",
+      "detail1": "http://...",
+      "detail2": "http://...",
+      "detail3": "http://..."
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 2,
+    "TenSanPham": "Áo oversize  001",
+    "DanhMuc": {
+      "ID_DanhMuc": 2,
+      "TenDanhMuc": "Áo"
+    },
+    "MoTa": "Đây là áo oversize 001",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": "htttp://...",
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  }
+
+]
