@@ -1,12 +1,7 @@
 var AWS = require("aws-sdk");
 var fs = require('fs');
-
-AWS.config.update({
-    region: "us-west-2",
-    endpoint: "http://localhost:8000",
-    accessKeyId:"quang1",
-    secretAccessKey:"quang2"
-});
+var configAWS = require("./ConfigAWS");
+configAWS.KetNoiAWSLocal();
 
 var docClient = new AWS.DynamoDB.DocumentClient();
 

@@ -1,0 +1,11 @@
+<div class="alert alert-dark" role="alert">
+    Danh Mục
+</div>
+<div class="list-group">
+
+    <%dataa.forEach(function (item) { %>
+
+    <button id="<%=item.ID_DanhMuc%>" type="button" class="list-group-item list-group-item-action"> <%=item.TenDanhMuc%> </button>
+    <%}); %>
+
+</div>

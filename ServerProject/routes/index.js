@@ -50,7 +50,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/sanPhams', function(req, res, next) {
+router.get('/allSanPhams', function(req, res, next) {
   var param = {
     TableName: "SanPham",
     ProjectionExpression:"#yr, TenSanPham, DanhMuc.ID_DanhMMuc, DanhMuc.TenDanhMuc, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, Anh.AvtDetail3, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
