@@ -1,0 +1,37 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+/*Stye cho nút kéo lên.*/
+#back-to-top {
+  text-align:center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  padding: 7px;
+  text-align: center;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  border: 0;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: opacity 0.2s ease-out;
+  opacity: 0;
+}
+#back-to-top:hover {
+  background:#555;
+
+}
+#back-to-top.show {
+  opacity: 1;
+}
+#content {
+  height: 2000px;
+}

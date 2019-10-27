@@ -12,11 +12,17 @@ var sanphamRouter = require('./routes/sanpham');
 
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
+/* view engine setup default */
+/*app.set('views', path.join(__dirname, 'views'));*/
 /*app.set('view engine', 'ejs');*/
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+
+/* view engine setup ejs-locals */
+app.engine('ejs', require('ejs-locals'));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+/*app.engine('html', require('ejs').renderFile);*/
+/*app.set('view engine', 'html');*/
 
 //body parser setup
 app.use(bodyParser.json());
@@ -30,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/sanpham', sanphamRouter);
+app.use('/sanphams', sanphamRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

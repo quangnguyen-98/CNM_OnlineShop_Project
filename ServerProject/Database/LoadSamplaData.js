@@ -1,7 +1,7 @@
 var AWS = require("aws-sdk");
 var fs = require('fs');
 var configAWS = require("./ConfigAWS");
-configAWS.KetNoiAWSLocal();
+configAWS.KetNoiAWS();
 
 var docClient = new AWS.DynamoDB.DocumentClient();
 

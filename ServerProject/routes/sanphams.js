@@ -2,13 +2,10 @@ var express = require('express');
 var router = express.Router();
 const app = express();
 var AWS = require("aws-sdk");
+var configAWS = require("../Database/ConfigAWS");
 
-AWS.config.update({
-    region: "us-west-2",
-    endpoint: "http://localhost:8000",
-    accessKeyId:"quang1",
-    secretAccessKey:"quang2"
-});
+configAWS.KetNoiAWS();
+/*configAWS.KetNoiAWSLocal();*/
 
 var docClient = new AWS.DynamoDB.DocumentClient();
 

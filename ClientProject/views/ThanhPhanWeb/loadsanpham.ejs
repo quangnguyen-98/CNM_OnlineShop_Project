@@ -1,12 +1,54 @@
-<%dataa.forEach(function (item) { %>
-    <div class="col">
-        <div class="card" style="width: 12rem; height: 392px; margin-bottom: 1rem" >
-            <img class="card-img-top" src="<%= item.Avatar %>" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title" ><%= item.TenSanPham %></h5>
-                <p class="card-text"><%= item.Gia %> VND</p>
-            </div>
-            <a href="<%= "/sanPhams?id="+item.ID_SanPham%>" class="btn btn-primary">Xem chi tiết</a>
+<% layout('../layout/layoutKhachHang.ejs') -%>
+<% script('../../public/stylesheets/style') -%>
+
+<div class="container-fluid" style="padding: 1rem">
+    <div class="row">
+        <div class="col-sm-3">
+            <%-partial('danhmuc')%>
         </div>
+        <div class="col-sm-9">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Library</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Data</li>
+                </ol>
+            </nav>
+            <div class="row">
+
+                <%dataa.forEach(function (item) { %>
+                    <div class="col">
+                        <a href="<%= "/sanPhams?id="+item.ID_SanPham%>" class="card" style="width: 12rem; margin-bottom: 1rem" >
+                            <img class="card-img-top" src="<%= item.Avatar %>" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title" style="height: 4rem" ><%= item.TenSanPham %></h5>
+
+                                <p class="card-text badge badge-pill badge-success"><%= item.Gia %> VND</p>
+                                <!-- <a href="<%= "/sanPhams?id="+item.ID_SanPham%>" class="btn btn-primary">Xem chi tiết</a>-->
+                            </div>
+                        </a>
+                    </div>
+                <%}); %>
+            </div>
+            <!--Pagination-->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item"><a class="page-link" href="#">6</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+
     </div>
-<%}); %>
+</div>

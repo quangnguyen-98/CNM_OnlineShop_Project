@@ -1,6 +1,6 @@
 var AWS = require("aws-sdk");
 var configAWS = require("./ConfigAWS");
-configAWS.KetNoiAWSLocal();
+configAWS.KetNoiAWS();
 
 var dynamodb = new AWS.DynamoDB();
 
