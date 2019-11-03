@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <title>Quangnguyen98</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--<link rel="shortcut icon" type="image/png" href="{{asset('img/favicon.jpeg')}}"/>-->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+   <!-- <link rel="stylesheet" type="text/css" href="../../public/stylesheets/style.css">-->
+    <style>
+        /*Stye cho nút kéo lên.*/
+        #back-to-top {
+            text-align:center;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            padding: 7px;
+            text-align: center;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            border: 0;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: opacity 0.2s ease-out;
+            opacity: 0;
+        }
+        #back-to-top:hover {
+            background:#555;
+
+        }
+        #back-to-top.show {
+            opacity: 1;
+        }
+        #content {
+            height: 2000px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- jQuery library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- jQuery LazyLoad -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
+<%-partial('../ThanhPhanWeb/header.ejs')%>
+
+
+
+<%-body -%>
+
+
+<%-partial('../ThanhPhanWeb/footer')%>
+
+<script>
+
+
+
+
+    //code button top;
+    if ($('#back-to-top').length) {
+        var scrollTrigger = 100, // px
+            backToTop = function () {
+                var scrollTop = $(window).scrollTop();
+                if (scrollTop > scrollTrigger) {
+                    $('#back-to-top').addClass('show');
+                } else {
+                    $('#back-to-top').removeClass('show');
+                }
+            };
+        backToTop();
+        $(window).on('scroll', function () {
+            backToTop();
+        });
+        $('#back-to-top').on('click', function (e) {
+            e.preventDefault();
+            $('html,body').animate({
+                scrollTop: 0
+            }, 700);
+        });
+    }
+    //Code Carousel;
+    $('.carousel').carousel({
+        interval: 1800
+    });$('.carousel').carousel({
+        interval: 1800
+    });
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+[
+  {
+    "ID_ThuongHieu":1,
+    "TenThuongHieu": "Vans",
+    "TrangThaiXoa": "False"
+  },
+  {
+    "ID_ThuongHieu":2,
+    "TenThuongHieu": "Converse",
+    "TrangThaiXoa": "False"
+  },
+  {
+    "ID_ThuongHieu":3,
+    "TenThuongHieu": "Paladium",
+    "TrangThaiXoa": "False"
+  }
+]

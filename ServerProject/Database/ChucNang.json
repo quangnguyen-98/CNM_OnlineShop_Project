@@ -11,27 +11,6 @@
     }
   },
   {
-    "ID_Chucnang": 2,
-    "TenChucNang": "MenuChinh",
-    "ThanhPhan": {
-      "ID_MenuChinh": 1,
-      "TenMenu": "Quần",
-      "Link": "htttp://..."
-
-    }
-  },
-  {
-    "ID_Chucnang": 3,
-    "TenChucNang": "MenuCCon",
-    "ThanhPhan": {
-      "ID_Menu": 1,
-      "TenMenu": "Quần dài",
-      "Link": "htttp://...",
-      "ID_MenuChinh": 1
-
-    }
-  },
-  {
     "ID_Chucnang": 4,
     "TenChucNang": "LienHe",
     "ThanhPhan": {

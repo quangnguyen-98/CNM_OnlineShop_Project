@@ -1,0 +1,506 @@
+[
+  {
+    "ID_SanPham": 1,
+    "TenSanPham": "Vans Vault Authentic  Majolica",
+    "ID_DanhMuc": 1,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Vault Authentic  Majolica",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticMajolica.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticMajolica1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticMajolica2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 2,
+    "TenSanPham": "Vans Vault Authentic Pic Suede",
+    "ID_DanhMuc": 1,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Vault Authentic Pic Suede",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticPicSuede.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticPicSuede1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticPicSuede2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 3,
+    "TenSanPham": "Vans Logo Benched Bag",
+    "ID_DanhMuc": 2,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Logo Benched Bag",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Logo_Benched_Bag.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Logo_Benched_Bag_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Logo_Benched_Bag_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 4,
+    "TenSanPham": "Balo Vans Old Skool III Backpack",
+    "ID_DanhMuc": 2,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans M Old Skool III Backpack",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Old+_Skool_III_Backpack.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Old+_Skool_III_Backpack_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Old+_Skool_III_Backpack_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 5,
+    "TenSanPham": "Vans Authentic Anaheim Red",
+    "ID_DanhMuc": 1,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Authentic Anaheim Red",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_+Anaheim_Red.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_+Anaheim_Red_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_+Anaheim_Red_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 6,
+    "TenSanPham": "Vans Authentic All White ",
+    "ID_DanhMuc": 1,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Authentic All White ",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_AllWhite.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_AllWhite_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_AllWhite_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 7,
+    "TenSanPham": "Vans Vault Authentic  Majolica",
+    "ID_DanhMuc": 1,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Vault Authentic  Majolica",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticMajolica.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticMajolica1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticMajolica2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 8,
+    "TenSanPham": "Vans Vault Authentic Pic Suede",
+    "ID_DanhMuc": 1,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Vault Authentic Pic Suede",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticPicSuede.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticPicSuede1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticPicSuede2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 9,
+    "TenSanPham": "Vans Logo Benched Bag",
+    "ID_DanhMuc": 2,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Logo Benched Bag",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Logo_Benched_Bag.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Logo_Benched_Bag_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Logo_Benched_Bag_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 10,
+    "TenSanPham": "Balo Vans Old Skool III Backpack",
+    "ID_DanhMuc": 2,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans M Old Skool III Backpack",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Old+_Skool_III_Backpack.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Old+_Skool_III_Backpack_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Old+_Skool_III_Backpack_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 11,
+    "TenSanPham": "Vans Authentic Anaheim Red",
+    "ID_DanhMuc": 1,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Authentic Anaheim Red",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_+Anaheim_Red.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_+Anaheim_Red_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_+Anaheim_Red_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 12,
+    "TenSanPham": "Vans Authentic All White ",
+    "ID_DanhMuc": 1,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Authentic All White ",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_AllWhite.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_AllWhite_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_AllWhite_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 13,
+    "TenSanPham": "Vans Vault Authentic  Majolica",
+    "ID_DanhMuc": 1,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Vault Authentic  Majolica",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticMajolica.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticMajolica1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticMajolica2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 14,
+    "TenSanPham": "Vans Vault Authentic Pic Suede",
+    "ID_DanhMuc": 1,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Vault Authentic Pic Suede",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticPicSuede.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticPicSuede1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticPicSuede2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 15,
+    "TenSanPham": "Vans Logo Benched Bag",
+    "ID_DanhMuc": 2,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Logo Benched Bag",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Logo_Benched_Bag.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Logo_Benched_Bag_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Logo_Benched_Bag_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 16,
+    "TenSanPham": "Balo Vans Old Skool III Backpack",
+    "ID_DanhMuc": 2,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans M Old Skool III Backpack",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Old+_Skool_III_Backpack.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Old+_Skool_III_Backpack_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Old+_Skool_III_Backpack_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 17,
+    "TenSanPham": "Vans Authentic Anaheim Red",
+    "ID_DanhMuc": 1,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Authentic Anaheim Red",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_+Anaheim_Red.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_+Anaheim_Red_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_+Anaheim_Red_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 18,
+    "TenSanPham": "Vans Authentic All White ",
+    "ID_DanhMuc": 1,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Authentic All White ",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_AllWhite.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_AllWhite_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_AllWhite_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 19,
+    "TenSanPham": "Vans Vault Authentic  Majolica",
+    "ID_DanhMuc": 1,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Vault Authentic  Majolica",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticMajolica.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticMajolica1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticMajolica2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 20,
+    "TenSanPham": "Vans Vault Authentic Pic Suede",
+    "ID_DanhMuc": 1,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Vault Authentic Pic Suede",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticPicSuede.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticPicSuede1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticPicSuede2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 21,
+    "TenSanPham": "Vans Logo Benched Bag",
+    "ID_DanhMuc": 2,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Logo Benched Bag",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Logo_Benched_Bag.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Logo_Benched_Bag_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Logo_Benched_Bag_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 22,
+    "TenSanPham": "Balo Vans Old Skool III Backpack",
+    "ID_DanhMuc": 2,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans M Old Skool III Backpack",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Old+_Skool_III_Backpack.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Old+_Skool_III_Backpack_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Old+_Skool_III_Backpack_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 23,
+    "TenSanPham": "Vans Authentic Anaheim Red",
+    "ID_DanhMuc": 1,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Authentic Anaheim Red",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_+Anaheim_Red.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_+Anaheim_Red_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_+Anaheim_Red_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  },
+  {
+    "ID_SanPham": 24,
+    "TenSanPham": "Vans Authentic All White ",
+    "ID_DanhMuc": 1,
+    "ID_ThuongHieu": 1,
+    "MoTa": "Đây là Vans Authentic All White ",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_AllWhite.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_AllWhite_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_AllWhite_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  }
+]

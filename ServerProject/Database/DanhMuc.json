@@ -1,0 +1,17 @@
+[
+  {
+    "ID_DanhMuc": 1,
+    "TenDanhMuc":"Giày",
+    "TrangThaiXoa": "False"
+  },
+  {
+    "ID_DanhMuc": 2,
+    "TenDanhMuc":"Balo",
+    "TrangThaiXoa": "False"
+  },
+  {
+    "ID_DanhMuc": 3,
+    "TenDanhMuc":"Áo",
+    "TrangThaiXoa": "False"
+  }
+]

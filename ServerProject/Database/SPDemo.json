@@ -1,0 +1,25 @@
+[
+  {
+    "ID_SanPham": 5,
+    "TenSanPham": "Vans Authentic Anaheim Red",
+    "DanhMuc": {
+      "ID_DanhMuc": 2,
+      "TenDanhMuc": "Giày"
+    },
+    "MoTa": "Đây là Vans Authentic Anaheim Red",
+    "Gia":200000,
+    "TiLeSale": 10,
+    "Anh": {
+      "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_+Anaheim_Red.jpg",
+      "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_+Anaheim_Red_1.jpg",
+      "AvtDetail2": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_+Anaheim_Red_2.jpg"
+    },
+    "NgayTao": {
+      "Ngay": 3,
+      "Thang":5,
+      "Nam": 2019
+    },
+    "SoLuong": 14,
+    "TrangThai":"true"
+  }
+]

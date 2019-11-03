@@ -1,17 +1,42 @@
 const request = require('request')
 
 module.exports = {
-    /*
-    ** This method returns a promise
-    ** which gets resolved or rejected based
-    ** on the result from the API
-    */
-    make_API_call : function(url){
+
+    //Phương thức get
+    API_Call_Get : function(url){
         return new Promise((resolve, reject) => {
-            request(url, { json: true }, (err, res, body) => {
+            request.get(url, { json: true }, (err, res, body) => {
+                if (err) reject(err)
+                resolve(body)
+            });
+        })
+    },
+    //Phương thức post
+    API_Call_Post : function(url){
+        return new Promise((resolve, reject) => {
+            request.post(url, { json: true }, (err, res, body) => {
+                if (err) reject(err)
+                resolve(body)
+            });
+        })
+    },
+    //Phương thức put
+    API_Call_Put : function(url){
+        return new Promise((resolve, reject) => {
+            request.put(url, { json: true }, (err, res, body) => {
+                if (err) reject(err)
+                resolve(body)
+            });
+        })
+    },
+    //Phương thức delete
+    API_Call_Delete : function(url){
+        return new Promise((resolve, reject) => {
+            request.delete(url, { json: true }, (err, res, body) => {
                 if (err) reject(err)
                 resolve(body)
             });
         })
     }
+
 }

@@ -28,20 +28,20 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/views/ThanhPhanWeb" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\layout" />
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views" />
-      <recent name="G:\HK7\Công Nghệ Mới\DB_CNM_DEMO\ClientProject\views\ThanhPhanWeb" />
-      <recent name="G:\HK7\Công Nghệ Mới\DB_CNM_DEMO\ClientProject\views" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\public\stylesheets" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\models" />
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\controller" />
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\layout" />
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -63,14 +63,14 @@
     <configuration name="index.ejs" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClientProject/views/index.ejs" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/routes/index.js" working-dir="$PROJECT_DIR$/routes">
+    <configuration name="Index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/routes/Index.js" working-dir="$PROJECT_DIR$/routes">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.demo.html" />
         <item itemvalue="JavaScript Debug.index.ejs" />
-        <item itemvalue="Node.js.index.js" />
+        <item itemvalue="Node.js.Index.js" />
       </list>
     </recent_temporary>
   </component>
@@ -92,6 +92,10 @@
       <workItem from="1572074267655" duration="9294000" />
       <workItem from="1572191705320" duration="4071000" />
       <workItem from="1572195823582" duration="1482000" />
+      <workItem from="1572350874385" duration="883000" />
+      <workItem from="1572369140438" duration="953000" />
+      <workItem from="1572598692227" duration="11272000" />
+      <workItem from="1572675626887" duration="41021000" />
     </task>
     <servers />
   </component>

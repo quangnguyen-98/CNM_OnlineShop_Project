@@ -1,27 +1,25 @@
-<!--<div class="alert alert-dark" role="alert">
-    Danh Mục
-</div>-->
+
+   <!-- Danh Mục-->
 <div class="list-group" style="margin-bottom: 1rem">
     <div class="list-group-item list-group-item-action active">
         Danh Mục
     </div>
-    <%dataa.forEach(function (item) { %>
-
-    <!-- <button id="<%=item.ID_DanhMuc%>" type="button" class="list-group-item list-group-item-action"> <%=item.TenDanhMuc%> </button>-->
-    <a id="<%=item.ID_DanhMuc%>" href="#" class="list-group-item list-group-item-action"><%=item.TenDanhMuc%></a>
+    <%dataDM.forEach(function (item) { %>
+    <a id="<%="DM"+item.ID_DanhMuc%>" href="#" class="list-group-item list-group-item-action DMitem"><%=item.TenDanhMuc%></a>
     <%}); %>
 </div>
-
+   <!-- Thương Hiệu-->
 <div class="list-group" style="margin-bottom: 1rem">
     <div class="list-group-item list-group-item-action active">
         Thương hiệu
     </div>
-    <%dataa.forEach(function (item) { %>
-
-    <!-- <button id="<%=item.ID_DanhMuc%>" type="button" class="list-group-item list-group-item-action"> <%=item.TenDanhMuc%> </button>-->
-    <a id="<%=item.ID_DanhMuc%>" href="#" class="list-group-item list-group-item-action"><%=item.TenDanhMuc%></a>
+    <%dataTH.forEach(function (item) { %>
+    <!-- <button id="<%=item.ID_ThuongHieu%>" type="button" class="list-group-item list-group-item-action"> <%=item.TenThuongHieu%> </button>-->
+    <a id="<%="TH"+item.ID_ThuongHieu%>" href="#" class="list-group-item list-group-item-action THitem"><%=item.TenThuongHieu%></a>
     <%}); %>
 </div>
+
+   <!-- Khoảng giá -->
 <div class="list-group">
     <div class="list-group-item list-group-item-action active" style="margin-bottom: 0.3rem">
         Khoảng giá
@@ -33,7 +31,7 @@
                     <div class="row">
                         <label for="first_name" class="col-sm-3 col-form-label">Từ</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="first_name" name="first_name" >
+                            <input id="tbGiaTu" type="text" class="tbGia form-control" >
                         </div>
                     </div>
                 </div>
@@ -41,14 +39,14 @@
                     <div class="row">
                         <label for="last_name" class="col-sm-3 col-form-label">Đến</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="last_name" name="last_name" >
+                            <input id="tbGiaDen" type="text" class="tbGia form-control"  >
                         </div>
                     </div>
                 </div>
                 <div class="form-group form-group-sm col-sm-2">
                     <div class="row">
 
-                        <div class="btn btn-info">
+                        <div id="btnOk"class="btn btn-info">
                            Ok
                         </div>
                     </div>
@@ -59,6 +57,62 @@
         </div>
     </form>
 
-
-
 </div>
+<script>
+    // Ngăn người dùng nhập chữ vào input giá
+    (function($) {
+        $.fn.inputFilter = function(inputFilter) {
+            return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+                if (inputFilter(this.value)) {
+                    this.oldValue = this.value;
+                    this.oldSelectionStart = this.selectionStart;
+                    this.oldSelectionEnd = this.selectionEnd;
+                } else if (this.hasOwnProperty("oldValue")) {
+                    this.value = this.oldValue;
+                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                }
+            });
+        };
+    }(jQuery));
+    $(document).ready(function() {
+        // Restrict input to digits by using a regular expression filter.
+        $(".tbGia").inputFilter(function(value) {
+            return /^\d*$/.test(value);
+        });
+    });
+    //Sự kiện tìm sản phẩm bằng giá của nút OK
+    $("#btnOk").click(function(){
+        if ($("#tbGiaTu").val() !="" && $("#tbGiaDen").val()!=""){
+            $(".datasp").empty();
+            $.ajax({
+                url: "<%=domain%>/sanphams/gia/"+$("#tbGiaTu").val()+"/"+$("#tbGiaDen").val(),
+                method: "GET",
+                error: function() {
+                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                },
+                success: function(data) {
+                    $.each(data.Items, function(i, item) {
+                        var html_to_append ='';
+                        html_to_append +=
+                            '<div class="col">' +
+                            '<a id="SP'+item.ID_SanPham+'" href="/SanPhams/'+item.ID_SanPham+'" class="card" style="width: 12rem; margin-bottom: 1rem">'+
+                            '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
+                            '<div class="card-body">'+
+                            '<h5 class="card-title" style="height: 4rem" >'+item.TenSanPham+'</h5>'+
+                            ' <p class="card-text badge badge-pill badge-success">'+item.Gia+' VND</p>'+
+                            '</div>'+
+                            '</a>'+
+                            '</div>';
+                        $("#datasp").append(html_to_append);
+                    });
+                    itemHover();
+                }
+            });
+            return false;
+        }
+    });
+
+
+
+
+</script>
