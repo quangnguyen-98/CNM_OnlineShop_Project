@@ -5,7 +5,7 @@
         Danh Mục
     </div>
     <%dataDM.forEach(function (item) { %>
-    <a id="<%="DM"+item.ID_DanhMuc%>" href="#" class="list-group-item list-group-item-action DMitem"><%=item.TenDanhMuc%></a>
+    <a id="<%=item.ID_DanhMuc%>" href="#" class="<%="DM"+item.ID_DanhMuc%> list-group-item list-group-item-action DMitem" ><%=item.TenDanhMuc%></a>
     <%}); %>
 </div>
    <!-- Thương Hiệu-->
@@ -14,8 +14,7 @@
         Thương hiệu
     </div>
     <%dataTH.forEach(function (item) { %>
-    <!-- <button id="<%=item.ID_ThuongHieu%>" type="button" class="list-group-item list-group-item-action"> <%=item.TenThuongHieu%> </button>-->
-    <a id="<%="TH"+item.ID_ThuongHieu%>" href="#" class="list-group-item list-group-item-action THitem"><%=item.TenThuongHieu%></a>
+    <a id="<%=item.ID_ThuongHieu%>" href="#" class="<%="TH"+item.ID_ThuongHieu%> list-group-item list-group-item-action THitem"><%=item.TenThuongHieu%></a>
     <%}); %>
 </div>
 

@@ -28,7 +28,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/views/ThanhPhanWeb" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -96,6 +96,7 @@
       <workItem from="1572369140438" duration="953000" />
       <workItem from="1572598692227" duration="11272000" />
       <workItem from="1572675626887" duration="41021000" />
+      <workItem from="1572801301191" duration="3069000" />
     </task>
     <servers />
   </component>

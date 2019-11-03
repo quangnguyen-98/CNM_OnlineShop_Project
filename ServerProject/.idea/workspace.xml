@@ -2,69 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29931dd8-b35f-4161-9625-b148465567bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/demo.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config/CreateOneTable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config/DeleteOneTable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config/LoadOneTable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Database/DanhMuc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Database/SPDemo.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Database/ThuongHieu.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Database/sp.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/Index.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/SanPham.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/SanPham.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/ChucNang.route.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/HoaDon.route.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/MaGiamGia.route.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/SanPham.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/routes/API_helper.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/routes/API_helper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/routes/Index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/routes/sanpham.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/routes/Sanpham.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/routes/Users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/controller/Index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/controller/Index.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/danhmuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/danhmuc.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/footer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/footer.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/loadsanpham.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/header.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/index.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/layout/demo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/layout/layoutAdmin.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutAdmin.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/layout/layoutKhachHang.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutKhachHang.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/layout/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/sanphamdemo.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/VN000UDDU9J-1-1-650x650.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/VN000UDDU9J-3-650x650.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/VN000UDDU9J-DRAKE-650x650.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/VN0A2Z5IV77-1-650x650.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/VN0A2Z5IV77-DRAKE1-650x650.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/VN0A2Z5IV77-DRAKE3-650x650.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/balo_den_av.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/balo_den_av1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/balo_den_av2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/balo_vans_den_av.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/balo_vans_den_av1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/balo_vans_den_av2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/giay_authentic_do_av.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/giay_authentic_do_av1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/giay_authentic_do_av2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/giay_authentic_trang_av.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/giay_authentic_trang_av1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Image/SanPham/giay_authentic_trang_av2.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/ChucNang.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/ChucNang.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/ConfigAWS.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/ConfigAWS.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/CreateTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/CreateTables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/DeleAllTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DeleAllTables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/LoadSamplaData.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/LoadSampleData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/SanPham.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/SanPham.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/ScanTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/ScanTables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerProject.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/Index.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/sanphams.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/NguoiDung.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/SanPham.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SanPham.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/Index.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/Index.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/SanPham.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/SanPham.route.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -163,6 +109,7 @@
       <workItem from="1572368724410" duration="1052000" />
       <workItem from="1572609819165" duration="17183000" />
       <workItem from="1572672699219" duration="23865000" />
+      <workItem from="1572801333836" duration="3399000" />
     </task>
     <servers />
   </component>

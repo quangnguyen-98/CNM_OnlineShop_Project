@@ -29,10 +29,41 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Nhập tên sản phẩm" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+            <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên sản phẩm" aria-label="Search">
+            <button id="btnTimKiem" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
         </form>
     </div>
 </nav>
 
 <div style="margin-top:30px;"></div>
+
+<script>
+    $("#btnTimKiem").click(function(){
+        $(".datasp").empty();
+        $.ajax({
+            url: "<%=domain%>/sanphams/ten/"+$("#inputTK").val(),
+            method: "GET",
+            error: function() {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function(data) {
+                $.each(data.Items, function(i, item) {
+                    var html_to_append ='';
+                    html_to_append +=
+                        '<div class="col">' +
+                        '<a id="SP'+item.ID_SanPham+'" href="/SanPhams/'+item.ID_SanPham+'" class="card" style="width: 12rem; margin-bottom: 1rem">'+
+                        '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
+                        '<div class="card-body">'+
+                        '<h5 class="card-title" style="height: 4rem" >'+item.TenSanPham+'</h5>'+
+                        ' <p class="card-text badge badge-pill badge-success">'+item.Gia+' VND</p>'+
+                        '</div>'+
+                        '</a>'+
+                        '</div>';
+                    $("#datasp").append(html_to_append);
+                });
+                itemHover();
+            }
+        });
+        return false;
+    });
+</script>

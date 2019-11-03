@@ -27,7 +27,7 @@
             <div class="card-body">
               <h5 class="card-title" style="height: 4rem" ><%= item.TenSanPham %></h5>
 
-              <p class="card-text badge badge-pill badge-success"><%= item.Gia %> VND</p>
+              <p class="card-text badge badge-pill badge-success" pattern="(d{3})([.])(d{2})"><%= item.Gia %> VND</p>
               <!-- <a href="<%= "/SanPhams/abc/"+item.ID_SanPham%>" class="btn btn-primary">Xem chi tiết</a>-->
             </div>
           </a>
@@ -81,15 +81,20 @@
   });
 </script>
 <script>
-  //Set sự kiện click cho danh mục
 
+
+  //Set sự kiện click cho danh mục
+  var idDM=0;
+  var idTH=0;
+  var tu=0;
+  var den=0;
 
 </script>
-//lưu trữ
+<!--lưu trữ-->
 <script>
   <%dataDM.forEach(function (item) { %>
   $("document").ready(function(){
-    $("<%="#DM"+item.ID_DanhMuc%>").click(function(){
+    $("<%=".DM"+item.ID_DanhMuc%>").click(function(){
       $(".datasp").empty();
       $.ajax({
         url: "<%=domain%>/sanphams/danhmuc/<%=item.ID_DanhMuc%>",
@@ -100,8 +105,8 @@
         success: function(data) {
           $(".DMitem").removeClass("list-group-item-action");
           $(".DMitem").removeClass("list-group-item-success");
-          $("<%="#DM"+item.ID_DanhMuc%>").addClass("list-group-item-action");
-          $("<%="#DM"+item.ID_DanhMuc%>").addClass("list-group-item-success");
+          $("<%=".DM"+item.ID_DanhMuc%>").addClass("list-group-item-action");
+          $("<%=".DM"+item.ID_DanhMuc%>").addClass("list-group-item-success");
           $.each(data.Items, function(i, item) {
             var html_to_append ='';
             html_to_append +=
@@ -127,7 +132,7 @@
 
   <%dataTH.forEach(function (item) { %>
   $("document").ready(function(){
-    $("<%="#TH"+item.ID_ThuongHieu%>").click(function(){
+    $("<%=".TH"+item.ID_ThuongHieu%>").click(function(){
       $(".datasp").empty();
       $.ajax({
         url: "<%=domain%>/sanphams/thuonghieu/<%=item.ID_ThuongHieu%>",
@@ -138,8 +143,8 @@
         success: function(data) {
           $(".THitem").removeClass("list-group-item-action");
           $(".THitem").removeClass("list-group-item-success");
-          $("<%="#TH"+item.ID_ThuongHieu%>").addClass("list-group-item-action");
-          $("<%="#TH"+item.ID_ThuongHieu%>").addClass("list-group-item-success");
+          $("<%=".TH"+item.ID_ThuongHieu%>").addClass("list-group-item-action");
+          $("<%=".TH"+item.ID_ThuongHieu%>").addClass("list-group-item-success");
           $.each(data.Items, function(i, item) {
             var html_to_append ='';
             html_to_append +=

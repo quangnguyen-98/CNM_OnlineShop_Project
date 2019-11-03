@@ -2,7 +2,7 @@ const api_helper = require('../routes/API_helper');
 const domain = require('../Config/ServerDomain');
 module.exports = {
     LayDuLieuTuAPITraVeView:function(req, res, next) {
-        api_helper.API_Call_Get('http://localhost:3001/getIndex')
+        api_helper.API_Call_Get('http://localhost:3001/api/getIndex')
             .then(response => {
                 var dataSP =  [];
                 var dataDM =  [];

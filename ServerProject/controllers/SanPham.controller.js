@@ -47,6 +47,32 @@ module.exports = {
             }
         });
     },
+    LaySanPhamTheoTen:function(req, res, next) {
+        var tensp = req.params.ten ;
+        var param = {
+            TableName: "SanPham",
+            ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
+            FilterExpression:"contains(TenSanPham, :n)",
+           // attr1 = :val1 and attr2 = :val2 and (contains(attr3, :val3a) or contains(attr3, :val3b))
+            ExpressionAttributeNames:{
+                "#yr":"ID_SanPham",
+            },
+            ExpressionAttributeValues:{
+                ":n": tensp
+            }
+        };
+
+        docClient.scan(param,function (err,data) {
+            if (err) {
+                console.error(err);
+                res.end();
+            }
+            else{
+                console.log("Thành công!");
+                res.json(data);
+            }
+        });
+    },
     LaySanPhamTheoIdDanhMuc:function(req, res, next) {
         var iddm = parseInt(req.params.id) ;
         var param = {

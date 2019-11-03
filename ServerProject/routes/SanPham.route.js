@@ -21,6 +21,8 @@ router.get('/', SanPhamController.LayTatCaSanPham);
 
 router.get('/:id', SanPhamController.LaySanPhamTheoID);
 
+router.get('/ten/:ten', SanPhamController.LaySanPhamTheoTen);
+
 router.get('/danhmuc/:id', SanPhamController.LaySanPhamTheoIdDanhMuc);
 
 router.get('/thuonghieu/:id', SanPhamController.LaySanPhamTheoIdThuongHieu);
