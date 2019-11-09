@@ -1,0 +1,23 @@
+[
+  {
+    "ID_Carousel": 1,
+    "LinkAnh": "https://bb4298.s3-us-west-1.amazonaws.com/Carousel/crs_1.jpg",
+    "LinkBaiViet": "http://"
+  },
+  {
+    "ID_Carousel": 2,
+    "LinkAnh": "https://bb4298.s3-us-west-1.amazonaws.com/Carousel/crs_2.jpg",
+    "LinkBaiViet": "http://"
+  },
+  {
+    "ID_Carousel": 3,
+    "LinkAnh": "https://bb4298.s3-us-west-1.amazonaws.com/Carousel/crs_3.jpg",
+    "LinkBaiViet": "http://"
+  },
+  {
+    "ID_Carousel": 4,
+    "LinkAnh": "https://bb4298.s3-us-west-1.amazonaws.com/Carousel/crs_4.jpg",
+    "LinkBaiViet": "http://"
+  }
+
+]

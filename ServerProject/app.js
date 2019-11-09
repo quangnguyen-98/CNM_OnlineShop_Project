@@ -2,6 +2,12 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
+var ids = require('short-id');
+ids.configure({
+  length: 10,          // The length of the id strings to generate
+  algorithm: 'sha1',  // The hashing algoritm to use in generating keys
+  salt: Math.random   // A salt value or function
+});
 
 var indexRouter = require('./routes/Index.route');
 var NguoiDungRouter = require('./routes/NguoiDung.route');

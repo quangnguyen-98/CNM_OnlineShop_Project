@@ -6,12 +6,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--<link rel="shortcut icon" type="image/png" href="{{asset('img/favicon.jpeg')}}"/>-->
+    <link rel="shortcut icon" type="image/png" href="https://bb4298.s3-us-west-1.amazonaws.com/favicon.ico"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
    <!-- <link rel="stylesheet" type="text/css" href="../../public/stylesheets/style.css">-->
     <style>
+        .footer-item-color{
+            color: #337ab7;
+        }
         /*Stye cho nút kéo lên.*/
         #back-to-top {
             text-align:center;
@@ -40,6 +44,14 @@
         #content {
             height: 2000px;
         }
+        .linksp:hover {
+            text-decoration: none;
+            color:#ffb520;
+        }
+
+        .jbtcustom{
+            padding: 0.5rem;
+        }
     </style>
 </head>
 
@@ -54,56 +66,51 @@
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 
-<!-- Latest compiled JavaScript -->
+<!-- Boostrap library -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
+<!-- Font Awesome library-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"></script>
 
 <%-partial('../ThanhPhanWeb/header.ejs')%>
 
-
-
-<%-body -%>
-
+    <%-body -%>
 
 <%-partial('../ThanhPhanWeb/footer')%>
 
+
 <script>
 
-
-
-
-    //code button top;
-    if ($('#back-to-top').length) {
-        var scrollTrigger = 100, // px
-            backToTop = function () {
-                var scrollTop = $(window).scrollTop();
-                if (scrollTop > scrollTrigger) {
-                    $('#back-to-top').addClass('show');
-                } else {
-                    $('#back-to-top').removeClass('show');
-                }
-            };
+//code button top;
+if ($('#back-to-top').length) {
+    var scrollTrigger = 100, // px
+        backToTop = function () {
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > scrollTrigger) {
+                $('#back-to-top').addClass('show');
+            } else {
+                $('#back-to-top').removeClass('show');
+            }
+        };
+    backToTop();
+    $(window).on('scroll', function () {
         backToTop();
-        $(window).on('scroll', function () {
-            backToTop();
-        });
-        $('#back-to-top').on('click', function (e) {
-            e.preventDefault();
-            $('html,body').animate({
-                scrollTop: 0
-            }, 700);
-        });
-    }
-    //Code Carousel;
-    $('.carousel').carousel({
-        interval: 1800
-    });$('.carousel').carousel({
-        interval: 1800
     });
-
-
+    $('#back-to-top').on('click', function (e) {
+        e.preventDefault();
+        $('html,body').animate({
+            scrollTop: 0
+        }, 700);
+    });
+}
+//Code Carousel;
+$('.carousel').carousel({
+    interval: 2200
+});
 
 
 </script>
 </body>
 </html>
+
+

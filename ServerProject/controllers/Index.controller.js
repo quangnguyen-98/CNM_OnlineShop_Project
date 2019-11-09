@@ -1,12 +1,13 @@
 var AWS = require("aws-sdk");
 var configAWS = require("../Config/ConfigAWS");
+var ids = require('short-id');
 var docClient = new AWS.DynamoDB.DocumentClient();
 module.exports = {
     LayTatCaSanPham_DanhMuc_ThuongHieu:function(req, res, next) {
 
         var paramSP = {
             TableName: "SanPham",
-            ProjectionExpression:"#yr, TenSanPham, Gia, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2",
+            ProjectionExpression:"#yr, TenSanPham, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2",
             ExpressionAttributeNames:{
                 "#yr":"ID_SanPham",
             }
@@ -44,14 +45,13 @@ module.exports = {
                                 res.end();
                             }
                             else {
-                                res.end(JSON.stringify(
+                                res.json(
                                     {
                                         SanPham:dataSP.Items,
                                         DanhMuc:dataDM.Items,
                                         ThuongHieu:dataTH.Items
-
                                     }
-                                ));
+                                );
                             }
                         })
                     }
@@ -59,12 +59,6 @@ module.exports = {
             }
         });
 
-     /*   res.end(JSON.stringify([
-            {
-                xinchao:"123",
-                sanpham:JSON.stringify(dataSP)
-
-            }
-        ]));*/
-    }
+    },
 };
+

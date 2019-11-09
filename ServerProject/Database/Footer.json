@@ -1,0 +1,42 @@
+[
+  {
+    "ID_LienKet": 1,
+    "LoaiLienKet": "TT",
+    "NoiDung": {
+      "TenLienKet": "Giới thiệu về HQKboutique",
+      "Link": "http://"
+    }
+  },
+  {
+    "ID_LienKet": 2,
+    "LoaiLienKet": "TT",
+    "NoiDung": {
+      "TenLienKet": "Tuyển dụng",
+      "Link": "http://"
+    }
+  },
+  {
+    "ID_LienKet": 3,
+    "LoaiLienKet": "CSKH",
+    "NoiDung": {
+      "TenLienKet": "Than phiền/Chăm sóc khách hàng",
+      "Link": "http://"
+    }
+  },
+  {
+    "ID_LienKet": 4,
+    "LoaiLienKet": "FAQ",
+    "NoiDung": {
+      "TenLienKet": "Vận chuyển",
+      "Link": "http://"
+    }
+  },
+  {
+    "ID_LienKet": 5,
+    "LoaiLienKet": "CH",
+    "NoiDung": {
+      "TenLienKet": "128 Trần Quang Khải, Q1",
+      "Link": "http://"
+    }
+  }
+]

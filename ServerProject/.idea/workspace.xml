@@ -2,13 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29931dd8-b35f-4161-9625-b148465567bb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Config/dzfds.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Database/BaiViet.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Database/Carousel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/controller/Index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/controller/Index.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutKhachHang.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutKhachHang.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/SanPham/ChiTietSanPham.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/User/ChiTietSanPham.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/carousel.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/carousel.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/danhmuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/danhmuc.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/footer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/footer.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/header.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/style.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Image/SanPham/ChuckTaylor_AllStar1970s_BlackLow_1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Image/SanPham/ChuckTaylor_AllStar1970s_BlackLow_1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Image/SanPham/ChuckTaylor_AllStar1970s_BlackLow_2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Image/SanPham/ChuckTaylor_AllStar1970s_BlackLow_2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Image/SanPham/ChuckTaylor_AllStar1970s_Sunflower_Tall_1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Image/SanPham/ChuckTaylor_AllStar1970s_Sunflower_Tall_1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Image/SanPham/ChuckTaylor_AllStar1970s_Sunflower_Tall_2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Image/SanPham/ChuckTaylor_AllStar1970s_Sunflower_Tall_2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Image/SanPham/Palladium_Blanc_Hi_1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Image/SanPham/Palladium_Blanc_Hi_1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Image/SanPham/Palladium_Blanc_Hi_2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Image/SanPham/Palladium_Blanc_Hi_2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Image/SanPham/Palladium_Box_Logo_Origins_1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Image/SanPham/Palladium_Box_Logo_Origins_1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Image/SanPham/Palladium_Box_Logo_Origins_2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Image/SanPham/Palladium_Box_Logo_Origins_2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/ConfigAWS.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/ConfigAWS.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/CreateTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/CreateTables.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/ChucNang.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/HoaDon.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/HoaDon.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/NguoiDung.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/NguoiDung.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/SPDemo.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/SPDemo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/SanPham.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/SanPham.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/Index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Index.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/SanPham.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SanPham.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/Index.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/Index.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/SanPham.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/SanPham.route.js" afterDir="false" />
     </list>
@@ -23,22 +52,24 @@
       <list>
         <option value="tsconfig.json" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1SViC3RR76W8BWYWJ26bO5UdRL8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.2" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -109,7 +140,12 @@
       <workItem from="1572368724410" duration="1052000" />
       <workItem from="1572609819165" duration="17183000" />
       <workItem from="1572672699219" duration="23865000" />
-      <workItem from="1572801333836" duration="3399000" />
+      <workItem from="1572801333836" duration="4331000" />
+      <workItem from="1572870097738" duration="10217000" />
+      <workItem from="1572963984303" duration="8384000" />
+      <workItem from="1574429788644" duration="713000" />
+      <workItem from="1573266881723" duration="11315000" />
+      <workItem from="1573299605690" duration="5130000" />
     </task>
     <servers />
   </component>

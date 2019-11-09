@@ -5,7 +5,7 @@
     "SoDienThoai":"0346065968",
     "DiaChi": "Quận 12",
     "Email": "quang@gmail.com",
-    "VaiTro": "Admin",
+    "VaiTro": "AD",
     "TaiKhoan":{
         "ID_TaiKhoan": "quang",
         "MatKhau": "quang123"
@@ -23,7 +23,7 @@
     "SoDienThoai":"0346065968",
     "DiaChi": "Quận 12",
     "Email": "quang@gmail.com",
-    "VaiTro": "NhanVien",
+    "VaiTro": "KH",
     "TaiKhoan":{
       "ID_TaiKhoan": "tai",
       "MatKhau": "tai123"
@@ -41,7 +41,7 @@
     "SoDienThoai":"0346065968",
     "DiaChi": "Quận 12",
     "Email": "quang@gmail.com",
-    "VaiTro": "KhachHang",
+    "VaiTro": "KH",
     "TaiKhoan":{
       "ID_TaiKhoan": "nghia",
       "MatKhau": "nghia123"

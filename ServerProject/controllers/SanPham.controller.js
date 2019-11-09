@@ -18,6 +18,7 @@ module.exports = {
             }
             else{
                 console.log("Thành công!");
+               /* res.end(JSON.stringify(data.Items.slice(0,2)));*/
                 res.json(data);
             }
         });
@@ -176,5 +177,46 @@ module.exports = {
                 res.json(data);
             }
         });
-    }
+    },
+    LaySanPhamTheoSoTrang:function(req, res, next) {
+        var n = parseInt(req.params.pagenumber) ;
+        var x=3;
+        var begin =(n-1)*x;
+        var end = (n-1)*x +x;
+        var param = {
+            TableName: "SanPham",
+            ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
+            ExpressionAttributeNames:{
+                "#yr":"ID_SanPham",
+            },
+        };
+
+        docClient.scan(param,function (err,data) {
+            if (err) {
+                console.error(err);
+                res.end();
+            }
+            else{
+                console.log("Thành công!");
+                var soTrang;
+                var count = data.Count/x;
+              /*  var a = JSON.parse(data);*/
+              /*  for(var i = 0; i < data.Items; ++i){
+                    if(array[i] == 2)
+                        count++;
+                }*/
+              /*  soTrang = count/x;*/
+
+
+                /*res.set({ 'content-type': 'application/json; charset=utf-8' });*/
+                res.json(
+                    {
+                        SanPham: data.Items.slice(begin,end),
+                        SoTrang: Math.ceil(count)
+                    }
+                );
+
+            }
+        });
+    },
 };

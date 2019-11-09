@@ -1,26 +1,12 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="/"><i class="fas fa-home"></i> HQKboutique</a>
+    <a class="navbar-brand" href="/"><i class="fas fa-home"></i> HQKStore</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto" style="margin-right:30px">
-           <!-- <li class="nav-item active">
-                <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
-            </li>-->
-          <!--  <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Menu
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Information</a>
-                    <a class="dropdown-item" href="#">Curiculum Viate</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">About me</a>
-                </div>
-            </li>-->
             <li class="nav-item">
                 <a class="nav-link" href="login">Đăng Nhập</a>
             </li>
@@ -50,11 +36,12 @@
                 $.each(data.Items, function(i, item) {
                     var html_to_append ='';
                     html_to_append +=
-                        '<div class="col">' +
-                        '<a id="SP'+item.ID_SanPham+'" href="/SanPhams/'+item.ID_SanPham+'" class="card" style="width: 12rem; margin-bottom: 1rem">'+
+                        '<div class="col-6 col-sm-6 col-md-3 lazyitem d-flex">' +
+                        '<a id="SP'+item.ID_SanPham+'" href="/SanPhams/'+item.ID_SanPham+'" class="card" style="margin-bottom: 1rem">'+
                         '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
                         '<div class="card-body">'+
-                        '<h5 class="card-title" style="height: 4rem" >'+item.TenSanPham+'</h5>'+
+                        '<h5 class="card-title" style="height: 2rem" >'+item.TenSanPham+'</h5>'+
+                        '<br>'+
                         ' <p class="card-text badge badge-pill badge-success">'+item.Gia+' VND</p>'+
                         '</div>'+
                         '</a>'+

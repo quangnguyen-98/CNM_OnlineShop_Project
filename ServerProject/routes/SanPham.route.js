@@ -16,7 +16,7 @@ var IndexController = require('../controllers/Index.controller');
 
 
 
-//Lấy tất cả sản phẩm  (Web/api/SanPham/)
+//Lấy tất cả sản phẩm  (Web/api/SanPhams/)
 router.get('/', SanPhamController.LayTatCaSanPham);
 
 router.get('/:id', SanPhamController.LaySanPhamTheoID);
@@ -30,6 +30,8 @@ router.get('/thuonghieu/:id', SanPhamController.LaySanPhamTheoIdThuongHieu);
 router.get('/danhmuc/:iddm/thuonghieu/:idth', SanPhamController.LaySanPhamTheoIdDanhMucVaThuongHieu);
 
 router.get('/gia/:tu/:den', SanPhamController.LaySanPhamTheoKhoangGia);
+
+router.get('/page/:pagenumber', SanPhamController.LaySanPhamTheoSoTrang);
 
 
 module.exports = router;

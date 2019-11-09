@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9a322a82-60d2-4128-8ad3-7586c19b93fc" name="Default Changelist" comment=":))" />
+    <list default="true" id="9a322a82-60d2-4128-8ad3-7586c19b93fc" name="Default Changelist" comment=":))">
+      <change beforePath="$PROJECT_DIR$/Config/ServerDomain.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/ServerDomain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Layout/layoutKhachHang.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Layout/layoutKhachHang.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/ThanhPhanWeb/carousel.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/ThanhPhanWeb/carousel.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/ThanhPhanWeb/danhmuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/ThanhPhanWeb/danhmuc.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/ThanhPhanWeb/footer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/ThanhPhanWeb/footer.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +24,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1SZ2HzM7NL4UXqKS0DnClyguOTi" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -96,7 +104,12 @@
       <workItem from="1572369140438" duration="953000" />
       <workItem from="1572598692227" duration="11272000" />
       <workItem from="1572675626887" duration="41021000" />
-      <workItem from="1572801301191" duration="3069000" />
+      <workItem from="1572801301191" duration="4529000" />
+      <workItem from="1572806276013" duration="28000" />
+      <workItem from="1572870042081" duration="13467000" />
+      <workItem from="1572963842263" duration="5183000" />
+      <workItem from="1573221321913" duration="8490000" />
+      <workItem from="1573266887815" duration="18208000" />
     </task>
     <servers />
   </component>

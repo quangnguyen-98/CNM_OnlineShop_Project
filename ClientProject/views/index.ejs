@@ -4,7 +4,7 @@
 <%-partial('ThanhPhanWeb/carousel.ejs')%>
 
 <div id="items-container"></div>
-<div class="container-fluid" style="padding: 1rem">
+<div class="container" style="padding: 1rem">
   <div class="row">
 
     <div class="col-sm-3">
@@ -13,24 +13,30 @@
     <div class="col-sm-9">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item"><a href="#">Library</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Data</li>
+          <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i> HQKStore</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Trang chủ</li>
+
         </ol>
       </nav>
-      <div id ="datasp" class="row datasp">
+      <div id ="datasp" class="row datasp ">
         <div id="info"></div>
         <%dataSP.forEach(function (item) { %>
-        <div class="col lazyitem">
-          <a id="<%="SP"+item.ID_SanPham%>" href="<%= "/SanPhams/"+item.ID_SanPham%>" class="card" style="width: 12rem; margin-bottom: 1rem">
-            <img id="<%="subSP"+item.ID_SanPham%>" class="card-img-top" src="<%= item.Avatar %>" alt="Card image cap" >
-            <div class="card-body">
-              <h5 class="card-title" style="height: 4rem" ><%= item.TenSanPham %></h5>
+        <div class="col-6 col-sm-6 col-md-3 lazyitem d-flex ">
+          <div id="<%="SP"+item.ID_SanPham%>" class="card" style=" margin-bottom: 1rem">
+            <a href="/SanPhams/">
+              <img id="<%="subSP"+item.ID_SanPham%>" href="<%= "/SanPhams/"+item.ID_SanPham%>" class="card-img-top" src="<%= item.Avatar %>" alt="Card image cap" >
+            </a>
 
-              <p class="card-text badge badge-pill badge-success" pattern="(d{3})([.])(d{2})"><%= item.Gia %> VND</p>
-              <!-- <a href="<%= "/SanPhams/abc/"+item.ID_SanPham%>" class="btn btn-primary">Xem chi tiết</a>-->
+            <div class="card-body ">
+
+              <h5 class="card-title" style="height: 2.5rem" ><a class="linksp" href="/SanPhams/"><%= item.TenSanPham %></a></h5>
+              <br>
+              <h4><span class="card-text badge badge-pill badge-primary  d-flex justify-content-center"><%=item.TiLeSale%>% Off</span></h4>
+              <h4><p class="card-text badge badge-pill badge-secondary itemPrice d-flex justify-content-center text-white-50" style="margin-bottom: 2px;"> <del><%= item.Gia %> Đ</del></p> </h4>
+                <span class="d-flex justify-content-center">Giá hiện tại:</span>
+               <h4><span class="card-text badge badge-pill badge-success itemPrice d-flex justify-content-center"><%= item.Gia - (item.Gia/100*item.TiLeSale) %> Đ</span></h4>
             </div>
-          </a>
+          </div>
         </div>
         <%}); %>
       </div>
@@ -58,26 +64,42 @@
 </div>
 <script>
 
-  //Sự kiên hover cho sản phẩm
+  //Hàm hover cho sản phẩm
   function itemHover(){
     <%dataSP.forEach(function (item) { %>
     $("<%="#SP"+item.ID_SanPham %>").on({
       mouseenter: function () {
         $("<%="#subSP"+item.ID_SanPham %>").fadeOut('fast');
         $("<%="#subSP"+item.ID_SanPham %>").attr('src','<%= item.AvtDetail1%>');
-        $("<%="#subSP"+item.ID_SanPham %>").fadeIn('fast');
+        $("<%="#SP"+item.ID_SanPham %>").addClass('border-info');
+        $("<%="#subSP"+item.ID_SanPham %>").fadeIn('low');
       },
       mouseleave: function () {
         $("<%="#subSP"+item.ID_SanPham %>").fadeOut('fast');
         $("<%="#subSP"+item.ID_SanPham %>").attr('src','<%= item.Avatar%>');
-        $("<%="#subSP"+item.ID_SanPham %>").fadeIn('fast');
+        $("<%="#SP"+item.ID_SanPham %>").removeClass('border-info');
+        $("<%="#subSP"+item.ID_SanPham %>").fadeIn('low');
       }
     });
     <%}); %>
   }
+    //Hàm fortmat giá cho sản phẩm
+  function FormartGia(){
+      $('.itemPrice').text(function () {
+          var str = $(this).html() + '';
+          x = str.split('.');
+          x1 = x[0]; x2 = x.length > 1 ? '.' + x[1] : '';
+          var rgx = /(\d+)(\d{3})/;
+          while (rgx.test(x1)) {
+              x1 = x1.replace(rgx, '$1' + ',' + '$2');
+          }
+          $(this).html(x1 + x2);
+      });
+  }
   //Set hover cho sản phẩm khi load index
   $("document").ready(function(){
     itemHover();
+    FormartGia();
   });
 </script>
 <script>
@@ -105,23 +127,34 @@
         success: function(data) {
           $(".DMitem").removeClass("list-group-item-action");
           $(".DMitem").removeClass("list-group-item-success");
+          $(".THitem").removeClass("list-group-item-success");
           $("<%=".DM"+item.ID_DanhMuc%>").addClass("list-group-item-action");
           $("<%=".DM"+item.ID_DanhMuc%>").addClass("list-group-item-success");
           $.each(data.Items, function(i, item) {
             var html_to_append ='';
+            var html2='';
             html_to_append +=
-                    '<div class="col">' +
-                    '<a id="SP'+item.ID_SanPham+'" href="/SanPhams/'+item.ID_SanPham+'" class="card" style="width: 12rem; margin-bottom: 1rem">'+
-                    '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
-                    '<div class="card-body">'+
-                    '<h5 class="card-title" style="height: 4rem" >'+item.TenSanPham+'</h5>'+
-                    ' <p class="card-text badge badge-pill badge-success">'+item.Gia+' VND</p>'+
-                    '</div>'+
+                    '<div class="col-6 col-sm-6 col-md-3 lazyitem d-flex">'+
+                    '<div id="SP'+item.ID_SanPham+'" class="card" style=" margin-bottom: 1rem">'+
+                    '<a href="/SanPhams/">'+
+                    '<img id="subSP'+item.ID_SanPham+'" href="#" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
                     '</a>'+
-                    '</div>';
+
+                    ' <div class="card-body">'+
+                    '<h5 class="card-title" style="height: 2rem" ><a class="linksp" href="#">'+item.TenSanPham+'</a></h5>'+
+                    ' <br>'+
+                    ' <span>Giá cũ:</span>'+
+                    '<p class="card-text badge badge-pill badge-success itemPrice" style="margin-bottom: 2px;"> <del>'+item.Gia+' VND</del> </p><br>'+
+                    ' <span>Giá mới:</span>'+
+                    '<span class="card-text badge badge-pill badge-success itemPrice">'+parseInt(item.Gia - (item.Gia/100*10))+' VND</span><span class="card-text badge badge-pill badge-danger ">Sale '+parseInt(item.TiLeSale)+' %</span>'+
+                    '</div>'+
+                    '  </div>'+
+                    '   </div>';
+
             $("#datasp").append(html_to_append);
           });
           itemHover();
+          FormartGia();
         }
       });
       return false;
@@ -143,12 +176,14 @@
         success: function(data) {
           $(".THitem").removeClass("list-group-item-action");
           $(".THitem").removeClass("list-group-item-success");
+          $(".DMitem").removeClass("list-group-item-success");
           $("<%=".TH"+item.ID_ThuongHieu%>").addClass("list-group-item-action");
           $("<%=".TH"+item.ID_ThuongHieu%>").addClass("list-group-item-success");
           $.each(data.Items, function(i, item) {
             var html_to_append ='';
+            var html_to_append2 ='';
             html_to_append +=
-                    '<div class="col">' +
+                    '<div class="col-6 col-sm-6 col-md-3 lazyitem d-flex">' +
                     '<a id="SP'+item.ID_SanPham+'" href="/SanPhams/'+item.ID_SanPham+'" class="card" style="width: 12rem; margin-bottom: 1rem">'+
                     '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
                     '<div class="card-body">'+
@@ -157,13 +192,34 @@
                     '</div>'+
                     '</a>'+
                     '</div>';
-            $("#datasp").append(html_to_append);
+            html_to_append2 +=
+                    '<div class="col-6 col-sm-6 col-md-3 lazyitem d-flex">'+
+                    '<div id="SP'+item.ID_SanPham+'" class="card" style=" margin-bottom: 1rem">'+
+                    '<a href="/SanPhams/">'+
+                    '<img id="subSP'+item.ID_SanPham+'" href="#" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
+                    '</a>'+
+
+                    ' <div class="card-body">'+
+                    '<h5 class="card-title" style="height: 2rem" ><a class="linksp" href="#">'+item.TenSanPham+'</a></h5>'+
+                    ' <br>'+
+                    ' <span>Giá cũ:</span>'+
+                    '<p class="card-text badge badge-pill badge-success itemPrice" style="margin-bottom: 2px;"> <del>'+item.Gia+' VND</del> </p><br>'+
+                    ' <span>Giá mới:</span>'+
+                    '<span class="card-text badge badge-pill badge-success itemPrice">'+parseInt(item.Gia - (item.Gia/100*10))+' VND</span><span class="card-text badge badge-pill badge-danger ">Sale '+parseInt(item.TiLeSale)+' %</span>'+
+                    '</div>'+
+                    '  </div>'+
+                    '   </div>';
+            $("#datasp").append(html_to_append2);
           });
           itemHover();
+          FormartGia();
         }
       });
       return false;
     });
   });
   <%}); %>
+
+
+
 </script>

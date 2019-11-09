@@ -20,4 +20,5 @@ router.get('/', function(req, res, next) {
 
 router.get('/api/getIndex',IndexController.LayTatCaSanPham_DanhMuc_ThuongHieu);
 
+
 module.exports = router;

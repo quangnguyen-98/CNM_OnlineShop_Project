@@ -10,7 +10,6 @@ module.exports = {
     },
     KetNoiAWSReal: function() {
         var AWS = require("aws-sdk");
-
         AWS.config.update({
             region: "us-west-1",
             endpoint: "http://dynamodb.us-west-1.amazonaws.com/",
@@ -20,7 +19,6 @@ module.exports = {
     },
     KetNoiAWS: function() {
         var AWS = require("aws-sdk");
-
         AWS.config.update({
             region: "us-west-1",
             endpoint: "http://dynamodb.us-west-1.amazonaws.com/",

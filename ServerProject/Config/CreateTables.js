@@ -22,9 +22,9 @@ var paramsSanPham = {
 };
 dynamodb.createTable(paramsSanPham, function(err, data) {
     if (err) {
-        console.error("Unable to create table. Error JSON:", JSON.stringify(err, null, 2));
+        console.error("Unable to create table SanPham. Error JSON:", JSON.stringify(err, null, 2));
     } else {
-        console.log("Created table. Table description JSON:", JSON.stringify(data, null, 2));
+        console.log("Created table SanPham. Table description JSON:", JSON.stringify(data, null, 2));
     }
 });
 
@@ -47,9 +47,9 @@ var paramsNguoiDung = {
 };
 dynamodb.createTable(paramsNguoiDung, function(err, data) {
     if (err) {
-        console.error("Unable to create table. Error JSON:", JSON.stringify(err, null, 2));
+        console.error("Unable to create table Người Dùng. Error JSON:", JSON.stringify(err, null, 2));
     } else {
-        console.log("Created table. Table description JSON:", JSON.stringify(data, null, 2));
+        console.log("Created table Người Dùng. Table description JSON:", JSON.stringify(data, null, 2));
     }
 });
 
@@ -72,15 +72,15 @@ var paramsHoaDon = {
 };
 dynamodb.createTable(paramsHoaDon, function(err, data) {
     if (err) {
-        console.error("Unable to create table. Error JSON:", JSON.stringify(err, null, 2));
+        console.error("Unable to create table Hóa Đơn. Error JSON:", JSON.stringify(err, null, 2));
     } else {
-        console.log("Created table. Table description JSON:", JSON.stringify(data, null, 2));
+        console.log("Created table Hóa Đơn. Table description JSON:", JSON.stringify(data, null, 2));
     }
 });
 
 
 //Tạo Bảng Chức Năng
-var paramsChucNang = {
+/*var paramsChucNang = {
     TableName : "ChucNang",
     KeySchema: [
         { AttributeName: "ID_Chucnang", KeyType: "HASH"},  //Partition key
@@ -101,7 +101,7 @@ dynamodb.createTable(paramsChucNang, function(err, data) {
     } else {
         console.log("Created table. Table description JSON:", JSON.stringify(data, null, 2));
     }
-});
+});*/
 
 //Tạo Bảng Danh Mục
 var paramsDanhMuc = {

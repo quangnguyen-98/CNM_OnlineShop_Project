@@ -1,12 +1,23 @@
 [
   {
     "ID_SanPham": 1,
-    "TenSanPham": "Vans Vault Authentic Majolica",
+    "TenSanPham": {
+      "Ten": "Vans Vault Authentic Majolica",
+      "TenKhongVietHoa": "vans vault authentic majolica"
+    },
     "ID_DanhMuc": 1,
     "ID_ThuongHieu": 1,
-    "MoTa": "Đây là Vans Vault Authentic Majolica",
+    "MoTa": {
+      "TongQuan": "Vans Vault Old Skool Checkerboard với sắc màu xanh năng động cùng họa tiết carô ",
+      "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
+    },
+    "ThongTin": {
+      "NoiSanXuat": "Trung Quốc",
+      "CheDoBaoHanh": "Bảo hành chính hãng 01 tháng",
+      "PhuKienTheoKem":"Túi vans"
+    },
     "Gia":1650000,
-    "TiLeSale": 10,
+    "TiLeSale": 8,
     "Anh": {
       "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticMajolica.jpg",
       "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/VansVaultAuthenticMajolica1.jpg",
@@ -17,15 +28,35 @@
       "Thang":5,
       "Nam": 2019
     },
-    "SoLuong": 14,
-    "TrangThai":"true"
+    "Size": {
+      "36": 4,
+      "37": 5,
+      "38": 3,
+      "39": 6,
+      "40": 6,
+      "41": 3,
+      "42": 6
+    },
+    "TongSoLuong": 33,
+    "TrangThaiBan":true
   },
   {
     "ID_SanPham": 2,
-    "TenSanPham": "Vans Vault Authentic Pic Suede",
+    "TenSanPham": {
+      "Ten": "Vans Vault Authentic Pic Suede",
+      "TenKhongVietHoa": "vans vault authentic pic suede"
+  },
     "ID_DanhMuc": 1,
     "ID_ThuongHieu": 1,
-    "MoTa": "Đây là Vans Vault Authentic Pic Suede",
+    "MoTa": {
+      "TongQuan": "Đây là Vans Vault Authentic Pic Suede",
+      "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
+    },
+    "ThongTin": {
+      "NoiSanXuat": "Trung Quốc",
+      "CheDoBaoHanh": "Bảo hành chính hãng 01 tháng",
+      "PhuKienTheoKem":"Túi vans"
+    },
     "Gia":1800000,
     "TiLeSale": 10,
     "Anh": {
@@ -38,17 +69,37 @@
       "Thang":5,
       "Nam": 2019
     },
-    "SoLuong": 14,
-    "TrangThai":"true"
+    "Size": {
+      "36": 4,
+      "37": 5,
+      "38": 3,
+      "39": 6,
+      "40": 6,
+      "41": 3,
+      "42": 6
+    },
+    "TongSoLuong": 14,
+    "TrangThaiBan":true
   },
   {
     "ID_SanPham": 3,
-    "TenSanPham": "Vans Logo Benched Bag",
+    "TenSanPham": {
+      "Ten": "Vans Logo Benched Bag",
+      "TenKhongVietHoa": "vans logo benched bag"
+    },
     "ID_DanhMuc": 2,
     "ID_ThuongHieu": 1,
-    "MoTa": "Đây là Vans Logo Benched Bag",
+    "MoTa": {
+      "TongQuan": "Đây là Vans Logo Benched Bag",
+      "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
+    },
+    "ThongTin": {
+      "NoiSanXuat": "Trung Quốc",
+      "CheDoBaoHanh": "Bảo hành chính hãng 01 tháng",
+      "PhuKienTheoKem":"Túi vans"
+    },
     "Gia":330000,
-    "TiLeSale": 10,
+    "TiLeSale": 15,
     "Anh": {
       "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Logo_Benched_Bag.jpg",
       "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Logo_Benched_Bag_1.jpg",
@@ -59,17 +110,31 @@
       "Thang":5,
       "Nam": 2019
     },
-    "SoLuong": 14,
-    "TrangThai":"true"
+    "Size": {
+      "OS": 16
+    },
+    "TongSoLuong": 16,
+    "TrangThaiBan": true
   },
   {
     "ID_SanPham": 4,
-    "TenSanPham": "Balo Vans Old Skool III Backpack",
+    "TenSanPham": {
+      "Ten": "Balo Vans Old Skool III Backpack",
+      "TenKhongVietHoa": "balo vans old skool iii backpack"
+    },
     "ID_DanhMuc": 2,
     "ID_ThuongHieu": 1,
-    "MoTa": "Đây là Vans M Old Skool III Backpack",
+    "MoTa": {
+      "TongQuan": "Đây là Vans M Old Skool III Backpack",
+      "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
+    },
+    "ThongTin": {
+      "NoiSanXuat": "Trung Quốc",
+      "CheDoBaoHanh": "Bảo hành chính hãng 01 tháng",
+      "PhuKienTheoKem":"Túi vans"
+    },
     "Gia":450000,
-    "TiLeSale": 10,
+    "TiLeSale": 17,
     "Anh": {
       "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Old+_Skool_III_Backpack.jpg",
       "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Old+_Skool_III_Backpack_1.jpg",
@@ -80,15 +145,29 @@
       "Thang":5,
       "Nam": 2019
     },
-    "SoLuong": 14,
-    "TrangThai":"true"
+    "Size": {
+      "OS": 4
+    },
+    "TongSoLuong": 14,
+    "TrangThaiBan":true
   },
   {
     "ID_SanPham": 5,
-    "TenSanPham": "Vans Authentic Anaheim Red",
+    "TenSanPham": {
+      "Ten": "Vans Authentic Anaheim Red",
+      "TenKhongVietHoa": "vans authentic anaheim red"
+    },
     "ID_DanhMuc": 1,
     "ID_ThuongHieu": 1,
-    "MoTa": "Đây là Vans Authentic Anaheim Red",
+    "MoTa": {
+      "TongQuan": "Đây là Vans Authentic Anaheim Red",
+      "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
+    },
+    "ThongTin": {
+      "NoiSanXuat": "Trung Quốc",
+      "CheDoBaoHanh": "Bảo hành chính hãng 01 tháng",
+      "PhuKienTheoKem":"Túi vans"
+    },
     "Gia":1950000,
     "TiLeSale": 10,
     "Anh": {
@@ -101,17 +180,37 @@
       "Thang":5,
       "Nam": 2019
     },
-    "SoLuong": 14,
-    "TrangThai":"true"
+    "Size": {
+      "36": 4,
+      "37": 5,
+      "38": 3,
+      "39": 6,
+      "40": 6,
+      "41": 3,
+      "42": 6
+    },
+    "TongSoLuong": 14,
+    "TrangThaiBan":true
   },
   {
     "ID_SanPham": 6,
-    "TenSanPham": "Vans Authentic All White ",
+    "TenSanPham": {
+      "Ten": "Vans Authentic All White",
+      "TenKhongVietHoa": "vans authentic all white"
+    },
     "ID_DanhMuc": 1,
     "ID_ThuongHieu": 1,
-    "MoTa": "Đây là Vans Authentic All White ",
+    "MoTa": {
+      "TongQuan": "Đây là Vans Authentic All White ",
+      "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
+    },
+    "ThongTin": {
+      "NoiSanXuat": "Trung Quốc",
+      "CheDoBaoHanh": "Bảo hành chính hãng 01 tháng",
+      "PhuKienTheoKem":"Túi vans"
+    },
     "Gia":1100000,
-    "TiLeSale": 10,
+    "TiLeSale": 15,
     "Anh": {
       "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_AllWhite.jpg",
       "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Vans_Authentic_AllWhite_1.jpg",
@@ -122,17 +221,37 @@
       "Thang":5,
       "Nam": 2019
     },
-    "SoLuong": 14,
-    "TrangThai":"true"
+    "Size": {
+      "36": 4,
+      "37": 5,
+      "38": 3,
+      "39": 6,
+      "40": 6,
+      "41": 3,
+      "42": 6
+    },
+    "TongSoLuong": 14,
+    "TrangThaiBan":true
   },
   {
     "ID_SanPham": 7,
-    "TenSanPham": "Converse 1970s Black",
+    "TenSanPham": {
+      "Ten": "Converse 1970s Black",
+      "TenKhongVietHoa": "converse 1970s black"
+    },
     "ID_DanhMuc": 1,
     "ID_ThuongHieu": 2,
-    "MoTa": "Đây là Converse 1970s Black",
+    "MoTa": {
+      "TongQuan": "Đây là Converse 1970s Black",
+      "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
+    },
+    "ThongTin": {
+      "NoiSanXuat": "Trung Quốc",
+      "CheDoBaoHanh": "Bảo hành chính hãng 01 tháng",
+      "PhuKienTheoKem":"Túi vans"
+    },
     "Gia":1800000,
-    "TiLeSale": 10,
+    "TiLeSale": 13,
     "Anh": {
       "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/ChuckTaylor_AllStar1970s_BlackLow.jpg",
       "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/ChuckTaylor_AllStar1970s_BlackLow_1.jpg",
@@ -143,17 +262,37 @@
       "Thang":5,
       "Nam": 2019
     },
-    "SoLuong": 14,
-    "TrangThai":"true"
+    "Size": {
+      "36": 4,
+      "37": 5,
+      "38": 3,
+      "39": 6,
+      "40": 6,
+      "41": 3,
+      "42": 6
+    },
+    "TongSoLuong": 14,
+    "TrangThaiBan":true
   },
   {
     "ID_SanPham": 8,
-    "TenSanPham": "Converse Sunflower 1970s ",
+    "TenSanPham": {
+      "Ten": "Converse Sunflower 1970s",
+      "TenKhongVietHoa": "converse sunflower 1970s"
+    },
     "ID_DanhMuc": 1,
     "ID_ThuongHieu": 2,
-    "MoTa": "Đây là Converse Sunflower 1970s ",
+    "MoTa": {
+      "TongQuan": "Đây là Converse Sunflower 1970s",
+      "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
+    },
+    "ThongTin": {
+      "NoiSanXuat": "Trung Quốc",
+      "CheDoBaoHanh": "Bảo hành chính hãng 01 tháng",
+      "PhuKienTheoKem":"Túi vans"
+    },
     "Gia":2200000,
-    "TiLeSale": 10,
+    "TiLeSale": 15,
     "Anh": {
       "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/ChuckTaylor_AllStar1970s_Sunflower_Tall.jpg",
       "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/ChuckTaylor_AllStar1970s_Sunflower_Tall_1.jpg",
@@ -164,17 +303,37 @@
       "Thang":5,
       "Nam": 2019
     },
-    "SoLuong": 14,
-    "TrangThai":"true"
+    "Size": {
+      "36": 4,
+      "37": 5,
+      "38": 3,
+      "39": 6,
+      "40": 6,
+      "41": 3,
+      "42": 6
+    },
+    "TongSoLuong": 14,
+    "TrangThaiBan":true
   },
   {
     "ID_SanPham": 9,
-    "TenSanPham": "Palladium Blanc Hi",
+    "TenSanPham": {
+      "Ten": "Palladium Blanc Hi",
+      "TenKhongVietHoa": "palladium blanc hi"
+    },
     "ID_DanhMuc": 1,
     "ID_ThuongHieu": 3,
-    "MoTa": "Đây là Palladium Blanc Hi",
+    "MoTa": {
+      "TongQuan": "Đây là Palladium Blanc Hi",
+      "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
+    },
+    "ThongTin": {
+      "NoiSanXuat": "Trung Quốc",
+      "CheDoBaoHanh": "Bảo hành chính hãng 01 tháng",
+      "PhuKienTheoKem":"Túi vans"
+    },
     "Gia":1500000,
-    "TiLeSale": 10,
+    "TiLeSale": 20,
     "Anh": {
       "Avatar": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Palladium_Blanc_Hi.jpg",
       "AvtDetail1": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Giay/Palladium_Blanc_Hi_1.jpg",
@@ -185,15 +344,35 @@
       "Thang":5,
       "Nam": 2019
     },
-    "SoLuong": 14,
-    "TrangThai":"true"
+    "Size": {
+      "36": 4,
+      "37": 5,
+      "38": 3,
+      "39": 6,
+      "40": 6,
+      "41": 3,
+      "42": 6
+    },
+    "TongSoLuong": 14,
+    "TrangThaiBan":true
   },
   {
     "ID_SanPham": 10,
-    "TenSanPham": "Palladium Box Logo Origins",
+    "TenSanPham": {
+      "Ten": "Palladium Box Logo Origins",
+      "TenKhongVietHoa": "palladium box logo origins"
+    },
     "ID_DanhMuc": 3,
     "ID_ThuongHieu": 3,
-    "MoTa": "Đây là Palladium Box Logo Origins ",
+    "MoTa": {
+      "TongQuan": "Đây là Palladium Box Logo Origins",
+      "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
+    },
+    "ThongTin": {
+      "NoiSanXuat": "Trung Quốc",
+      "CheDoBaoHanh": "Bảo hành chính hãng 01 tháng",
+      "PhuKienTheoKem":"Túi vans"
+    },
     "Gia":380000,
     "TiLeSale": 10,
     "Anh": {
@@ -206,7 +385,12 @@
       "Thang":5,
       "Nam": 2019
     },
-    "SoLuong": 14,
-    "TrangThai":"true"
+    "Size": {
+      "S": 6,
+      "M": 5,
+      "L": 3
+    },
+    "TongSoLuong": 14,
+    "TrangThaiBan":true
   }
 ]
