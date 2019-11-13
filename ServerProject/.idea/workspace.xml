@@ -2,35 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29931dd8-b35f-4161-9625-b148465567bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/routes/Carousel.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/controller/Index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/controller/Index.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/carousel.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/carousel.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/danhmuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/danhmuc.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/header.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/index.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/CreateTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/CreateTables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DeleAllTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DeleAllTables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DeleteOneTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DeleteOneTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/LoadSampleData.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/LoadSampleData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/dzfds.html" beforeDir="false" afterPath="$PROJECT_DIR$/Config/dzfds.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/BaiViet.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/BaiViet.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/Carousel.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/Carousel.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/DanhMuc.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/DanhMuc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/Footer.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/Footer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/HoaDon.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/HoaDon.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/NguoiDung.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/NguoiDung.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/SanPham.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/SanPham.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/ThuongHieu.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/ThuongHieu.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/Index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Index.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/SanPham.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SanPham.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/ChucNang.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Carousel.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/Index.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/Index.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/SanPham.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/SanPham.route.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -140,6 +114,7 @@
       <workItem from="1573569302040" duration="9715000" />
       <workItem from="1573579837377" duration="4322000" />
       <workItem from="1573616256484" duration="978000" />
+      <workItem from="1573619429192" duration="151000" />
     </task>
     <servers />
   </component>

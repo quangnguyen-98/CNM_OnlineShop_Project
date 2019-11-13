@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a322a82-60d2-4128-8ad3-7586c19b93fc" name="Default Changelist" comment=":))">
-      <change beforePath="$PROJECT_DIR$/Config/ServerDomain.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/ServerDomain.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/Index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/Index.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/ThanhPhanWeb/carousel.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/ThanhPhanWeb/carousel.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/ThanhPhanWeb/danhmuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/ThanhPhanWeb/danhmuc.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/ThanhPhanWeb/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/ThanhPhanWeb/header.ejs" afterDir="false" />
@@ -112,6 +110,7 @@
       <workItem from="1573266887815" duration="19631000" />
       <workItem from="1573569205258" duration="11739000" />
       <workItem from="1573616210744" duration="2995000" />
+      <workItem from="1573619434964" duration="172000" />
     </task>
     <servers />
   </component>
