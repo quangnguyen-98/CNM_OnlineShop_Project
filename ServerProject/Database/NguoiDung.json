@@ -1,6 +1,6 @@
 [
   {
-    "ID_NguoiDung": 1,
+    "ID_NguoiDung": "ff82ac5576",
     "TenNguoiDung": "Nguyễn Hồng Quang",
     "SoDienThoai":"0346065968",
     "DiaChi": "Quận 12",
@@ -15,10 +15,10 @@
         "Thang":5,
         "Nam": 2019
     },
-    "TrangThaiXoa":"false"
+    "TrangThaiXoa":false
   },
   {
-    "ID_NguoiDung": 2,
+    "ID_NguoiDung": "68178096fc",
     "TenNguoiDung": "Nguyễn Minh Tài",
     "SoDienThoai":"0346065968",
     "DiaChi": "Quận 12",
@@ -33,10 +33,10 @@
       "Thang":5,
       "Nam": 2019
     },
-    "TrangThaiXoa":"false"
+    "TrangThaiXoa":false
   },
   {
-    "ID_NguoiDung": 3,
+    "ID_NguoiDung": "f585792047",
     "TenNguoiDung": "Lê Trung Nghĩa",
     "SoDienThoai":"0346065968",
     "DiaChi": "Quận 12",
@@ -51,6 +51,6 @@
       "Thang":5,
       "Nam": 2019
     },
-    "TrangThaiXoa":"false"
+    "TrangThaiXoa":false
   }
 ]

@@ -24,7 +24,7 @@ module.exports = {
         });
     },
     LaySanPhamTheoID:function(req, res, next) {
-        var idsp = parseInt(req.params.id) ;
+        var idsp = req.params.id ;
         var param = {
             TableName: "SanPham",
             ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
@@ -53,7 +53,7 @@ module.exports = {
         var param = {
             TableName: "SanPham",
             ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
-            FilterExpression:"contains(TenSanPham, :n)",
+            FilterExpression:"contains(TenSanPham.TenKhongVietHoa, :n)",
            // attr1 = :val1 and attr2 = :val2 and (contains(attr3, :val3a) or contains(attr3, :val3b))
             ExpressionAttributeNames:{
                 "#yr":"ID_SanPham",
@@ -75,7 +75,7 @@ module.exports = {
         });
     },
     LaySanPhamTheoIdDanhMuc:function(req, res, next) {
-        var iddm = parseInt(req.params.id) ;
+        var iddm = req.params.id ;
         var param = {
             TableName: "SanPham",
             ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
@@ -100,7 +100,7 @@ module.exports = {
         });
     },
     LaySanPhamTheoIdThuongHieu:function(req, res, next) {
-        var iddm = parseInt(req.params.id) ;
+        var iddm = req.params.id ;
         var param = {
             TableName: "SanPham",
             ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
@@ -125,8 +125,8 @@ module.exports = {
         });
     },
     LaySanPhamTheoIdDanhMucVaThuongHieu:function(req, res, next) {
-        var iddm = parseInt(req.params.iddm);
-        var idth = parseInt(req.params.idth);
+        var iddm = req.params.iddm;
+        var idth = req.params.idth;
         var param = {
             TableName: "SanPham",
             ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",

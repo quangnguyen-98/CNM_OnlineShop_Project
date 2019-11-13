@@ -4,6 +4,10 @@ var ids = require('short-id');
 var docClient = new AWS.DynamoDB.DocumentClient();
 module.exports = {
     LayTatCaSanPham_DanhMuc_ThuongHieu:function(req, res, next) {
+        var n = parseInt(req.params.pagenumber) || 1 ;
+        var x=3;
+        var begin =(n-1)*x;
+        var end = (n-1)*x +x;
 
         var paramSP = {
             TableName: "SanPham",
@@ -45,11 +49,14 @@ module.exports = {
                                 res.end();
                             }
                             else {
+                                var soTrang;
+                                var count = dataSP.Count/x;
                                 res.json(
                                     {
-                                        SanPham:dataSP.Items,
+                                        SanPham:dataSP.Items.slice(begin,end),
                                         DanhMuc:dataDM.Items,
-                                        ThuongHieu:dataTH.Items
+                                        ThuongHieu:dataTH.Items,
+                                        SoTrang: Math.ceil(count)
                                     }
                                 );
                             }
@@ -59,6 +66,14 @@ module.exports = {
             }
         });
 
+    },
+    LaySanPham:function(req, res, next) {
+        var a = [];
+        for(i =0;i<500;i++){
+            var b = ids.generate();
+            a.push(b);
+        }
+       res.json(a);
     },
 };
 

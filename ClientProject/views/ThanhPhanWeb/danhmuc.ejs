@@ -57,59 +57,123 @@
    </div>
 
 <script>
-    // Ngăn người dùng nhập chữ vào input giá
-    (function($) {
-        $.fn.inputFilter = function(inputFilter) {
-            return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
-                if (inputFilter(this.value)) {
-                    this.oldValue = this.value;
-                    this.oldSelectionStart = this.selectionStart;
-                    this.oldSelectionEnd = this.selectionEnd;
-                } else if (this.hasOwnProperty("oldValue")) {
-                    this.value = this.oldValue;
-                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-                }
-            });
-        };
-    }(jQuery));
-    $(document).ready(function() {
-        // Restrict input to digits by using a regular expression filter.
-        $(".tbGia").inputFilter(function(value) {
-            return /^\d*$/.test(value);
+// Ngăn người dùng nhập chữ vào input giá
+(function($) {
+    $.fn.inputFilter = function(inputFilter) {
+        return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+            if (inputFilter(this.value)) {
+                this.oldValue = this.value;
+                this.oldSelectionStart = this.selectionStart;
+                this.oldSelectionEnd = this.selectionEnd;
+            } else if (this.hasOwnProperty("oldValue")) {
+                this.value = this.oldValue;
+                this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+            }
         });
+    };
+}(jQuery));
+$(document).ready(function() {
+    // Restrict input to digits by using a regular expression filter.
+    $(".tbGia").inputFilter(function(value) {
+        return /^\d*$/.test(value);
     });
-    //Sự kiện tìm sản phẩm bằng giá của nút OK
-    $("#btnOk").click(function(){
-        if ($("#tbGiaTu").val() !="" && $("#tbGiaDen").val()!=""){
-            $(".datasp").empty();
-            $.ajax({
-                url: "<%=domain%>/sanphams/gia/"+$("#tbGiaTu").val()+"/"+$("#tbGiaDen").val(),
-                method: "GET",
-                error: function() {
-                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
-                },
-                success: function(data) {
-                    $.each(data.Items, function(i, item) {
-                        var html_to_append ='';
-                        html_to_append +=
-                            '<div class="col">' +
-                            '<a id="SP'+item.ID_SanPham+'" href="/SanPhams/'+item.ID_SanPham+'" class="card" style="width: 12rem; margin-bottom: 1rem">'+
-                            '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
-                            '<div class="card-body">'+
-                            '<h5 class="card-title" style="height: 4rem" >'+item.TenSanPham+'</h5>'+
-                            ' <p class="card-text badge badge-pill badge-success">'+item.Gia+' VND</p>'+
-                            '</div>'+
-                            '</a>'+
-                            '</div>';
-                        $("#datasp").append(html_to_append);
-                    });
-                    itemHover();
-                }
-            });
-            return false;
-        }
-    });
+});
 
+
+<%dataDM.forEach(function (item) { %>
+$("document").ready(function(){
+    $("<%=".DM"+item.ID_DanhMuc%>").click(function(){
+        $(".datasp").empty();
+        $.ajax({
+            url: "<%=domain%>/sanphams/danhmuc/<%=item.ID_DanhMuc%>",
+            method: "GET",
+            error: function() {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function(data) {
+                $(".DMitem").removeClass("list-group-item-action");
+                $(".DMitem").removeClass("list-group-item-success");
+                $(".THitem").removeClass("list-group-item-success");
+                $("<%=".DM"+item.ID_DanhMuc%>").addClass("list-group-item-action");
+                $("<%=".DM"+item.ID_DanhMuc%>").addClass("list-group-item-success");
+                $.each(data.Items, function(i, item) {
+                    var html_to_append ='';
+                    var html2='';
+                    html_to_append +=
+                        '<div class="col-6 col-sm-6 col-md-3 lazyitem d-flex">'+
+                            '<div id="SP'+item.ID_SanPham+'" class="card" style=" margin-bottom: 1rem">'+
+                            '<a href="/SanPhams/">'+
+                                '<img id="subSP'+item.ID_SanPham+'" href="#" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
+                            '</a>'+
+
+                            ' <div class="card-body">'+
+                                '<h5 class="card-title" style="height: 2rem" ><a class="linksp" href="#">'+item.TenSanPham.Ten+'</a></h5>'+
+                                ' <br>'+
+                                ' <h6><span class="card-text text-danger  d-flex justify-content-center">'+item.TiLeSale+'% off</span><h6>'+
+                                '  <h6><p class="card-text text-secondary itemPrice d-flex justify-content-center" style="margin-bottom: 2px;"> <del>'+ item.Gia +' Đ</del></p> </h6>'+
+                                ' <span class="d-flex justify-content-center">Giá hiện tại:</span>'+
+                                '<h4><span class="card-text badge badge-pill badge-success itemPrice d-flex justify-content-center">'+ parseInt(item.Gia - (item.Gia/100*item.TiLeSale)) +' Đ</span></h4>'+
+                                '</div>'+
+                            '</div>'+
+                        '   </div>';
+
+                    $("#datasp").append(html_to_append);
+                });
+                itemHover();
+                FormartGia();
+            }
+        });
+        return false;
+    });
+});
+<%}); %>
+
+
+<%dataTH.forEach(function (item) { %>
+$("document").ready(function(){
+    $("<%=".TH"+item.ID_ThuongHieu%>").click(function(){
+        $(".datasp").empty();
+        $.ajax({
+            url: "<%=domain%>/sanphams/thuonghieu/<%=item.ID_ThuongHieu%>",
+            method: "GET",
+            error: function() {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function(data) {
+                $(".THitem").removeClass("list-group-item-action");
+                $(".THitem").removeClass("list-group-item-success");
+                $(".DMitem").removeClass("list-group-item-success");
+                $("<%=".TH"+item.ID_ThuongHieu%>").addClass("list-group-item-action");
+                $("<%=".TH"+item.ID_ThuongHieu%>").addClass("list-group-item-success");
+                $.each(data.Items, function(i, item) {
+                    var html_to_append ='';
+                    html_to_append +=
+                        '<div class="col-6 col-sm-6 col-md-3 lazyitem d-flex">'+
+                        '<div id="SP'+item.ID_SanPham+'" class="card" style=" margin-bottom: 1rem">'+
+                        '<a href="/SanPhams/">'+
+                        '<img id="subSP'+item.ID_SanPham+'" href="#" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
+                        '</a>'+
+
+                        ' <div class="card-body">'+
+                        '<h5 class="card-title" style="height: 2rem" ><a class="linksp" href="#">'+item.TenSanPham.Ten+'</a></h5>'+
+                        ' <br>'+
+                        ' <h6><span class="card-text text-danger  d-flex justify-content-center">'+item.TiLeSale+'% off</span><h6>'+
+                        '  <h6><p class="card-text text-secondary itemPrice d-flex justify-content-center" style="margin-bottom: 2px;"> <del>'+ item.Gia +' Đ</del></p> </h6>'+
+                        ' <span class="d-flex justify-content-center">Giá hiện tại:</span>'+
+                        '<h4><span class="card-text badge badge-pill badge-success itemPrice d-flex justify-content-center">'+ parseInt(item.Gia - (item.Gia/100*item.TiLeSale)) +' Đ</span></h4>'+
+                        '</div>'+
+                        '</div>'+
+                        '   </div>';
+                    $("#datasp").append(html_to_append);
+                });
+                itemHover();
+                FormartGia();
+            }
+        });
+        return false;
+    });
+});
+<%}); %>
 
 
 

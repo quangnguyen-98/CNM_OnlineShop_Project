@@ -1,21 +1,21 @@
 [
   {
-    "ID_Carousel": 1,
+    "ID_Carousel": "f45535e00b",
     "LinkAnh": "https://bb4298.s3-us-west-1.amazonaws.com/Carousel/crs_1.jpg",
     "LinkBaiViet": "http://"
   },
   {
-    "ID_Carousel": 2,
+    "ID_Carousel": "34bc61b715",
     "LinkAnh": "https://bb4298.s3-us-west-1.amazonaws.com/Carousel/crs_2.jpg",
     "LinkBaiViet": "http://"
   },
   {
-    "ID_Carousel": 3,
+    "ID_Carousel": "283b79cf78",
     "LinkAnh": "https://bb4298.s3-us-west-1.amazonaws.com/Carousel/crs_3.jpg",
     "LinkBaiViet": "http://"
   },
   {
-    "ID_Carousel": 4,
+    "ID_Carousel": "16509b8b6d",
     "LinkAnh": "https://bb4298.s3-us-west-1.amazonaws.com/Carousel/crs_4.jpg",
     "LinkBaiViet": "http://"
   }

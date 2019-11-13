@@ -8,7 +8,7 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 console.log("Importing movies into DynamoDB. Please wait.");
 
 
-//Load Bảng SanPham
+// 1 Load Bảng SanPham
 var allSanPham = JSON.parse(fs.readFileSync('../Database/SanPham.json', 'utf8'));
 allSanPham.forEach(function(sanPham) {
     var params = {
@@ -19,12 +19,14 @@ allSanPham.forEach(function(sanPham) {
             "ID_DanhMuc":  sanPham.ID_DanhMuc,
             "ID_ThuongHieu":sanPham.ID_ThuongHieu,
             "MoTa":sanPham.MoTa,
+            "ThongTin":sanPham.ThongTin,
             "Gia":sanPham.Gia,
             "TiLeSale":sanPham.TiLeSale,
             "Anh":sanPham.Anh,
             "NgayTao":sanPham.NgayTao,
-            "SoLuong":sanPham.SoLuong,
-            "TrangThai":sanPham.TrangThai,
+            "Size":sanPham.Size,
+            "TongSoLuong":sanPham.TongSoLuong,
+            "TrangThaiBan":sanPham.TrangThaiBan,
         }
     };
 
@@ -36,8 +38,8 @@ allSanPham.forEach(function(sanPham) {
         }
     });
 });
-
-//Load Bảng NguoiDung
+/*
+// 2 Load Bảng NguoiDung
 var allNguoiDung = JSON.parse(fs.readFileSync('../Database/NguoiDung.json', 'utf8'));
 allNguoiDung.forEach(function(nguoiDung) {
     var params = {
@@ -66,29 +68,7 @@ allNguoiDung.forEach(function(nguoiDung) {
 });
 
 
-//Load Bảng ChucNang
-var allChucNang = JSON.parse(fs.readFileSync('../Database/ChucNang.json', 'utf8'));
-allChucNang.forEach(function(chucnang) {
-    var params = {
-        TableName: "ChucNang",
-        Item: {
-            "ID_Chucnang":  chucnang.ID_Chucnang,
-            "TenChucNang": chucnang.TenChucNang,
-            "ThanhPhan":  chucnang.ThanhPhan
-        }
-    };
-
-    docClient.put(params, function(err, data) {
-        if (err) {
-            console.error("Unable to add ChucNang:", chucnang, ". Error JSON:", JSON.stringify(err, null, 2));
-        } else {
-            console.log("PutItem ChucNang succeeded:", chucnang);
-        }
-    });
-});
-
-
-//Load Bảng HoaDon
+// 3 Load Bảng HoaDon
 var allHoaDon = JSON.parse(fs.readFileSync('../Database/HoaDon.json', 'utf8'));
 allHoaDon.forEach(function(hoaDon) {
     var params = {
@@ -96,8 +76,8 @@ allHoaDon.forEach(function(hoaDon) {
         Item: {
             "ID_HoaDon":  hoaDon.ID_HoaDon,
             "NgayTao": hoaDon.NgayTao,
-            "ID_KhachHang":  hoaDon.ID_KhachHang,
-            "ChiTietHoaDon":hoaDon.ChiTietHoaDon,
+            "ThongTinKhachHang":  hoaDon.ThongTinKhachHang,
+            "ChiTietDonDat":hoaDon.ChiTietDonDat,
             "TongTien":hoaDon.TongTien,
             "TrangThaiThanhToan":hoaDon.TrangThaiThanhToan,
 
@@ -113,7 +93,7 @@ allHoaDon.forEach(function(hoaDon) {
     });
 });
 
-//Load Bảng Danh Mục
+// 4 Load Bảng Danh Mục
 var allDanhMuc = JSON.parse(fs.readFileSync('../Database/DanhMuc.json', 'utf8'));
 allDanhMuc.forEach(function(danhMuc)
 {
@@ -135,7 +115,7 @@ allDanhMuc.forEach(function(danhMuc)
     });
 });
 
-//Load Bảng Thương Hiệu
+// 5 Load Bảng Thương Hiệu
 var allThuongHieu = JSON.parse(fs.readFileSync('../Database/ThuongHieu.json', 'utf8'));
 allThuongHieu.forEach(function(thuongHieu)
 {
@@ -156,3 +136,94 @@ allThuongHieu.forEach(function(thuongHieu)
         }
     });
 });
+
+// 6 Load Bảng Carousel
+var allCarousel = JSON.parse(fs.readFileSync('../Database/Carousel.json', 'utf8'));
+allCarousel.forEach(function(carousel)
+{
+    var params = {
+        TableName: "Carousel",
+        Item: {
+            "ID_Carousel":  carousel.ID_Carousel,
+            "LinkAnh": carousel.LinkAnh,
+            "LinkBaiViet":carousel.LinkBaiViet
+        }
+    };
+
+    docClient.put(params, function(err, data) {
+        if (err) {
+            console.error("Unable to add Carousel:", carousel, ". Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            console.log("PutItem Carousel succeeded:", carousel);
+        }
+    });
+});
+
+// 7 Load Bảng BaiViet
+var allBaiViet = JSON.parse(fs.readFileSync('../Database/BaiViet.json', 'utf8'));
+allBaiViet.forEach(function(baiviet)
+{
+    var params = {
+        TableName: "BaiViet",
+        Item: {
+            "ID_BaiViet":  baiviet.ID_BaiViet,
+            "TieuDe": baiviet.TieuDe,
+            "NoiDung":baiviet.NoiDung
+        }
+    };
+
+    docClient.put(params, function(err, data) {
+        if (err) {
+            console.error("Unable to add BaiViet:", baiviet, ". Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            console.log("PutItem BaiViet succeeded:", baiviet);
+        }
+    });
+});*/
+
+/*
+
+// 8 Load Bảng Footer
+var allFooter = JSON.parse(fs.readFileSync('../Database/Footer.json', 'utf8'));
+allFooter.forEach(function(footer)
+{
+    var params = {
+        TableName: "Footer",
+        Item: {
+            "ID_Footer":  footer.ID_Footer,
+            "LoaiFooter": footer.LoaiFooter,
+            "LienKet":footer.LienKet
+        }
+    };
+
+    docClient.put(params, function(err, data) {
+        if (err) {
+            console.error("Unable to add Footer:", footer, ". Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            console.log("PutItem Footer succeeded:", footer);
+        }
+    });
+});
+
+*/
+
+/*//Load Bảng ChucNang
+var allChucNang = JSON.parse(fs.readFileSync('../Database/ChucNang.json', 'utf8'));
+allChucNang.forEach(function(chucnang) {
+    var params = {
+        TableName: "ChucNang",
+        Item: {
+            "ID_Chucnang":  chucnang.ID_Chucnang,
+            "TenChucNang": chucnang.TenChucNang,
+            "ThanhPhan":  chucnang.ThanhPhan
+        }
+    };
+
+    docClient.put(params, function(err, data) {
+        if (err) {
+            console.error("Unable to add ChucNang:", chucnang, ". Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            console.log("PutItem ChucNang succeeded:", chucnang);
+        }
+    });
+});*/

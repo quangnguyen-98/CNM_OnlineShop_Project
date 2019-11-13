@@ -1,16 +1,16 @@
 [
   {
-    "ID_DanhMuc": 1,
+    "ID_DanhMuc": "af93fd4fa1",
     "TenDanhMuc":"Giày",
     "TrangThaiXoa": "False"
   },
   {
-    "ID_DanhMuc": 2,
+    "ID_DanhMuc": "c5ecdec908",
     "TenDanhMuc":"Balo",
     "TrangThaiXoa": "False"
   },
   {
-    "ID_DanhMuc": 3,
+    "ID_DanhMuc": "56acc091e7",
     "TenDanhMuc":"Áo",
     "TrangThaiXoa": "False"
   }

@@ -1,12 +1,12 @@
 [
   {
-    "ID_SanPham": 1,
+    "ID_SanPham": "781debcf7b",
     "TenSanPham": {
       "Ten": "Vans Vault Authentic Majolica",
       "TenKhongVietHoa": "vans vault authentic majolica"
     },
-    "ID_DanhMuc": 1,
-    "ID_ThuongHieu": 1,
+    "ID_DanhMuc": "af93fd4fa1",
+    "ID_ThuongHieu": "7baffa8932",
     "MoTa": {
       "TongQuan": "Vans Vault Old Skool Checkerboard với sắc màu xanh năng động cùng họa tiết carô ",
       "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
@@ -41,13 +41,13 @@
     "TrangThaiBan":true
   },
   {
-    "ID_SanPham": 2,
+    "ID_SanPham": "5269cd5ab9",
     "TenSanPham": {
       "Ten": "Vans Vault Authentic Pic Suede",
       "TenKhongVietHoa": "vans vault authentic pic suede"
   },
-    "ID_DanhMuc": 1,
-    "ID_ThuongHieu": 1,
+    "ID_DanhMuc": "af93fd4fa1",
+    "ID_ThuongHieu": "7baffa8932",
     "MoTa": {
       "TongQuan": "Đây là Vans Vault Authentic Pic Suede",
       "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
@@ -82,13 +82,13 @@
     "TrangThaiBan":true
   },
   {
-    "ID_SanPham": 3,
+    "ID_SanPham": "9e10fb431a",
     "TenSanPham": {
       "Ten": "Vans Logo Benched Bag",
       "TenKhongVietHoa": "vans logo benched bag"
     },
-    "ID_DanhMuc": 2,
-    "ID_ThuongHieu": 1,
+    "ID_DanhMuc": "c5ecdec908",
+    "ID_ThuongHieu": "7baffa8932",
     "MoTa": {
       "TongQuan": "Đây là Vans Logo Benched Bag",
       "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
@@ -117,13 +117,13 @@
     "TrangThaiBan": true
   },
   {
-    "ID_SanPham": 4,
+    "ID_SanPham": "9557b9956c",
     "TenSanPham": {
       "Ten": "Balo Vans Old Skool III Backpack",
       "TenKhongVietHoa": "balo vans old skool iii backpack"
     },
-    "ID_DanhMuc": 2,
-    "ID_ThuongHieu": 1,
+    "ID_DanhMuc": "c5ecdec908",
+    "ID_ThuongHieu": "7baffa8932",
     "MoTa": {
       "TongQuan": "Đây là Vans M Old Skool III Backpack",
       "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
@@ -152,13 +152,13 @@
     "TrangThaiBan":true
   },
   {
-    "ID_SanPham": 5,
+    "ID_SanPham": "cd0afc5021",
     "TenSanPham": {
       "Ten": "Vans Authentic Anaheim Red",
       "TenKhongVietHoa": "vans authentic anaheim red"
     },
-    "ID_DanhMuc": 1,
-    "ID_ThuongHieu": 1,
+    "ID_DanhMuc": "af93fd4fa1",
+    "ID_ThuongHieu": "7baffa8932",
     "MoTa": {
       "TongQuan": "Đây là Vans Authentic Anaheim Red",
       "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
@@ -193,13 +193,13 @@
     "TrangThaiBan":true
   },
   {
-    "ID_SanPham": 6,
+    "ID_SanPham": "4d75433889",
     "TenSanPham": {
       "Ten": "Vans Authentic All White",
       "TenKhongVietHoa": "vans authentic all white"
     },
-    "ID_DanhMuc": 1,
-    "ID_ThuongHieu": 1,
+    "ID_DanhMuc": "af93fd4fa1",
+    "ID_ThuongHieu": "7baffa8932",
     "MoTa": {
       "TongQuan": "Đây là Vans Authentic All White ",
       "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
@@ -234,13 +234,13 @@
     "TrangThaiBan":true
   },
   {
-    "ID_SanPham": 7,
+    "ID_SanPham": "1ab9c5b104",
     "TenSanPham": {
       "Ten": "Converse 1970s Black",
       "TenKhongVietHoa": "converse 1970s black"
     },
-    "ID_DanhMuc": 1,
-    "ID_ThuongHieu": 2,
+    "ID_DanhMuc": "af93fd4fa1",
+    "ID_ThuongHieu": "a386aeaab6",
     "MoTa": {
       "TongQuan": "Đây là Converse 1970s Black",
       "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
@@ -275,13 +275,13 @@
     "TrangThaiBan":true
   },
   {
-    "ID_SanPham": 8,
+    "ID_SanPham": "bdd9dea0bf",
     "TenSanPham": {
       "Ten": "Converse Sunflower 1970s",
       "TenKhongVietHoa": "converse sunflower 1970s"
     },
-    "ID_DanhMuc": 1,
-    "ID_ThuongHieu": 2,
+    "ID_DanhMuc": "af93fd4fa1",
+    "ID_ThuongHieu": "a386aeaab6",
     "MoTa": {
       "TongQuan": "Đây là Converse Sunflower 1970s",
       "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
@@ -316,13 +316,13 @@
     "TrangThaiBan":true
   },
   {
-    "ID_SanPham": 9,
+    "ID_SanPham": "939feba0da",
     "TenSanPham": {
       "Ten": "Palladium Blanc Hi",
       "TenKhongVietHoa": "palladium blanc hi"
     },
-    "ID_DanhMuc": 1,
-    "ID_ThuongHieu": 3,
+    "ID_DanhMuc": "af93fd4fa1",
+    "ID_ThuongHieu": "6ba17421a2",
     "MoTa": {
       "TongQuan": "Đây là Palladium Blanc Hi",
       "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."
@@ -357,13 +357,13 @@
     "TrangThaiBan":true
   },
   {
-    "ID_SanPham": 10,
+    "ID_SanPham": "44f505c422",
     "TenSanPham": {
       "Ten": "Palladium Box Logo Origins",
       "TenKhongVietHoa": "palladium box logo origins"
     },
-    "ID_DanhMuc": 3,
-    "ID_ThuongHieu": 3,
+    "ID_DanhMuc": "56acc091e7",
+    "ID_ThuongHieu": "6ba17421a2",
     "MoTa": {
       "TongQuan": "Đây là Palladium Box Logo Origins",
       "ChiTiet":"Vans là một nhãn hàng chuyên về phong cách cho những thể loại thể thao đường phố như Skateboar."

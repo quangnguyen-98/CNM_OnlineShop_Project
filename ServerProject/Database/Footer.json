@@ -1,42 +1,61 @@
 [
   {
-    "ID_LienKet": 1,
-    "LoaiLienKet": "TT",
-    "NoiDung": {
-      "TenLienKet": "Giới thiệu về HQKboutique",
-      "Link": "http://"
-    }
+    "ID_Footer": "bcc2faf156",
+    "LoaiFooter": "TT",
+    "LienKet": [
+      {
+        "ID_LienKet": "5e3a89a3b4",
+        "Ten": "Giới thiệu về HQKboutique",
+        "Link": "http://"
+      },
+      {
+        "ID_LienKet": "8a37dd7649",
+        "Ten": "Tuyển dụng",
+        "Link": "http://"
+      }
+    ]
   },
   {
-    "ID_LienKet": 2,
-    "LoaiLienKet": "TT",
-    "NoiDung": {
-      "TenLienKet": "Tuyển dụng",
-      "Link": "http://"
-    }
+    "ID_Footer": "797446e751",
+    "LoaiFooter": "CSKH",
+    "LienKet": [
+      {
+        "ID_LienKet": "5ca50f4e75",
+        "Ten": "Than phiền/Chăm sóc khách hàng",
+        "Link": "http://"
+      }
+    ]
   },
   {
-    "ID_LienKet": 3,
-    "LoaiLienKet": "CSKH",
-    "NoiDung": {
-      "TenLienKet": "Than phiền/Chăm sóc khách hàng",
-      "Link": "http://"
-    }
+    "ID_Footer": "d80ccd381b",
+    "LoaiFooter": "FAQ",
+    "LienKet": [
+      {
+        "ID_LienKet": "430d4729ae",
+        "Ten": "Vận chuyển",
+        "Link": "http://"
+      },
+      {
+        "ID_LienKet": "f755ceb9bd",
+        "TenLienKet": "Chính sách đổi trả",
+        "Link": "http://"
+      }
+    ]
   },
   {
-    "ID_LienKet": 4,
-    "LoaiLienKet": "FAQ",
-    "NoiDung": {
-      "TenLienKet": "Vận chuyển",
-      "Link": "http://"
-    }
-  },
-  {
-    "ID_LienKet": 5,
-    "LoaiLienKet": "CH",
-    "NoiDung": {
-      "TenLienKet": "128 Trần Quang Khải, Q1",
-      "Link": "http://"
-    }
+    "ID_Footer": "41aedb2106",
+    "LoaiFooter": "CH",
+    "LienKet": [
+      {
+        "ID_LienKet": "82b6c409aa",
+        "Ten": "128 Trần Quang Khải, Q1",
+        "Link": "http://"
+      },
+      {
+        "ID_LienKet": "419d440ff2",
+        "TenLienKet": "19 Đồng Khởi, Q1",
+        "Link": "http://"
+      }
+    ]
   }
 ]

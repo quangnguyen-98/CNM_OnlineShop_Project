@@ -1,21 +1,21 @@
 [
   {
-    "ID_BaiViet": 1,
+    "ID_BaiViet": "a73dc0c6dc",
     "TieuDe": "Giới Thiệu Về HQKStore",
     "NoiDung": "abc xyz"
   },
   {
-    "ID_BaiViet": 2,
+    "ID_BaiViet": "4672d93a6f",
     "TieuDe": "Giới Thiệu Về",
     "NoiDung": "abc xyz"
   },
   {
-    "ID_BaiViet": 3,
+    "ID_BaiViet": "fe72543ef5",
     "TieuDe": "Giới Thiệu Về",
     "NoiDung": "abc xyz"
   },
   {
-    "ID_BaiViet": 4,
+    "ID_BaiViet": "f45535e00b",
     "TieuDe": "Giới Thiệu Về",
     "NoiDung": "abc xyz"
   }

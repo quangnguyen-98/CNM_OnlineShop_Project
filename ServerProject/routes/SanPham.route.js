@@ -34,4 +34,5 @@ router.get('/gia/:tu/:den', SanPhamController.LaySanPhamTheoKhoangGia);
 router.get('/page/:pagenumber', SanPhamController.LaySanPhamTheoSoTrang);
 
 
+
 module.exports = router;

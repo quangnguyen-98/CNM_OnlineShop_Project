@@ -1,16 +1,16 @@
 [
   {
-    "ID_ThuongHieu":1,
+    "ID_ThuongHieu": "7baffa8932",
     "TenThuongHieu": "Vans",
     "TrangThaiXoa": "False"
   },
   {
-    "ID_ThuongHieu":2,
+    "ID_ThuongHieu": "a386aeaab6",
     "TenThuongHieu": "Converse",
     "TrangThaiXoa": "False"
   },
   {
-    "ID_ThuongHieu":3,
+    "ID_ThuongHieu": "6ba17421a2",
     "TenThuongHieu": "Paladium",
     "TrangThaiXoa": "False"
   }

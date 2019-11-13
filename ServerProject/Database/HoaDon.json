@@ -1,45 +1,58 @@
 [
   {
-    "ID_HoaDon": 1,
+    "ID_HoaDon": "1f0297b8d2",
     "NgayTao": {
       "Ngay": 3,
       "Thang": 4,
       "Nam": 2019
     },
-    "ID_KhachHang": 1,
-    "ID_SanPham": [1,2],
-    "ChiTietDonDat": {
-      "1": {
-        "SL":1,
-        "Gia": 1650000
-      },
-      "2": {
-        "SL":2,
-        "Gia": 3600000
-      }
+    "ThongTinKhachHang": {
+      "Ten": "Nguyễn Hồng Quang",
+      "SoDienThoai":"0346065968",
+      "DiaChi": "Quận 12",
+      "Email": "quang@gmail.com"
     },
+    "ChiTietDonDat": [
+       {
+          "ID_SanPham": 1,
+          "SL":1,
+          "Gia": 1650000
+       },
+       {
+          "ID_SanPham": 1,
+          "SL":2,
+          "Gia": 3600000
+       }
+    ]
+    ,
     "TongTien":5250000,
     "TrangThaiThanhToan":false
   },
   {
-    "ID_HoaDon": 1,
+    "ID_HoaDon": "095247922a",
     "NgayTao": {
       "Ngay": 4,
       "Thang": 5,
       "Nam": 2019
     },
-    "ID_KhachHang": 2,
-    "ID_SanPham": [1,2],
-    "ChiTietDonDat": {
-      "1": {
+    "ThongTinKhachHang": {
+      "Ten": "Lê Trung Nghĩa",
+      "SoDienThoai":"0346065968",
+      "DiaChi": "Quận 12",
+      "Email": "nghia@gmail.com"
+    },
+    "ChiTietDonDat": [
+      {
+        "ID_SanPham": 1,
         "SL":1,
         "Gia": 1650000
       },
-      "2": {
+      {
+        "ID_SanPham": 2,
         "SL":2,
         "Gia": 3600000
       }
-    },
+    ],
     "TongTien":5250000,
     "TrangThaiThanhToan":false
   }

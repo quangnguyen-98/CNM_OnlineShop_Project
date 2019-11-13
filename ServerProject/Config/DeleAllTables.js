@@ -5,7 +5,7 @@ configAWS.KetNoiAWS();
 var dynamodb = new AWS.DynamoDB();
 
 
-//Xóa Bảng SanPham
+// 1 Xóa Bảng SanPham
 var paramsSanPham = {
     TableName : "SanPham",
 };
@@ -17,7 +17,7 @@ dynamodb.deleteTable(paramsSanPham, function(err, data) {
     }
 });
 
-//Xóa Bảng NguoiDung
+// 2 Xóa Bảng NguoiDung
 var paramsNguoiDung = {
     TableName : "NguoiDung",
 };
@@ -29,7 +29,7 @@ dynamodb.deleteTable(paramsNguoiDung, function(err, data) {
     }
 });
 
-//Xóa Bảng HoaDon
+// 3 Xóa Bảng HoaDon
 var paramsHoaDon = {
     TableName : "HoaDon",
 };
@@ -41,19 +41,9 @@ dynamodb.deleteTable(paramsHoaDon, function(err, data) {
     }
 });
 
-//Xóa Bảng ChucNang
-var paramsChucNang = {
-    TableName : "ChucNang",
-};
-dynamodb.deleteTable(paramsChucNang, function(err, data) {
-    if (err) {
-        console.error("Unable to delete table. Error JSON:", JSON.stringify(err, null, 2));
-    } else {
-        console.log("Table ChucNang Deleted. Table description JSON:", JSON.stringify(data, null, 2));
-    }
-});
 
-//Xóa Bảng Danh Mục
+
+// 4 Xóa Bảng Danh Mục
 var paramsDanhMuc = {
     TableName : "DanhMuc",
 };
@@ -65,7 +55,7 @@ dynamodb.deleteTable(paramsDanhMuc, function(err, data) {
     }
 });
 
-//Xóa Bảng Thương Hiệu
+// 5 Xóa Bảng Thương Hiệu
 var paramsThuongHieu = {
     TableName : "ThuongHieu",
 };
@@ -76,3 +66,53 @@ dynamodb.deleteTable(paramsThuongHieu, function(err, data) {
         console.log("Table ThuongHieu Deleted. Table description JSON:", JSON.stringify(data, null, 2));
     }
 });
+
+// 6 Xóa Bảng Carousel
+var paramsCarousel = {
+    TableName : "Carousel",
+};
+dynamodb.deleteTable(paramsCarousel, function(err, data) {
+    if (err) {
+        console.error("Unable to delete Carousel table. Error JSON:", JSON.stringify(err, null, 2));
+    } else {
+        console.log("Table Carousel Deleted. Table description JSON:", JSON.stringify(data, null, 2));
+    }
+});
+
+// 7 Xóa Bảng Bài Viết
+var paramsBaiViet = {
+    TableName : "BaiViet",
+};
+dynamodb.deleteTable(paramsBaiViet, function(err, data) {
+    if (err) {
+        console.error("Unable to delete Bài Viết table. Error JSON:", JSON.stringify(err, null, 2));
+    } else {
+        console.log("Table Bài Viết Deleted. Table description JSON:", JSON.stringify(data, null, 2));
+    }
+});
+
+// 8 Xóa Bảng Footer
+var paramsFooter = {
+    TableName : "Footer",
+};
+dynamodb.deleteTable(paramsFooter, function(err, data) {
+    if (err) {
+        console.error("Unable to delete Footer table. Error JSON:", JSON.stringify(err, null, 2));
+    } else {
+        console.log("Table Footer Deleted. Table description JSON:", JSON.stringify(data, null, 2));
+    }
+});
+
+
+/*
+//Xóa Bảng ChucNang
+var paramsChucNang = {
+    TableName : "ChucNang",
+};
+dynamodb.deleteTable(paramsChucNang, function(err, data) {
+    if (err) {
+        console.error("Unable to delete table. Error JSON:", JSON.stringify(err, null, 2));
+    } else {
+        console.log("Table ChucNang Deleted. Table description JSON:", JSON.stringify(data, null, 2));
+    }
+});*/
