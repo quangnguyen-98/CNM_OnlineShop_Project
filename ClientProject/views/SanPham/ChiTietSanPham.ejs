@@ -1,0 +1,156 @@
+<% layout('../Layout/layoutKhachHang.ejs') -%>
+<div class="container" style="margin-top: 4rem">
+    <div class="col-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i> HQKStore</a></li>
+                <li class="breadcrumb-item"><a href="/">Sản Phẩm</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> <%= spData.TenSanPham %> </li>
+            </ol>
+        </nav>
+    </div>
+
+
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 ">
+                <div id="carousel-container" class="border border-secondary">
+                    <div id="SPCarousel" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <!-- Load slider vào đây -->
+                            <li data-target="#SPCarousel" class="carousel-slider" data-slide-to="0"></li>
+                            <li data-target="#SPCarousel" class="carousel-slider" data-slide-to="1"></li>
+                            <li data-target="#SPCarousel" class="carousel-slider" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <a href="#" class="carousel-item  active">
+                                <img class="d-block w-100 " src="<%= spData.Avatar %>">
+                                <div class="carousel-caption d-none d-md-block">
+                                </div>
+                            </a>
+                            <a href="#" class="carousel-item ">
+                                <img class="d-block w-100 " src="<%= spData.AvtDetail1 %>">
+                                <div class="carousel-caption d-none d-md-block">
+                                </div>
+                            </a>
+                            <a href="#" class="carousel-item ">
+                                <img class="d-block w-100 " src="<%= spData.AvtDetail2 %>">
+                                <div class="carousel-caption d-none d-md-block">
+                                </div>
+                            </a>
+                        </div>
+                        <a class="carousel-control-prev carousel-SP-next" href="#SPCarousel" role="button"
+                           data-slide="prev">
+                            <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next carousel-SP-prev" href="#SPCarousel" role="button"
+                           data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-8">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="text-primary"> <%= spData.TenSanPham %></h1>
+
+                            <h1> Giá cũ:<span class="card-text text-secondary itemPrice"> <del><%=spData.Gia%> Đ</del></span></h1>
+                            <h1> Giá hiện tại: <span class="badge badge-pill badge-success itemPrice"><%= spData.Gia-(spData.Gia / 100 * spData.TiLeSale) %> Đ</span></h1>
+                        <hr>
+                        <h5 class="text-secondary"> <%= spData.TongQuan %></h5>
+                        <hr>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Vui lòng chọn size
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <% result.forEach(function (item) { %>
+                                    <button class="dropdown-item" type="button"><%= item %></button>
+                                <% }); %>
+                            </div>
+                            <br>
+                        </div>
+                        <div>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <input class="col-lg-2 " type="number" value="1" min="1" max="500" step="1"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <br>
+                        <button type="button" class="col-lg-3 btn btn-lg btn-success ">Đặt hàng</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <div class="col-12">
+
+        <br>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#home">Mô tả</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu1">Thông tin</a>
+            </li>
+
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div id="home" class="container tab-pane active"><br>
+
+                <p><%= spData.ChiTiet %></p>
+            </div>
+            <div id="menu1" class="container tab-pane fade"><br>
+                <p><span class="font-weight-bold">Nơi Sản Xuất:</span> <%= spData.NoiSanXuat %></p>
+                <p><span class="font-weight-bold">Chế độ bảo hành:</span> <%= spData.CheDoBaoHanh %></p>
+                <p><span class="font-weight-bold">Phụ kiện theo kèm:</span> <%= spData.PhuKienTheoKem %></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    //Hàm fortmat giá cho sản phẩm
+    function FormartGia() {
+        $('.itemPrice').text(function () {
+            var str = $(this).html() + '';
+            x = str.split('.');
+            x1 = x[0];
+            x2 = x.length > 1 ? '.' + x[1] : '';
+            var rgx = /(\d+)(\d{3})/;
+            while (rgx.test(x1)) {
+                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+            }
+            $(this).html(x1 + x2);
+        });
+    }
+
+    $("document").ready(function () {
+        FormartGia();
+    });
+</script>
+
+<script src="https://bb4298.s3-us-west-1.amazonaws.com/JS/bootstrap-input-spinner.js"></script>
+<script>
+    $("input[type='number']").inputSpinner();
+</script>

@@ -8,7 +8,7 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 console.log("Importing movies into DynamoDB. Please wait.");
 
 
-// 1 Load Bảng SanPham
+/*// 1 Load Bảng SanPham
 var allSanPham = JSON.parse(fs.readFileSync('../Database/SanPham.json', 'utf8'));
 allSanPham.forEach(function(sanPham) {
     var params = {
@@ -37,9 +37,9 @@ allSanPham.forEach(function(sanPham) {
             console.log("PutItem SanPham succeeded:", sanPham);
         }
     });
-});
-/*
-// 2 Load Bảng NguoiDung
+});*/
+
+/*// 2 Load Bảng NguoiDung
 var allNguoiDung = JSON.parse(fs.readFileSync('../Database/NguoiDung.json', 'utf8'));
 allNguoiDung.forEach(function(nguoiDung) {
     var params = {
@@ -181,7 +181,7 @@ allBaiViet.forEach(function(baiviet)
     });
 });*/
 
-/*
+
 
 // 8 Load Bảng Footer
 var allFooter = JSON.parse(fs.readFileSync('../Database/Footer.json', 'utf8'));
@@ -190,9 +190,10 @@ allFooter.forEach(function(footer)
     var params = {
         TableName: "Footer",
         Item: {
-            "ID_Footer":  footer.ID_Footer,
-            "LoaiFooter": footer.LoaiFooter,
-            "LienKet":footer.LienKet
+            "ID_Footer":footer.ID_Footer,
+            "LoaiFooter":footer.LoaiFooter,
+            "TenLienKet":footer.TenLienKet,
+            "Link":footer.Link
         }
     };
 
@@ -205,7 +206,7 @@ allFooter.forEach(function(footer)
     });
 });
 
-*/
+
 
 /*//Load Bảng ChucNang
 var allChucNang = JSON.parse(fs.readFileSync('../Database/ChucNang.json', 'utf8'));

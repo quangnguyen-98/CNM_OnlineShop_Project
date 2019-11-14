@@ -3,8 +3,30 @@
   <component name="ChangeListManager">
     <list default="true" id="29931dd8-b35f-4161-9625-b148465567bb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../ClientProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/Config/ServerDomain.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/Config/ServerDomain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/controller/Index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/controller/Index.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/routes/Sanpham.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/routes/Sanpham.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutKhachHang.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutKhachHang.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/carousel.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/carousel.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/danhmuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/danhmuc.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/footer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/footer.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/header.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/User/ChiTietSanPham.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/LoadSampleData.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/LoadSampleData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Footer.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/Footer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/Carousel.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Carousel.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/Index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Index.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/SanPham.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SanPham.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/Carousel.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/Carousel.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/Index.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/Index.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/SanPham.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/SanPham.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +136,10 @@
       <workItem from="1573569302040" duration="9715000" />
       <workItem from="1573579837377" duration="4322000" />
       <workItem from="1573616256484" duration="978000" />
-      <workItem from="1573619429192" duration="151000" />
+      <workItem from="1573619429192" duration="566000" />
+      <workItem from="1573638567445" duration="12837000" />
+      <workItem from="1573702484591" duration="3011000" />
+      <workItem from="1573712021088" duration="1174000" />
     </task>
     <servers />
   </component>

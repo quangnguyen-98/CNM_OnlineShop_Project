@@ -53,7 +53,7 @@ module.exports = {
                                 var count = dataSP.Count/x;
                                 res.json(
                                     {
-                                        SanPham:dataSP.Items.slice(begin,end),
+                                        SanPham:dataSP.Items,
                                         DanhMuc:dataDM.Items,
                                         ThuongHieu:dataTH.Items,
                                         SoTrang: Math.ceil(count)

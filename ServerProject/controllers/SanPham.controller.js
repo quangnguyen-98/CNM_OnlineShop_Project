@@ -27,7 +27,7 @@ module.exports = {
         var idsp = req.params.id ;
         var param = {
             TableName: "SanPham",
-            ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
+            ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Size, ThongTin, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
             FilterExpression:"#yr = :n",
             ExpressionAttributeNames:{
                 "#yr":"ID_SanPham",

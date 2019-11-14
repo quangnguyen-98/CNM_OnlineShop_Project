@@ -1,6 +1,6 @@
 
    <!-- Danh Mục-->
-   <div class="jumbotro jbtcustom">
+   <div class="jumbotro jbtcusto">
        <div class="list-group" style="margin-bottom: 1rem">
            <div class="list-group-item list-group-item-action active">
                Danh Mục
@@ -83,7 +83,6 @@ $(document).ready(function() {
 <%dataDM.forEach(function (item) { %>
 $("document").ready(function(){
     $("<%=".DM"+item.ID_DanhMuc%>").click(function(){
-        $(".datasp").empty();
         $.ajax({
             url: "<%=domain%>/sanphams/danhmuc/<%=item.ID_DanhMuc%>",
             method: "GET",
@@ -91,6 +90,7 @@ $("document").ready(function(){
                 $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
             },
             success: function(data) {
+                $(".datasp").empty();
                 $(".DMitem").removeClass("list-group-item-action");
                 $(".DMitem").removeClass("list-group-item-success");
                 $(".THitem").removeClass("list-group-item-success");
@@ -100,14 +100,13 @@ $("document").ready(function(){
                     var html_to_append ='';
                     var html2='';
                     html_to_append +=
-                        '<div class="col-6 col-sm-6 col-md-3 lazyitem d-flex">'+
+                        '<div class="col-12 col-sm-6 col-md-4 col-lg-3 lazyitem d-flex">'+
                             '<div id="SP'+item.ID_SanPham+'" class="card" style=" margin-bottom: 1rem">'+
-                            '<a href="/SanPhams/">'+
-                                '<img id="subSP'+item.ID_SanPham+'" href="#" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
+                            '<a href="/SanPhams/'+item.ID_SanPham+'">'+
+                                '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
                             '</a>'+
-
                             ' <div class="card-body">'+
-                                '<h5 class="card-title" style="height: 2rem" ><a class="linksp" href="#">'+item.TenSanPham.Ten+'</a></h5>'+
+                                '<h5 class="card-title" style="height: 3rem" ><a class="linksp" href="/SanPhams/'+item.ID_SanPham+'">'+item.TenSanPham.Ten+'</a></h5>'+
                                 ' <br>'+
                                 ' <h6><span class="card-text text-danger  d-flex justify-content-center">'+item.TiLeSale+'% off</span><h6>'+
                                 '  <h6><p class="card-text text-secondary itemPrice d-flex justify-content-center" style="margin-bottom: 2px;"> <del>'+ item.Gia +' Đ</del></p> </h6>'+
@@ -132,7 +131,6 @@ $("document").ready(function(){
 <%dataTH.forEach(function (item) { %>
 $("document").ready(function(){
     $("<%=".TH"+item.ID_ThuongHieu%>").click(function(){
-        $(".datasp").empty();
         $.ajax({
             url: "<%=domain%>/sanphams/thuonghieu/<%=item.ID_ThuongHieu%>",
             method: "GET",
@@ -140,6 +138,7 @@ $("document").ready(function(){
                 $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
             },
             success: function(data) {
+                $(".datasp").empty();
                 $(".THitem").removeClass("list-group-item-action");
                 $(".THitem").removeClass("list-group-item-success");
                 $(".DMitem").removeClass("list-group-item-success");
@@ -148,14 +147,14 @@ $("document").ready(function(){
                 $.each(data.Items, function(i, item) {
                     var html_to_append ='';
                     html_to_append +=
-                        '<div class="col-6 col-sm-6 col-md-3 lazyitem d-flex">'+
+                        '<div class="col-12 col-sm-6 col-md-4 col-lg-3 lazyitem d-flex">'+
                         '<div id="SP'+item.ID_SanPham+'" class="card" style=" margin-bottom: 1rem">'+
-                        '<a href="/SanPhams/">'+
-                        '<img id="subSP'+item.ID_SanPham+'" href="#" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
+                        '<a href="/SanPhams/'+item.ID_SanPham+'">'+
+                        '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
                         '</a>'+
 
                         ' <div class="card-body">'+
-                        '<h5 class="card-title" style="height: 2rem" ><a class="linksp" href="#">'+item.TenSanPham.Ten+'</a></h5>'+
+                        '<h5 class="card-title" style="height: 3rem" ><a class="linksp" href="/SanPhams/'+item.ID_SanPham+'">'+item.TenSanPham.Ten+'</a></h5>'+
                         ' <br>'+
                         ' <h6><span class="card-text text-danger  d-flex justify-content-center">'+item.TiLeSale+'% off</span><h6>'+
                         '  <h6><p class="card-text text-secondary itemPrice d-flex justify-content-center" style="margin-bottom: 2px;"> <del>'+ item.Gia +' Đ</del></p> </h6>'+

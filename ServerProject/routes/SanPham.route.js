@@ -2,17 +2,8 @@ var express = require('express');
 var router = express.Router();
 var app = express();
 
-//Khai báo aws-sdk
-var AWS = require("aws-sdk");
-var configAWS = require("../Config/ConfigAWS");
-configAWS.KetNoiAWS();
-
-var docClient = new AWS.DynamoDB.DocumentClient();
-
 //Khai báo conntroller
 var SanPhamController = require('../controllers/SanPham.controller');
-var IndexController = require('../controllers/Index.controller');
-
 
 
 

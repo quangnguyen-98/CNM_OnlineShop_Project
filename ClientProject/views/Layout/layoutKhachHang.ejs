@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <!-- Required meta tags -->
-    <title>Quangnguyen98</title>
+    <title><%=title%></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--<link rel="shortcut icon" type="image/png" href="{{asset('img/favicon.jpeg')}}"/>-->
@@ -51,6 +51,10 @@
 
         .jbtcustom{
             padding: 0.5rem;
+        }
+        .carousel-SP-next,
+        .carousel-SP-prev {
+            filter: invert(100%);
         }
     </style>
 </head>
@@ -108,7 +112,9 @@ $('.carousel').carousel({
     interval: 2200
 });
 
-
+$("document").ready(function(){
+    FormartGia();
+});
 </script>
 </body>
 </html>

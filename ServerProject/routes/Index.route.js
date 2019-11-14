@@ -12,7 +12,7 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 //Khai báo conntroller
 var IndexController = require('../controllers/Index.controller');
 
-/* GET home page. */
+// Về trang chủ
 router.get('/', function(req, res, next) {
       res.json('Well come to Web Service');
 });

@@ -1,65 +1,45 @@
 <nav class="navbar-dark bg-dark" style=" color:#FFF">
     <div class="container">
-         <div class="row text-center" style="padding-top: 2rem">
-             <div class="col-md-4 ">
-                 <img src="https://bb4298.s3-us-west-1.amazonaws.com/logo.png" style="height: 10rem; padding-left:2rem ">
-                 <br>
-                 <h5>Thông tin</h5>
-                 <ul style="list-style-type: none">
-                     <li><a href="" class="footer-item-color">Giới thiệu về HQKStore</a></li>
-                     <li><a href="" class="footer-item-color">Tuyển dụng</a></li>
-                     <br>
-                     <li><a href="" class="footer-item-color">Quy chế hoạt động</a></li>
-                     <li><a href="" class="footer-item-color">Điều khoản mua bán</a></li>
-                     <br>
-                     <li><a href="" class="footer-item-color">Mã Voucher giảm giá</a></li>
-                 </ul>
+        <div id="info-footer"></div>
+        <div class="row text-center" style="padding-top: 2rem">
+            <div class="col-md-4 ">
+                <img src="https://bb4298.s3-us-west-1.amazonaws.com/logo.png" style="height: 10rem; padding-left:2rem ">
+                <br><br>
+                <ul id="dataTT" style="list-style-type: none; text-align: center">
+                    <li><h5>Thông tin</h5></li>
+                    <!--$("#dataTT").append('<li><h5>Thông tin</h5></li>');-->
+                    <!--<li><a href="" class="footer-item-color">Giới thiệu về HQKStore</a></li> -->
+                    <!-- Data FAQ -->
 
-             </div>
-             <div class="col-md-4">
-
-
-                 <br>
-                 <h5>CSKH</h5>
-                 <ul style="list-style-type: none">
-                     <li><a href="" class="footer-item-color">Than phiền/Chăm sóc khách hàng</a></li>
-
-                 </ul>
-                 <br>
-                 <div class="row">
-                     <div class="col-12">
-
-                         <h5>FAQ</h5>
-                         <ul style="list-style-type: none">
-                             <li><a href="" class="footer-item-color">Vận chuyển</a></li>
-                             <li><a href="" class="footer-item-color">Chính sách đổi trả</a></li>
-                             <li><a href="" class="footer-item-color">Chính sách bảo hành</a></li>
-                             <li><a href="" class="footer-item-color">Khách hàng VIP</a></li>
-                             <li><a href="" class="footer-item-color">Đối tác cung cấp</a></li>
-                         </ul>
-                     </div>
-
-                 </div>
-             </div>
-             <div class="col-md-4">
-                 <div class="row">
-                     <div class="col-12">
-                         <br>
-                         <h5>Hệ thống cửa hàng HQKStore</h5>
-                         <ul style="list-style-type: none">
-                             <li><a href="https://www.google.com/maps/search/Nguyen Thien Thuat" class="footer-item-color">128 Trần Quang Khải, Q1</a></li>
-                             <li><a href="https://www.google.com/maps/search/Nguyen Thien Thuat" class="footer-item-color">128 Trần Quang Khải, Q1</a></li>
-                             <li><a href="https://www.google.com/maps/search/Nguyen Thien Thuat" class="footer-item-color">128 Trần Quang Khải, Q1</a></li>
-                             <li><a href="https://www.google.com/maps/search/Nguyen Thien Thuat" class="footer-item-color">128 Trần Quang Khải, Q1</a></li>
-                             <li><a href="https://www.google.com/maps/search/Nguyen Thien Thuat" class="footer-item-color">128 Trần Quang Khải, Q1</a></li>
-                         </ul>
-                     </div>
-
-                 </div>
-
-             </div>
-
-         </div>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <br>
+                <ul id="dataCSKH" style="list-style-type: none; text-align: center">
+                    <li><h5>CSKH</h5></li>
+                    <!-- Data CSKH -->
+                </ul>
+                <br>
+                <ul id="dataFAQ" style="list-style-type: none; text-align: center">
+                    <li><h5>FAQ</h5></li>
+                    <!-- Data FAQ -->
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <div class="col-12">
+                    <br>
+                    <ul id="dataCH" style="list-style-type: none; text-align: center">
+                        <li><h5>Hệ thống cửa hàng HQKStore</h5></li>
+                        <!--<li><a href="https://www.google.com/maps/search/Nguyen Thien Thuat"
+                               class="footer-item-color">128 fdsfdTrần Quang Khải, Q1</a></li>
+                        <li><a href="https://www.google.com/maps/search/Nguyen Thien Thuat"
+                               class="footer-item-color">128 Trần Quang Khải, Q1</a></li>
+                        <li><a href="https://www.google.com/maps/search/Nguyen Thien Thuat"
+                               class="footer-item-color">128 Trầndsfsdfdsf Quang Khải, Q1</a></li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col text-center">
                 <br>
@@ -70,22 +50,110 @@
         <hr style="margin: 10px 0; border-top: 1px solid #FFFFFF">
         <div class="row" style="padding-bottom: 0.5rem">
             <div class="col-sm-10  col-xs-12">
-
                 <p style="margin-bottom: 0;">© 2019 - CÔNG TY TNHH HQK Store</p>
-                <p style="margin-bottom: 0; font-size: 9px;">Giấy CNĐKDN: 0310874914 – Ngày cấp: 25/11/2011 - Cơ quan cấp: Phòng Đăng Ký Kinh Doanh – Sở Kế Hoạch và Đầu Tư TP.HCM</p>
-                <p style="margin-bottom: 0; font-size: 9px;">Địa chỉ đăng ký kinh doanh: 766 Nguyễn Văn Quá, Phường 10, Quận 12, TP.HCM - Điện thoại: 034.606.5968 - Email: quangnguyen.4298@gmail.com</p>
+                <p style="margin-bottom: 0; font-size: 9px;">Giấy CNĐKDN: 0310874914 – Ngày cấp: 25/11/2011 - Cơ quan
+                    cấp: Phòng Đăng Ký Kinh Doanh – Sở Kế Hoạch và Đầu Tư TP.HCM</p>
+                <p style="margin-bottom: 0; font-size: 9px;">Địa chỉ đăng ký kinh doanh: 766 Nguyễn Văn Quá, Phường 10,
+                    Quận 12, TP.HCM - Điện thoại: 034.606.5968 - Email: quangnguyen.4298@gmail.com</p>
             </div>
             <div class="col-sm-2 col-xs-12">
                 <a href="#">
-                    <img src="https://res.yame.vn/dathongbao.png" alt="" style="width: 100%; max-width:200px; margin-top:10px;">
+                    <img src="https://bb4298.s3-us-west-1.amazonaws.com/dathongbao.png" alt=""
+                         style="width: 100%; max-width:200px; margin-top:10px;">
                 </a>
             </div>
         </div>
-                <a href="#" id="back-to-top" title="Back to top"><i style="font-size:35px" class="fas fa-chevron-up"></i></a>
+        <a href="#" id="back-to-top" title="Back to top"><i style="font-size:35px" class="fas fa-chevron-up"></i></a>
     </div>
-
-
-
 </nav>
+<script>
+//Load Footer thông tin
+$("document").ready(function(){
+    $.ajax({
+        url: "<%=domain%>/footers/tt",
+        method: "GET",
+        error: function(err) {
+            $('#info-footer').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))'+err+'</h2>');
+        },
+        success: function(data) {
+            $.each(data.Items, function(i, item) {
 
+                var html_to_append ='';
+                html_to_append +=
+                    /*'<li><a id="" href="#" class="footer-item-color">cac'+i+'</a></li>';*/
+                    '<li><a id="'+item.ID_LienKet+'" href="'+item.Link+'" class="footer-item-color">'+item.TenLienKet+'</a></li>';
+                $("#dataTT").append(html_to_append);
+            });
+        }
+    });
+    return false;
+});
+
+//Load Footer chăm sóc KH
+$("document").ready(function(){
+    $.ajax({
+        url: "<%=domain%>/footers/cskh",
+        method: "GET",
+        error: function(err) {
+            $('#info-footer').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))'+err+'</h2>');
+        },
+        success: function(data) {
+            $.each(data.Items, function(i, item) {
+
+                var html_to_append ='';
+                html_to_append +=
+                    /*'<li><a id="" href="#" class="footer-item-color">cac'+i+'</a></li>';*/
+                    '<li><a id="'+item.ID_LienKet+'" href="'+item.Link+'" class="footer-item-color" target="_blank">'+item.TenLienKet+'</a></li>';
+                $("#dataCSKH").append(html_to_append);
+            });
+        }
+    });
+    return false;
+});
+
+//Load Footer FAQ
+$("document").ready(function(){
+    $.ajax({
+        url: "<%=domain%>/footers/faq",
+        method: "GET",
+        error: function(err) {
+            $('#info-footer').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))'+err+'</h2>');
+        },
+        success: function(data) {
+            $.each(data.Items, function(i, item) {
+
+                var html_to_append ='';
+                html_to_append +=
+                    /*'<li><a id="" href="#" class="footer-item-color">cac'+i+'</a></li>';*/
+                    '<li><a id="'+item.ID_LienKet+'" href="'+item.Link+'" class="footer-item-color" target="_blank">'+item.TenLienKet+'</a></li>';
+                $("#dataFAQ").append(html_to_append);
+            });
+        }
+    });
+    return false;
+});
+
+//Load Footer CH
+$("document").ready(function(){
+    $.ajax({
+        url: "<%=domain%>/footers/ch",
+        method: "GET",
+        error: function(err) {
+            $('#info-footer').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))'+err+'</h2>');
+        },
+        success: function(data) {
+            $.each(data.Items, function(i, item) {
+
+                var html_to_append ='';
+                html_to_append +=
+                    /*'<li><a id="" href="#" class="footer-item-color">cac'+i+'</a></li>';*/
+            '<li><a id="'+item.ID_Footer+'" href="https://www.google.com/maps/search/'+item.TenLienKet+'" class="footer-item-color" target="_blank">'+item.TenLienKet+'</a></li>';
+                $("#dataCH").append(html_to_append);
+            });
+        }
+    });
+    return false;
+});
+
+</script>
 

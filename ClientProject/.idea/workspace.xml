@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a322a82-60d2-4128-8ad3-7586c19b93fc" name="Default Changelist" comment=":))">
-      <change beforePath="$PROJECT_DIR$/controller/Index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/Index.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/ThanhPhanWeb/carousel.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/ThanhPhanWeb/carousel.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/ThanhPhanWeb/danhmuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/ThanhPhanWeb/danhmuc.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/ThanhPhanWeb/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/ThanhPhanWeb/header.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/ServerDomain.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/ServerDomain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,17 +34,17 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\models" />
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\controller" />
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\layout" />
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\public\stylesheets" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\SanPham" />
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\models" />
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\controller" />
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\layout" />
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -110,7 +107,12 @@
       <workItem from="1573266887815" duration="19631000" />
       <workItem from="1573569205258" duration="11739000" />
       <workItem from="1573616210744" duration="2995000" />
-      <workItem from="1573619434964" duration="172000" />
+      <workItem from="1573619434964" duration="750000" />
+      <workItem from="1573638520647" duration="27222000" />
+      <workItem from="1573702480540" duration="271000" />
+      <workItem from="1573702758612" duration="85000" />
+      <workItem from="1573702857542" duration="5928000" />
+      <workItem from="1573712048312" duration="4642000" />
     </task>
     <servers />
   </component>
