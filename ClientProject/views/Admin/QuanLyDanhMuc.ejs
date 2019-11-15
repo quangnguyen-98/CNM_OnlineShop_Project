@@ -1,0 +1,90 @@
+<% layout('../Layout/layoutAdmin.ejs') -%>
+<div class="container">
+    <div class="row-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/"><i class="fas fa-store"></i> HQKStore Admin</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Quản lý danh mục</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="row-fluid">
+        <div class="co ml-auto ">
+            <button type="button" class="btn btn-primary d-inline " data-toggle="modal" data-target="#modalThem" >
+                Thêm danh mục
+            </button>
+
+            <form class="form-inline ml-auto d-inline float-right ">
+                <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên danh mục" aria-label="Search">
+                <button id="btnTimKiem" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- The Modal Thêm sản phẩm-->
+    <div class="modal fade" id="modalThem">
+        <div class="modal-dialog modal-lg modal-lg modal-sm">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title"><i class="fas fa-store"></i> Thêm danh mục</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form action="/action_page.php" class="was-validated">
+                        <div class="form-group">
+                            <label for="uname">Tên danh mục</label>
+                            <input type="text" class="form-control" id="uname" placeholder="Nhập tên danh mục" name="uname" required>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Xác nhận</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Tên danh mục</th>
+            <th scope="col">Thao tác</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">5fdsfs54w</th>
+            <td>Áo</td>
+            <td class=""><div class="btn btn-warning "> Sửa </div>  <div class="btn btn-danger"> Xóa </div></td>
+        </tr>
+        <tr>
+            <th scope="row">fsdfsd54</th>
+            <td>Giày</td>
+            <td class=""><div class="btn btn-warning "> Sửa </div>  <div class="btn btn-danger"> Xóa </div></td>
+        </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li id="pagiTruoc" class="page-item "><a class="page-link" href="">Trước</a></li>
+            <li id="" class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li id="" class="page-item"><a class="page-link " href="#">2</a></li>
+            <li id="pagiSau" class="page-item"><a class="page-link" href="">Sau</a></li>
+
+
+
+        </ul>
+    </nav>
+</div>
+

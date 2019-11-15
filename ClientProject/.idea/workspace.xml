@@ -34,17 +34,17 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\public\stylesheets" />
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\templates" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\SanPham" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\models" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\controller" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\layout" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\public\stylesheets" />
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\templates" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -66,14 +66,14 @@
     <configuration name="index.ejs" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClientProject/views/index.ejs" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="Index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/routes/Index.js" working-dir="$PROJECT_DIR$/routes">
+    <configuration name="Index.route.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/routes/Index.route.js" working-dir="$PROJECT_DIR$/routes">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.demo.html" />
         <item itemvalue="JavaScript Debug.index.ejs" />
-        <item itemvalue="Node.js.Index.js" />
+        <item itemvalue="Node.js.Index.route.js" />
       </list>
     </recent_temporary>
   </component>
@@ -113,6 +113,8 @@
       <workItem from="1573702758612" duration="85000" />
       <workItem from="1573702857542" duration="5928000" />
       <workItem from="1573712048312" duration="4642000" />
+      <workItem from="1573737066177" duration="17707000" />
+      <workItem from="1573806967216" duration="1997000" />
     </task>
     <servers />
   </component>
