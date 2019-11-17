@@ -1,5 +1,4 @@
 var AWS = require("aws-sdk");
-var configAWS = require("../Config/ConfigAWS");
 var docClient = new AWS.DynamoDB.DocumentClient();
 
 module.exports = {

@@ -4,7 +4,6 @@ configAWS.KetNoiAWS();
 var dynamodb = new AWS.DynamoDB();
 
 /*
-
 // 1 Tạo Bảng SanPham
 var paramsSanPham = {
     TableName : "SanPham",
@@ -29,7 +28,7 @@ dynamodb.createTable(paramsSanPham, function(err, data) {
     } else {
         console.log("Created table SanPham. Table description JSON:", JSON.stringify(data, null, 2));
     }
-});
+});*/
 
 
 // 2 Tạo Bảng Người Dùng
@@ -57,7 +56,7 @@ dynamodb.createTable(paramsNguoiDung, function(err, data) {
 });
 
 
-// 3 Tạo Bảng Hóa Đơn
+/*// 3 Tạo Bảng Hóa Đơn
 var paramsHoaDon = {
     TableName : "HoaDon",
     KeySchema: [
@@ -175,10 +174,9 @@ dynamodb.createTable(paramsBaiViet, function(err, data) {
     } else {
         console.log("Created table Bài Viết. Table description JSON:", JSON.stringify(data, null, 2));
     }
-});
-*/
+});*/
 
-// 8 Tạo Bảng Footer
+/*// 8 Tạo Bảng Footer
 var paramsFooter = {
     TableName : "Footer",
     KeySchema: [
@@ -200,7 +198,7 @@ dynamodb.createTable(paramsFooter, function(err, data) {
     } else {
         console.log("Created table Footer. Table description JSON:", JSON.stringify(data, null, 2));
     }
-});
+});*/
 
 //Tạo Bảng Chức Năng
 /*var paramsChucNang = {

@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var app = express();
 
 //Khai báo conntroller
 var CarouselController = require('../controllers/Footer.controller');

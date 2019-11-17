@@ -1,8 +1,8 @@
 var AWS = require("aws-sdk");
-var configAWS = require("../Config/ConfigAWS");
 var docClient = new AWS.DynamoDB.DocumentClient();
+
 module.exports = {
-    LayTatCaSanPham:function(req, res, next) {
+    LayTatCaSanPham:function(req, res) {
         var param = {
             TableName: "SanPham",
             ProjectionExpression:"#yr, TenSanPham, ID_DanhMMuc, ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
@@ -23,7 +23,7 @@ module.exports = {
             }
         });
     },
-    LaySanPhamTheoID:function(req, res, next) {
+    LaySanPhamTheoID:function(req, res) {
         var idsp = req.params.id ;
         var param = {
             TableName: "SanPham",
@@ -48,7 +48,7 @@ module.exports = {
             }
         });
     },
-    LaySanPhamTheoTen:function(req, res, next) {
+    LaySanPhamTheoTen:function(req, res) {
         var tensp = req.params.ten ;
         var param = {
             TableName: "SanPham",
@@ -74,7 +74,7 @@ module.exports = {
             }
         });
     },
-    LaySanPhamTheoIdDanhMuc:function(req, res, next) {
+    LaySanPhamTheoIdDanhMuc:function(req, res) {
         var iddm = req.params.id ;
         var param = {
             TableName: "SanPham",
@@ -99,7 +99,7 @@ module.exports = {
             }
         });
     },
-    LaySanPhamTheoIdThuongHieu:function(req, res, next) {
+    LaySanPhamTheoIdThuongHieu:function(req, res) {
         var iddm = req.params.id ;
         var param = {
             TableName: "SanPham",
@@ -124,7 +124,7 @@ module.exports = {
             }
         });
     },
-    LaySanPhamTheoIdDanhMucVaThuongHieu:function(req, res, next) {
+    LaySanPhamTheoIdDanhMucVaThuongHieu:function(req, res) {
         var iddm = req.params.iddm;
         var idth = req.params.idth;
         var param = {
@@ -151,7 +151,7 @@ module.exports = {
             }
         });
     },
-    LaySanPhamTheoKhoangGia:function(req, res, next) {
+    LaySanPhamTheoKhoangGia:function(req, res) {
         var tu = parseInt(req.params.tu);
         var den = parseInt(req.params.den);
         var param = {
@@ -178,7 +178,7 @@ module.exports = {
             }
         });
     },
-    LaySanPhamTheoSoTrang:function(req, res, next) {
+    LaySanPhamTheoSoTrang:function(req, res) {
         var n = parseInt(req.params.pagenumber) ;
         var x=3;
         var begin =(n-1)*x;
@@ -219,4 +219,22 @@ module.exports = {
             }
         });
     },
+    LayTatCa:function(req, res) {
+        var param = {
+            TableName: "HoaDon"
+
+        };
+
+        docClient.scan(param,function (err,data) {
+            if (err) {
+                console.error(err);
+                res.end();
+            }
+            else{
+                console.log("Thành công!");
+                /* res.end(JSON.stringify(data.Items.slice(0,2)));*/
+                res.json(data);
+            }
+        });
+    }
 };

@@ -1,7 +1,8 @@
 var AWS = require("aws-sdk");
-var configAWS = require("../Config/ConfigAWS");
-var ids = require('short-id');
 var docClient = new AWS.DynamoDB.DocumentClient();
+
+var ids = require('short-id');
+
 module.exports = {
     LayTatCaSanPham_DanhMuc_ThuongHieu:function(req, res, next) {
         var n = parseInt(req.params.pagenumber) || 1 ;

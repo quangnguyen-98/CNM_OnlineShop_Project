@@ -31,7 +31,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/views/ThanhPhanWeb" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -115,6 +115,10 @@
       <workItem from="1573712048312" duration="4642000" />
       <workItem from="1573737066177" duration="17707000" />
       <workItem from="1573806967216" duration="1997000" />
+      <workItem from="1573827037546" duration="3452000" />
+      <workItem from="1573909030011" duration="8051000" />
+      <workItem from="1573997510689" duration="15693000" />
+      <workItem from="1574019040862" duration="478000" />
     </task>
     <servers />
   </component>

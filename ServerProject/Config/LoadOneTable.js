@@ -7,31 +7,30 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 
 
 
-//Load Bảng SanPham
-var allSanPham = JSON.parse(fs.readFileSync('../Database/SanPham.json', 'utf8'));
-allSanPham.forEach(function(sanPham) {
+// 2 Load Bảng NguoiDung
+var allNguoiDung = JSON.parse(fs.readFileSync('../Database/NguoiDung.json', 'utf8'));
+allNguoiDung.forEach(function(nguoiDung) {
     var params = {
-        TableName: "SanPham",
+        TableName: "NguoiDung",
         Item: {
-            "ID_SanPham":  sanPham.ID_SanPham,
-            "TenSanPham": sanPham.TenSanPham,
-            "ID_DanhMuc":  sanPham.ID_DanhMuc,
-            "ID_ThuongHieu":sanPham.ID_ThuongHieu,
-            "MoTa":sanPham.MoTa,
-            "Gia":sanPham.Gia,
-            "TiLeSale":sanPham.TiLeSale,
-            "Anh":sanPham.Anh,
-            "NgayTao":sanPham.NgayTao,
-            "SoLuong":sanPham.SoLuong,
-            "TrangThai":sanPham.TrangThai,
+            "ID_NguoiDung":  nguoiDung.ID_NguoiDung,
+            "TenNguoiDung": nguoiDung.TenNguoiDung,
+            "SoDienThoai":  nguoiDung.SoDienThoai,
+            "DiaChi":nguoiDung.MoTa,
+            "Email":nguoiDung.Email,
+            "VaiTro":nguoiDung.VaiTro,
+            "TaiKhoan":nguoiDung.TaiKhoan,
+            "NgayTao":nguoiDung.NgayTao,
+            "TrangThaiXoa":nguoiDung.TrangThaiXoa,
+
         }
     };
 
     docClient.put(params, function(err, data) {
         if (err) {
-            console.error("Unable to add SanPham: ", sanPham, ". Error JSON:", JSON.stringify(err, null, 2));
+            console.error("Unable to add NguoiDung: ", nguoiDung, ". Error JSON:", JSON.stringify(err, null, 2));
         } else {
-            console.log("PutItem SanPham succeeded:", sanPham);
+            console.log("PutItem NguoiDung succeeded:", nguoiDung);
         }
     });
 });

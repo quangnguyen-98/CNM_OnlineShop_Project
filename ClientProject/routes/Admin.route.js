@@ -1,19 +1,25 @@
 var express = require('express');
 var router = express.Router();
-const api_helper = require('./API_helper');
-const app = express();
 
 //Khai báo conntroller
 var AdminController = require('../controller/Admin.controller');
-
+var AuthController = require('../controller/Auth.controller');
 // Admin/
-router.get('/', AdminController.HienThiTrangDangNhap);
+/*router.get('/', AdminController.HienThiTrangDangNhap);*/
+
+router.get('/', AdminController.HienThiQuanLySanPham);
 
 router.get('/QuanLySanPham', AdminController.HienThiQuanLySanPham);
 
 router.get('/QuanLyDanhMuc', AdminController.HienThiQuanLyDanhMuc);
 
 router.get('/QuanLyThuongHieu', AdminController.HienThiQuanLyThuongHieu);
+
+router.get('/QuanLyCarousel', AdminController.HienThiQuanLyCarousel);
+
+router.get('/QuanLyFooter', AdminController.HienThiQuanLyFooter);
+
+router.get('/DangXuat', AdminController.DangXuat);
 
 
 

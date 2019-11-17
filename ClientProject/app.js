@@ -6,10 +6,12 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 
 var IndexRouter = require('./routes/Index.route');
+var LoginRouter = require('./routes/Login.route');
 var AdminRouter = require('./routes/Admin.route');
 var SanphamRouter = require('./routes/Sanpham.route');
 var NguoiDungRouter = require('./routes/NguoiDung.route');
 
+var AuthController = require('./controller/Auth.controller');
 
 var app = express();
 
@@ -39,7 +41,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', IndexRouter);
-app.use('/Admin', AdminRouter);
+app.use('/Login', LoginRouter);
+app.use('/Admin', AuthController.KiemTraToken, AdminRouter);
 app.use('/SanPhams', SanphamRouter);
 app.use('/NguoiDungs',NguoiDungRouter);
 

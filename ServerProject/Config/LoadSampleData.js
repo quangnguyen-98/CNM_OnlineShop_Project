@@ -39,7 +39,7 @@ allSanPham.forEach(function(sanPham) {
     });
 });*/
 
-/*// 2 Load Bảng NguoiDung
+// 2 Load Bảng NguoiDung
 var allNguoiDung = JSON.parse(fs.readFileSync('../Database/NguoiDung.json', 'utf8'));
 allNguoiDung.forEach(function(nguoiDung) {
     var params = {
@@ -51,7 +51,7 @@ allNguoiDung.forEach(function(nguoiDung) {
             "DiaChi":nguoiDung.MoTa,
             "Email":nguoiDung.Email,
             "VaiTro":nguoiDung.VaiTro,
-            "TaiKhoan":nguoiDung.Anh,
+            "TaiKhoan":nguoiDung.TaiKhoan,
             "NgayTao":nguoiDung.NgayTao,
             "TrangThaiXoa":nguoiDung.TrangThaiXoa,
 
@@ -67,7 +67,7 @@ allNguoiDung.forEach(function(nguoiDung) {
     });
 });
 
-
+/*
 // 3 Load Bảng HoaDon
 var allHoaDon = JSON.parse(fs.readFileSync('../Database/HoaDon.json', 'utf8'));
 allHoaDon.forEach(function(hoaDon) {
@@ -179,7 +179,7 @@ allBaiViet.forEach(function(baiviet)
             console.log("PutItem BaiViet succeeded:", baiviet);
         }
     });
-});*/
+});
 
 
 
@@ -204,7 +204,7 @@ allFooter.forEach(function(footer)
             console.log("PutItem Footer succeeded:", footer);
         }
     });
-});
+});*/
 
 
 
