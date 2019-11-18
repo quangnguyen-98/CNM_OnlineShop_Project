@@ -36,7 +36,7 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form action="/action_page.php" class="was-validated">
+                    <form action="/" class="was-validated">
                         <div class="form-group">
                             <label for="tbTenSanPham">Tên sản phẩm</label>
                             <input type="text" class="form-control" id="tbTenSanPham" placeholder="Nhập tên sản phẩm" name="tbTenSanPham" required>
@@ -89,14 +89,14 @@
                             <label for="tbPKDK">Phụ kiện đi kèm</label>
                             <input type="text" class="form-control" id="tbPKDK" placeholder="Nhập phụ kiện đi kèm" name="tbPKDK" required>
                         </div>
-
+                        <input type="submit" id="submit-form" style="display: none" />
                     </form>
                 </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Xác nhận</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                    <label class="btn btn-success"  tabindex="0">Xác nhận</label>
+                    <label  class="btn btn-secondary" data-dismiss="modal">Hủy</label>
                 </div>
 
             </div>

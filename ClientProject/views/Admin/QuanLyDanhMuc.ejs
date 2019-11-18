@@ -11,48 +11,20 @@
 
     <div class="row-fluid">
         <div class="co ml-auto ">
-            <button type="button" class="btn btn-primary d-inline " data-toggle="modal" data-target="#modalThem" >
+            <button type="button" class="btn btn-primary d-inline " data-toggle="modal" data-target="#modalThem">
                 Thêm danh mục
             </button>
 
             <form class="form-inline ml-auto d-inline float-right ">
-                <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên danh mục" aria-label="Search">
+                <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên danh mục"
+                       aria-label="Search">
                 <button id="btnTimKiem" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
             </form>
         </div>
 
     </div>
 
-    <!-- The Modal Thêm sản phẩm-->
-    <div class="modal fade" id="modalThem">
-        <div class="modal-dialog modal-lg modal-lg modal-sm">
-            <div class="modal-content">
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title"><i class="fas fa-store"></i> Thêm danh mục</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form action="/action_page.php" class="was-validated">
-                        <div class="form-group">
-                            <label for="uname">Tên danh mục</label>
-                            <input type="text" class="form-control" id="uname" placeholder="Nhập tên danh mục" name="uname" required>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Xác nhận</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
     <br><br>
     <table class="table table-hover">
         <thead>
@@ -62,29 +34,222 @@
             <th scope="col">Thao tác</th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <th scope="row">5fdsfs54w</th>
-            <td>Áo</td>
-            <td class=""><div class="btn btn-warning "> Sửa </div>  <div class="btn btn-danger"> Xóa </div></td>
-        </tr>
-        <tr>
-            <th scope="row">fsdfsd54</th>
-            <td>Giày</td>
-            <td class=""><div class="btn btn-warning "> Sửa </div>  <div class="btn btn-danger"> Xóa </div></td>
-        </tr>
+        <tbody id="tableDM">
+        <!-- <tr>
+             <th scope="row">5fdsfs54w</th>
+             <td>Áo</td>
+             <td class=""><div class="btn btn-warning "> Sửa </div>  <div class="btn btn-danger"> Xóa </div></td>
+         </tr>
+         <tr>
+             <th scope="row">fsdfsd54</th>
+             <td>Giày</td>
+             <td class=""><div class="btn btn-warning "> Sửa </div>  <div class="btn btn-danger"> Xóa </div></td>
+         </tr>-->
         </tbody>
     </table>
+    <div id="infor"></div>
     <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <li id="pagiTruoc" class="page-item "><a class="page-link" href="">Trước</a></li>
+            <li id="pagiTruoc" class="page-item "><a class="page-link" href="#">Trước</a></li>
             <li id="" class="page-item active"><a class="page-link" href="#">1</a></li>
             <li id="" class="page-item"><a class="page-link " href="#">2</a></li>
-            <li id="pagiSau" class="page-item"><a class="page-link" href="">Sau</a></li>
-
+            <li id="pagiSau" class="page-item"><a class="page-link" href="#">Sau</a></li>
 
 
         </ul>
     </nav>
 </div>
 
+<!-- Modal Thêm sản phẩm-->
+<div class="modal fade" id="modalThem">
+    <div class="modal-dialog modal-lg modal-lg modal-sm">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="fas fa-store"></i> Thêm danh mục</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form  class="was-validated">
+                    <div class="form-group">
+                        <label for="TenDanhMuc">Tên danh mục</label>
+                        <input type="text" class="form-control" id="TenDanhMuc" placeholder="Nhập tên danh mục"
+                               name="uname" required>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <label class="btn btn-success" onclick="ThemDanhMuc()">Xác nhận</label>
+                <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal Sửa danh mục-->
+<%dataDM.forEach(function (item) {%>
+    <div class="modal fade" id="modalSua<%=item.ID_DanhMuc%>">
+        <div class="modal-dialog modal-lg modal-lg modal-sm">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title"><i class="fas fa-store"></i> Sửa danh mục</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form  class="was-validated">
+                        <div class="form-group">
+                            <label for="TenDanhMuc<%=item.ID_DanhMuc%>">Tên danh mục</label>
+                            <input type="text" class="form-control" id="TenDanhMuc<%=item.ID_DanhMuc%>" placeholder="Nhập tên danh mục" value="<%=item.TenDanhMuc%>" required>
+                        </div>
+
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <label id="modalBtnSua<%=item.ID_DanhMuc%>" class="btn btn-success">Xác nhận</label>
+                    <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<%})%>
+
+<!-- Modal Xóa danh mục-->
+<%dataDM.forEach(function (item) {%>
+<div class="modal fade" id="modalXoa<%=item.ID_DanhMuc%>">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="fas fa-store"></i> Xóa danh mục</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              Bạn có muốn xóa danh mục này ?
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <label id="modalBtnXoa<%=item.ID_DanhMuc%>" class="btn btn-success">Xác nhận</label>
+                <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
+            </div>
+
+        </div>
+    </div>
+</div>
+<%})%>
+
+
+<script>
+    $(document).ready(
+        LoadDanhMuc()
+     /*   TaoEventXoa()*/
+    );
+    function LoadDanhMuc() {
+        $.ajax({
+            url: "<%= domain %>/danhmucs/",
+            method: "GET",
+            error: function () {
+                $('#infor').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function (data) {
+                $("#tableDM").append(data.message);
+                $.each(data.Items, function (i, item) {
+                    var html_to_append;
+                    html_to_append +=
+                        '<tr>' +
+                        '<th scope="row">'+item.ID_DanhMuc+'</th>' +
+                        '<td>'+item.TenDanhMuc+'</td>' +
+                        '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua'+item.ID_DanhMuc+'"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa'+item.ID_DanhMuc+'"> Xóa </div><td>' +
+                        '</tr>';
+                    $("#tableDM").append(html_to_append);
+                });
+            }
+
+        });
+    }
+    function ThemDanhMuc() {
+        $.ajax({
+            url: "<%= domain %>/danhmucs/" + $("#TenDanhMuc").val(),
+            method: "POST",
+            error: function () {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function (data) {
+                if(data.status == "ok"){
+                    $("#tableDM").empty();
+                    LoadDanhMuc();
+                    $('#modalThem').modal('toggle');
+                    toastr["success"](data.message);
+                }else {
+                    toastr["error"](data.message);
+                }
+            }
+        });
+    }
+
+    <%dataDM.forEach(function (item) {%>
+    $(document).ready(function () {
+        $("#modalBtnSua<%=item.ID_DanhMuc%>").click(function () {
+            $.ajax({
+                url: "<%= domain %>/danhmucs/<%=item.ID_DanhMuc%>/"+$("#TenDanhMuc<%=item.ID_DanhMuc%>").val(),
+                method: "PUT",
+                error: function () {
+                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                },
+                success: function (data) {
+                    if(data.status == "ok"){
+                        $("#tableDM").empty();
+                        LoadDanhMuc();
+                        $('#modalSua<%=item.ID_DanhMuc%>').modal('toggle');
+                        toastr["success"](data.message);
+                    }else {
+                        toastr["error"](data.message);
+                    }
+                }
+            });
+        });
+    });
+    <%})%>
+
+    <%dataDM.forEach(function (item) {%>
+        $(document).ready(function () {
+            $("#modalBtnXoa<%=item.ID_DanhMuc%>").click(function () {
+                $.ajax({
+                    url: "<%= domain %>/danhmucs/<%=item.ID_DanhMuc%>",
+                    method: "DELETE",
+                    error: function () {
+                        $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                    },
+                    success: function (data) {
+                        if(data.status == "ok"){
+                            $("#tableDM").empty();
+                            LoadDanhMuc();
+                            $('#modalXoa<%=item.ID_DanhMuc%>').modal('toggle');
+                            toastr["success"](data.message);
+                        }else {
+                            toastr["error"](data.message);
+                        }
+                    }
+                });
+            });
+        });
+    <%})%>
+
+
+</script>

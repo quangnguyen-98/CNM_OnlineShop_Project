@@ -23,6 +23,7 @@ var IndexRouter = require('./routes/Index.route');
 var AuthRouter = require('./routes/Auth.route');
 var NguoiDungRouter = require('./routes/NguoiDung.route');
 var SanPhamRouter = require('./routes/SanPham.route');
+var DanhMucRouter = require('./routes/DanhMuc.route');
 var CarouselRouter = require('./routes/Carousel.route');
 var FooterlRouter = require('./routes/Footer.route');
 
@@ -43,6 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {
   /*res.header("Access-Control-Allow-Origin", "http://localhost:3004");*/
   res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -52,6 +54,7 @@ app.use('/', IndexRouter);
 app.use('/api/Auth', AuthRouter);
 app.use('/api/NguoiDungs', NguoiDungRouter);
 app.use('/api/Sanphams', SanPhamRouter);
+app.use('/api/DanhMucs', DanhMucRouter);
 app.use('/api/Carousels',CarouselRouter);
 app.use('/api/Footers',FooterlRouter);
 

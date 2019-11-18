@@ -62,4 +62,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.locals.soTrangLocal = 300;
 module.exports = app;

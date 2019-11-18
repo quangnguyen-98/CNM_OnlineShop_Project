@@ -1,18 +1,18 @@
 var AWS = require("aws-sdk");
 var docClient = new AWS.DynamoDB.DocumentClient();
-
 var ids = require('short-id');
-
+var fs = require('fs');
+const path = require("path");
 module.exports = {
     LayTatCaSanPham_DanhMuc_ThuongHieu:function(req, res, next) {
         var n = parseInt(req.params.pagenumber) || 1 ;
-        var x=3;
-        var begin =(n-1)*x;
-        var end = (n-1)*x +x;
+        var soItemMoiPage= parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage.txt")));
+        var begin =(n-1)*soItemMoiPage;
+        var end = (n-1)*soItemMoiPage +soItemMoiPage;
 
         var paramSP = {
             TableName: "SanPham",
-            ProjectionExpression:"#yr, TenSanPham, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2",
+            ProjectionExpression:"#yr, Anh.Avatar, Anh.AvtDetail1",
             ExpressionAttributeNames:{
                 "#yr":"ID_SanPham",
             }
@@ -51,7 +51,7 @@ module.exports = {
                             }
                             else {
                                 var soTrang;
-                                var count = dataSP.Count/x;
+                                var count = dataSP.Count/soItemMoiPage;
                                 res.json(
                                     {
                                         SanPham:dataSP.Items,
@@ -69,12 +69,14 @@ module.exports = {
 
     },
     LaySanPham:function(req, res, next) {
-        var a = [];
+      /*  var a = [];
         for(i =0;i<500;i++){
             var b = ids.generate();
             a.push(b);
         }
-       res.json(a);
+       res.json(a);*/
+        var soItemMoiTrang = parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage.txt")));
+        res.json(soItemMoiTrang);
     },
 };
 

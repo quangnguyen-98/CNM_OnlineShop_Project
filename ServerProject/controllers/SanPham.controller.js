@@ -1,6 +1,7 @@
 var AWS = require("aws-sdk");
 var docClient = new AWS.DynamoDB.DocumentClient();
-
+var fs = require('fs');
+const path = require("path");
 module.exports = {
     LayTatCaSanPham:function(req, res) {
         var param = {
@@ -50,6 +51,10 @@ module.exports = {
     },
     LaySanPhamTheoTen:function(req, res) {
         var tensp = req.params.ten ;
+        var n = parseInt(req.params.pagenumber) ;
+        var soItemMoiPage= parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage.txt")));
+        var begin =(n-1)*soItemMoiPage;
+        var end = (n-1)*soItemMoiPage +soItemMoiPage;
         var param = {
             TableName: "SanPham",
             ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
@@ -69,58 +74,16 @@ module.exports = {
                 res.end();
             }
             else{
+                /*console.log("Thành công!");
+                res.json(data);*/
                 console.log("Thành công!");
-                res.json(data);
-            }
-        });
-    },
-    LaySanPhamTheoIdDanhMuc:function(req, res) {
-        var iddm = req.params.id ;
-        var param = {
-            TableName: "SanPham",
-            ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
-            FilterExpression:"ID_DanhMuc = :n",
-            ExpressionAttributeNames:{
-                "#yr":"ID_SanPham",
-            },
-            ExpressionAttributeValues:{
-                ":n": iddm
-            }
-        };
-
-        docClient.scan(param,function (err,data) {
-            if (err) {
-                console.error(err);
-                res.end();
-            }
-            else{
-                console.log("Thành công!");
-                res.json(data);
-            }
-        });
-    },
-    LaySanPhamTheoIdThuongHieu:function(req, res) {
-        var iddm = req.params.id ;
-        var param = {
-            TableName: "SanPham",
-            ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
-            FilterExpression:"ID_ThuongHieu = :n",
-            ExpressionAttributeNames:{
-                "#yr":"ID_SanPham",
-            },
-            ExpressionAttributeValues:{
-                ":n": iddm
-            }
-        };
-
-        docClient.scan(param,function (err,data) {
-            if (err) {
-                console.error(err);
-                res.end();
-            }
-            else{
-                console.log("Thành công!");
-                res.json(data);
+                var count = data.Count/soItemMoiPage;
+                res.json(
+                    {
+                        SanPham: data.Items.slice(begin,end),
+                        SoTrang: Math.ceil(count)
+                    }
+                );
             }
         });
     },
@@ -154,6 +117,10 @@ module.exports = {
     LaySanPhamTheoKhoangGia:function(req, res) {
         var tu = parseInt(req.params.tu);
         var den = parseInt(req.params.den);
+        var n = parseInt(req.params.pagenumber) ;
+        var soItemMoiPage= parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage.txt")));
+        var begin =(n-1)*soItemMoiPage;
+        var end = (n-1)*soItemMoiPage +soItemMoiPage;
         var param = {
             TableName: "SanPham",
             ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
@@ -173,12 +140,20 @@ module.exports = {
                 res.end();
             }
             else{
+              /*  console.log("Thành công!");
+                res.json(data);*/
                 console.log("Thành công!");
-                res.json(data);
+                var count = data.Count/soItemMoiPage;
+                res.json(
+                    {
+                        SanPham: data.Items.slice(begin,end),
+                        SoTrang: Math.ceil(count)
+                    }
+                );
             }
         });
     },
-    LaySanPhamTheoSoTrang:function(req, res) {
+    LaySanPhamTheoSoTrangDemo:function(req, res) {
         var n = parseInt(req.params.pagenumber) ;
         var x=3;
         var begin =(n-1)*x;
@@ -236,5 +211,110 @@ module.exports = {
                 res.json(data);
             }
         });
-    }
+    },
+    LaySanPhamTheoSoTrang:function(req, res) {
+
+        if(req.params.sorttype == '*' || req.params.sortkey =='*'){
+            var n = parseInt(req.params.pagenumber) ;
+            var soItemMoiPage= parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage.txt")));
+            var begin =(n-1)*soItemMoiPage;
+            var end = (n-1)*soItemMoiPage +soItemMoiPage;
+            var param = {
+                TableName: "SanPham",
+                ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
+                ExpressionAttributeNames:{
+                    "#yr":"ID_SanPham",
+                },
+            };
+            docClient.scan(param,function (err,data) {
+                if (err) {
+                    console.error(err);
+                    res.end();
+                }
+                else{
+                    console.log("Thành công!");
+                    var soTrang;
+                    var count = data.Count/soItemMoiPage;
+                    res.json(
+                        {
+                            SanPham: data.Items.slice(begin,end),
+                            SoTrang: Math.ceil(count)
+                        }
+                    );
+                }
+            });
+        }
+        else {
+            var sorttype = req.params.sorttype;
+           if(sorttype == 'dm'){
+               var sortkey = req.params.sortkey;
+               var n = parseInt(req.params.pagenumber) ;
+               var soItemMoiPage= parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage.txt")));
+               var begin =(n-1)*soItemMoiPage;
+               var end = (n-1)*soItemMoiPage +soItemMoiPage;
+               var param = {
+                   TableName: "SanPham",
+                   ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
+                   FilterExpression:"ID_DanhMuc = :n",
+                   ExpressionAttributeNames:{
+                       "#yr":"ID_SanPham",
+                   },
+                   ExpressionAttributeValues:{
+                       ":n": sortkey,
+                   }
+               };
+               docClient.scan(param,function (err,data) {
+                   if (err) {
+                       console.error(err);
+                       res.end();
+                   }
+                   else{
+                       console.log("Thành công!");
+                       var count = data.Count/soItemMoiPage;
+                       res.json(
+                           {
+                               SanPham: data.Items.slice(begin,end),
+                               SoTrang: Math.ceil(count)
+                           }
+                       );
+                   }
+               });
+           }
+           if(sorttype == 'th'){
+               var sortkey = req.params.sortkey;
+               var n = parseInt(req.params.pagenumber) ;
+               var soItemMoiPage= parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage.txt")));
+               var begin =(n-1)*soItemMoiPage;
+               var end = (n-1)*soItemMoiPage +soItemMoiPage;
+               var param = {
+                   TableName: "SanPham",
+
+                   ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
+                   FilterExpression:"ID_ThuongHieu = :n",
+                   ExpressionAttributeNames:{
+                       "#yr":"ID_SanPham",
+                   },
+                   ExpressionAttributeValues:{
+                       ":n": sortkey,
+                   }
+               };
+               docClient.scan(param,function (err,data) {
+                   if (err) {
+                       console.error(err);
+                       res.end();
+                   }
+                   else{
+                       console.log("Thành công!");
+                       var count = data.Count/soItemMoiPage;
+                       res.json(
+                           {
+                               SanPham: data.Items.slice(begin,end),
+                               SoTrang: Math.ceil(count)
+                           }
+                       );
+                   }
+               });
+           }
+        }
+    },
 };

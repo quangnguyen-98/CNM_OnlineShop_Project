@@ -10,7 +10,7 @@ module.exports = {
                 var soTrang = response.SoTrang;
 
                 response.SanPham.forEach(function (item) {
-                    var sp = {ID_SanPham:item.ID_SanPham, TenSanPham:item.TenSanPham.Ten,Gia:item.Gia,TiLeSale:item.TiLeSale, Avatar:item.Anh.Avatar,AvtDetail1:item.Anh.AvtDetail1};
+                    var sp = {ID_SanPham:item.ID_SanPham, Avatar:item.Anh.Avatar,AvtDetail1:item.Anh.AvtDetail1};
                     dataSP.push(sp);
                 });
                 response.DanhMuc.forEach(function (item) {

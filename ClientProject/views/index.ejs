@@ -22,20 +22,19 @@
           <!-- Sản phẩm sẽ được load vào đây :)) -->
       </div>
       <!--Pagination-->
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
+      <nav  aria-label="Page navigation example">
+        <ul class="pagination menu-phantrang">
           <li id="pagiTruoc" class="page-item "><a class="page-link" href="">Trước</a></li>
-          <%for (i=1;i<= soTrang;i++){%>
-              <%if(i==1){%>
-                  <li id="<%="subpagi"+i %>" class="page-item active"><a class="page-link" href="#"> <%=i%></a></li>
-              <%}else{%>
-                  <li id="<%="subpagi"+i %>" class="page-item"><a class="page-link " href="#"> <%=i%></a></li>
-              <%}%>
-          <%}%>
+
+            <%for (i=1;i<= soTrang;i++){%>
+            <%if(i==1){%>
+            <li id="<%="subpagi"+i %>" class="d-inline page-item active"><a class="page-link" href="#"> <%=i%></a></li>
+            <%}else{%>
+            <li id="<%="subpagi"+i %>" class="d-inline page-item"><a class="page-link " href="#"> <%=i%></a></li>
+            <%}%>
+            <%}%>
+
           <li id="pagiSau" class="page-item"><a class="page-link" href="">Sau</a></li>
-
-
-
         </ul>
       </nav>
 
@@ -44,7 +43,6 @@
   </div>
 </div>
 <script>
-
 
 //Hàm hover cho sản phẩm
 function itemHover(){
@@ -92,7 +90,7 @@ $("document").ready(function(){
 //Load sản phẩm sau khi load xong trang
 $("document").ready(function(){
   $.ajax({
-    url: "<%=domain%>/sanphams/page/1",
+    url: "<%=domain%>/sanphams/*/*/1",
     method: "GET",
     error: function() {
       $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
@@ -125,73 +123,130 @@ $("document").ready(function(){
   return false;
 });
 
+var page = 1;
+var sorttype ='*';
+var sortkey ='*';
+<%='var SoTrang = '+soTrang +';'%>
 
 //Sự kiện trang trước
-var page = 1;
-$("#pagiTruoc").click(function () {
-  if(page==1){
-    $("#pagiTruoc").addClass("disabled");
-    return false;
-  }
-  else{
-    $(".page-item").removeClass("active");
-    $("#subpagi"+(page-1)).addClass("active");
-    $.ajax({
-      url: "<%=domain%>/sanphams/page/"+(page-1),
-      method: "GET",
-      error: function() {
-        $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
-      },
-      success: function(data) {
-        $(".datasp").empty();
-        $.each(data.SanPham, function(i, item) {
-          var html_to_append ='';
-          html_to_append +=
-                  '<div class="col-12 col-sm-6 col-md-4 col-lg-3 lazyitem d-flex">'+
-                  '<div id="SP'+item.ID_SanPham+'" class="card" style=" margin-bottom: 1rem">'+
-                  '<a href="/SanPhams/'+item.ID_SanPham+'">'+
-                  '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
-                  '</a>'+
-
-                  ' <div class="card-body">'+
-                  '<h5 class="card-title" style="height: 3rem" ><a class="linksp" href="/SanPhams/'+item.ID_SanPham+'">'+item.TenSanPham.Ten+'</a></h5>'+
-                  ' <br>'+
-                  ' <h6><span class="card-text text-danger  d-flex justify-content-center">'+item.TiLeSale+'% off</span><h6>'+
-                  '  <h6><p class="card-text text-secondary itemPrice d-flex justify-content-center" style="margin-bottom: 2px;"> <del>'+ item.Gia +' Đ</del></p> </h6>'+
-                  ' <span class="d-flex justify-content-center">Giá hiện tại:</span>'+
-                  '<h4><span class="card-text badge badge-pill badge-success itemPrice d-flex justify-content-center">'+ parseInt(item.Gia - (item.Gia/100*item.TiLeSale)) +' Đ</span></h4>'+
-                  '</div>'+
-                  '</div>'+
-                  '   </div>';
-          $("#datasp").append(html_to_append);
-        });
-        itemHover();
-        FormartGia();
-      }
-    });
-    page = page-1;
-    $("#pagiSau").removeClass("disabled");
+TrangTruoc();
+function TrangTruoc() {
+  $("#pagiTruoc").click(function () {
     if(page==1){
       $("#pagiTruoc").addClass("disabled");
+      return false;
     }
-    return false;
-  }
-});
+    else{
+      $(".page-item").removeClass("active");
+      $("#subpagi"+(page-1)).addClass("active");
+      $.ajax({
+        url: "<%=domain%>/sanphams/"+sorttype+"/"+sortkey+"/"+(page-1),
+        method: "GET",
+        error: function() {
+          $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+        },
+        success: function(data) {
+          $(".datasp").empty();
+          $.each(data.SanPham, function(i, item) {
+            var html_to_append ='';
+            html_to_append +=
+                    '<div class="col-12 col-sm-6 col-md-4 col-lg-3 lazyitem d-flex">'+
+                    '<div id="SP'+item.ID_SanPham+'" class="card" style=" margin-bottom: 1rem">'+
+                    '<a href="/SanPhams/'+item.ID_SanPham+'">'+
+                    '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
+                    '</a>'+
+
+                    ' <div class="card-body">'+
+                    '<h5 class="card-title" style="height: 3rem" ><a class="linksp" href="/SanPhams/'+item.ID_SanPham+'">'+item.TenSanPham.Ten+'</a></h5>'+
+                    ' <br>'+
+                    ' <h6><span class="card-text text-danger  d-flex justify-content-center">'+item.TiLeSale+'% off</span><h6>'+
+                    '  <h6><p class="card-text text-secondary itemPrice d-flex justify-content-center" style="margin-bottom: 2px;"> <del>'+ item.Gia +' Đ</del></p> </h6>'+
+                    ' <span class="d-flex justify-content-center">Giá hiện tại:</span>'+
+                    '<h4><span class="card-text badge badge-pill badge-success itemPrice d-flex justify-content-center">'+ parseInt(item.Gia - (item.Gia/100*item.TiLeSale)) +' Đ</span></h4>'+
+                    '</div>'+
+                    '</div>'+
+                    '   </div>';
+            $("#datasp").append(html_to_append);
+          });
+          itemHover();
+          FormartGia();
+        }
+      });
+      page = page-1;
+      $("#pagiSau").removeClass("disabled");
+      if(page==1){
+        $("#pagiTruoc").addClass("disabled");
+      }
+      return false;
+    }
+  });
+}
 
 
 //Sự kiện trang sau
-var TongSoTrang <%="="+soTrang%>;
-$("#pagiSau").click(function () {
-  if( page == TongSoTrang){
-    $("#pagiSau").addClass("disabled");
-    return false;
-  }
-  else{
+TrangSau();
+function TrangSau() {
+  var TongSoTrang = SoTrang;
+  $("#pagiSau").click(function () {
+    if( page == TongSoTrang){
+      $("#pagiSau").addClass("disabled");
+      return false;
+    }
+    else{
+      $(".page-item").removeClass("active");
+      $("#subpagi"+(page+1)).addClass("active");
+      $("#pagiTruoc").removeClass("disabled");
+      $.ajax({
+        url: "<%=domain%>/sanphams/"+sorttype+"/"+sortkey+"/"+(page+1),
+        method: "GET",
+        error: function() {
+          $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+        },
+        success: function(data) {
+          $(".datasp").empty();
+          $.each(data.SanPham, function(i, item) {
+            var html_to_append ='';
+            html_to_append +=
+                    '<div class="col-12 col-sm-6 col-md-4 col-lg-3 lazyitem d-flex">'+
+                    '<div id="SP'+item.ID_SanPham+'" class="card" style=" margin-bottom: 1rem">'+
+                    '<a href="/SanPhams/'+item.ID_SanPham+'">'+
+                    '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
+                    '</a>'+
+
+                    ' <div class="card-body">'+
+                    '<h5 class="card-title" style="height: 3rem" ><a class="linksp" href="/SanPhams/'+item.ID_SanPham+'">'+item.TenSanPham.Ten+'</a></h5>'+
+                    ' <br>'+
+                    ' <h6><span class="card-text text-danger  d-flex justify-content-center">'+item.TiLeSale+'% off</span><h6>'+
+                    '  <h6><p class="card-text text-secondary itemPrice d-flex justify-content-center" style="margin-bottom: 2px;"> <del>'+ item.Gia +' Đ</del></p> </h6>'+
+                    ' <span class="d-flex justify-content-center">Giá hiện tại:</span>'+
+                    '<h4><span class="card-text badge badge-pill badge-success itemPrice d-flex justify-content-center">'+ parseInt(item.Gia - (item.Gia/100*item.TiLeSale)) +' Đ</span></h4>'+
+                    '</div>'+
+                    '</div>'+
+                    '   </div>';
+            $("#datasp").append(html_to_append);
+          });
+          itemHover();
+          FormartGia();
+        }
+      });
+      page = page+1;
+      return false;
+    }
+  });
+
+}
+<%=soTrangLocal = soTrang%>
+//Sự kiện click vào các trang của sản phẩm\
+ClickVaoCacTrang();
+function ClickVaoCacTrang(){
+
+  <%for (i=1;i<= soTrangLocal;i++){%>
+  $("<%="#subpagi"+i %>").click(function () {
     $(".page-item").removeClass("active");
-    $("#subpagi"+(page+1)).addClass("active");
-    $("#pagiTruoc").removeClass("disabled");
+    $("#pagiSau").removeClass("disabled");
+    $("<%="#subpagi"+i %>").addClass("active");
     $.ajax({
-      url: "<%=domain%>/sanphams/page/"+(page+1),
+      url: "<%=domain%>/sanphams/"+sorttype+"/"+sortkey+"/<%=i%>",
       method: "GET",
       error: function() {
         $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
@@ -223,96 +278,14 @@ $("#pagiSau").click(function () {
         FormartGia();
       }
     });
-    page = page+1;
-    return false;
-  }
-});
-
-
-//Sự kiện click vào các trang của sản phẩm
-<%for (i=1;i<= soTrang;i++){%>
-$("<%="#subpagi"+i %>").click(function () {
-  $(".page-item").removeClass("active");
-  $("<%="#subpagi"+i %>").addClass("active");
-  $.ajax({
-    url: "<%=domain%>/sanphams/page/<%=i%>",
-    method: "GET",
-    error: function() {
-      $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
-    },
-    success: function(data) {
-      $(".datasp").empty();
-      $.each(data.SanPham, function(i, item) {
-        var html_to_append ='';
-        html_to_append +=
-                '<div class="col-12 col-sm-6 col-md-4 col-lg-3 lazyitem d-flex">'+
-                '<div id="SP'+item.ID_SanPham+'" class="card" style=" margin-bottom: 1rem">'+
-                '<a href="/SanPhams/'+item.ID_SanPham+'">'+
-                '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
-                '</a>'+
-
-                ' <div class="card-body">'+
-                '<h5 class="card-title" style="height: 3rem" ><a class="linksp" href="/SanPhams/'+item.ID_SanPham+'">'+item.TenSanPham.Ten+'</a></h5>'+
-                ' <br>'+
-                ' <h6><span class="card-text text-danger  d-flex justify-content-center">'+item.TiLeSale+'% off</span><h6>'+
-                '  <h6><p class="card-text text-secondary itemPrice d-flex justify-content-center" style="margin-bottom: 2px;"> <del>'+ item.Gia +' Đ</del></p> </h6>'+
-                ' <span class="d-flex justify-content-center">Giá hiện tại:</span>'+
-                '<h4><span class="card-text badge badge-pill badge-success itemPrice d-flex justify-content-center">'+ parseInt(item.Gia - (item.Gia/100*item.TiLeSale)) +' Đ</span></h4>'+
-                '</div>'+
-                '</div>'+
-                '   </div>';
-        $("#datasp").append(html_to_append);
-      });
-      itemHover();
-      FormartGia();
-    }
-  });
     <%="page="+i%>;
     if(page != 1){
       $("#pagiTruoc").removeClass("disabled");
     }
-  return false;
-});
-<%}%>
-
-
-//Sự kiện tìm sản phẩm bằng giá của nút OK
-$("#btnOk").click(function(){
-  if ($("#tbGiaTu").val() !="" && $("#tbGiaDen").val()!=""){
-    $.ajax({
-      url: "<%=domain%>/sanphams/gia/"+$("#tbGiaTu").val()+"/"+$("#tbGiaDen").val(),
-      method: "GET",
-      error: function() {
-        $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
-      },
-      success: function(data) {
-        $(".datasp").empty();
-        $.each(data.Items, function(i, item) {
-          var html_to_append ='';
-          html_to_append +=
-                  '<div class="col-12 col-sm-6 col-md-4 col-lg-3 lazyitem d-flex">'+
-                  '<div id="SP'+item.ID_SanPham+'" class="card" style=" margin-bottom: 1rem">'+
-                  '<a href="/SanPhams/'+item.ID_SanPham+'">'+
-                  '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
-                  '</a>'+
-
-                  ' <div class="card-body">'+
-                  '<h5 class="card-title" style="height: 3rem" ><a class="linksp" href="/SanPhams/'+item.ID_SanPham+'">'+item.TenSanPham.Ten+'</a></h5>'+
-                  ' <br>'+
-                  ' <h6><span class="card-text text-danger  d-flex justify-content-center">'+item.TiLeSale+'% off</span><h6>'+
-                  '  <h6><p class="card-text text-secondary itemPrice d-flex justify-content-center" style="margin-bottom: 2px;"> <del>'+ item.Gia +' Đ</del></p> </h6>'+
-                  ' <span class="d-flex justify-content-center">Giá hiện tại:</span>'+
-                  '<h4><span class="card-text badge badge-pill badge-success itemPrice d-flex justify-content-center">'+ parseInt(item.Gia - (item.Gia/100*item.TiLeSale)) +' Đ</span></h4>'+
-                  '</div>'+
-                  '</div>'+
-                  '   </div>';
-          $("#datasp").append(html_to_append);
-        });
-        itemHover();
-        FormartGia();
-      }
-    });
     return false;
-  }
-});
+  });
+  <%}%>
+}
+
+
 </script>

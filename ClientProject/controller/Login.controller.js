@@ -12,6 +12,7 @@ module.exports = {
                 if(response.status == "ok"){
 
                     res.cookie('token', response.token.toString());
+                    res.cookie('userId',response.userId);
                     /*res.render('./Admin/QuanLySanPham.ejs', {domain: domain, title: 'Đăng nhập Admin'});*/
                     res.redirect('/admin/quanlysanpham');
                 }

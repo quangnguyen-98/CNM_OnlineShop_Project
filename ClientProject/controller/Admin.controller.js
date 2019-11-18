@@ -7,7 +7,20 @@ module.exports = {
         res.render('./Admin/QuanLySanPham.ejs', {domain: domain, title: 'Quản lý sản phẩm',key:'QLSP'});
     },
     HienThiQuanLyDanhMuc:function(req, res, next) {
-        res.render('./Admin/QuanLyDanhMuc.ejs', {domain: domain, title: 'Quản lý danh mục',key:'QLDM'});
+        api_helper.API_Call_Get(domain+'/DanhMucs/')
+            .then(response => {
+                var dataDM =  [];
+                var soTrang = response.SoTrang;
+                response.Items.forEach(function (item) {
+                    var dm ={ID_DanhMuc:item.ID_DanhMuc, TenDanhMuc:item.TenDanhMuc};
+                    dataDM.push(dm);
+                });
+                res.render('./Admin/QuanLyDanhMuc.ejs', {domain: domain, title: 'Quản lý danh mục',key:'QLDM',dataDM:dataDM});
+            })
+            .catch(error => {
+                res.send("Web server chưa được bật, không lấy được data "+error);
+            });
+
     },
     HienThiQuanLyThuongHieu:function(req, res, next) {
         res.render('./Admin/QuanLyThuongHieu.ejs', {domain: domain, title: 'Quản lý thương hiệu',key:'QLTH'});

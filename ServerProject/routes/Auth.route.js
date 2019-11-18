@@ -4,7 +4,6 @@ var router = express.Router();
 var AWS = require("aws-sdk");
 var docClient = new AWS.DynamoDB.DocumentClient();
 var jwt = require('jsonwebtoken');
-var secretOrKey = require('../Config/Key');
 var AuthValidate = require('../Validator/Auth.validate');
 const { check, validationResult } = require('express-validator');
 //Khai báo conntroller

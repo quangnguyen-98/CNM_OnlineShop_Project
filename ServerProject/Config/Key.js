@@ -1,1 +1,0 @@
-module.exports = { secretOrKey: 'quangdeptrai01234' };
