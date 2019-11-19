@@ -3,17 +3,18 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 var jwt = require('jsonwebtoken');
 var fs = require('fs');
 const path = require("path");
-const { validationResult } = require('express-validator');
-var idTK ;
+const {validationResult} = require('express-validator');
+var idTK;
 var tokenTK;
 module.exports = {
     KiemTraDangNhap: function (req, res, next) {
+
         //VaLidate data
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(422).json({
-                status:"fail",
-                errors: errors.array()
+                status: "fail",
+                message: "Thông tin đầu vào không hợp lệ"
             });
         }
         //Kiểm tra tk
@@ -21,42 +22,68 @@ module.exports = {
         var password = req.params.password;
         var paramTK = {
             TableName: "NguoiDung",
-            ProjectionExpression:"#yr, TaiKhoan.ID_TaiKhoan, TaiKhoan.MatKhau",
-            FilterExpression:"TaiKhoan.ID_TaiKhoan = :n and TaiKhoan.MatKhau = :m",
-            ExpressionAttributeNames:{
-                "#yr":"ID_NguoiDung",
+            ProjectionExpression: "#yr, TaiKhoan.ID_TaiKhoan, TaiKhoan.MatKhau",
+            FilterExpression: "TaiKhoan.ID_TaiKhoan = :n and TaiKhoan.MatKhau = :m",
+            ExpressionAttributeNames: {
+                "#yr": "ID_NguoiDung",
             },
-            ExpressionAttributeValues:{
+            ExpressionAttributeValues: {
                 ":n": username,
                 ":m": password
             }
         };
         //Tạo token
-        docClient.scan(paramTK,function (err,data) {
+        docClient.scan(paramTK, function (err, data) {
             if (err) {
                 console.error(err);
-                res.end();
-            }
-            else{
-                if(data.Count == 1){
-                    var SecretKey= fs.readFileSync(path.resolve(__dirname, "../Config/SecretKey.txt")).toString();
-                    var payload ={
-                        userId : data.Items[0].ID_NguoiDung
-                    };
-                    var token = jwt.sign({payload}, SecretKey, { expiresIn: 60*20 });
-                    res.cookie('token', token.toString());
-                    idTK = data.Items[0].ID_NguoiDung.toString();
-                    tokenTK = token.toString();
-                    //Trả về json
-                    res.json({
-                        status:"ok",
-                        userId:data.Items[0].ID_NguoiDung,
-                        token:token
-                    });
-                    return;
-                }else {
-                    res.json({
-                        status:"fail",
+                res.status(500).json({
+                    status: "fail",
+                    message: "Lỗi server"
+                });
+            } else {
+
+                if (data.Count == 1) {
+                    var check = req.query.check;
+                    var SecretKey = fs.readFileSync(path.resolve(__dirname, "../Config/SecretKey.txt")).toString();
+                    if (check == "yes") {
+                        var payload = {
+                            userId: data.Items[0].ID_NguoiDung
+                        };
+                        var token = jwt.sign({payload}, SecretKey);
+                        res.cookie('token', token.toString());
+                        idTK = data.Items[0].ID_NguoiDung.toString();
+                        tokenTK = token.toString();
+                        //Trả về json
+                        res.status(200).json({
+                            status: "ok",
+                            message: "Đăng nhập thành công",
+                            userId: data.Items[0].ID_NguoiDung,
+                            token: token
+                        });
+                        return;
+                    }else {
+                        var ThoiGianLogin = parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/ThoiGianLogIn.txt"))) ;
+                        var payload = {
+                            userId: data.Items[0].ID_NguoiDung
+                        };
+                        var token = jwt.sign({payload}, SecretKey, { expiresIn: 60*ThoiGianLogin });
+                        res.cookie('token', token.toString());
+                        idTK = data.Items[0].ID_NguoiDung.toString();
+                        tokenTK = token.toString();
+                        //Trả về json
+                        res.status(200).json({
+                            status: "ok",
+                            message: "Đăng nhập thành công",
+                            userId: data.Items[0].ID_NguoiDung,
+                            token: token
+                        });
+                        return;
+                    }
+
+                } else {
+                    res.status(400).json({
+                        status: "fail",
+                        message: "Sai tài khoản hoặc mật khẩu!",
                     });
                 }
             }
@@ -64,36 +91,67 @@ module.exports = {
     },
     KiemTraToken: function (req, res, next) {
         try {
-            var SecretKey= fs.readFileSync(path.resolve(__dirname, "../Config/SecretKey.txt")).toString();
+            var SecretKey = fs.readFileSync(path.resolve(__dirname, "../Config/SecretKey.txt")).toString();
             var token = req.params.token;
-            jwt.verify(token, SecretKey, function(err, payload) {
-                if(payload) {
+            jwt.verify(token, SecretKey, function (err, payload) {
+                if (payload) {
                     req.user = payload;
                     next();
                 } else {
-                    // Nếu token tồn tại nhưng không hợp lệ, server sẽ response status code 401 với msg bên dưới
-                    res.status(401).send('Unauthorized');
+                    res.status(400).json({
+                        status: "fail",
+                        message: 'Token không hợp lệ!'
+                    });
                 }
             });
-        } catch(err) {
-            res.status(401).send('No token provided'+err);
-        }
-    },
-    KiemTraRoute:function (req, res, next) {
-        if(req.user) {
-            return next();
-        }
-        // Ngược lại server sẽ response status code 401 với msg bên dưới
-        res.status(401).send('Unauthorized');
-    },
-    TraKetQuaXacThuc:function (req, res, next) {
-        if(req.user) {
-            res.json({
-               status:"ok"
+        } catch (err) {
+            res.status(400).json({
+                status: "fail",
+                message: 'Lỗi:' + err
             });
         }
-        res.json({
-            status:"fail"
+    },
+    KiemTraTokenAPI: function (req, res, next) {
+        try {
+            var SecretKey = fs.readFileSync(path.resolve(__dirname, "../Config/SecretKey.txt")).toString();
+            var token = req.query.token;
+            jwt.verify(token, SecretKey, function (err, payload) {
+                if (payload) {
+                    req.user = payload;
+                    next();
+                } else {
+                    res.status(400).json({
+                        status: "fail",
+                        message: 'Token không hợp lệ'
+                    });
+                }
+            });
+        } catch (err) {
+            res.status(400).json({
+                status: "fail",
+                message: 'Lỗi:' + err
+            });
+        }
+    },
+    KiemTraRoute: function (req, res, next) {
+        if (req.user) {
+            return next();
+        }
+        res.status(400).send({
+            status: "fail",
+            message: 'Xác thực không thành công !'
+        });
+    },
+    TraKetQuaXacThuc: function (req, res, next) {
+        if (req.user) {
+            res.status(200).json({
+                status: "ok",
+                message: 'Xác thực thành công !'
+            });
+        }
+        res.status(400).json({
+            status: "fail",
+            message: 'Xác thực không thành công !'
         });
     }
 }

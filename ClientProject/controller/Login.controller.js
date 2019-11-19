@@ -7,17 +7,17 @@ module.exports = {
         res.render('./Admin/DangNhap.ejs', {domain: domain, title: 'Đăng nhập Admin'});
     },
     KiemTraDangNhap:function (req,res,next) {
-        api_helper.API_Call_Get(domain+'/auth/'+req.body.userName+'/'+req.body.passWord)
+
+        api_helper.API_Call_Get(domain+'/auth/'+req.body.userName+'/'+req.body.passWord+'?check='+req.body.check)
             .then(response => {
                 if(response.status == "ok"){
-
                     res.cookie('token', response.token.toString());
                     res.cookie('userId',response.userId);
                     /*res.render('./Admin/QuanLySanPham.ejs', {domain: domain, title: 'Đăng nhập Admin'});*/
                     res.redirect('/admin/quanlysanpham');
                 }
                 else {
-                    res.render('./Admin/DangNhap.ejs', {domain: domain, title: 'Đăng nhập Admin', err:'Sai thông tin đăng nhập, vui lòng nhập lại', values:req.body});
+                    res.render('./Admin/DangNhap.ejs', {domain: domain, title: 'Đăng nhập Admin', err:response.message, values:req.body});
                 }
 
             })

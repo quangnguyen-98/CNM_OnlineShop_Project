@@ -35,6 +35,7 @@
         </tr>
         </thead>
         <tbody id="tableDM">
+        <img src="https://bb4298.s3-us-west-1.amazonaws.com/index.svg" class="loadingDiv" alt="loadingIcon">
         <!-- <tr>
              <th scope="row">5fdsfs54w</th>
              <td>Áo</td>
@@ -157,12 +158,13 @@
 
 <script>
     $(document).ready(
-        LoadDanhMuc()
+        LoadDanhMuc(),
+
      /*   TaoEventXoa()*/
     );
     function LoadDanhMuc() {
         $.ajax({
-            url: "<%= domain %>/danhmucs/",
+            url: "<%= domain %>/DanhMucs?token="+$.cookie("token"),
             method: "GET",
             error: function () {
                 $('#infor').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
@@ -172,20 +174,22 @@
                 $.each(data.Items, function (i, item) {
                     var html_to_append;
                     html_to_append +=
-                        '<tr>' +
+                        '<tr id="DMitem'+item.ID_DanhMuc+'">' +
                         '<th scope="row">'+item.ID_DanhMuc+'</th>' +
                         '<td>'+item.TenDanhMuc+'</td>' +
                         '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua'+item.ID_DanhMuc+'"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa'+item.ID_DanhMuc+'"> Xóa </div><td>' +
                         '</tr>';
                     $("#tableDM").append(html_to_append);
-                });
-            }
 
+
+                });
+            },
+            timeout: 30000000
         });
     }
     function ThemDanhMuc() {
         $.ajax({
-            url: "<%= domain %>/danhmucs/" + $("#TenDanhMuc").val(),
+            url: "<%= domain %>/danhmucs/" + $("#TenDanhMuc").val()+"?token="+$.cookie("token"),
             method: "POST",
             error: function () {
                 $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
@@ -207,7 +211,7 @@
     $(document).ready(function () {
         $("#modalBtnSua<%=item.ID_DanhMuc%>").click(function () {
             $.ajax({
-                url: "<%= domain %>/danhmucs/<%=item.ID_DanhMuc%>/"+$("#TenDanhMuc<%=item.ID_DanhMuc%>").val(),
+                url: "<%= domain %>/danhmucs/<%=item.ID_DanhMuc%>/"+$("#TenDanhMuc<%=item.ID_DanhMuc%>").val()+"?token="+$.cookie("token"),
                 method: "PUT",
                 error: function () {
                     $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
@@ -231,15 +235,16 @@
         $(document).ready(function () {
             $("#modalBtnXoa<%=item.ID_DanhMuc%>").click(function () {
                 $.ajax({
-                    url: "<%= domain %>/danhmucs/<%=item.ID_DanhMuc%>",
+                    url: "<%= domain %>/danhmucs/<%=item.ID_DanhMuc%>"+"?token="+$.cookie("token"),
                     method: "DELETE",
                     error: function () {
                         $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
                     },
                     success: function (data) {
                         if(data.status == "ok"){
-                            $("#tableDM").empty();
-                            LoadDanhMuc();
+                            $("#DMitem<%=item.ID_DanhMuc%>").remove();
+                          /*  $("#tableDM").empty();
+                            LoadDanhMuc();*/
                             $('#modalXoa<%=item.ID_DanhMuc%>').modal('toggle');
                             toastr["success"](data.message);
                         }else {

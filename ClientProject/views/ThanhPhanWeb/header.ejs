@@ -27,10 +27,10 @@
     var tenSanPhamDangTim;
 $(document).ready(function(){
     $("#btnTimKiem").click(function () {
-        tenSanPhamDangTim = $("#inputTK").val();
+        tenSanPhamDangTim = $("#inputTK").val().toLowerCase();
         page =1;
         $.ajax({
-            url: "<%=domain%>/sanphams/ten/"+$("#inputTK").val().toLowerCase()+"/1",
+            url: "<%=domain%>/sanphams/ten/"+$("#inputTK").val().toLowerCase()+"/1/ten",
             method: "GET",
             error: function() {
                 $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
@@ -103,7 +103,7 @@ $(document).ready(function(){
                 $(".page-item").removeClass("active");
                 $("#subpagi"+(page-1)).addClass("active");
                 $.ajax({
-                    url: "<%=domain%>/sanphams/ten/"+tenSanPhamDangTim+"/"+(page-1),
+                    url: "<%=domain%>/sanphams/ten/"+tenSanPhamDangTim+"/"+(page-1)+"/ten",
                     method: "GET",
                     error: function() {
                         $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
@@ -158,7 +158,7 @@ $(document).ready(function(){
                 $("#subpagi"+(page+1)).addClass("active");
                 $("#pagiTruoc").removeClass("disabled");
                 $.ajax({
-                    url: "<%=domain%>/sanphams/ten/"+tenSanPhamDangTim+"/"+(page+1),
+                    url: "<%=domain%>/sanphams/ten/"+tenSanPhamDangTim+"/"+(page+1)+"/ten",
                     method: "GET",
                     error: function() {
                         $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
@@ -203,7 +203,7 @@ $(document).ready(function(){
             $("#pagiSau").removeClass("disabled");
             $("<%="#subpagi"+i %>").addClass("active");
             $.ajax({
-                url: "<%=domain%>/sanphams/ten/"+tenSanPhamDangTim+"/<%=i%>",
+                url: "<%=domain%>/sanphams/ten/"+tenSanPhamDangTim+"/<%=i%>/ten",
                 method: "GET",
                 error: function() {
                     $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');

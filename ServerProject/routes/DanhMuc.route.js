@@ -3,17 +3,19 @@ var router = express.Router();
 
 //Khai báo conntroller
 var DanhMucController = require('../controllers/DanhMuc.controller');
+var AuthController = require('../controllers/Auth.controller');
 
 //Lấy tất cả danhmuc  (Web/api/DanhMuc/)
-router.get('/', DanhMucController.LayTatCaDanhMuc);
+router.get('/', AuthController.KiemTraTokenAPI, DanhMucController.LayTatCaDanhMuc);
 
-router.post('/:tendanhmuc', DanhMucController.ThemDanhMuc);
+//Tạo danh mục
+router.post('/:tendanhmuc', AuthController.KiemTraTokenAPI, DanhMucController.ThemDanhMuc);
 
-router.put('/:iddanhmuc/:tendanhmuc', DanhMucController.SuaDanhMuc);
+//Sửa danh mục
+router.put('/:iddanhmuc/:tendanhmuc', AuthController.KiemTraTokenAPI, DanhMucController.SuaDanhMuc);
 
-router.delete('/:iddanhmuc', DanhMucController.XoaDanhMuc);
-
-
+//Xóa danh mục
+router.delete('/:iddanhmuc', AuthController.KiemTraTokenAPI, DanhMucController.XoaDanhMuc);
 
 
 module.exports = router;

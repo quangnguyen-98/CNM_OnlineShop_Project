@@ -85,7 +85,7 @@
 
 <div class="col row justify-content-sm-center ml-auto"style="margin: 15rem">
 
-    <form class="form-signin" method="POST" action="/login">
+    <form id="formDN" class="form-signin" method="POST" action="/login">
         <h2 class="form-signin-heading"><p class="font-weight-bold text-primary">Trang Quản Lý HQKStore</p></h2>
         <br>
             <%if(typeof (err)!= 'undefined'){%>
@@ -95,12 +95,13 @@
             <%}%>
         <input name="userName" type="text" id="inputEmail" class="form-control" placeholder="Tài khoản" value="<%if(typeof (values)!= 'undefined'){%><%=values.userName.trim()%><%}%>"  required >
         <input name="passWord" type="password" id="inputPassword" class="form-control" placeholder="Mật khẩu" required style="margin-top:10px">
+        <input name="check" type="text" id="checkValue" value="" style="display: none">
         <div class="checkbox">
             <label>
-                <input type="checkbox" value="remember-me"> Ghi nhớ đăng nhập
+                <input id="checkBoxDN" type="checkbox" value=""> Ghi nhớ đăng nhập
             </label>
         </div>
-        <button name="btnLogin" class="btn btn-lg btn-primary btn-block" type="submit"><i class="far fa-hand-point-up"></i> Đăng nhập</button>
+        <button name="btnLogin" class="btn btn-lg btn-primary btn-block" type="submit" onclick="submitDangNhap()" ><i class="far fa-hand-point-up"></i> Đăng nhập</button>
     </form>
 </div>
 
@@ -108,37 +109,16 @@
 
 
 <script>
-
-    //code button top;
-    if ($('#back-to-top').length) {
-        var scrollTrigger = 100, // px
-            backToTop = function () {
-                var scrollTop = $(window).scrollTop();
-                if (scrollTop > scrollTrigger) {
-                    $('#back-to-top').addClass('show');
-                } else {
-                    $('#back-to-top').removeClass('show');
-                }
-            };
-        backToTop();
-        $(window).on('scroll', function () {
-            backToTop();
-        });
-        $('#back-to-top').on('click', function (e) {
-            e.preventDefault();
-            $('html,body').animate({
-                scrollTop: 0
-            }, 700);
-        });
+    function submitDangNhap(){
+        if ($("#checkBoxDN").is(":checked")){
+            $("#checkValue").attr("value","yes");
+            $("#formDN").submit();
+        }
+        else {
+            $("#checkValue").attr("value","no");
+            $("#formDN").submit();
+        }
     }
-    //Code Carousel;
-    $('.carousel').carousel({
-        interval: 2200
-    });
-
-    $("document").ready(function(){
-        FormartGia();
-    });
 </script>
 </body>
 </html>

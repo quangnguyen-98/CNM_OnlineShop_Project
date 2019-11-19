@@ -3,17 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="29931dd8-b35f-4161-9625-b148465567bb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../ClientProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/controller/Admin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/controller/Admin.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/controller/Index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/controller/Index.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/controller/Login.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/controller/Login.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/routes/Login.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/routes/Login.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/MenuDashboard.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/MenuDashboard.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/routes/API_helper.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/routes/API_helper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/DangNhap.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/DangNhap.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyDanhMuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyDanhMuc.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLySanPham.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLySanPham.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutAdmin.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutAdmin.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/index.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutKhachHang.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutKhachHang.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/header.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +28,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1SViC3RR76W8BWYWJ26bO5UdRL8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -138,6 +135,8 @@
       <workItem from="1574019041904" duration="480000" />
       <workItem from="1574020439082" duration="1207000" />
       <workItem from="1574051232488" duration="31171000" />
+      <workItem from="1574159271839" duration="1272000" />
+      <workItem from="1574165127484" duration="13406000" />
     </task>
     <servers />
   </component>

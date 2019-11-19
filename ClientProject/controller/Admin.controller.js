@@ -7,7 +7,7 @@ module.exports = {
         res.render('./Admin/QuanLySanPham.ejs', {domain: domain, title: 'Quản lý sản phẩm',key:'QLSP'});
     },
     HienThiQuanLyDanhMuc:function(req, res, next) {
-        api_helper.API_Call_Get(domain+'/DanhMucs/')
+        api_helper.API_Call_Get(domain+'/DanhMucs?token='+req.cookies.token)
             .then(response => {
                 var dataDM =  [];
                 var soTrang = response.SoTrang;

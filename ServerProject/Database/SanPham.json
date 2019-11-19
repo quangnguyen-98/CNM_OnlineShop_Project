@@ -38,7 +38,8 @@
       "42": 6
     },
     "TongSoLuong": 33,
-    "TrangThaiBan":true
+    "TrangThaiBan":true,
+    "TrangThaiXoa": false
   },
   {
     "ID_SanPham": "5269cd5ab9",
@@ -79,7 +80,8 @@
       "42": 6
     },
     "TongSoLuong": 14,
-    "TrangThaiBan":true
+    "TrangThaiBan":true,
+    "TrangThaiXoa": false
   },
   {
     "ID_SanPham": "9e10fb431a",
@@ -114,7 +116,8 @@
       "OS": 16
     },
     "TongSoLuong": 16,
-    "TrangThaiBan": true
+    "TrangThaiBan": true,
+    "TrangThaiXoa": false
   },
   {
     "ID_SanPham": "9557b9956c",
@@ -149,7 +152,8 @@
       "OS": 4
     },
     "TongSoLuong": 14,
-    "TrangThaiBan":true
+    "TrangThaiBan":true,
+    "TrangThaiXoa": false
   },
   {
     "ID_SanPham": "cd0afc5021",
@@ -190,7 +194,8 @@
       "42": 6
     },
     "TongSoLuong": 14,
-    "TrangThaiBan":true
+    "TrangThaiBan":true,
+    "TrangThaiXoa": false
   },
   {
     "ID_SanPham": "4d75433889",
@@ -231,7 +236,8 @@
       "42": 6
     },
     "TongSoLuong": 14,
-    "TrangThaiBan":true
+    "TrangThaiBan":true,
+    "TrangThaiXoa": false
   },
   {
     "ID_SanPham": "1ab9c5b104",
@@ -272,7 +278,8 @@
       "42": 6
     },
     "TongSoLuong": 14,
-    "TrangThaiBan":true
+    "TrangThaiBan":true,
+    "TrangThaiXoa": false
   },
   {
     "ID_SanPham": "bdd9dea0bf",
@@ -313,7 +320,8 @@
       "42": 6
     },
     "TongSoLuong": 14,
-    "TrangThaiBan":true
+    "TrangThaiBan":true,
+    "TrangThaiXoa": false
   },
   {
     "ID_SanPham": "939feba0da",
@@ -354,7 +362,8 @@
       "42": 6
     },
     "TongSoLuong": 14,
-    "TrangThaiBan":true
+    "TrangThaiBan":true,
+    "TrangThaiXoa": false
   },
   {
     "ID_SanPham": "44f505c422",
@@ -391,6 +400,7 @@
       "L": 3
     },
     "TongSoLuong": 14,
-    "TrangThaiBan":true
+    "TrangThaiBan":true,
+    "TrangThaiXoa": false
   }
 ]

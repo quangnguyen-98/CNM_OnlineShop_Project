@@ -9,8 +9,10 @@ module.exports = {
         }
         next();
     },
-    ValidateLogin:[   check('username','khong duoc trong').not().isEmpty(),
-        check('password','it nhat 5 chu').isLength({ min: 5 })]
+    ValidateLogin:[
+        check('username','khong duoc trong').not().isEmpty(),
+        check('password','it nhat 5 chu').isLength({ min: 5 })
+    ]
 
 
 };

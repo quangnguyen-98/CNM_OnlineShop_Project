@@ -2,23 +2,27 @@
 <html lang="en">
 <head>
     <!-- Required meta tags -->
-    <title><%=title%></title>
+    <title><%= title %></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--<link rel="shortcut icon" type="image/png" href="{{asset('img/favicon.jpeg')}}"/>-->
     <link rel="shortcut icon" type="image/png" href="https://bb4298.s3-us-west-1.amazonaws.com/favicon.ico"/>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!--Font Awesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+          integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <!-- <link rel="stylesheet" type="text/css" href="../../public/stylesheets/style.css">-->
+
     <style>
-        .footer-item-color{
+        .footer-item-color {
             color: #337ab7;
         }
+
         /*Stye cho nút kéo lên.*/
         #back-to-top {
-            text-align:center;
+            text-align: center;
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -34,27 +38,39 @@
             transition: opacity 0.2s ease-out;
             opacity: 0;
         }
+
         #back-to-top:hover {
-            background:#555;
+            background: #555;
 
         }
+
         #back-to-top.show {
             opacity: 1;
         }
+
         #content {
             height: 2000px;
         }
+
         .linksp:hover {
             text-decoration: none;
-            color:#ffb520;
+            color: #ffb520;
         }
 
-        .jbtcustom{
+        .jbtcustom {
             padding: 0.5rem;
         }
+
         .carousel-SP-next,
         .carousel-SP-prev {
             filter: invert(100%);
+        }
+
+        .loadingDiv {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
     </style>
 </head>
@@ -77,24 +93,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"></script>
 
 <!-- Toastr library-->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
+<!-- JQuery Cookie library-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
-
-
+<!-- Easy-Loading library-->
+<script src="https://cdn.jsdelivr.net/npm/jquery-easy-loading@2.0.0-rc.2/dist/jquery.loading.min.js"></script>
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="/Admin/quanlysanpham"><i class="fas fa-store"></i> HQKStore Admin</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto" >
-            <a href="/"> <button class="btn btn-outline-primary col-12 col-sm-12"  id="btnTimKiem" type="submit"> Về trang người dùng </button></a> &nbsp;
-            <a href="/admin/dangxuat" > <button class="btn btn-outline-primary col-12 col-sm-12"  id="btnTimKiem" type="submit"> Đăng xuất </button></a>
+        <ul class="navbar-nav ml-auto">
+            <a href="/">
+                <button class="btn btn-outline-primary col-12 col-sm-12" id="btnTimKiem" type="submit"> Về trang người
+                    dùng
+                </button>
+            </a> &nbsp;
+            <a href="/admin/dangxuat">
+                <button class="btn btn-outline-primary col-12 col-sm-12" id="btnTimKiem" type="submit"> Đăng xuất
+                </button>
+            </a>
         </ul>
 
     </div>
@@ -105,20 +131,34 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-3">
-            <%-partial('../Admin/MenuDashboard')%>
+            <%- partial('../Admin/MenuDashboard') %>
         </div>
         <div class="col-sm-9">
 
-            <%-body -%>
+            <%- body -%>
         </div>
     </div>
 </div>
 <br>
 
-<%-partial('../ThanhPhanWeb/Footer')%>
+<%- partial('../ThanhPhanWeb/Footer') %>
 
 
 <script>
+
+    $('.loadingDiv')
+    .hide()
+    // .ajaxStart(function () {
+    //     // $(this).show();
+    //     timer = setTimeout(function () {
+    //         $(this).show();
+    //     }, 3500);
+    // })
+    // .ajaxStop(function () {
+    //     // $(this).hide();
+    //     clearTimeout(timer);
+    //     $(this).hide();
+    // });
 
     //code button top;
     if ($('#back-to-top').length) {
@@ -150,7 +190,6 @@
     /*$("document").ready(function(){
         FormartGia();
     });*/
-
 
 
     toastr.options = {

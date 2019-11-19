@@ -13,22 +13,36 @@ module.exports = {
         var paramSP = {
             TableName: "SanPham",
             ProjectionExpression:"#yr, Anh.Avatar, Anh.AvtDetail1",
+            FilterExpression:"TrangThaiXoa =:n and TrangThaiBan =:m",
             ExpressionAttributeNames:{
                 "#yr":"ID_SanPham",
+
+            },
+            ExpressionAttributeValues:{
+                ":n": false,
+                ":m": true
             }
         };
         var paramDM = {
             TableName: "DanhMuc",
             ProjectionExpression:"#yr, TenDanhMuc",
+            FilterExpression:"TrangThaiXoa =:n",
             ExpressionAttributeNames:{
                 "#yr":"ID_DanhMuc",
+            },
+            ExpressionAttributeValues:{
+                ":n": false
             }
         };
         var paramTH = {
             TableName: "ThuongHieu",
             ProjectionExpression:"#yr, TenThuongHieu",
+            FilterExpression:"TrangThaiXoa =:n",
             ExpressionAttributeNames:{
                 "#yr":"ID_ThuongHieu",
+            },
+            ExpressionAttributeValues:{
+                ":n": false
             }
         };
 
@@ -68,15 +82,6 @@ module.exports = {
         });
 
     },
-    LaySanPham:function(req, res, next) {
-      /*  var a = [];
-        for(i =0;i<500;i++){
-            var b = ids.generate();
-            a.push(b);
-        }
-       res.json(a);*/
-        var soItemMoiTrang = parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage.txt")));
-        res.json(soItemMoiTrang);
-    },
+
 };
 
