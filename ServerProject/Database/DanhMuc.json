@@ -1,17 +1,26 @@
 [
   {
     "ID_DanhMuc": "af93fd4fa1",
-    "TenDanhMuc":"Giày",
+    "TenDanhMuc": {
+      "Ten": "Giày",
+      "TenKhongVietHoa": "giay"
+    },
     "TrangThaiXoa": false
   },
   {
     "ID_DanhMuc": "c5ecdec908",
-    "TenDanhMuc":"Balo",
+    "TenDanhMuc": {
+      "Ten": "Ba lô",
+      "TenKhongVietHoa": "ba lo"
+    },
     "TrangThaiXoa": false
   },
   {
     "ID_DanhMuc": "56acc091e7",
-    "TenDanhMuc":"Áo",
+    "TenDanhMuc": {
+      "Ten": "Áo",
+      "TenKhongVietHoa": "ao"
+    },
     "TrangThaiXoa": false
   }
 ]

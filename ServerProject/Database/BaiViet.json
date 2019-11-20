@@ -1,22 +1,18 @@
 [
   {
     "ID_BaiViet": "a73dc0c6dc",
-    "TieuDe": "Giới Thiệu Về HQKStore",
-    "NoiDung": "abc xyz"
+    "TenTieuDe": {
+      "Ten": "Giới Thiệu Về HQKStore",
+      "TenKhongVietHoa": "gioi thieu ve hqkstore"
+    },
+    "NoiDung": "abc xyz fsdfds"
   },
   {
     "ID_BaiViet": "4672d93a6f",
-    "TieuDe": "Giới Thiệu Về",
-    "NoiDung": "abc xyz"
-  },
-  {
-    "ID_BaiViet": "fe72543ef5",
-    "TieuDe": "Giới Thiệu Về",
-    "NoiDung": "abc xyz"
-  },
-  {
-    "ID_BaiViet": "f45535e00b",
-    "TieuDe": "Giới Thiệu Về",
-    "NoiDung": "abc xyz"
+    "TenTieuDe": {
+      "Ten": "Giới Thiệu Về",
+      "TenKhongVietHoa": "gioi thieu ve"
+    },
+    "NoiDung": "abc xyz fdsf"
   }
 ]

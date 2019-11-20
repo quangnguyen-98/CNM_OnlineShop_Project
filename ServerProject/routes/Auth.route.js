@@ -11,8 +11,8 @@ var AuthController = require('../controllers/Auth.controller');
 var AuthValidate = require('../Validator/Auth.validate');
 
 //Xác thực login user (Web/api/Auth/)
-router.get('/:username/:password',AuthValidate.ValidateLogin, AuthController.KiemTraDangNhap);
+router.get('/:username/:password',AuthValidate.ValidateLogin, AuthController.KiemTraDangNhapAdmin);
 
-router.get('/:token', AuthController.KiemTraToken,AuthController.TraKetQuaXacThuc);
+router.get('/token', AuthController.KiemTraTokenAdmin,AuthController.TraKetQuaXacThuc);
 
 module.exports = router;

@@ -1,17 +1,26 @@
 [
   {
     "ID_ThuongHieu": "7baffa8932",
-    "TenThuongHieu": "Vans",
+    "TenThuongHieu": {
+      "Ten": "Vans",
+      "TenKhongVietHoa": "vans"
+    },
     "TrangThaiXoa": "False"
   },
   {
     "ID_ThuongHieu": "a386aeaab6",
-    "TenThuongHieu": "Converse",
+    "TenThuongHieu": {
+      "Ten": "Converse",
+      "TenKhongVietHoa": "converse"
+    },
     "TrangThaiXoa": "False"
   },
   {
     "ID_ThuongHieu": "6ba17421a2",
-    "TenThuongHieu": "Paladium",
+    "TenThuongHieu": {
+      "Ten": "Paladium",
+      "TenKhongVietHoa": "paladium"
+    },
     "TrangThaiXoa": "False"
   }
 ]

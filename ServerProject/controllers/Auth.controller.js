@@ -7,22 +7,23 @@ const {validationResult} = require('express-validator');
 var idTK;
 var tokenTK;
 module.exports = {
-    KiemTraDangNhap: function (req, res, next) {
+    KiemTraDangNhapAdmin: function (req, res, next) {
 
         //VaLidate data
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(422).json({
+                res.status(422).json({
                 status: "fail",
-                message: "Thông tin đầu vào không hợp lệ"
+                message: "Thông tin đầu vào không hợp lệ !"
             });
+            return;
         }
         //Kiểm tra tk
         var username = req.params.username;
         var password = req.params.password;
         var paramTK = {
             TableName: "NguoiDung",
-            ProjectionExpression: "#yr, TaiKhoan.ID_TaiKhoan, TaiKhoan.MatKhau",
+            ProjectionExpression: "#yr, TaiKhoan.ID_TaiKhoan, TaiKhoan.MatKhau, VaiTro",
             FilterExpression: "TaiKhoan.ID_TaiKhoan = :n and TaiKhoan.MatKhau = :m",
             ExpressionAttributeNames: {
                 "#yr": "ID_NguoiDung",
@@ -40,14 +41,19 @@ module.exports = {
                     status: "fail",
                     message: "Lỗi server"
                 });
+                return;
             } else {
-
-                if (data.Count == 1) {
+                console.log(data.Items[0].VaiTro);
+                console.log("fdsfdsfdsfdsfdsfds");
+                var vaitro = data.Items[0].VaiTro.toString();
+                if (data.Count == 1 && vaitro == "AD") {
                     var check = req.query.check;
-                    var SecretKey = fs.readFileSync(path.resolve(__dirname, "../Config/SecretKey.txt")).toString();
+                  /*  var vaitro = req.query.vaitro;*/
+                    var SecretKey = fs.readFileSync(path.resolve(__dirname, "../Config/SecretKeyAdmin.txt")).toString();
                     if (check == "yes") {
                         var payload = {
-                            userId: data.Items[0].ID_NguoiDung
+                            userId: data.Items[0].ID_NguoiDung,
+                            vaiTro:vaitro
                         };
                         var token = jwt.sign({payload}, SecretKey);
                         res.cookie('token', token.toString());
@@ -64,7 +70,8 @@ module.exports = {
                     }else {
                         var ThoiGianLogin = parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/ThoiGianLogIn.txt"))) ;
                         var payload = {
-                            userId: data.Items[0].ID_NguoiDung
+                            userId: data.Items[0].ID_NguoiDung,
+                            vaiTro:vaitro
                         };
                         var token = jwt.sign({payload}, SecretKey, { expiresIn: 60*ThoiGianLogin });
                         res.cookie('token', token.toString());
@@ -83,47 +90,29 @@ module.exports = {
                 } else {
                     res.status(400).json({
                         status: "fail",
-                        message: "Sai tài khoản hoặc mật khẩu!",
+                        message: "Sai tài khoản hoặc mật khẩu !",
                     });
+                    return;
                 }
             }
         });
     },
-    KiemTraToken: function (req, res, next) {
+    KiemTraTokenAdmin: function (req, res, next) {
         try {
-            var SecretKey = fs.readFileSync(path.resolve(__dirname, "../Config/SecretKey.txt")).toString();
-            var token = req.params.token;
-            jwt.verify(token, SecretKey, function (err, payload) {
-                if (payload) {
-                    req.user = payload;
-                    next();
-                } else {
-                    res.status(400).json({
-                        status: "fail",
-                        message: 'Token không hợp lệ!'
-                    });
-                }
-            });
-        } catch (err) {
-            res.status(400).json({
-                status: "fail",
-                message: 'Lỗi:' + err
-            });
-        }
-    },
-    KiemTraTokenAPI: function (req, res, next) {
-        try {
-            var SecretKey = fs.readFileSync(path.resolve(__dirname, "../Config/SecretKey.txt")).toString();
+            var SecretKey = fs.readFileSync(path.resolve(__dirname, "../Config/SecretKeyAdmin.txt")).toString();
             var token = req.query.token;
             jwt.verify(token, SecretKey, function (err, payload) {
                 if (payload) {
                     req.user = payload;
-                    next();
+                    if(payload.payload.vaiTro == "AD"){
+                        next();
+                    }
                 } else {
                     res.status(400).json({
                         status: "fail",
                         message: 'Token không hợp lệ'
                     });
+                    return;
                 }
             });
         } catch (err) {
@@ -131,6 +120,7 @@ module.exports = {
                 status: "fail",
                 message: 'Lỗi:' + err
             });
+            return;
         }
     },
     KiemTraRoute: function (req, res, next) {
@@ -141,6 +131,7 @@ module.exports = {
             status: "fail",
             message: 'Xác thực không thành công !'
         });
+        return;
     },
     TraKetQuaXacThuc: function (req, res, next) {
         if (req.user) {
@@ -148,10 +139,14 @@ module.exports = {
                 status: "ok",
                 message: 'Xác thực thành công !'
             });
+            return;
+        }else {
+            res.status(400).json({
+                status: "fail",
+                message: 'Xác thực không thành công !'
+            });
+            return;
         }
-        res.status(400).json({
-            status: "fail",
-            message: 'Xác thực không thành công !'
-        });
+
     }
 }

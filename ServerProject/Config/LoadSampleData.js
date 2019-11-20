@@ -93,26 +93,26 @@ console.log("Importing movies into DynamoDB. Please wait.");
 // });
 
 // 4 Load Bảng Danh Mục
-var allDanhMuc = JSON.parse(fs.readFileSync('../Database/DanhMuc.json', 'utf8'));
-allDanhMuc.forEach(function(danhMuc)
-{
-    var params = {
-        TableName: "DanhMuc",
-        Item: {
-            "ID_DanhMuc":  danhMuc.ID_DanhMuc,
-            "TenDanhMuc": danhMuc.TenDanhMuc,
-            "TrangThaiXoa":danhMuc.TrangThaiXoa
-        }
-    };
-
-    docClient.put(params, function(err, data) {
-        if (err) {
-            console.error("Unable to add DanhMuc:", danhMuc, ". Error JSON:", JSON.stringify(err, null, 2));
-        } else {
-            console.log("PutItem DanhMuc succeeded:", danhMuc);
-        }
-    });
-});
+// var allDanhMuc = JSON.parse(fs.readFileSync('../Database/DanhMuc.json', 'utf8'));
+// allDanhMuc.forEach(function(danhMuc)
+// {
+//     var params = {
+//         TableName: "DanhMuc",
+//         Item: {
+//             "ID_DanhMuc":  danhMuc.ID_DanhMuc,
+//             "TenDanhMuc": danhMuc.TenDanhMuc,
+//             "TrangThaiXoa":danhMuc.TrangThaiXoa
+//         }
+//     };
+//
+//     docClient.put(params, function(err, data) {
+//         if (err) {
+//             console.error("Unable to add DanhMuc:", danhMuc, ". Error JSON:", JSON.stringify(err, null, 2));
+//         } else {
+//             console.log("PutItem DanhMuc succeeded:", danhMuc);
+//         }
+//     });
+// });
 
 // // 5 Load Bảng Thương Hiệu
 // var allThuongHieu = JSON.parse(fs.readFileSync('../Database/ThuongHieu.json', 'utf8'));
@@ -136,74 +136,75 @@ allDanhMuc.forEach(function(danhMuc)
 //     });
 // });
 //
-// // 6 Load Bảng Carousel
-// var allCarousel = JSON.parse(fs.readFileSync('../Database/Carousel.json', 'utf8'));
-// allCarousel.forEach(function(carousel)
-// {
-//     var params = {
-//         TableName: "Carousel",
-//         Item: {
-//             "ID_Carousel":  carousel.ID_Carousel,
-//             "LinkAnh": carousel.LinkAnh,
-//             "LinkBaiViet":carousel.LinkBaiViet
-//         }
-//     };
-//
-//     docClient.put(params, function(err, data) {
-//         if (err) {
-//             console.error("Unable to add Carousel:", carousel, ". Error JSON:", JSON.stringify(err, null, 2));
-//         } else {
-//             console.log("PutItem Carousel succeeded:", carousel);
-//         }
-//     });
-// });
-//
-// // 7 Load Bảng BaiViet
-// var allBaiViet = JSON.parse(fs.readFileSync('../Database/BaiViet.json', 'utf8'));
-// allBaiViet.forEach(function(baiviet)
-// {
-//     var params = {
-//         TableName: "BaiViet",
-//         Item: {
-//             "ID_BaiViet":  baiviet.ID_BaiViet,
-//             "TieuDe": baiviet.TieuDe,
-//             "NoiDung":baiviet.NoiDung
-//         }
-//     };
-//
-//     docClient.put(params, function(err, data) {
-//         if (err) {
-//             console.error("Unable to add BaiViet:", baiviet, ". Error JSON:", JSON.stringify(err, null, 2));
-//         } else {
-//             console.log("PutItem BaiViet succeeded:", baiviet);
-//         }
-//     });
-// });
-
-
-
-// 8 Load Bảng Footer
-var allFooter = JSON.parse(fs.readFileSync('../Database/Footer.json', 'utf8'));
-allFooter.forEach(function(footer)
+// 6 Load Bảng Carousel
+var allCarousel = JSON.parse(fs.readFileSync('../Database/Carousel.json', 'utf8'));
+allCarousel.forEach(function(carousel)
 {
     var params = {
-        TableName: "Footer",
+        TableName: "Carousel",
         Item: {
-            "ID_Footer":footer.ID_Footer,
-            "LoaiFooter":footer.LoaiFooter,
-            "TenLienKet":footer.TenLienKet,
-            "Link":footer.Link
+            "ID_Carousel":  carousel.ID_Carousel,
+            "TenCarousel": carousel.TenCarousel,
+            "LinkAnh": carousel.LinkAnh,
+            "LinkBaiViet":carousel.LinkBaiViet
         }
     };
 
     docClient.put(params, function(err, data) {
         if (err) {
-            console.error("Unable to add Footer:", footer, ". Error JSON:", JSON.stringify(err, null, 2));
+            console.error("Unable to add Carousel:", carousel, ". Error JSON:", JSON.stringify(err, null, 2));
         } else {
-            console.log("PutItem Footer succeeded:", footer);
+            console.log("PutItem Carousel succeeded:", carousel);
         }
     });
 });
+
+// 7 Load Bảng BaiViet
+var allBaiViet = JSON.parse(fs.readFileSync('../Database/BaiViet.json', 'utf8'));
+allBaiViet.forEach(function(baiviet)
+{
+    var params = {
+        TableName: "BaiViet",
+        Item: {
+            "ID_BaiViet":  baiviet.ID_BaiViet,
+            "TenTieuDe": baiviet.TenTieuDe,
+            "NoiDung":baiviet.NoiDung
+        }
+    };
+
+    docClient.put(params, function(err, data) {
+        if (err) {
+            console.error("Unable to add BaiViet:", baiviet, ". Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            console.log("PutItem BaiViet succeeded:", baiviet);
+        }
+    });
+});
+
+
+
+// 8 Load Bảng Footer
+// var allFooter = JSON.parse(fs.readFileSync('../Database/Footer.json', 'utf8'));
+// allFooter.forEach(function(footer)
+// {
+//     var params = {
+//         TableName: "Footer",
+//         Item: {
+//             "ID_Footer":footer.ID_Footer,
+//             "LoaiFooter":footer.LoaiFooter,
+//             "TenLienKet":footer.TenLienKet,
+//             "Link":footer.Link
+//         }
+//     };
+//
+//     docClient.put(params, function(err, data) {
+//         if (err) {
+//             console.error("Unable to add Footer:", footer, ". Error JSON:", JSON.stringify(err, null, 2));
+//         } else {
+//             console.log("PutItem Footer succeeded:", footer);
+//         }
+//     });
+// });
 
 
 

@@ -67,7 +67,10 @@ module.exports = {
             TableName: "DanhMuc",
             Item: {
                 "ID_DanhMuc": idDM,
-                "TenDanhMuc": req.params.tendanhmuc,
+                "TenDanhMuc": {
+                    "Ten":tenDM,
+                    "TenKhongVietHoa": CustomFunction.BoDau(tenDM.toLowerCase())
+                },
                 "TrangThaiXoa": false
             }
         };
@@ -94,14 +97,16 @@ module.exports = {
     SuaDanhMuc: function (req, res, next) {
         var idDM = req.params.iddanhmuc;
         var tenDM = req.params.tendanhmuc;
+        var tenKhongVietHoa = CustomFunction.BoDau(tenDM.toLowerCase());
         var param = {
             TableName:'DanhMuc',
             Key:{
                 "ID_DanhMuc": idDM
             },
-            UpdateExpression: "set TenDanhMuc = :n",
+            UpdateExpression: "set TenDanhMuc.Ten = :n, TenDanhMuc.TenKhongVietHoa = :m",
             ExpressionAttributeValues:{
-                ":n": tenDM
+                ":n": tenDM,
+                "m":tenKhongVietHoa
             },
             ReturnValues:"UPDATED_NEW"
         };

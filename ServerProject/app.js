@@ -26,11 +26,12 @@ var SanPhamRouter = require('./routes/SanPham.route');
 var DanhMucRouter = require('./routes/DanhMuc.route');
 var CarouselRouter = require('./routes/Carousel.route');
 var FooterlRouter = require('./routes/Footer.route');
+var ThuongHieuRouter = require('./routes/ThuongHieu.route');
 
 
 // view engine setup (web service không dùng view)
-/*app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');*/
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 //body parser setup
@@ -56,6 +57,7 @@ app.use('/api/Auth', AuthRouter);
 app.use('/api/NguoiDungs', NguoiDungRouter);
 app.use('/api/Sanphams', SanPhamRouter);
 app.use('/api/DanhMucs', DanhMucRouter);
+app.use('/api/ThuongHieus', ThuongHieuRouter);
 app.use('/api/Carousels',CarouselRouter);
 app.use('/api/Footers',FooterlRouter);
 

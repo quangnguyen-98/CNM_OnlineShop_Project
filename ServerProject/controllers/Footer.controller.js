@@ -18,7 +18,7 @@ module.exports = {
             }
             else{
                 console.log("Thành công!");
-                res.json(data);
+                res.status(200).json(data);
             }
         });
     },
@@ -42,7 +42,7 @@ module.exports = {
             }
             else{
                 console.log("Thành công!");
-                res.json(data);
+                res.status(200).json(data);
             }
         });
     },
@@ -66,7 +66,7 @@ module.exports = {
             }
             else{
                 console.log("Thành công!");
-                res.json(data);
+                res.status(200).json(data);
             }
         });
     },
@@ -90,7 +90,7 @@ module.exports = {
             }
             else{
                 console.log("Thành công!");
-                res.json(data);
+                res.status(200).json(data);
             }
         });
     },
@@ -114,7 +114,7 @@ module.exports = {
             }
             else{
                 console.log("Thành công!");
-                res.json(data);
+                res.status(200).json(data);
             }
         });
     }

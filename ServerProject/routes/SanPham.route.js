@@ -6,7 +6,7 @@ var SanPhamController = require('../controllers/SanPham.controller');
 var AuthController = require('../controllers/Auth.controller')
 //Lấy tất cả sản phẩm  (Web/api/SanPhams/)
 
-router.get('/',AuthController.KiemTraTokenAPI, SanPhamController.LayTatCaSanPham);
+router.get('/',AuthController.KiemTraTokenAdmin, SanPhamController.LayTatCaSanPham);
 
 //Muốn thêm route cấp 1 thì phải thêm trước route này, không nó sẽ bị lộn tham số
 router.get('/:id', SanPhamController.LaySanPhamTheoID);
