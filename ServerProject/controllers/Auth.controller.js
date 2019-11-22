@@ -43,17 +43,14 @@ module.exports = {
                 });
                 return;
             } else {
-                console.log(data.Items[0].VaiTro);
-                console.log("fdsfdsfdsfdsfdsfds");
-                var vaitro = data.Items[0].VaiTro.toString();
-                if (data.Count == 1 && vaitro == "AD") {
+
+                if (data.Count == 1) {
                     var check = req.query.check;
                     /*  var vaitro = req.query.vaitro;*/
                     var SecretKey = fs.readFileSync(path.resolve(__dirname, "../Config/SecretKeyAdmin.txt")).toString();
                     if (check == "yes") {
                         var payload = {
-                            userId: data.Items[0].ID_NguoiDung,
-                            vaiTro: vaitro
+                            userId: data.Items[0].ID_NguoiDung
                         };
                         var token = jwt.sign({payload}, SecretKey);
                         res.cookie('token', token.toString());
@@ -70,8 +67,7 @@ module.exports = {
                     } else {
                         var ThoiGianLogin = parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/ThoiGianLogin.txt")));
                         var payload = {
-                            userId: data.Items[0].ID_NguoiDung,
-                            vaiTro: vaitro
+                            userId: data.Items[0].ID_NguoiDung
                         };
                         var token = jwt.sign({payload}, SecretKey, {expiresIn: 60 * ThoiGianLogin});
                         res.cookie('token', token.toString());
@@ -102,11 +98,9 @@ module.exports = {
             var SecretKey = fs.readFileSync(path.resolve(__dirname, "../Config/SecretKeyAdmin.txt")).toString();
             var token = req.query.token;
             jwt.verify(token, SecretKey, function (err, payload) {
+                req.user = payload;
                 if (payload) {
-                    req.user = payload;
-                    if (payload.payload.vaiTro == "AD") {
                         next();
-                    }
                 } else {
                     res.status(400).json({
                         status: "fail",
@@ -122,16 +116,6 @@ module.exports = {
             });
             return;
         }
-    },
-    KiemTraRoute: function (req, res, next) {
-        if (req.user) {
-            return next();
-        }
-        res.status(400).send({
-            status: "fail",
-            message: 'Xác thực không thành công !'
-        });
-        return;
     },
     TraKetQuaXacThuc: function (req, res, next) {
         if (req.user) {

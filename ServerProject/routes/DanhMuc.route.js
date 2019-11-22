@@ -6,8 +6,16 @@ var DanhMucController = require('../controllers/DanhMuc.controller');
 var AuthController = require('../controllers/Auth.controller');
 var DanhMucValidate = require('../Validator/DanhMuc.validate');
 
-//Lấy tất cả danhmuc  (Web/api/DanhMuc/)
-router.get('/', AuthController.KiemTraTokenAdmin, DanhMucController.LayTatCaDanhMuc);
+//Route (Web/api/DanhMucs/)
+
+//Lấy tất cả danh mục
+router.get('/', DanhMucController.LayTatCaDanhMuc);
+
+//Lấy danh mục theo số trang
+router.get('/:pagenumber',DanhMucController.LayDanhMucTheoSoTrang);
+
+//Lấy danh mục theo tên
+router.get('/timtheoten/:tendanhmuc',DanhMucController.LayDanhMucTheoTen);
 
 //Tạo danh mục
 router.post('/:tendanhmuc', AuthController.KiemTraTokenAdmin, DanhMucValidate.KiemTraTrungTen, DanhMucController.ThemDanhMuc);

@@ -2,29 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29931dd8-b35f-4161-9625-b148465567bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ClientProject/bin/a.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ClientProject/bin/dsa.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ClientProject/bin/ggg.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Validator/DanhMuc.validate.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Validator/ThuongHieu.validate.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/bin/a.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/Config/ServerDomain.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/Config/ServerDomain.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/bin/ggg.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/bin/ggg.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/controller/Admin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/controller/Admin.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/controller/Auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/controller/Auth.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/controller/Login.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/controller/Login.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/routes/Admin.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/routes/Admin.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/MenuDashboard.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/MenuDashboard.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyDanhMuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyDanhMuc.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyThuongHieu.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyThuongHieu.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutAdmin.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutAdmin.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutKhachHang.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutKhachHang.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/danhmuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/danhmuc.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/error.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/error.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/index.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/Auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Auth.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/DanhMuc.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/DanhMuc.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/SanPham.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SanPham.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/Thuonghieu.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Thuonghieu.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/lodash/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/lodash/LICENSE" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/lodash/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/lodash/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/lodash/_DataView.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/lodash/_DataView.js" afterDir="false" />
@@ -1075,6 +1070,7 @@
       <change beforePath="$PROJECT_DIR$/node_modules/lodash/zipWith.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/lodash/zipWith.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/DanhMuc.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/DanhMuc.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/ThuongHieu.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/ThuongHieu.route.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -1203,7 +1199,7 @@
       <workItem from="1574165127484" duration="13406000" />
       <workItem from="1574256564668" duration="19340000" />
       <workItem from="1574323227234" duration="16112000" />
-      <workItem from="1574400530322" duration="2937000" />
+      <workItem from="1574400530322" duration="20360000" />
     </task>
     <servers />
   </component>

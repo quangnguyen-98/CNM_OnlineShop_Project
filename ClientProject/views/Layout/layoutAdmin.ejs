@@ -69,6 +69,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+       /*     position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;*/
         }
         .listgroup-scroll{
             max-height: 35rem;
@@ -115,12 +119,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <a href="/">
-                <button class="btn btn-outline-primary col-12 col-sm-12" id="btnTimKiem" type="submit"> Về trang người
+                <button class="btn btn-outline-primary col-12 col-sm-12"  type="submit"> Về trang người
                     dùng
                 </button>
             </a> &nbsp;
             <a href="/admin/dangxuat">
-                <button class="btn btn-outline-primary col-12 col-sm-12" id="btnTimKiem" type="submit"> Đăng xuất
+                <button class="btn btn-outline-primary col-12 col-sm-12"  type="submit"> Đăng xuất
                 </button>
             </a>
         </ul>
@@ -150,21 +154,21 @@
 
     $('.loadingDiv')
     .hide()
-    // .ajaxStart(function () {
-    //     // $(this).show();
-    //     timer = setTimeout(function () {
-    //         $(this).show();
-    //     }, 3500);
-    // })
-    // .ajaxStop(function () {
-    //     // $(this).hide();
-    //     clearTimeout(timer);
-    //     $(this).hide();
-    // });
+    .ajaxStart(function () {
+        // $(this).show();
+        timer = setTimeout(function () {
+            $(this).show();
+        }, 3500);
+    })
+    .ajaxStop(function () {
+        // $(this).hide();
+        clearTimeout(timer);
+        $(this).hide();
+    });
 
     //code button top;
     if ($('#back-to-top').length) {
-        var scrollTrigger = 100, // px
+        var scrollTrigger = 400, // px
             backToTop = function () {
                 var scrollTop = $(window).scrollTop();
                 if (scrollTop > scrollTrigger) {

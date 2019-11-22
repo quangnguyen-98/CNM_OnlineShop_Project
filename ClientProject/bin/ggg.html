@@ -14,57 +14,19 @@
 </head>
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!--<div class="test" font="font1">Thành phần div 1</div>-->
-<!--<div class="test" font="font2">Thànsadh phần div 2</div>-->
-<!--<div class="test" font="font3">Thành ádphần div 3</div>-->
-<!--<button>Button</button>-->
 
 <!--<div class="kq"></div>-->
 
-
-
-<ul class="level-1">
-    <li class="item-i">I</li>
-    <li class="item-ii">II
-        <ul class="level-2">
-            <li class="item-a">A</li>
-            <li class="item-b">B
-                <ul class="level-3">
-                    <li class="item-1">1</li>
-                    <li class="item-2">2</li>
-                    <li class="item-3">3</li>
-                </ul>
-            </li>
-            <li class="item-c">Cfdsfsd
-            <a></a>
-            </li>
-        </ul>
-        <hr>
-        <a class="dd"></a>
-    </li>
-    <li class="item-iii">III</li>
-
-
-    <div class="kq"></div>
+<ul>
+    <li>list item 1</li>
+    <li>list item 2</li>
+    <li class="third-item">list item 3</li>
+    <li>list item 4</li>
+    <li>list item 5</li>
 </ul>
+
 <script>
-    /*$(function(){
-        $(".test").click(function(){
-            $(this).on('thamso', function(event, param1, param2) {
-                alert(param1 + "\n" + param2 + $(this).val());
-            });
-            $(this).trigger('thamso', ['Custom', 'Event',$(this).text()]);
-        });
-    });*/
-    // $('body').on('click', '.test', function() {
-    //     $(".kq").append("<p>"+$(this).text()+"</p>");
-    //     $(".kq").append("<p>"+$(this).attr("font")+"</p>");
-    //
-    // });
-    $( "li.item-a" ).parent((".item-c")).css( "background-color", "red" );
-/*    $( "li.item-a" ).parent((find(".item-c"))).append("<a>con cac</a>");*/
- /*   $( "li.item-a" ).parent((find(".item-c")));*/
-    $(".kq").append($( "li.item-a" ).parent().find(".item-c").text());
+    $( "li.third-item" ).next().css( "background-color", "red" );
 </script>
 </body>
 

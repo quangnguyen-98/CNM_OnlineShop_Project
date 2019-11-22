@@ -2,8 +2,9 @@ var AWS = require("aws-sdk");
 var docClient = new AWS.DynamoDB.DocumentClient();
 var CustomFunction = require('../Config/CustomFunction');
 var ids = require('short-id');
+const itemMoiPage = 3;
 module.exports = {
-    LayTatCaThuongHieu: function (req, res, next) {
+  /*  LayTatCaThuongHieu: function (req, res, next) {
         var param = {
             TableName: "ThuongHieu",
             ProjectionExpression:"#yr, TenThuongHieu, TrangThaiXoa",
@@ -23,13 +24,110 @@ module.exports = {
             }
             else{
                 console.log("Thành công!");
-                /* res.end(JSON.stringify(data.Items.slice(0,2)));*/
+                /!* res.end(JSON.stringify(data.Items.slice(0,2)));*!/
                 res.json(data);
             }
         });
+    },*/
+    LayTatCaThuongHieu: function (req, res, next) {
+        var n = parseInt(req.params.pagenumber) ;
+        var soItemMoiPage= itemMoiPage;
+        var begin =(n-1)*soItemMoiPage;
+        var end = (n-1)*soItemMoiPage +soItemMoiPage;
+        var param = {
+            TableName: "ThuongHieu",
+            ProjectionExpression:"#yr, TenThuongHieu, TrangThaiXoa",
+            FilterExpression:"TrangThaiXoa =:n",
+            ExpressionAttributeNames:{
+                "#yr":"ID_ThuongHieu",
+            },
+            ExpressionAttributeValues:{
+                ":n":false
+            }
+        };
+        docClient.scan(param,function (err,data) {
+            if (err) {
+                console.error(err);
+                res.end();
+            }
+            else{
+                console.log("Thành công!");
+                var soTrang;
+                var count = data.Count/soItemMoiPage;
+                res.json(
+                    {
+                        ThuongHieu: data.Items,
+                        SoTrang: Math.ceil(count),
+                        TongItem: data.Count,
+                        ItemMoiPage:soItemMoiPage
+                    }
+                );
+            }
+        });
+    },
+    LayThuongHieuTheoSoTrang:function(req,res,next){
+        var n = parseInt(req.params.pagenumber) ;
+        var soItemMoiPage= itemMoiPage;
+        var begin =(n-1)*soItemMoiPage;
+        var end = (n-1)*soItemMoiPage +soItemMoiPage;
+        var param = {
+            TableName: "ThuongHieu",
+            ProjectionExpression:"#yr, TenThuongHieu, TrangThaiXoa",
+            FilterExpression:"TrangThaiXoa =:n",
+            ExpressionAttributeNames:{
+                "#yr":"ID_ThuongHieu",
+            },
+            ExpressionAttributeValues:{
+                ":n":false
+            }
+        };
+        docClient.scan(param,function (err,data) {
+            if (err) {
+                console.error(err);
+                res.end();
+            }
+            else{
+                console.log("Thành công!");
+                var soTrang;
+                var count = data.Count/soItemMoiPage;
+                res.json(
+                    {
+                        ThuongHieu: data.Items.slice(begin,end),
+                        SoTrang: Math.ceil(count),
+                        TongItem: data.Count,
+                        ItemMoiPage:soItemMoiPage
+                    }
+                );
+            }
+        });
+    },
+    LayThuongHieuTheoTen:function(req,res,next){
+        var tenThuongHieu = CustomFunction.BoDau(req.params.tenthuonghieu.toString().toLowerCase())  ;
+        var param = {
+            TableName: "ThuongHieu",
+            ProjectionExpression:"#yr, TenThuongHieu, TrangThaiXoa",
+            FilterExpression:"TrangThaiXoa =:n and contains(TenThuongHieu.TenKhongVietHoa, :m)",
+            ExpressionAttributeNames:{
+                "#yr":"ID_ThuongHieu",
+            },
+            ExpressionAttributeValues:{
+                ":n":false,
+                ":m":tenThuongHieu
+            }
+        };
+        docClient.scan(param,function (err,data) {
+            if (err) {
+                console.error(err);
+                res.json("a");
+            }
+            else{
+                console.log("Thành công!");
+                res.json(data);
+            }
+        });
+
     },
     ThemThuongHieu: function (req, res, next) {
-
         var tenTH = req.params.tenthuonghieu;
         var idTH = ids.generate();
         var paramDM = {
@@ -58,7 +156,8 @@ module.exports = {
                 return res.json({
                     status:"ok",
                     message:"Tạo thương hiệu thành công !",
-                    idTH:idTH
+                    idTH:idTH,
+                    tenTH:tenTH
                 });
             }
         });
@@ -79,7 +178,6 @@ module.exports = {
             },
             ReturnValues:"UPDATED_NEW"
         };
-
 
         docClient.update(param,function (err,data) {
             if (err) {
@@ -114,8 +212,6 @@ module.exports = {
             },
             ReturnValues:"UPDATED_NEW"
         };
-
-
         docClient.update(param,function (err,data) {
             if (err) {
                 console.error(err);

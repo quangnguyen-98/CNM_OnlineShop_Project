@@ -8,25 +8,22 @@
             </ol>
         </nav>
     </div>
-
     <div class="row-fluid">
         <div class="co ml-auto ">
             <button type="button" class="btn btn-primary d-inline " data-toggle="modal" data-target="#modalThem">
                 Thêm danh mục
             </button>
-
             <form class="form-inline ml-auto d-inline float-right ">
-                <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên danh mục"
-                       aria-label="Search">
+                <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên danh mục" aria-label="Search">
                 <button id="btnTimKiem" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
             </form>
         </div>
-
     </div>
 
-
     <br><br>
+
     <table class="table table-hover">
+        <img src="https://bb4298.s3-us-west-1.amazonaws.com/index.svg" class="loadingDiv" alt="loadingIcon">
         <thead>
         <tr>
             <th scope="col">ID</th>
@@ -35,29 +32,30 @@
         </tr>
         </thead>
         <tbody id="tableDM">
-        <img src="https://bb4298.s3-us-west-1.amazonaws.com/index.svg" class="loadingDiv" alt="loadingIcon">
 
-        <!-- <tr>
-             <th scope="row">5fdsfs54w</th>
-             <td>Áo</td>
-             <td class=""><div class="btn btn-warning "> Sửa </div>  <div class="btn btn-danger"> Xóa </div></td>
-         </tr>
-         <tr>
-             <th scope="row">fsdfsd54</th>
-             <td>Giày</td>
-             <td class=""><div class="btn btn-warning "> Sửa </div>  <div class="btn btn-danger"> Xóa </div></td>
-         </tr>-->
+
+        <!--Danh mục được load vào đây-->
+
         </tbody>
     </table>
-    <div id="infor"></div>
+    <div id="info"></div>
+    <!--Pagination-->
     <nav aria-label="Page navigation example">
-        <ul class="pagination">
+        <ul class="pagination menu-phantrang">
             <li id="pagiTruoc" class="page-item "><a class="page-link" href="#">Trước</a></li>
-            <li id="" class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li id="" class="page-item"><a class="page-link " href="#">2</a></li>
+
+            <% for (i = 1;i <= soTrang;i++){ %>
+                <% if(i == 1){ %>
+                    <li id="<%= "subpagi" + i %>"  class="d-inline page-item active pagesubitem"><a class="page-link"
+                                                                                       href="#"> <%= i %></a>
+                    </li>
+                <% }else{ %>
+                    <li id="<%= "subpagi" + i %>" class="d-inline page-item pagesubitem"><a class="page-link "
+                                                                                href="#"> <%= i %></a></li>
+                <% } %>
+            <% } %>
+
             <li id="pagiSau" class="page-item"><a class="page-link" href="#">Sau</a></li>
-
-
         </ul>
     </nav>
 </div>
@@ -66,13 +64,11 @@
 <div class="modal fade" id="modalThem">
     <div class="modal-dialog modal-lg modal-lg modal-sm">
         <div class="modal-content">
-
             <!-- Modal Header -->
             <div class="modal-header">
                 <h4 class="modal-title"><i class="fas fa-store"></i> Thêm danh mục</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-
             <!-- Modal body -->
             <div class="modal-body">
                 <form class="was-validated">
@@ -81,10 +77,8 @@
                         <input type="text" class="form-control" id="TenDanhMuc" placeholder="Nhập tên danh mục"
                                name="uname" onkeydown="EnterThemDM()" required>
                     </div>
-
                 </form>
             </div>
-
             <!-- Modal footer -->
             <div class="modal-footer">
                 <label class="btn btn-success" onclick="ThemDanhMuc()">Xác nhận</label>
@@ -99,6 +93,7 @@
     function EnterThemDM() {
         if (event.key === 'Enter') {
             ThemDanhMuc();
+            return;
         }
     }
 </script>
@@ -126,16 +121,14 @@
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <label id="modalBtnSua<%= item.ID_DanhMuc %>" class="btn btn-success btnSuaMoi">Xác nhận</label>
+                        <label id="<%= item.ID_DanhMuc %>" class="btn btn-success btnSuaMoi">Xác nhận</label>
                         <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
                     </div>
-
                 </div>
             </div>
         </div>
     <% }) %>
 </div>
-
 </div>
 <!-- Danh sách Modal Xóa danh mục-->
 <div id="DanhSachModalXoa">
@@ -148,39 +141,34 @@
                         <h4 class="modal-title"><i class="fas fa-store"></i> Xóa danh mục</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-
                     <!-- Modal body -->
                     <div class="modal-body">
                         Bạn có thực sự muốn xóa danh mục này, thao tác này không thể hoàn tác ?
                     </div>
-
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <label id="modalBtnXoa<%= item.ID_DanhMuc %>" class="btn btn-success">Xác nhận</label>
+                        <label id="<%= item.ID_DanhMuc %>" class="btn btn-success btnXoaMoi">Xác nhận</label>
                         <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
                     </div>
-
                 </div>
             </div>
         </div>
     <% }) %>
 </div>
 
+<script >
 
-<script id="scriptDM">
     //Load danh sách danh mục
     LoadDanhMuc();
-
     function LoadDanhMuc() {
         $.ajax({
-            url: "<%= domain %>/DanhMucs?token=" + $.cookie("token"),
+            url: "<%= domain %>/DanhMucs/1?token=" + $.cookie("token"),
             method: "GET",
             error: function () {
-                $('#infor').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
             },
             success: function (data) {
-                $("#tableDM").append(data.message);
-                $.each(data.Items, function (i, item) {
+                $.each(data.DanhMuc, function (i, item) {
                     var html_to_append;
                     html_to_append +=
                         '<tr id="DMitem' + item.ID_DanhMuc + '">' +
@@ -189,12 +177,10 @@
                         '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_DanhMuc + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_DanhMuc + '"> Xóa </div><td>' +
                         '</tr>';
                     $("#tableDM").append(html_to_append);
-
                 });
             },
         });
     }
-
     //Thêm danh mục
     function ThemDanhMuc() {
         $.ajax({
@@ -205,14 +191,11 @@
             },
             success: function (data) {
                 if (data.status == "ok") {
+                    $("#tableDM").fadeOut();
+                    $("#tableDM").empty();
+                    LoadDanhMuc();
+                    $("#tableDM").fadeIn();
                     $('#modalThem').modal('toggle');
-                    var Html_DanhMucMoi =
-                        '<tr id="DMitem' + data.idDM + '">' +
-                        '<th scope="row">' + data.idDM + '</th>' +
-                        '<td>' + data.tenDM + '</td>' +
-                        '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + data.idDM + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + data.idDM + '"> Xóa </div><td>' +
-                        '</tr>';
-                    $("#tableDM").append(Html_DanhMucMoi);
                     var Html_Modal_SuaDM =
                         ' <div  class="modal fade modalSuaMoi" id="modalSua' + data.idDM + '">' +
                         '   <div class="modal-dialog modal-lg modal-lg modal-sm">' +
@@ -237,7 +220,6 @@
                         '  </div>' +
                         '  </div>';
                     $("#DanhSachModalSua").append(Html_Modal_SuaDM);
-
                     var Html_Modal_XoaDM =
                         '<div class="modal fade" id="modalXoa' + data.idDM + '">' +
                         ' <div class="modal-dialog modal-sm">' +
@@ -259,11 +241,16 @@
                         '     </div>';
                     $("#DanhSachModalXoa").append(Html_Modal_XoaDM);
                     toastr["success"](data.message);
+                    TongItem++;
+                    page=1;
+                    TaiLaiPagination();
                 } else {
                     toastr["error"](data.message);
                 }
             }
         });
+      /*  SoTrang ++;*/
+        return;
     }
 
     //Sự kiện nút sửa của những danh mục được add bằng ajax
@@ -277,11 +264,12 @@
             },
             success: function (data) {
                 if (data.status == "ok") {
-                    /* $('.modal').modal('toggle');*/
-                    $(this).parent().parent().parent().parent(".modal").append("<a>con cacj</a>");
                     $("#" + modal).modal('toggle');
+                    $("#tableDM").fadeOut();
                     $("#tableDM").empty();
                     LoadDanhMuc();
+                    $("#tableDM").fadeIn();
+                    TaiLaiPagination();
                     toastr["success"](data.message);
                 } else {
                     toastr["error"](data.message);
@@ -295,7 +283,7 @@
         var modal = $(this).parent().parent().parent().parent(".modal").attr("id");
         var IDmodal = $(this).attr("id");
         $.ajax({
-            url: "<%= domain %>/danhmucs/" +$(this).attr("id")+ "?token=" + $.cookie("token"),
+            url: "<%= domain %>/danhmucs/" + $(this).attr("id") + "?token=" + $.cookie("token"),
             method: "DELETE",
             error: function () {
                 $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
@@ -303,67 +291,183 @@
             success: function (data) {
                 if (data.status == "ok") {
                     $("#" + modal).modal('toggle');
-
-                    $("#DMitem"+IDmodal).remove();
-
+                    $("#tableDM").fadeOut();
+                    $("#tableDM").empty();
+                    LoadDanhMuc();
+                    $("#tableDM").fadeIn();
+                    TaiLaiPagination();
                     toastr["success"](data.message);
+                    TongItem--;
+                    page =1;
+                    TaiLaiPagination();
+
+
                 } else {
                     toastr["error"](data.message);
                 }
             }
         });
+       /* SoTrang --;*/
+        return;
     });
 
-    //Load danh sách modal button sửa danh mục
-    <% dataDM.forEach(function (item) { %>
-    $(document).ready(function () {
-        $("#modalBtnSua<%= item.ID_DanhMuc %>").click(function () {
+
+</script>
+<script>
+    //Khai báo biến
+    var TongItem = "<%=tongItem%>";
+    var SoItemMoiPage ="<%=itemMoiPage%>";
+    var page = 1;
+    var SoTrang = "<%=soTrang %>";
+
+    //Sự kiện trang trước
+    $('body').on('click', '#pagiTruoc', function () {
+        if (page == 1) {
+            $("#pagiTruoc").addClass("disabled");
+            return false;
+        } else {
+            $(".page-item").removeClass("active");
+            $("#subpagi" + (page - 1)).addClass("active");
             $.ajax({
-                url: "<%= domain %>/danhmucs/<%= item.ID_DanhMuc %>/" + $("#TenDanhMuc<%= item.ID_DanhMuc %>").val() + "?token=" + $.cookie("token"),
-                method: "PUT",
+                url: "<%= domain %>/DanhMucs/" + (page - 1) + "?token=" + $.cookie("token"),
+                method: "GET",
                 error: function () {
                     $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
                 },
                 success: function (data) {
-                    if (data.status == "ok") {
-                        $("#tableDM").empty();
-                        $('#modalSua<%= item.ID_DanhMuc %>').modal('toggle');
-                        LoadDanhMuc();
-                        toastr["success"](data.message);
-                    } else {
-                        toastr["error"](data.message);
-                    }
+                    $("#tableDM").empty();
+                    $.each(data.DanhMuc, function (i, item) {
+                        var html_to_append;
+                        html_to_append +=
+                            '<tr id="DMitem' + item.ID_DanhMuc + '">' +
+                            '<th scope="row">' + item.ID_DanhMuc + '</th>' +
+                            '<td>' + item.TenDanhMuc.Ten + '</td>' +
+                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_DanhMuc + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_DanhMuc + '"> Xóa </div><td>' +
+                            '</tr>';
+                        $("#tableDM").append(html_to_append);
+                    });
                 }
             });
-        });
+            page = page - 1;
+            $("#pagiSau").removeClass("disabled");
+            if (page == 1) {
+                $("#pagiTruoc").addClass("disabled");
+            }
+            return false;
+        }
     });
-    <% }) %>
-
-    //Load danh sách modal button xoá danh mục
-    <% dataDM.forEach(function (item) { %>
-    $(document).ready(function () {
-        $("#modalBtnXoa<%= item.ID_DanhMuc %>").click(function () {
+    //Sự kiện trang sau
+    $('body').on('click', '#pagiSau', function () {
+        if (page == SoTrang) {
+            $("#pagiSau").addClass("disabled");
+            return false;
+        } else {
+            $(".page-item").removeClass("active");
+            $("#subpagi" + (page + 1)).addClass("active");
+            $("#pagiTruoc").removeClass("disabled");
             $.ajax({
-                url: "<%= domain %>/danhmucs/<%= item.ID_DanhMuc %>" + "?token=" + $.cookie("token"),
-                method: "DELETE",
+                url: "<%= domain %>/DanhMucs/" + (page + 1) + "?token=" + $.cookie("token"),
+                method: "GET",
                 error: function () {
                     $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
                 },
                 success: function (data) {
-                    if (data.status == "ok") {
-                        $('#modalXoa<%= item.ID_DanhMuc %>').modal('toggle');
-                        $("#DMitem<%= item.ID_DanhMuc %>").remove();
-                        /*  $("#tableDM").empty();
-                          LoadDanhMuc();*/
-
-                        toastr["success"](data.message);
-                    } else {
-                        toastr["error"](data.message);
-                    }
+                    $("#tableDM").empty();
+                    $.each(data.DanhMuc, function (i, item) {
+                        var html_to_append;
+                        html_to_append +=
+                            '<tr id="DMitem' + item.ID_DanhMuc + '">' +
+                            '<th scope="row">' + item.ID_DanhMuc + '</th>' +
+                            '<td>' + item.TenDanhMuc.Ten + '</td>' +
+                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_DanhMuc + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_DanhMuc + '"> Xóa </div><td>' +
+                            '</tr>';
+                        $("#tableDM").append(html_to_append);
+                    });
                 }
             });
-        });
+            page = page + 1;
+            return false;
+        }
     });
-    <% }) %>
+
+    ClickVaoCacTrang();
+    function ClickVaoCacTrang() {
+        <% for (i = 1;i <= soTrangLocal;i++){ %>
+        $("<%= "#subpagi" + i %>").click(function () {
+            $(".page-item").removeClass("active");
+            $("#pagiSau").removeClass("disabled");
+            $("<%= "#subpagi" + i %>").addClass("active");
+            $.ajax({
+                url: "<%= domain %>/DanhMucs/" + <%= i %> +"?token=" + $.cookie("token"),
+                method: "GET",
+                error: function () {
+                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                },
+                success: function (data) {
+                    $("#tableDM").empty();
+                    $.each(data.DanhMuc, function (i, item) {
+                        var html_to_append;
+                        html_to_append +=
+                            '<tr id="DMitem' + item.ID_DanhMuc + '">' +
+                            '<th scope="row">' + item.ID_DanhMuc + '</th>' +
+                            '<td>' + item.TenDanhMuc.Ten + '</td>' +
+                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_DanhMuc + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_DanhMuc + '"> Xóa </div><td>' +
+                            '</tr>';
+                        $("#tableDM").append(html_to_append);
+                    });
+                }
+            });
+            <%= "page=" + i %>;
+            if (page != 1) {
+                $("#pagiTruoc").removeClass("disabled");
+            }
+            return false;
+        });
+        <% } %>
+    }
+    function TaiLaiPagination() {
+        var SoTrangPagi  = Math.ceil(TongItem/SoItemMoiPage);
+        SoTrang =SoTrangPagi;
+        $(".menu-phantrang").empty();
+        $(".menu-phantrang").append(' <li id="pagiTruoc" class="page-item "><a class="page-link" href="#">Trước</a></li>');
+        for (i = 1; i <= SoTrangPagi; i++) {
+            var html_pagi =
+                '  <li id="subpagi' + i + '" class="d-inline page-item pagesubitem active"><a class="page-link" href="#">' + i + '</a>';
+            $(".menu-phantrang").append(html_pagi);
+        }
+        $(".menu-phantrang").append(' <li id="pagiSau" class="page-item "><a class="page-link" href="#">Sau</a></li>');
+        $(".pagesubitem").removeClass("active");
+        $(".pagesubitem:first").addClass("active");
+        ClickVaoCacTrang();
+    }
+</script>
+<script>
+$(document).ready(function () {
+    $("#btnTimKiem").click(function () {
+
+        $.ajax({
+            url: "<%= domain %>/danhmucs/timtheoten/"+$("#inputTK").val()+"?token=" + $.cookie("token"),
+            method: "GET",
+            error: function () {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function (data) {
+                $("#tableDM").empty();
+                $.each(data.Items, function (i, item) {
+                    var html_to_append;
+                    html_to_append +=
+                        '<tr id="DMitem' + item.ID_DanhMuc + '">' +
+                        '<th scope="row">' + item.ID_DanhMuc + '</th>' +
+                        '<td>' + item.TenDanhMuc.Ten + '</td>' +
+                        '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_DanhMuc + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_DanhMuc + '"> Xóa </div><td>' +
+                        '</tr>';
+                    $("#tableDM").append(html_to_append);
+
+                });
+            }
+        });
+        return false;
+    });
+});
 
 </script>

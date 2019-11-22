@@ -17,13 +17,14 @@ module.exports = {
                     res.redirect('/admin/quanlysanpham');
                 }
                 else {
-                    /*res.render('./Admin/DangNhap.ejs', {domain: domain, title: 'Đăng nhập Admin', err:response.message, values:req.body});*/
-                    res.json("âc");
+                    res.render('./Admin/DangNhap.ejs', {domain: domain, title: 'Đăng nhập Admin', err:response.message, values:req.body});
+
                 }
 
             })
             .catch(error => {
-                res.send("Web server chưa được bật, không lấy được data "+error);
+                var err="Mật khẩu có chứa kí tự đặc biệt, vui lòng nhập lại mật khẩu !";
+                res.render('./Admin/DangNhap.ejs', {domain: domain, title: 'Đăng nhập Admin', err:err, values:req.body});
             });
 
     },

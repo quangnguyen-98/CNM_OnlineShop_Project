@@ -7,12 +7,15 @@
       <change afterPath="$PROJECT_DIR$/bin/ggg.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/ServerDomain.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/ServerDomain.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/Admin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/Admin.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/Login.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/Login.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyDanhMuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyDanhMuc.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyThuongHieu.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyThuongHieu.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/Layout/layoutAdmin.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Layout/layoutAdmin.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/Layout/layoutKhachHang.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Layout/layoutKhachHang.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/error.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/error.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,17 +46,17 @@
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\public\stylesheets" />
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\templates" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\SanPham" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\models" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\controller" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\layout" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\public\stylesheets" />
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\templates" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -68,7 +71,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.dsa.html">
+  <component name="RunManager" selected="JavaScript Debug.ggg.html">
     <configuration name="demo.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClientProject/views/layout/demo.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -86,8 +89,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.dsa.html" />
         <item itemvalue="JavaScript Debug.ggg.html" />
+        <item itemvalue="JavaScript Debug.dsa.html" />
         <item itemvalue="Node.js.a.js" />
         <item itemvalue="Node.js.abc.js" />
         <item itemvalue="JavaScript Debug.demo.html" />
@@ -141,7 +144,8 @@
       <workItem from="1574159278226" duration="16224000" />
       <workItem from="1574256414649" duration="18146000" />
       <workItem from="1574323234480" duration="21280000" />
-      <workItem from="1574400522014" duration="19801000" />
+      <workItem from="1574400522014" duration="41919000" />
+      <workItem from="1574447656227" duration="5671000" />
     </task>
     <servers />
   </component>

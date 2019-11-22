@@ -10,12 +10,14 @@ module.exports = {
         api_helper.API_Call_Get(domain+'/DanhMucs?token='+req.cookies.token)
             .then(response => {
                 var dataDM =  [];
-               /* var soTrang = response.SoTrang;*/
-                response.Items.forEach(function (item) {
+                var soTrang = response.SoTrang;
+                var tongItem = response.TongItem;
+                var itemMoiPage = response. ItemMoiPage;
+                response.DanhMuc.forEach(function (item) {
                     var dm ={ID_DanhMuc:item.ID_DanhMuc, TenDanhMuc:item.TenDanhMuc};
                     dataDM.push(dm);
                 });
-                res.render('./Admin/QuanLyDanhMuc.ejs', { domain: domain, title: 'Quản lý danh mục',key:'QLDM',dataDM:dataDM });
+                res.render('./Admin/QuanLyDanhMuc.ejs', { domain: domain, title: 'Quản lý danh mục',key:'QLDM', dataDM:dataDM, soTrang:soTrang, tongItem:tongItem, itemMoiPage:itemMoiPage});
             })
             .catch(error => {
                 res.send("Web server chưa được bật, không lấy được data "+error);
@@ -25,12 +27,14 @@ module.exports = {
         api_helper.API_Call_Get(domain+'/ThuongHieus?token='+req.cookies.token)
             .then(response => {
                 var dataTH =  [];
-               /* var soTrang = response.SoTrang;*/
-                response.Items.forEach(function (item) {
+                var soTrang = response.SoTrang;
+                var tongItem = response.TongItem;
+                var itemMoiPage = response. ItemMoiPage;
+                response.ThuongHieu.forEach(function (item) {
                     var th ={ID_ThuongHieu:item.ID_ThuongHieu, TenThuongHieu:item.TenThuongHieu};
                     dataTH.push(th);
                 });
-                res.render('./Admin/QuanLyThuongHieu.ejs', { domain: domain, title: 'Quản lý thương hiệu', key:'QLTH', dataTH:dataTH });
+                res.render('./Admin/QuanLyThuongHieu.ejs', { domain: domain, title: 'Quản lý thương hiệu', key:'QLTH', dataTH:dataTH, soTrang:soTrang, tongItem:tongItem, itemMoiPage:itemMoiPage });
             })
             .catch(error => {
                 res.send("Web server chưa được bật, không lấy được data "+error);

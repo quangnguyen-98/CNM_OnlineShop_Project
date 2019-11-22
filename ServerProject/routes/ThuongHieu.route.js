@@ -4,9 +4,16 @@ var router = express.Router();
 //Khai báo conntroller
 var ThuongHieuController = require('../controllers/Thuonghieu.controller');
 var AuthController = require('../controllers/Auth.controller');
+//Route  (Web/api/ThuongHieus/)
 
-//Lấy tất cả thương hiệu  (Web/api/ThuongHieus/)
-router.get('/', AuthController.KiemTraTokenAdmin, ThuongHieuController.LayTatCaThuongHieu);
+//Lấy tất cả thương hiệu
+router.get('/',  ThuongHieuController.LayTatCaThuongHieu);
+
+//Lấy thương hiệu theo số trang
+router.get('/:pagenumber',ThuongHieuController.LayThuongHieuTheoSoTrang);
+
+//Lấy thương hiệu theo tên
+router.get('/timtheoten/:tenthuonghieu',ThuongHieuController.LayThuongHieuTheoTen);
 
 //Tạo danh mục
 router.post('/:tenthuonghieu', ThuongHieuController.ThemThuongHieu);
