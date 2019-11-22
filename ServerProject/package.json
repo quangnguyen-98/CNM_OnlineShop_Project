@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon ./bin/www",
     "datainit": "node ./Config/LoadSampleData.js"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
     "express-validator": "^6.2.0",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
     "morgan": "~1.9.1",
     "short-id": "0.1.0-1"
   },

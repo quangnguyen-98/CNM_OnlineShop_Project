@@ -12,7 +12,7 @@ module.exports = {
         //VaLidate data
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-                res.status(422).json({
+            res.status(400).json({
                 status: "fail",
                 message: "Thông tin đầu vào không hợp lệ !"
             });
@@ -48,12 +48,12 @@ module.exports = {
                 var vaitro = data.Items[0].VaiTro.toString();
                 if (data.Count == 1 && vaitro == "AD") {
                     var check = req.query.check;
-                  /*  var vaitro = req.query.vaitro;*/
+                    /*  var vaitro = req.query.vaitro;*/
                     var SecretKey = fs.readFileSync(path.resolve(__dirname, "../Config/SecretKeyAdmin.txt")).toString();
                     if (check == "yes") {
                         var payload = {
                             userId: data.Items[0].ID_NguoiDung,
-                            vaiTro:vaitro
+                            vaiTro: vaitro
                         };
                         var token = jwt.sign({payload}, SecretKey);
                         res.cookie('token', token.toString());
@@ -67,13 +67,13 @@ module.exports = {
                             token: token
                         });
                         return;
-                    }else {
-                        var ThoiGianLogin = parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/ThoiGianLogIn.txt"))) ;
+                    } else {
+                        var ThoiGianLogin = parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/ThoiGianLogin.txt")));
                         var payload = {
                             userId: data.Items[0].ID_NguoiDung,
-                            vaiTro:vaitro
+                            vaiTro: vaitro
                         };
-                        var token = jwt.sign({payload}, SecretKey, { expiresIn: 60*ThoiGianLogin });
+                        var token = jwt.sign({payload}, SecretKey, {expiresIn: 60 * ThoiGianLogin});
                         res.cookie('token', token.toString());
                         idTK = data.Items[0].ID_NguoiDung.toString();
                         tokenTK = token.toString();
@@ -104,7 +104,7 @@ module.exports = {
             jwt.verify(token, SecretKey, function (err, payload) {
                 if (payload) {
                     req.user = payload;
-                    if(payload.payload.vaiTro == "AD"){
+                    if (payload.payload.vaiTro == "AD") {
                         next();
                     }
                 } else {
@@ -140,7 +140,7 @@ module.exports = {
                 message: 'Xác thực thành công !'
             });
             return;
-        }else {
+        } else {
             res.status(400).json({
                 status: "fail",
                 message: 'Xác thực không thành công !'

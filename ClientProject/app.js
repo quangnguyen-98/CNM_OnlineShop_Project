@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 
+var domain = require('./Config/ServerDomain');
+
 var IndexRouter = require('./routes/Index.route');
 var LoginRouter = require('./routes/Login.route');
 var AdminRouter = require('./routes/Admin.route');
@@ -32,6 +34,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 
+/*app.use(function(req, res, next) {
+  res.header('Set-Cookie: cross-site-cookie=name; SameSite=None; Secure');
+  next();
+});*/
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -48,6 +55,7 @@ app.use('/NguoiDungs',NguoiDungRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+  res.locals.domain = domain;
   next(createError(404));
 });
 
@@ -55,6 +63,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
+  res.locals.domain = domain;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
@@ -64,3 +73,4 @@ app.use(function(err, req, res, next) {
 
 app.locals.soTrangLocal = 300;
 module.exports = app;
+

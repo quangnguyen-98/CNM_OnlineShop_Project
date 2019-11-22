@@ -17,7 +17,7 @@ router.get('/QuanLyThuongHieu', AdminController.HienThiQuanLyThuongHieu);
 
 router.get('/QuanLyCarousel', AdminController.HienThiQuanLyCarousel);
 
-router.get('/QuanLyFooter', AdminController.HienThiQuanLyFooter);
+router.get('/QuanLyBaiViet', AdminController.HienThiQuanLyBaiViet);
 
 router.get('/DangXuat', AdminController.DangXuat);
 

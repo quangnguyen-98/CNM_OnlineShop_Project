@@ -23,36 +23,7 @@
 
     </div>
 
-    <!-- The Modal Thêm thương hiệu-->
-    <div class="modal fade" id="modalThem">
-        <div class="modal-dialog modal-lg modal-lg modal-sm">
-            <div class="modal-content">
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title"><i class="fas fa-store"></i> Thêm thương hiệu</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form action="/action_page.php" class="was-validated">
-                        <div class="form-group">
-                            <label for="uname">Tên thương hiệu</label>
-                            <input type="text" class="form-control" id="uname" placeholder="Nhập tên sản phẩm" name="uname" required>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Xác nhận</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
     <br><br>
     <table class="table table-hover">
         <thead>
@@ -63,8 +34,9 @@
             <th scope="col">Thao tác</th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
+        <tbody id="tableTH">
+        <img src="https://bb4298.s3-us-west-1.amazonaws.com/index.svg" class="loadingDiv" alt="loadingIcon">
+        <!--<tr>
             <th scope="row">5fdsfs54w</th>
             <td>Vans</td>
             <td class=""><div class="btn btn-warning "> Sửa </div>  <div class="btn btn-danger"> Xóa </div></td>
@@ -73,9 +45,10 @@
             <th scope="row">fsdfsd54</th>
             <td>Converse</td>
             <td class=""><div class="btn btn-warning "> Sửa </div>  <div class="btn btn-danger"> Xóa </div></td>
-        </tr>
+        </tr>-->
         </tbody>
     </table>
+    <div id="infor"></div>
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li id="pagiTruoc" class="page-item "><a class="page-link" href="">Trước</a></li>
@@ -86,3 +59,202 @@
     </nav>
 </div>
 
+<!-- The Modal Thêm thương hiệu-->
+<div class="modal fade" id="modalThem">
+    <div class="modal-dialog modal-lg modal-lg modal-sm">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="fas fa-store"></i> Thêm thương hiệu</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form class="was-validated">
+                    <div class="form-group">
+                        <label for="TenThuongHieu">Tên thương hiệu</label>
+                        <input type="text" class="form-control" id="TenThuongHieu" placeholder="Nhập tên thương hiệu" name="uname" onkeydown="EnterThemTH()" required>
+                    </div>
+                </form>
+            </div>
+
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <label class="btn btn-success" onclick="ThemThuongHieu()">Xác nhận</label>
+                <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    function EnterThemTH() {
+        if(event.key === 'Enter') {
+            ThemThuongHieu();
+        }
+    }
+</script>
+
+<!-- Modal Sửa thương hiệu-->
+<%dataTH.forEach(function (item) {%>
+<div class="modal fade" id="modalSua<%=item.ID_ThuongHieu%>">
+    <div class="modal-dialog modal-lg modal-lg modal-sm">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="fas fa-store"></i> Sửa thương hiệu</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form  class="was-validated">
+                    <div class="form-group">
+                        <label for="TenThuongHieu<%=item.ID_ThuongHieu%>">Tên thương hiệu</label>
+                        <input type="text" class="form-control" id="TenThuongHieu<%=item.ID_ThuongHieu%>" placeholder="Nhập tên thương hiệu" value="<%=item.TenThuongHieu.Ten%>" required>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <label id="modalBtnSua<%=item.ID_ThuongHieu%>" class="btn btn-success">Xác nhận</label>
+                <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<%})%>
+
+<!-- Modal Xóa thương hiệuc-->
+<%dataTH.forEach(function (item) {%>
+<div class="modal fade" id="modalXoa<%=item.ID_ThuongHieu%>">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="fas fa-store"></i> Xóa danh mục</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                Bạn có thực sự muốn xóa thương hiệu này, thao tác này không thể hoàn tác ?
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <label id="modalBtnXoa<%=item.ID_ThuongHieu%>" class="btn btn-success">Xác nhận</label>
+                <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
+            </div>
+
+        </div>
+    </div>
+</div>
+<%})%>
+<script>
+    $(document).ready(
+        LoadThuongHieu(),
+
+        /*   TaoEventXoa()*/
+    );
+    function LoadThuongHieu() {
+        $.ajax({
+            url: "<%= domain %>/ThuongHieus?token="+$.cookie("token"),
+            method: "GET",
+            error: function () {
+                $('#infor').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function (data) {
+                $("#tableTH").append(data.message);
+                $.each(data.Items, function (i, item) {
+                    var html_to_append;
+                    html_to_append +=
+                        '<tr id="DMitem'+item.ID_ThuongHieu+'">' +
+                        '<th scope="row">'+item.ID_ThuongHieu+'</th>' +
+                        '<td>'+item.TenThuongHieu.Ten+'</td>' +
+                        '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua'+item.ID_ThuongHieu+'"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa'+item.ID_ThuongHieu+'"> Xóa </div><td>' +
+                        '</tr>';
+                    $("#tableTH").append(html_to_append);
+
+
+                });
+            },
+            timeout: 30000000
+        });
+    }
+    function ThemThuongHieu() {
+        $.ajax({
+            url: "<%= domain %>/ThuongHieus/" + $("#TenThuongHieu").val()+"?token="+$.cookie("token"),
+            method: "POST",
+            error: function () {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function (data) {
+                if(data.status == "ok"){
+                    $("#tableTH").empty();
+                    LoadThuongHieu();
+                    $('#modalThem').modal('toggle');
+                    toastr["success"](data.message);
+                }else {
+                    toastr["error"](data.message);
+                }
+            }
+        });
+    }
+
+    <%dataTH.forEach(function (item) {%>
+    $(document).ready(function () {
+        $("#modalBtnSua<%=item.ID_ThuongHieu%>").click(function () {
+            $.ajax({
+                url: "<%= domain %>/ThuongHieus/<%=item.ID_ThuongHieu%>/"+$("#TenThuongHieu<%=item.ID_ThuongHieu%>").val()+"?token="+$.cookie("token"),
+                method: "PUT",
+                error: function () {
+                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                },
+                success: function (data) {
+                    if(data.status == "ok"){
+                        $("#tableTH").empty();
+                        LoadThuongHieu();
+                        $('#modalSua<%=item.ID_ThuongHieu%>').modal('toggle');
+                        toastr["success"](data.message);
+                    }else {
+                        toastr["error"](data.message);
+                    }
+                }
+            });
+        });
+    });
+    <%})%>
+
+    <%dataTH.forEach(function (item) {%>
+    $(document).ready(function () {
+        $("#modalBtnXoa<%=item.ID_ThuongHieu%>").click(function () {
+            $.ajax({
+                url: "<%= domain %>/ThuongHieus/<%=item.ID_ThuongHieu%>"+"?token="+$.cookie("token"),
+                method: "DELETE",
+                error: function () {
+                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                },
+                success: function (data) {
+                    if(data.status == "ok"){
+                        $("#DMitem<%=item.ID_ThuongHieu%>").remove();
+                        /*  $("#tableDM").empty();
+                          LoadDanhMuc();*/
+                        $('#modalXoa<%=item.ID_ThuongHieu%>').modal('toggle');
+                        toastr["success"](data.message);
+                    }else {
+                        toastr["error"](data.message);
+                    }
+                }
+            });
+        });
+    });
+    <%})%>
+</script>

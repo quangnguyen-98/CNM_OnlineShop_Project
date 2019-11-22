@@ -8,7 +8,7 @@ module.exports = {
     },
     KiemTraDangNhap:function (req,res,next) {
 
-        api_helper.API_Call_Get(domain+'/auth/'+req.body.userName+'/'+req.body.passWord+'?check='+req.body.check)
+        api_helper.API_Call_Get(domain+'/auth/'+req.body.userName+'/'+req.body.passWord+'?check='+req.body.check+'&vaitro=AD')
             .then(response => {
                 if(response.status == "ok"){
                     res.cookie('token', response.token.toString());
@@ -17,7 +17,8 @@ module.exports = {
                     res.redirect('/admin/quanlysanpham');
                 }
                 else {
-                    res.render('./Admin/DangNhap.ejs', {domain: domain, title: 'Đăng nhập Admin', err:response.message, values:req.body});
+                    /*res.render('./Admin/DangNhap.ejs', {domain: domain, title: 'Đăng nhập Admin', err:response.message, values:req.body});*/
+                    res.json("âc");
                 }
 
             })

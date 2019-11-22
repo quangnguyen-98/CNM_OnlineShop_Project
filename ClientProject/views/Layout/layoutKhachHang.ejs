@@ -8,9 +8,9 @@
     <!--<link rel="shortcut icon" type="image/png" href="{{asset('img/favicon.jpeg')}}"/>-->
     <link rel="shortcut icon" type="image/png" href="https://bb4298.s3-us-west-1.amazonaws.com/favicon.ico"/>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" >
     <!--Font Awesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
    <!-- <link rel="stylesheet" type="text/css" href="../../public/stylesheets/style.css">-->
     <style>
         .footer-item-color{
@@ -21,7 +21,7 @@
             text-align:center;
             position: fixed;
             bottom: 20px;
-            right: 20px;
+            left: 20px;
             z-index: 9999;
             padding: 7px;
             text-align: center;
@@ -49,13 +49,19 @@
             color:#ffb520;
         }
 
-        .jbtcustom{
+        /*.jbtcustom{
             padding: 0.5rem;
-        }
+        }*/
         .carousel-SP-next,
         .carousel-SP-prev {
             filter: invert(100%);
         }
+       /* #fb-root{
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            z-index: 9999 !important;
+        }*/
     </style>
 
 
@@ -75,8 +81,6 @@
 <!-- Boostrap library -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-<!-- Font Awesome library-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"></script>
 
 <!-- Easy-Loading library-->
 <script src="https://cdn.jsdelivr.net/npm/jquery-easy-loading@2.0.0-rc.2/dist/jquery.loading.min.js"></script>
@@ -88,40 +92,67 @@
 <%-partial('../ThanhPhanWeb/Footer')%>
 
 
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml            : true,
+            version          : 'v5.0'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+     attribution=setup_tool
+     page_id="104943980975549"
+     greeting_dialog_display="hide"
+     logged_in_greeting="Xin chào! Chúng tôi có thể giúp gì cho bạn?"
+     logged_out_greeting="Xin chào! Chúng tôi có thể giúp gì cho bạn?">
+</div>
+</body>
 <script>
 
-//code button top;
-if ($('#back-to-top').length) {
-    var scrollTrigger = 100, // px
-        backToTop = function () {
-            var scrollTop = $(window).scrollTop();
-            if (scrollTop > scrollTrigger) {
-                $('#back-to-top').addClass('show');
-            } else {
-                $('#back-to-top').removeClass('show');
-            }
-        };
-    backToTop();
-    $(window).on('scroll', function () {
+    //code button top;
+    if ($('#back-to-top').length) {
+        var scrollTrigger = 100, // px
+            backToTop = function () {
+                var scrollTop = $(window).scrollTop();
+                if (scrollTop > scrollTrigger) {
+                    $('#back-to-top').addClass('show');
+                } else {
+                    $('#back-to-top').removeClass('show');
+                }
+            };
         backToTop();
+        $(window).on('scroll', function () {
+            backToTop();
+        });
+        $('#back-to-top').on('click', function (e) {
+            e.preventDefault();
+            $('html,body').animate({
+                scrollTop: 0
+            }, 700);
+        });
+    }
+    //Code Carousel;
+    $('.carousel').carousel({
+        interval: 2200
     });
-    $('#back-to-top').on('click', function (e) {
-        e.preventDefault();
-        $('html,body').animate({
-            scrollTop: 0
-        }, 700);
-    });
-}
-//Code Carousel;
-$('.carousel').carousel({
-    interval: 2200
-});
 
-$("document").ready(function(){
-    FormartGia();
-});
+    $("document").ready(function(){
+        FormartGia();
+    });
+
 </script>
-</body>
 </html>
 
 

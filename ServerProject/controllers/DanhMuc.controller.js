@@ -1,5 +1,6 @@
 var AWS = require("aws-sdk");
 var docClient = new AWS.DynamoDB.DocumentClient();
+var CustomFunction = require('../Config/CustomFunction');
 var ids = require('short-id');
 module.exports = {
     LayTatCaDanhMuc: function (req, res, next) {
@@ -31,38 +32,6 @@ module.exports = {
         listDM =[];
         var tenDM = req.params.tendanhmuc;
         var idDM = ids.generate();
-        /*var param = {
-            TableName: "DanhMuc",
-            ProjectionExpression:"#yr, TenDanhMuc, TrangThaiXoa",
-            FilterExpression:"TrangThaiXoa =:n",
-            ExpressionAttributeNames:{
-                "#yr":"ID_DanhMuc",
-            },
-            ExpressionAttributeValues:{
-                ":n":false
-            }
-        };
-
-        docClient.scan(param,function (err,data) {
-            if (err) {
-                console.error(err);
-                res.end();
-            }
-            else{
-                res.json(data);
-               data.Items.forEach(function (item) {
-                   listDM.push(item);
-               });
-            }
-        });
-        listDM.forEach(function () {
-            if(item.TenDanhMuc == tenDM){
-                res.json({
-                    status:"fail",
-                    message:"Tên danh mục này đã có trong hệ thống, vui lòng dùng tên khác"
-                });
-            }
-        });*/
         var paramDM = {
             TableName: "DanhMuc",
             Item: {
@@ -89,7 +58,8 @@ module.exports = {
                 return res.json({
                     status:"ok",
                     message:"Tạo danh mục thành công !",
-                    idDM:idDM
+                    idDM:idDM,
+                    tenDM:tenDM
                 });
             }
         });
@@ -106,7 +76,7 @@ module.exports = {
             UpdateExpression: "set TenDanhMuc.Ten = :n, TenDanhMuc.TenKhongVietHoa = :m",
             ExpressionAttributeValues:{
                 ":n": tenDM,
-                "m":tenKhongVietHoa
+                ":m":tenKhongVietHoa
             },
             ReturnValues:"UPDATED_NEW"
         };

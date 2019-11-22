@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9a322a82-60d2-4128-8ad3-7586c19b93fc" name="Default Changelist" comment=":))" />
+    <list default="true" id="9a322a82-60d2-4128-8ad3-7586c19b93fc" name="Default Changelist" comment=":))">
+      <change afterPath="$PROJECT_DIR$/bin/a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/dsa.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/ggg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/ServerDomain.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/ServerDomain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyDanhMuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyDanhMuc.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyThuongHieu.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyThuongHieu.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Layout/layoutAdmin.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Layout/layoutAdmin.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Layout/layoutKhachHang.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Layout/layoutKhachHang.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/error.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/error.ejs" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,17 +43,17 @@
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\public\stylesheets" />
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\templates" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\SanPham" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\models" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\controller" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\layout" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\public\stylesheets" />
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\templates" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -56,21 +68,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.demo.html">
+  <component name="RunManager" selected="JavaScript Debug.dsa.html">
     <configuration name="demo.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClientProject/views/layout/demo.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="index.ejs" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClientProject/views/index.ejs" useBuiltInWebServerPort="true">
+    <configuration name="dsa.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClientProject/bin/dsa.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="Index.route.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/routes/Index.route.js" working-dir="$PROJECT_DIR$/routes">
+    <configuration name="ggg.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClientProject/bin/ggg.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="a.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/bin/a.js" working-dir="$PROJECT_DIR$/bin">
+      <method v="2" />
+    </configuration>
+    <configuration name="abc.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Config/abc.js" working-dir="$PROJECT_DIR$/Config">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.dsa.html" />
+        <item itemvalue="JavaScript Debug.ggg.html" />
+        <item itemvalue="Node.js.a.js" />
+        <item itemvalue="Node.js.abc.js" />
         <item itemvalue="JavaScript Debug.demo.html" />
-        <item itemvalue="JavaScript Debug.index.ejs" />
-        <item itemvalue="Node.js.Index.route.js" />
       </list>
     </recent_temporary>
   </component>
@@ -119,6 +139,9 @@
       <workItem from="1574020422346" duration="1242000" />
       <workItem from="1574049919124" duration="47277000" />
       <workItem from="1574159278226" duration="16224000" />
+      <workItem from="1574256414649" duration="18146000" />
+      <workItem from="1574323234480" duration="21280000" />
+      <workItem from="1574400522014" duration="19801000" />
     </task>
     <servers />
   </component>

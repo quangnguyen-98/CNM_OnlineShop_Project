@@ -3,10 +3,9 @@ const domain = require('../Config/ServerDomain');
 
 module.exports = {
     KiemTraToken:function (req,res,next) {
-        api_helper.API_Call_Get(domain+'/auth/'+req.cookies.token)
+        api_helper.API_Call_Get(domain+'/auth/token?token='+req.cookies.token)
             .then(response => {
                 if(response.status == "ok"){
-
                     next();
                 }
                 else {
@@ -17,7 +16,6 @@ module.exports = {
             .catch(error => {
                 res.send("Web server chưa được bật, không lấy được data "+error);
             });
-
     }
 }
 

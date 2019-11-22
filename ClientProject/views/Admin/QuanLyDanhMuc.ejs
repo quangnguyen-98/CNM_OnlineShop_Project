@@ -36,6 +36,7 @@
         </thead>
         <tbody id="tableDM">
         <img src="https://bb4298.s3-us-west-1.amazonaws.com/index.svg" class="loadingDiv" alt="loadingIcon">
+
         <!-- <tr>
              <th scope="row">5fdsfs54w</th>
              <td>Áo</td>
@@ -61,7 +62,7 @@
     </nav>
 </div>
 
-<!-- Modal Thêm sản phẩm-->
+<!-- Modal Thêm danh mục-->
 <div class="modal fade" id="modalThem">
     <div class="modal-dialog modal-lg modal-lg modal-sm">
         <div class="modal-content">
@@ -74,11 +75,11 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <form  class="was-validated">
+                <form class="was-validated">
                     <div class="form-group">
                         <label for="TenDanhMuc">Tên danh mục</label>
                         <input type="text" class="form-control" id="TenDanhMuc" placeholder="Nhập tên danh mục"
-                               name="uname" required>
+                               name="uname" onkeydown="EnterThemDM()" required>
                     </div>
 
                 </form>
@@ -94,77 +95,85 @@
     </div>
 </div>
 
-<!-- Modal Sửa danh mục-->
-<%dataDM.forEach(function (item) {%>
-    <div class="modal fade" id="modalSua<%=item.ID_DanhMuc%>">
-        <div class="modal-dialog modal-lg modal-lg modal-sm">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title"><i class="fas fa-store"></i> Sửa danh mục</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form  class="was-validated">
-                        <div class="form-group">
-                            <label for="TenDanhMuc<%=item.ID_DanhMuc%>">Tên danh mục</label>
-                            <input type="text" class="form-control" id="TenDanhMuc<%=item.ID_DanhMuc%>" placeholder="Nhập tên danh mục" value="<%=item.TenDanhMuc%>" required>
-                        </div>
-
-                    </form>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <label id="modalBtnSua<%=item.ID_DanhMuc%>" class="btn btn-success">Xác nhận</label>
-                    <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-<%})%>
-
-<!-- Modal Xóa danh mục-->
-<%dataDM.forEach(function (item) {%>
-<div class="modal fade" id="modalXoa<%=item.ID_DanhMuc%>">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title"><i class="fas fa-store"></i> Xóa danh mục</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-              Bạn có muốn xóa danh mục này ?
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <label id="modalBtnXoa<%=item.ID_DanhMuc%>" class="btn btn-success">Xác nhận</label>
-                <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
-            </div>
-
-        </div>
-    </div>
-</div>
-<%})%>
-
-
 <script>
-    $(document).ready(
-        LoadDanhMuc(),
+    function EnterThemDM() {
+        if (event.key === 'Enter') {
+            ThemDanhMuc();
+        }
+    }
+</script>
 
-     /*   TaoEventXoa()*/
-    );
+<!-- Danh sách Modal Sửa danh mục-->
+<div id="DanhSachModalSua">
+    <% dataDM.forEach(function (item) { %>
+        <div class="modal fade" id="modalSua<%= item.ID_DanhMuc %>">
+            <div class="modal-dialog modal-lg modal-lg modal-sm">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title"><i class="fas fa-store"></i> Sửa danh mục</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form class="was-validated">
+                            <div class="form-group">
+                                <label for="TenDanhMuc<%= item.ID_DanhMuc %>">Tên danh mục</label>
+                                <input type="text" class="form-control tenMoi" id="TenDanhMuc<%= item.ID_DanhMuc %>"
+                                       placeholder="Nhập tên danh mục" value="<%= item.TenDanhMuc.Ten %>" required>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <label id="modalBtnSua<%= item.ID_DanhMuc %>" class="btn btn-success btnSuaMoi">Xác nhận</label>
+                        <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</div>
+
+</div>
+<!-- Danh sách Modal Xóa danh mục-->
+<div id="DanhSachModalXoa">
+    <% dataDM.forEach(function (item) { %>
+        <div class="modal fade" id="modalXoa<%= item.ID_DanhMuc %>">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title"><i class="fas fa-store"></i> Xóa danh mục</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        Bạn có thực sự muốn xóa danh mục này, thao tác này không thể hoàn tác ?
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <label id="modalBtnXoa<%= item.ID_DanhMuc %>" class="btn btn-success">Xác nhận</label>
+                        <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</div>
+
+
+<script id="scriptDM">
+    //Load danh sách danh mục
+    LoadDanhMuc();
+
     function LoadDanhMuc() {
         $.ajax({
-            url: "<%= domain %>/DanhMucs?token="+$.cookie("token"),
+            url: "<%= domain %>/DanhMucs?token=" + $.cookie("token"),
             method: "GET",
             error: function () {
                 $('#infor').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
@@ -174,87 +183,187 @@
                 $.each(data.Items, function (i, item) {
                     var html_to_append;
                     html_to_append +=
-                        '<tr id="DMitem'+item.ID_DanhMuc+'">' +
-                        '<th scope="row">'+item.ID_DanhMuc+'</th>' +
-                        '<td>'+item.TenDanhMuc+'</td>' +
-                        '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua'+item.ID_DanhMuc+'"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa'+item.ID_DanhMuc+'"> Xóa </div><td>' +
+                        '<tr id="DMitem' + item.ID_DanhMuc + '">' +
+                        '<th scope="row">' + item.ID_DanhMuc + '</th>' +
+                        '<td>' + item.TenDanhMuc.Ten + '</td>' +
+                        '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_DanhMuc + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_DanhMuc + '"> Xóa </div><td>' +
                         '</tr>';
                     $("#tableDM").append(html_to_append);
 
-
                 });
             },
-            timeout: 30000000
         });
     }
+
+    //Thêm danh mục
     function ThemDanhMuc() {
         $.ajax({
-            url: "<%= domain %>/danhmucs/" + $("#TenDanhMuc").val()+"?token="+$.cookie("token"),
+            url: "<%= domain %>/danhmucs/" + $("#TenDanhMuc").val() + "?token=" + $.cookie("token"),
             method: "POST",
             error: function () {
                 $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
             },
             success: function (data) {
-                if(data.status == "ok"){
-                    $("#tableDM").empty();
-                    LoadDanhMuc();
+                if (data.status == "ok") {
                     $('#modalThem').modal('toggle');
+                    var Html_DanhMucMoi =
+                        '<tr id="DMitem' + data.idDM + '">' +
+                        '<th scope="row">' + data.idDM + '</th>' +
+                        '<td>' + data.tenDM + '</td>' +
+                        '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + data.idDM + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + data.idDM + '"> Xóa </div><td>' +
+                        '</tr>';
+                    $("#tableDM").append(Html_DanhMucMoi);
+                    var Html_Modal_SuaDM =
+                        ' <div  class="modal fade modalSuaMoi" id="modalSua' + data.idDM + '">' +
+                        '   <div class="modal-dialog modal-lg modal-lg modal-sm">' +
+                        '    <div class="modal-content">' +
+                        '  <div class="modal-header">' +
+                        ' <h4 class="modal-title"><i class="fas fa-store"></i> Sửa danh mục</h4>' +
+                        ' <button type="button" class="close" data-dismiss="modal">&times;</button>' +
+                        '   </div>' +
+                        ' <div class="modal-body">' +
+                        '    <form  class="was-validated">' +
+                        '  <div class="form-group">' +
+                        '   <label for="TenDanhMuc' + data.idDM + '">Tên danh mục</label>' +
+                        '  <input type="text" class="form-control tenMoi"  id="TenDanhMuc' + data.idDM + '" placeholder="Nhập tên danh mục" value="' + data.tenDM + '" required>' +
+                        '   </div>' +
+                        '   </form>' +
+                        '   </div>' +
+                        '   <div class="modal-footer">' +
+                        '  <label id="' + data.idDM + '" class="btn btn-success btnSuaMoi" >Xác nhận </label>' +
+                        ' <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>' +
+                        '  </div>' +
+                        '   </div>' +
+                        '  </div>' +
+                        '  </div>';
+                    $("#DanhSachModalSua").append(Html_Modal_SuaDM);
+
+                    var Html_Modal_XoaDM =
+                        '<div class="modal fade" id="modalXoa' + data.idDM + '">' +
+                        ' <div class="modal-dialog modal-sm">' +
+                        '     <div class="modal-content">' +
+                        '     <!-- Modal Header -->' +
+                        '  <div class="modal-header">' +
+                        '   <h4 class="modal-title"><i class="fas fa-store"></i> Xóa danh mục</h4>' +
+                        ' <button type="button" class="close" data-dismiss="modal">&times;</button>' +
+                        '   </div>' +
+                        '  <div class="modal-body">' +
+                        '    Bạn có thực sự muốn xóa danh mục này, thao tác này không thể hoàn tác ?' +
+                        '     </div>' +
+                        '  <div class="modal-footer">' +
+                        '  <label id="' + data.idDM + '" class="btn btn-success btnXoaMoi">Xác nhận</label>' +
+                        '  <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>' +
+                        '   </div>' +
+                        ' </div>' +
+                        '   </div>' +
+                        '     </div>';
+                    $("#DanhSachModalXoa").append(Html_Modal_XoaDM);
                     toastr["success"](data.message);
-                }else {
+                } else {
                     toastr["error"](data.message);
                 }
             }
         });
     }
 
-    <%dataDM.forEach(function (item) {%>
+    //Sự kiện nút sửa của những danh mục được add bằng ajax
+    $('body').on('click', '.btnSuaMoi', function () {
+        var modal = $(this).parent().parent().parent().parent(".modal").attr("id");
+        $.ajax({
+            url: "<%= domain %>/danhmucs/" + $(this).attr("id") + "/" + $(this).parent().parent().find(".tenMoi").val() + "?token=" + $.cookie("token"),
+            method: "PUT",
+            error: function () {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function (data) {
+                if (data.status == "ok") {
+                    /* $('.modal').modal('toggle');*/
+                    $(this).parent().parent().parent().parent(".modal").append("<a>con cacj</a>");
+                    $("#" + modal).modal('toggle');
+                    $("#tableDM").empty();
+                    LoadDanhMuc();
+                    toastr["success"](data.message);
+                } else {
+                    toastr["error"](data.message);
+                }
+            }
+        });
+    });
+
+    //Sự kiện nút xóa của những danh mục được add bằng ajax
+    $('body').on('click', '.btnXoaMoi', function () {
+        var modal = $(this).parent().parent().parent().parent(".modal").attr("id");
+        var IDmodal = $(this).attr("id");
+        $.ajax({
+            url: "<%= domain %>/danhmucs/" +$(this).attr("id")+ "?token=" + $.cookie("token"),
+            method: "DELETE",
+            error: function () {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function (data) {
+                if (data.status == "ok") {
+                    $("#" + modal).modal('toggle');
+
+                    $("#DMitem"+IDmodal).remove();
+
+                    toastr["success"](data.message);
+                } else {
+                    toastr["error"](data.message);
+                }
+            }
+        });
+    });
+
+    //Load danh sách modal button sửa danh mục
+    <% dataDM.forEach(function (item) { %>
     $(document).ready(function () {
-        $("#modalBtnSua<%=item.ID_DanhMuc%>").click(function () {
+        $("#modalBtnSua<%= item.ID_DanhMuc %>").click(function () {
             $.ajax({
-                url: "<%= domain %>/danhmucs/<%=item.ID_DanhMuc%>/"+$("#TenDanhMuc<%=item.ID_DanhMuc%>").val()+"?token="+$.cookie("token"),
+                url: "<%= domain %>/danhmucs/<%= item.ID_DanhMuc %>/" + $("#TenDanhMuc<%= item.ID_DanhMuc %>").val() + "?token=" + $.cookie("token"),
                 method: "PUT",
                 error: function () {
                     $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
                 },
                 success: function (data) {
-                    if(data.status == "ok"){
+                    if (data.status == "ok") {
                         $("#tableDM").empty();
+                        $('#modalSua<%= item.ID_DanhMuc %>').modal('toggle');
                         LoadDanhMuc();
-                        $('#modalSua<%=item.ID_DanhMuc%>').modal('toggle');
                         toastr["success"](data.message);
-                    }else {
+                    } else {
                         toastr["error"](data.message);
                     }
                 }
             });
         });
     });
-    <%})%>
+    <% }) %>
 
-    <%dataDM.forEach(function (item) {%>
-        $(document).ready(function () {
-            $("#modalBtnXoa<%=item.ID_DanhMuc%>").click(function () {
-                $.ajax({
-                    url: "<%= domain %>/danhmucs/<%=item.ID_DanhMuc%>"+"?token="+$.cookie("token"),
-                    method: "DELETE",
-                    error: function () {
-                        $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
-                    },
-                    success: function (data) {
-                        if(data.status == "ok"){
-                            $("#DMitem<%=item.ID_DanhMuc%>").remove();
-                          /*  $("#tableDM").empty();
-                            LoadDanhMuc();*/
-                            $('#modalXoa<%=item.ID_DanhMuc%>').modal('toggle');
-                            toastr["success"](data.message);
-                        }else {
-                            toastr["error"](data.message);
-                        }
+    //Load danh sách modal button xoá danh mục
+    <% dataDM.forEach(function (item) { %>
+    $(document).ready(function () {
+        $("#modalBtnXoa<%= item.ID_DanhMuc %>").click(function () {
+            $.ajax({
+                url: "<%= domain %>/danhmucs/<%= item.ID_DanhMuc %>" + "?token=" + $.cookie("token"),
+                method: "DELETE",
+                error: function () {
+                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                },
+                success: function (data) {
+                    if (data.status == "ok") {
+                        $('#modalXoa<%= item.ID_DanhMuc %>').modal('toggle');
+                        $("#DMitem<%= item.ID_DanhMuc %>").remove();
+                        /*  $("#tableDM").empty();
+                          LoadDanhMuc();*/
+
+                        toastr["success"](data.message);
+                    } else {
+                        toastr["error"](data.message);
                     }
-                });
+                }
             });
         });
-    <%})%>
-
+    });
+    <% }) %>
 
 </script>

@@ -1,32 +1,42 @@
-<div class="jumbotro jbtcusto">
+<div class="jumbotro listgroup-scroll">
     <!-- Quản lý tài nguyên-->
     <div class="list-group" style="margin-bottom: 1rem">
         <div class="list-group-item list-group-item-action active">
-           Tài nguyên
+            Quản lý Tài nguyên
         </div>
-        <a href="/admin/quanlysanpham" class="list-group-item list-group-item-action DMitem" >Quản lý Sản phẩm</a>
-        <a href="/admin/quanlydanhmuc" class="list-group-item list-group-item-action DMitem" >Quản lý Danh mục</a>
-        <a href="/admin/quanlythuonghieu" class="list-group-item list-group-item-action DMitem" >Quản lý Thương hiệu</a>
-        <a href="/admin/quanlycarousel" class="list-group-item list-group-item-action DMitem" >Quản lý Carousel</a>
-        <a href="/admin/quanlyfooter" class="list-group-item list-group-item-action DMitem" >Quản lý Footer</a>
-        <a href="/admin/quanlyfooter" class="list-group-item list-group-item-action DMitem" >Quản lý Bài viết</a>
+        <a id="QLSP" href="/admin/quanlysanpham" class="list-group-item list-group-item-action DMitem" >Sản phẩm</a>
+        <a id="QLDM" href="/admin/quanlydanhmuc" class="list-group-item list-group-item-action DMitem" >Danh mục</a>
+        <a id="QLTH" href="/admin/quanlythuonghieu" class="list-group-item list-group-item-action DMitem" >Thương hiệu</a>
+        <a id="QLCRS" href="/admin/quanlycarousel" class="list-group-item list-group-item-action DMitem" >Carousel</a>
+        <a id="QLBV" href="/admin/quanlybaiviet" class="list-group-item list-group-item-action DMitem" > Bài viết</a>
 
     </div>
     <!-- Quản lý nghiệp vụ-->
     <div class="list-group" style="margin-bottom: 1rem">
         <div class="list-group-item list-group-item-action active">
-            Nghiệp vụ
+            Quản lý Nghiệp vụ
         </div>
         <a href="#" class="list-group-item list-group-item-action DMitem" >Quản lý đơn hàng</a>
         <a href="#" class="list-group-item list-group-item-action DMitem" >Báo cáo doanh thu</a>
     </div>
-    <!-- Quản lý tài khoản-->
+  <!--  &lt;!&ndash; Quản lý tài khoản&ndash;&gt;
     <div class="list-group" style="margin-bottom: 1rem">
         <div class="list-group-item list-group-item-action active">
             Quản lý Tài khoản
         </div>
         <a href="#" class="list-group-item list-group-item-action DMitem" >Đổi thông tin cá nhân</a>
-        <a href="#" class="list-group-item list-group-item-action DMitem" >Đổi mật khẩu</a>
+    </div>-->
+    <!--Quản lý Footer-->
+    <div class="list-group" style="margin-bottom: 1rem">
+        <div class="list-group-item list-group-item-action active">
+            Quản lý Footer
+        </div>
+        <a href="#" class="list-group-item list-group-item-action DMitem" >Tuyển dụng</a>
+        <a href="#" class="list-group-item list-group-item-action DMitem" >Giới thiệu về HQKboutique</a>
+        <a href="#" class="list-group-item list-group-item-action DMitem" >Than phiền/Chăm sóc khách hàng</a>
+        <a href="#" class="list-group-item list-group-item-action DMitem" >Vận chuyển</a>
+        <a href="#" class="list-group-item list-group-item-action DMitem" >Chính sách đổi trả</a>
+        <a href="#" class="list-group-item list-group-item-action DMitem" >Chi nhánh cửa hàng</a>
     </div>
     <!--Cài đặt-->
     <div class="list-group" style="margin-bottom: 1rem">
@@ -34,9 +44,14 @@
             Cài đặt
         </div>
         <a href="#" class="list-group-item list-group-item-action DMitem" >Số lượng sản phẩm mỗi trang</a>
-        <a href="#" class="list-group-item list-group-item-action DMitem" >Chi nhánh cửa hàng</a>
         <a href="#" class="list-group-item list-group-item-action DMitem" >Thời gian login</a>
         <a href="#" class="list-group-item list-group-item-action DMitem" >Thay đổi token login</a>
+        <a href="#" class="list-group-item list-group-item-action DMitem" >Đổi mật khẩu</a>
     </div>
 
 </div>
+<script>
+    $(document).ready(function () {
+        $("#<%=key%>").addClass("list-group-item-success ");
+    });
+</script>
