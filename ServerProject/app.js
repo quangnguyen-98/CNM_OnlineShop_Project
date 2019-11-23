@@ -15,7 +15,8 @@ ids.configure({
   algorithm: 'sha1',  // The hashing algoritm to use in generating keys
   salt: Math.random   // A salt value or function
 });
-
+global.atob = require("atob");
+global.btoa = require("btoa");
 
 
 //Khai báo router
@@ -24,9 +25,10 @@ var AuthRouter = require('./routes/Auth.route');
 var NguoiDungRouter = require('./routes/NguoiDung.route');
 var SanPhamRouter = require('./routes/SanPham.route');
 var DanhMucRouter = require('./routes/DanhMuc.route');
+var ThuongHieuRouter = require('./routes/ThuongHieu.route');
 var CarouselRouter = require('./routes/Carousel.route');
 var FooterlRouter = require('./routes/Footer.route');
-var ThuongHieuRouter = require('./routes/ThuongHieu.route');
+
 
 
 // view engine setup (web service không dùng view)

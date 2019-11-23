@@ -1,0 +1,68 @@
+<% layout('../Layout/layoutAdmin.ejs') -%>
+<div class="container">
+    <div class="row-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin"><i class="fas fa-store"></i> HQKStore Admin</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Quản lý menu footer</li>
+            </ol>
+        </nav>
+    </div>
+
+
+    <br><br>
+<div class="container">
+
+    <form>
+        <%dataFT.forEach(function (item) {%>
+            <div class="form-group form-inline">
+                <label for="email" class="col-sm-3"><%= item.TenLienKet%></label>
+                <input class="form-control col-sm-6 value" value="<%=item.Link%>"  disabled>
+                <div class="col-sm-1">
+                    <div  class="btn btn-warning btnSua ">Sửa</div>
+                </div>
+                <div class="col-sm-1">
+                    <button id="<%=item.ID_Footer%>"  class="btn btn-success btnXacNhan" disabled>Xác nhận</button>
+                </div>
+            </div>
+        <%});%>
+    </form>
+</div>
+
+    <div id="info"></div>
+</div>
+
+
+<script >
+    $('body').on('click', '.btnSua', function () {
+        $(".value").prop("disabled",true);
+        $(".btnXacNhan").prop("disabled",true);
+        $(this).parent().parent().find(".value").prop( "disabled", false );
+        $(this).parent().parent().find(".btnXacNhan").prop( "disabled", false );
+    });
+    $('body').on('click', '.btnXacNhan', function () {
+
+        var lienket = $(this).parent().parent().find(".value").val();
+    /*    alert(lienket);
+        alert($(this).attr("id"));*/
+        $.ajax({
+            url: "<%= domain %>/Footers/" + $(this).attr("id") +"/"+btoa(lienket).replace(/\//g, '_').replace(/\+/g, '-')+ "?token=" + $.cookie("token"),
+            method: "PUT",
+            error: function (err) {
+               /* $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn '+err+' :))</h2>');*/
+                toastr["error"]("Trong link có kí tự không hợp lệ, vui lòng thử lại !");
+            },
+            success: function (data) {
+                if (data.status == "ok") {
+                    toastr["success"](data.message);
+                } else {
+                    toastr["error"](data.message);
+                }
+            }
+        });
+
+        $(".btnXacNhan").prop("disabled",true);
+        $(".value").prop("disabled",true);
+    });
+
+</script>

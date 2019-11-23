@@ -32,14 +32,20 @@
   {
     "ID_Footer": "41aedb2106",
     "LoaiFooter": "CH",
-    "TenLienKet": "128 Trần Quang Khải, Q1",
+    "TenLienKet": {
+      "Ten":"128 Trần Quang Khải, Q1",
+      "TenKhongVietHoa":"128 tran quang khai, q1"
+    },
     "Link": "http://"
 
   },
   {
     "ID_Footer": "419d440ff2",
     "LoaiFooter": "CH",
-    "TenLienKet": "19 Đồng Khởi, Q1",
+    "TenLienKet": {
+      "Ten": "19 Đồng Khởi, Q1",
+      "TenKhongVietHoa": "19 dong khoi, q1"
+    },
     "Link": "http://"
   }
 ]

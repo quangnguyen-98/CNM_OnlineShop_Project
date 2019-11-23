@@ -4,17 +4,17 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin"><i class="fas fa-store"></i> HQKStore Admin</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Quản lý Danh mục</li>
+                <li class="breadcrumb-item active" aria-current="page">Quản lý cửa hàng</li>
             </ol>
         </nav>
     </div>
     <div class="row-fluid">
         <div class="co ml-auto ">
             <button type="button" class="btn btn-primary d-inline " data-toggle="modal" data-target="#modalThem">
-                Thêm danh mục
+                Thêm cửa hàng
             </button>
             <form class="form-inline ml-auto d-inline float-right ">
-                <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên danh mục" aria-label="Search">
+                <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên cửa hàng" aria-label="Search">
                 <button id="btnTimKiem" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
             </form>
         </div>
@@ -27,14 +27,14 @@
         <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Tên danh mục</th>
+            <th scope="col">Tên cửa hàng</th>
             <th scope="col">Thao tác</th>
         </tr>
         </thead>
-        <tbody id="tableDM">
+        <tbody id="tableCH">
 
 
-        <!--Danh mục được load vào đây-->
+        <!--cửa hàng được load vào đây-->
 
         </tbody>
     </table>
@@ -47,11 +47,11 @@
             <% for (i = 1;i <= soTrang;i++){ %>
                 <% if(i == 1){ %>
                     <li id="<%= "subpagi" + i %>"  class="d-inline page-item active pagesubitem"><a class="page-link"
-                                                                                       href="#"> <%= i %></a>
+                                                                                                    href="#"> <%= i %></a>
                     </li>
                 <% }else{ %>
                     <li id="<%= "subpagi" + i %>" class="d-inline page-item pagesubitem"><a class="page-link "
-                                                                                href="#"> <%= i %></a></li>
+                                                                                            href="#"> <%= i %></a></li>
                 <% } %>
             <% } %>
 
@@ -60,28 +60,28 @@
     </nav>
 </div>
 
-<!-- Modal Thêm danh mục-->
+<!-- Modal Thêm cửa hàng-->
 <div class="modal fade" id="modalThem">
     <div class="modal-dialog modal-lg modal-lg modal-sm">
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title"><i class="fas fa-store"></i> Thêm danh mục</h4>
+                <h4 class="modal-title"><i class="fas fa-store"></i> Thêm cửa hàng</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
             <div class="modal-body">
                 <form class="was-validated">
                     <div class="form-group">
-                        <label for="TenDanhMuc">Tên danh mục</label>
-                        <input type="text" class="form-control" id="TenDanhMuc" placeholder="Nhập tên danh mục"
-                               name="uname" onkeydown="EnterThemDM()" required>
+                        <label for="TenCuaHang">Tên cửa hàng</label>
+                        <input type="text" class="form-control" id="TenCuaHang" placeholder="Nhập tên cửa hàng"
+                               name="uname" onkeydown="EnterThemCH()" required>
                     </div>
                 </form>
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
-                <label class="btn btn-success" onclick="ThemDanhMuc()">Xác nhận</label>
+                <label class="btn btn-success" onclick="ThemCuaHang()">Xác nhận</label>
                 <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
             </div>
 
@@ -90,64 +90,33 @@
 </div>
 
 <script>
-    function EnterThemDM() {
+    function EnterThemCH() {
         if (event.key === 'Enter') {
-            ThemDanhMuc();
+            ThemCuaHang();
             return false;
         }
     }
 </script>
 
-<!-- Danh sách Modal Sửa danh mục-->
-<div id="DanhSachModalSua">
-    <% dataDM.forEach(function (item) { %>
-        <div class="modal fade" id="modalSua<%= item.ID_DanhMuc %>">
-            <div class="modal-dialog modal-lg modal-lg modal-sm">
-                <div class="modal-content">
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title"><i class="fas fa-store"></i> Sửa danh mục</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <form class="was-validated">
-                            <div class="form-group">
-                                <label for="TenDanhMuc<%= item.ID_DanhMuc %>">Tên danh mục</label>
-                                <input type="text" class="form-control tenMoi" id="TenDanhMuc<%= item.ID_DanhMuc %>"
-                                       placeholder="Nhập tên danh mục" value="<%= item.TenDanhMuc.Ten %>" required>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <label id="<%= item.ID_DanhMuc %>" class="btn btn-success btnSuaMoi">Xác nhận</label>
-                        <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <% }) %>
 </div>
-</div>
-<!-- Danh sách Modal Xóa danh mục-->
+<!-- Danh sách Modal Xóa cửa hàng-->
 <div id="DanhSachModalXoa">
-    <% dataDM.forEach(function (item) { %>
-        <div class="modal fade" id="modalXoa<%= item.ID_DanhMuc %>">
+    <% dataCH.forEach(function (item) { %>
+        <div class="modal fade" id="modalXoa<%= item.ID_Footer %>">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h4 class="modal-title"><i class="fas fa-store"></i> Xóa danh mục</h4>
+                        <h4 class="modal-title"><i class="fas fa-store"></i> Xóa cửa hàng</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
-                        Bạn có thực sự muốn xóa danh mục này, thao tác này không thể hoàn tác ?
+                        Bạn có thực sự muốn xóa cửa hàng này, thao tác này không thể hoàn tác ?
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <label id="<%= item.ID_DanhMuc %>" class="btn btn-success btnXoaMoi">Xác nhận</label>
+                        <label id="<%= item.ID_Footer %>" class="btn btn-success btnXoaMoi">Xác nhận</label>
                         <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
                     </div>
                 </div>
@@ -158,88 +127,88 @@
 
 <script >
 
-    //Load danh sách danh mục
-    LoadDanhMuc();
-    function LoadDanhMuc() {
+    //Load danh sách cửa hàng
+    LoadCuaHang();
+    function LoadCuaHang() {
         $.ajax({
-            url: "<%= domain %>/DanhMucs/1?token=" + $.cookie("token"),
+            url: "<%= domain %>/Footers/laycuahangtheotrang?pagenumber=1&token=" + $.cookie("token"),
             method: "GET",
             error: function () {
                 $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
             },
             success: function (data) {
-                $.each(data.DanhMuc, function (i, item) {
+                $.each(data.CuaHang, function (i, item) {
                     var html_to_append;
                     html_to_append +=
-                        '<tr id="DMitem' + item.ID_DanhMuc + '">' +
-                        '<th scope="row">' + item.ID_DanhMuc + '</th>' +
-                        '<td>' + item.TenDanhMuc.Ten + '</td>' +
-                        '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_DanhMuc + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_DanhMuc + '"> Xóa </div><td>' +
+                        '<tr id="CHitem' + item.ID_Footer + '">' +
+                        '<th scope="row">' + item.ID_Footer + '</th>' +
+                        '<td>' + item.TenLienKet.Ten + '</td>' +
+                        '<td ><div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_Footer + '"> Xóa </div><td>' +
                         '</tr>';
-                    $("#tableDM").append(html_to_append);
+                    $("#tableCH").append(html_to_append);
                 });
             },
         });
     }
-    //Thêm danh mục
-    function ThemDanhMuc() {
+    //Thêm cửa hàng
+    function ThemCuaHang() {
         $.ajax({
-            url: "<%= domain %>/danhmucs/" + $("#TenDanhMuc").val() + "?token=" + $.cookie("token"),
+            url: "<%= domain %>/Footers/" + $("#TenCuaHang").val() + "?token=" + $.cookie("token"),
             method: "POST",
             error: function () {
                 $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
             },
             success: function (data) {
                 if (data.status == "ok") {
-                    $("#tableDM").fadeOut();
-                    $("#tableDM").empty();
-                    LoadDanhMuc();
-                    $("#tableDM").fadeIn();
+                    $("#tableCH").fadeOut();
+                    $("#tableCH").empty();
+                    LoadCuaHang();
+                    $("#tableCH").fadeIn();
                     $('#modalThem').modal('toggle');
-                    var Html_Modal_SuaDM =
-                        ' <div  class="modal fade modalSuaMoi" id="modalSua' + data.idDM + '">' +
+                    var Html_Modal_SuaCH =
+                        ' <div  class="modal fade modalSuaMoi" id="modalSua' + data.idCH + '">' +
                         '   <div class="modal-dialog modal-lg modal-lg modal-sm">' +
                         '    <div class="modal-content">' +
                         '  <div class="modal-header">' +
-                        ' <h4 class="modal-title"><i class="fas fa-store"></i> Sửa danh mục</h4>' +
+                        ' <h4 class="modal-title"><i class="fas fa-store"></i> Sửa cửa hàng</h4>' +
                         ' <button type="button" class="close" data-dismiss="modal">&times;</button>' +
                         '   </div>' +
                         ' <div class="modal-body">' +
                         '    <form  class="was-validated">' +
                         '  <div class="form-group">' +
-                        '   <label for="TenDanhMuc' + data.idDM + '">Tên danh mục</label>' +
-                        '  <input type="text" class="form-control tenMoi"  id="TenDanhMuc' + data.idDM + '" placeholder="Nhập tên danh mục" value="' + data.tenDM + '" required>' +
+                        '   <label for="TenCuaHang' + data.idCH + '">Tên cửa hàng</label>' +
+                        '  <input type="text" class="form-control tenMoi"  id="TenCuaHang' + data.idCH + '" placeholder="Nhập tên cửa hàng" value="' + data.tenCH + '" required>' +
                         '   </div>' +
                         '   </form>' +
                         '   </div>' +
                         '   <div class="modal-footer">' +
-                        '  <label id="' + data.idDM + '" class="btn btn-success btnSuaMoi" >Xác nhận </label>' +
+                        '  <label id="' + data.idCH + '" class="btn btn-success btnSuaMoi" >Xác nhận </label>' +
                         ' <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>' +
                         '  </div>' +
                         '   </div>' +
                         '  </div>' +
                         '  </div>';
-                    $("#DanhSachModalSua").append(Html_Modal_SuaDM);
-                    var Html_Modal_XoaDM =
-                        '<div class="modal fade" id="modalXoa' + data.idDM + '">' +
+                    $("#DanhSachModalSua").append(Html_Modal_SuaCH);
+                    var Html_Modal_XoaCH =
+                        '<div class="modal fade" id="modalXoa' + data.idCH + '">' +
                         ' <div class="modal-dialog modal-sm">' +
                         '     <div class="modal-content">' +
                         '     <!-- Modal Header -->' +
                         '  <div class="modal-header">' +
-                        '   <h4 class="modal-title"><i class="fas fa-store"></i> Xóa danh mục</h4>' +
+                        '   <h4 class="modal-title"><i class="fas fa-store"></i> Xóa cửa hàng</h4>' +
                         ' <button type="button" class="close" data-dismiss="modal">&times;</button>' +
                         '   </div>' +
                         '  <div class="modal-body">' +
-                        '    Bạn có thực sự muốn xóa danh mục này, thao tác này không thể hoàn tác ?' +
+                        '    Bạn có thực sự muốn xóa cửa hàng này, thao tác này không thể hoàn tác ?' +
                         '     </div>' +
                         '  <div class="modal-footer">' +
-                        '  <label id="' + data.idDM + '" class="btn btn-success btnXoaMoi">Xác nhận</label>' +
+                        '  <label id="' + data.idCH + '" class="btn btn-success btnXoaMoi">Xác nhận</label>' +
                         '  <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>' +
                         '   </div>' +
                         ' </div>' +
                         '   </div>' +
                         '     </div>';
-                    $("#DanhSachModalXoa").append(Html_Modal_XoaDM);
+                    $("#DanhSachModalXoa").append(Html_Modal_XoaCH);
                     toastr["success"](data.message);
                     TongItem++;
                     page=1;
@@ -249,42 +218,17 @@
                 }
             }
         });
-      /*  SoTrang ++;*/
+        /*  SoTrang ++;*/
         return false;
     }
 
-    //Sự kiện nút sửa của những danh mục được add bằng ajax
-    $('body').on('click', '.btnSuaMoi', function () {
-        var modal = $(this).parent().parent().parent().parent(".modal").attr("id");
-        $.ajax({
-            url: "<%= domain %>/danhmucs/" + $(this).attr("id") + "/" + $(this).parent().parent().find(".tenMoi").val() + "?token=" + $.cookie("token"),
-            method: "PUT",
-            error: function () {
-                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
-            },
-            success: function (data) {
-                if (data.status == "ok") {
-                    $("#" + modal).modal('toggle');
-                    $("#tableDM").fadeOut();
-                    $("#tableDM").empty();
-                    LoadDanhMuc();
-                    $("#tableDM").fadeIn();
-                    TaiLaiPagination();
-                    toastr["success"](data.message);
-                } else {
-                    toastr["error"](data.message);
-                }
-            }
-        });
-        return false;
-    });
 
-    //Sự kiện nút xóa của những danh mục được add bằng ajax
+    //Sự kiện nút xóa của những cửa hàng được add bằng ajax
     $('body').on('click', '.btnXoaMoi', function () {
         var modal = $(this).parent().parent().parent().parent(".modal").attr("id");
         var IDmodal = $(this).attr("id");
         $.ajax({
-            url: "<%= domain %>/danhmucs/" + $(this).attr("id") + "?token=" + $.cookie("token"),
+            url: "<%= domain %>/Footers/" + $(this).attr("id") + "?token=" + $.cookie("token"),
             method: "DELETE",
             error: function () {
                 $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
@@ -292,10 +236,10 @@
             success: function (data) {
                 if (data.status == "ok") {
                     $("#" + modal).modal('toggle');
-                    $("#tableDM").fadeOut();
-                    $("#tableDM").empty();
-                    LoadDanhMuc();
-                    $("#tableDM").fadeIn();
+                    $("#tableCH").fadeOut();
+                    $("#tableCH").empty();
+                    LoadCuaHang();
+                    $("#tableCH").fadeIn();
                     TaiLaiPagination();
                     toastr["success"](data.message);
                     TongItem--;
@@ -308,7 +252,7 @@
                 }
             }
         });
-       /* SoTrang --;*/
+        /* SoTrang --;*/
         return false;
     });
 
@@ -330,22 +274,22 @@
             $(".page-item").removeClass("active");
             $("#subpagi" + (page - 1)).addClass("active");
             $.ajax({
-                url: "<%= domain %>/DanhMucs/" + (page - 1) + "?token=" + $.cookie("token"),
+                url: "<%= domain %>/Footers/laycuahangtheotrang?pagenumber=" + (page - 1) + "&token=" + $.cookie("token"),
                 method: "GET",
                 error: function () {
                     $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
                 },
                 success: function (data) {
-                    $("#tableDM").empty();
-                    $.each(data.DanhMuc, function (i, item) {
+                    $("#tableCH").empty();
+                    $.each(data.CuaHang, function (i, item) {
                         var html_to_append;
                         html_to_append +=
-                            '<tr id="DMitem' + item.ID_DanhMuc + '">' +
-                            '<th scope="row">' + item.ID_DanhMuc + '</th>' +
-                            '<td>' + item.TenDanhMuc.Ten + '</td>' +
-                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_DanhMuc + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_DanhMuc + '"> Xóa </div><td>' +
+                            '<tr id="CHitem' + item.ID_Footer + '">' +
+                            '<th scope="row">' + item.ID_Footer + '</th>' +
+                            '<td>' + item.TenLienKet.Ten + '</td>' +
+                            '<td class=""> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_Footer + '"> Xóa </div><td>' +
                             '</tr>';
-                        $("#tableDM").append(html_to_append);
+                        $("#tableCH").append(html_to_append);
                     });
                 }
             });
@@ -367,22 +311,22 @@
             $("#subpagi" + (page + 1)).addClass("active");
             $("#pagiTruoc").removeClass("disabled");
             $.ajax({
-                url: "<%= domain %>/DanhMucs/" + (page + 1) + "?token=" + $.cookie("token"),
+                url: "<%= domain %>/Footers/laycuahangtheotrang?pagenumber=" + (page + 1) + "&token=" + $.cookie("token"),
                 method: "GET",
                 error: function () {
                     $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
                 },
                 success: function (data) {
-                    $("#tableDM").empty();
-                    $.each(data.DanhMuc, function (i, item) {
+                    $("#tableCH").empty();
+                    $.each(data.CuaHang, function (i, item) {
                         var html_to_append;
                         html_to_append +=
-                            '<tr id="DMitem' + item.ID_DanhMuc + '">' +
-                            '<th scope="row">' + item.ID_DanhMuc + '</th>' +
-                            '<td>' + item.TenDanhMuc.Ten + '</td>' +
-                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_DanhMuc + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_DanhMuc + '"> Xóa </div><td>' +
+                            '<tr id="CHitem' + item.ID_Footer + '">' +
+                            '<th scope="row">' + item.ID_Footer + '</th>' +
+                            '<td>' + item.TenLienKet.Ten + '</td>' +
+                            '<td class=""> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_Footer + '"> Xóa </div><td>' +
                             '</tr>';
-                        $("#tableDM").append(html_to_append);
+                        $("#tableCH").append(html_to_append);
                     });
                 }
             });
@@ -399,22 +343,22 @@
             $("#pagiSau").removeClass("disabled");
             $("<%= "#subpagi" + i %>").addClass("active");
             $.ajax({
-                url: "<%= domain %>/DanhMucs/" + <%= i %> +"?token=" + $.cookie("token"),
+                url: "<%= domain %>/Footers/laycuahangtheotrang?pagenumber=" + <%= i %> +"&token=" + $.cookie("token"),
                 method: "GET",
                 error: function () {
                     $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
                 },
                 success: function (data) {
-                    $("#tableDM").empty();
-                    $.each(data.DanhMuc, function (i, item) {
+                    $("#tableCH").empty();
+                    $.each(data.CuaHang, function (i, item) {
                         var html_to_append;
                         html_to_append +=
-                            '<tr id="DMitem' + item.ID_DanhMuc + '">' +
-                            '<th scope="row">' + item.ID_DanhMuc + '</th>' +
-                            '<td>' + item.TenDanhMuc.Ten + '</td>' +
-                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_DanhMuc + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_DanhMuc + '"> Xóa </div><td>' +
+                            '<tr id="CHitem' + item.ID_Footer + '">' +
+                            '<th scope="row">' + item.ID_Footer + '</th>' +
+                            '<td>' + item.TenLienKet.Ten + '</td>' +
+                            '<td > <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_Footer + '"> Xóa </div><td>' +
                             '</tr>';
-                        $("#tableDM").append(html_to_append);
+                        $("#tableCH").append(html_to_append);
                     });
                 }
             });
@@ -443,32 +387,32 @@
     }
 </script>
 <script>
-$(document).ready(function () {
-    $("#btnTimKiem").click(function () {
+    $(document).ready(function () {
+        $("#btnTimKiem").click(function () {
 
-        $.ajax({
-            url: "<%= domain %>/danhmucs/timtheoten/"+$("#inputTK").val()+"?token=" + $.cookie("token"),
-            method: "GET",
-            error: function () {
-                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
-            },
-            success: function (data) {
-                $("#tableDM").empty();
-                $.each(data.Items, function (i, item) {
-                    var html_to_append;
-                    html_to_append +=
-                        '<tr id="DMitem' + item.ID_DanhMuc + '">' +
-                        '<th scope="row">' + item.ID_DanhMuc + '</th>' +
-                        '<td>' + item.TenDanhMuc.Ten + '</td>' +
-                        '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_DanhMuc + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_DanhMuc + '"> Xóa </div><td>' +
-                        '</tr>';
-                    $("#tableDM").append(html_to_append);
+            $.ajax({
+                url: "<%= domain %>/Footers/timtheoten/"+$("#inputTK").val()+"?token=" + $.cookie("token"),
+                method: "GET",
+                error: function () {
+                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                },
+                success: function (data) {
+                    $("#tableCH").empty();
+                    $.each(data.Items, function (i, item) {
+                        var html_to_append;
+                        html_to_append +=
+                            '<tr id="CHitem' + item.ID_Footer + '">' +
+                            '<th scope="row">' + item.ID_Footer + '</th>' +
+                            '<td>' + item.TenLienKet.Ten + '</td>' +
+                            '<td class=""> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_Footer + '"> Xóa </div><td>' +
+                            '</tr>';
+                        $("#tableCH").append(html_to_append);
 
-                });
-            }
+                    });
+                }
+            });
+            return false;
         });
-        return false;
     });
-});
 
 </script>

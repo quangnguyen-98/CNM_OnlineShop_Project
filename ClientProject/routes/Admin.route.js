@@ -4,8 +4,8 @@ var router = express.Router();
 //Khai báo conntroller
 var AdminController = require('../controller/Admin.controller');
 var AuthController = require('../controller/Auth.controller');
-// Admin/
-/*router.get('/', AdminController.HienThiTrangDangNhap);*/
+
+//Route (Web/Admin/)
 
 router.get('/', AdminController.HienThiQuanLySanPham);
 
@@ -16,6 +16,12 @@ router.get('/QuanLyDanhMuc', AdminController.HienThiQuanLyDanhMuc);
 router.get('/QuanLyThuongHieu', AdminController.HienThiQuanLyThuongHieu);
 
 router.get('/QuanLyCarousel', AdminController.HienThiQuanLyCarousel);
+
+router.get('/QuanLyBaiViet', AdminController.HienThiQuanLyBaiViet);
+
+router.get('/QuanLyFooterMenu', AdminController.HienThiQuanLyFooterMenu);
+
+router.get('/QuanLyFooterCH', AdminController.HienThiQuanLyFooterCH);
 
 router.get('/QuanLyBaiViet', AdminController.HienThiQuanLyBaiViet);
 

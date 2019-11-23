@@ -81,7 +81,7 @@ $("document").ready(function(){
                 var html_to_append ='';
                 html_to_append +=
                     /*'<li><a id="" href="#" class="footer-item-color">cac'+i+'</a></li>';*/
-                    '<li><a id="'+item.ID_LienKet+'" href="'+item.Link+'" class="footer-item-color">'+item.TenLienKet+'</a></li>';
+                    '<li><a id="'+item.ID_LienKet+'" href="'+item.Link+'" class="footer-item-color" target="_blank">'+item.TenLienKet+'</a></li>';
                 $("#dataTT").append(html_to_append);
             });
         }
@@ -147,7 +147,7 @@ $("document").ready(function(){
                 var html_to_append ='';
                 html_to_append +=
                     /*'<li><a id="" href="#" class="footer-item-color">cac'+i+'</a></li>';*/
-            '<li><a id="'+item.ID_Footer+'" href="https://www.google.com/maps/search/'+item.TenLienKet+'" class="footer-item-color" target="_blank">'+item.TenLienKet+'</a></li>';
+            '<li><a id="'+item.ID_Footer+'" href="https://www.google.com/maps/search/'+item.TenLienKet.Ten+'" class="footer-item-color" target="_blank">'+item.TenLienKet.Ten+'</a></li>';
                 $("#dataCH").append(html_to_append);
             });
         }

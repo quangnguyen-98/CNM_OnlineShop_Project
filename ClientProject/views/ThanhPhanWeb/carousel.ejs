@@ -29,17 +29,17 @@ $("document").ready(function () {
             $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
         },
         success: function (data) {
-            $.each(data.Items, function (i, item) {
+            $.each(data.Carousel, function (i, item) {
                 var html_to_append1 = '';
                 html_to_append1 +=
                 '<li data-target="#SPCarousel" class="carousel-slider" data-slide-to="'+i+'"></li>';
 
                 $(".carousel-indicators").append(html_to_append1);
             });
-            $.each(data.Items, function (i, item) {
+            $.each(data.Carousel, function (i, item) {
                 var html_to_append2 = '';
                 html_to_append2 +=
-                    '<a id="' + item.ID_Carousel + '" href="' + item.LinkBaiViet + '" class="carousel-item">' +
+                    '<a id="' + item.ID_Carousel + '" href="' + item.LinkBaiViet + '" class="carousel-item" target="_blank">' +
                     '<img class="d-block w-100 " src="' + item.LinkAnh + '" >' +
                     '<div class="carousel-caption d-none d-md-block">' +
                     '</div>' +

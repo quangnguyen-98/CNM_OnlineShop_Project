@@ -2,20 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a322a82-60d2-4128-8ad3-7586c19b93fc" name="Default Changelist" comment=":))">
-      <change afterPath="$PROJECT_DIR$/bin/a.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/dsa.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/ggg.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/Admin/QuanLyFooterCH.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/Admin/QuanLyFooterMenu.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/ServerDomain.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/ServerDomain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/Admin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/Admin.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/Login.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/Login.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/Admin.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/Admin.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/MenuDashboard.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/MenuDashboard.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyCarousel.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyCarousel.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyDanhMuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyDanhMuc.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyThuongHieu.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyThuongHieu.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/Layout/layoutAdmin.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Layout/layoutAdmin.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/Layout/layoutKhachHang.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Layout/layoutKhachHang.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/error.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/error.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/ThanhPhanWeb/Carousel.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/ThanhPhanWeb/Carousel.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/ThanhPhanWeb/Footer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/ThanhPhanWeb/Footer.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +33,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1SZ2HzM7NL4UXqKS0DnClyguOTi" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -145,7 +146,8 @@
       <workItem from="1574256414649" duration="18146000" />
       <workItem from="1574323234480" duration="21280000" />
       <workItem from="1574400522014" duration="41919000" />
-      <workItem from="1574447656227" duration="5671000" />
+      <workItem from="1574447656227" duration="6094000" />
+      <workItem from="1574483129680" duration="34128000" />
     </task>
     <servers />
   </component>

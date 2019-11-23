@@ -7,8 +7,6 @@ module.exports = {
     LayTatCaDanhMuc: function (req, res, next) {
         var n = parseInt(req.params.pagenumber) ;
         var soItemMoiPage= itemMoiPage;
-        var begin =(n-1)*soItemMoiPage;
-        var end = (n-1)*soItemMoiPage +soItemMoiPage;
         var param = {
             TableName: "DanhMuc",
             ProjectionExpression:"#yr, TenDanhMuc, TrangThaiXoa",
@@ -103,7 +101,7 @@ module.exports = {
 
     },
     ThemDanhMuc: function (req, res, next) {
-        listDM =[];
+      /*  listDM =[];*/
         var tenDM = req.params.tendanhmuc;
         var idDM = ids.generate();
         var paramDM = {
@@ -123,7 +121,7 @@ module.exports = {
                 console.error(err);
                 return res.json({
                     status:"fail",
-                    message:"Lỗi hệ thống"
+                    message:"Lỗi hệ thống !"
                 });
 
             }
