@@ -19,6 +19,7 @@ router.get('/CH', FooterController.LayFooterCH);
 
 router.get('/Menu', FooterController.LayFooterMenu);
 
+router.get('/timtheoten/tencuahang', FooterController.LayCuaHangTheoTen);
 
 router.put('/:idfooter/:lienket', FooterController.SuaMenuFooter);
 
@@ -30,7 +31,7 @@ router.post('/:tencuahang', FooterController.ThemCuaHang);
 
 router.delete('/:idcuahang', FooterController.XoaCuaHang);
 
-router.get('/timtheoten/:tencuahang', FooterController.LayCuaHangTheoTen);
+
 
 
 module.exports = router;

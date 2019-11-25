@@ -5,7 +5,9 @@
       "Ten": "Giới Thiệu Về HQKStore",
       "TenKhongVietHoa": "gioi thieu ve hqkstore"
     },
-    "NoiDung": "abc xyz fsdfds"
+    "NoiDung": "abc xyz fsdfds",
+    "LinkBaiViet": "http://",
+    "TrangThaiXoa":false
   },
   {
     "ID_BaiViet": "4672d93a6f",
@@ -13,6 +15,8 @@
       "Ten": "Giới Thiệu Về",
       "TenKhongVietHoa": "gioi thieu ve"
     },
-    "NoiDung": "abc xyz fdsf"
+    "NoiDung": "abc xyz fdsf",
+    "LinkBaiViet": "http://",
+    "TrangThaiXoa":false
   }
 ]

@@ -4,85 +4,523 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin"><i class="fas fa-store"></i> HQKStore Admin</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Quản lý bài viết</li>
+                <li class="breadcrumb-item active" aria-current="page">Quản lý Bài viết</li>
             </ol>
         </nav>
     </div>
-
     <div class="row-fluid">
         <div class="co ml-auto ">
-            <button type="button" class="btn btn-primary d-inline " data-toggle="modal" data-target="#modalThem" >
-                Thêm thương hiệu
+            <button type="button" class="btn btn-primary d-inline " data-toggle="modal" data-target="#modalThem">
+                Thêm bài viết
             </button>
-
             <form class="form-inline ml-auto d-inline float-right ">
-                <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên thương hiệu" aria-label="Search">
+                <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên bài viết"
+                       aria-label="Search">
                 <button id="btnTimKiem" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
             </form>
         </div>
-
     </div>
 
-    <!-- The Modal Thêm thương hiệu-->
-    <div class="modal fade" id="modalThem">
-        <div class="modal-dialog modal-lg modal-lg modal-sm">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title"><i class="fas fa-store"></i> Thêm thương hiệu</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form action="/action_page.php" class="was-validated">
-                        <div class="form-group">
-                            <label for="uname">Tên thương hiệu</label>
-                            <input type="text" class="form-control" id="uname" placeholder="Nhập tên sản phẩm" name="uname" required>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Xác nhận</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
     <br><br>
+
     <table class="table table-hover">
+        <img src="https://bb4298.s3-us-west-1.amazonaws.com/index.svg" class="loadingDiv" alt="loadingIcon">
         <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Tên thương hiệu</th>
-
+            <th scope="col">Tiêu đề</th>
             <th scope="col">Thao tác</th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <th scope="row">5fdsfs54w</th>
-            <td>Vans</td>
-            <td class=""><div class="btn btn-warning "> Sửa </div>  <div class="btn btn-danger"> Xóa </div></td>
-        </tr>
-        <tr>
-            <th scope="row">fsdfsd54</th>
-            <td>Converse</td>
-            <td class=""><div class="btn btn-warning "> Sửa </div>  <div class="btn btn-danger"> Xóa </div></td>
-        </tr>
+        <tbody id="tableBV">
+
+        <!--Bài viết được load vào đây-->
+
         </tbody>
     </table>
+    <div id="info"></div>
+    <!--Pagination-->
     <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li id="pagiTruoc" class="page-item "><a class="page-link" href="">Trước</a></li>
-            <li id="" class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li id="" class="page-item"><a class="page-link " href="#">2</a></li>
-            <li id="pagiSau" class="page-item"><a class="page-link" href="">Sau</a></li>
+        <ul class="pagination menu-phantrang">
+            <li id="pagiTruoc" class="page-item "><a class="page-link" href="#">Trước</a></li>
+            <% for (i = 1;i <= soTrang;i++){ %>
+                <% if(i == 1){ %>
+                    <li id="<%= "subpagi" + i %>" class="d-inline page-item active pagesubitem"><a class="page-link"
+                                                                                                   href="#"> <%= i %></a>
+                    </li>
+                <% }else{ %>
+                    <li id="<%= "subpagi" + i %>" class="d-inline page-item pagesubitem"><a class="page-link "
+                                                                                            href="#"> <%= i %></a></li>
+                <% } %>
+            <% } %>
+            <li id="pagiSau" class="page-item"><a class="page-link" href="#">Sau</a></li>
         </ul>
     </nav>
 </div>
 
+<!-- Modal Thêm bài viết-->
+<div class="modal fade" id="modalThem">
+    <div class="modal-dialog modal-lg modal-lg modal-sm">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="fas fa-store"></i> Thêm bài viết</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form class="was-validated">
+                    <div class="form-group">
+                        <label for="TenTieuDe">Tiêu đề</label>
+                        <input type="text" class="form-control" id="TenTieuDe" placeholder="Nhập tiêu đề"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="NoiDung">Nội dung bài viết</label>
+                        <textarea name="ckeditorThem" class="ckeditor"></textarea>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <label id="btnXacNhanThem" class="btn btn-success">Xác nhận</label>
+                <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Danh sách Modal Sửa bài viết-->
+<div id="DanhSachModalSua">
+    <% dataBV.forEach(function (item) { %>
+        <div class="modal fade" id="modalSua<%= item.ID_BaiViet %>">
+            <div class="modal-dialog modal-lg modal-lg modal-sm">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title"><i class="fas fa-store"></i> Sửa bài viết</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form class="was-validated">
+                            <div class="form-group">
+                                <label for="TenTieuDe<%= item.ID_BaiViet %>">Tiêu đề</label>
+                                <input type="text" class="form-control tenMoi" id="TenTieuDe<%= item.ID_BaiViet %>"
+                                       placeholder="Nhập tiêu đề" value="<%= item.TenTieuDe.Ten %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="NoiDung<%= item.ID_BaiViet %>">Nội dung</label>
+                                <textarea name="ckeditorBV<%= item.ID_BaiViet %>"
+                                          class="noidungMoi ckeditor"><%= item.NoiDung %></textarea>
+                            </div>
+
+                        </form>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <label id="<%= item.ID_BaiViet %>" class="btn btn-success btnSuaMoi">Xác nhận</label>
+                        <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</div>
+</div>
+<!-- Danh sách Modal Xóa bài viết-->
+<div id="DanhSachModalXoa">
+    <% dataBV.forEach(function (item) { %>
+        <div class="modal fade" id="modalXoa<%= item.ID_BaiViet %>">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title"><i class="fas fa-store"></i> Xóa bài viết</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        Bạn có thực sự muốn xóa bài viết này, thao tác này không thể hoàn tác ?
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <label id="<%= item.ID_BaiViet %>" class="btn btn-success btnXoaMoi">Xác nhận</label>
+                        <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</div>
+
+<script>
+    //Config CKEditor
+    $(document).ready(function () {
+        CKEDT()
+
+    });
+
+    function CKEDT() {
+        CKEDITOR.config.language = 'vi';
+        CKEDITOR.config.entities_latin = false;
+        CKEDITOR.config.entities_greek = false;
+        CKEDITOR.replace('.ckeditor', {
+            language: 'vi',
+            entities_latin: false,
+            entities_greek: false,
+        });
+    }
+
+    //Load danh sách bài viết
+    LoadBaiViet();
+
+    function LoadBaiViet() {
+        $.ajax({
+            url: "<%= domain %>/BaiViets/1?token=" + $.cookie("token"),
+            method: "GET",
+            error: function () {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function (data) {
+                $.each(data.BaiViet, function (i, item) {
+                    var html_to_append =
+                        '<tr id="BVitem' + item.ID_BaiViet + '">' +
+                        '<th scope="row">' + item.ID_BaiViet + '</th>' +
+                        '<td>' + item.TenTieuDe.Ten + '</td>' +
+                        '<td> <div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_BaiViet + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_BaiViet + '"> Xóa </div> <div class="btn btn-success btnSaveLink"> Sao chép link <input  class="valueSaveLink" style="display: none" value="' + item.LinkBaiViet + '"/></div></td>' +
+                        '</tr>';
+                    $("#tableBV").append(html_to_append);
+                });
+            },
+        });
+    }
+
+    //Thêm bài viết
+    $('body').on('click', '#btnXacNhanThem', function () {
+        var noiDungBV = CKEDITOR.instances['ckeditorThem'].getData();
+        $.ajax({
+            url: "<%= domain %>/baiviets/" + $("#TenTieuDe").val() + "?token=" + $.cookie("token"),
+            method: "POST",
+            cache: false,
+            data: {
+                noidungbaiviet: noiDungBV
+            },
+            error: function (err) {
+                toastr["error"]("Tên tiêu đề không được để trống !");
+            },
+            success: function (data) {
+                if (data.status == "ok") {
+                    $("#tableBV").fadeOut();
+                    $("#tableBV").empty();
+                    LoadBaiViet();
+                    $("#tableBV").fadeIn();
+                    $('#modalThem').modal('toggle');
+                    var Html_Modal_SuaBV =
+                        '<div class="modal fade" id="modalSua' + data.idBV + '">' +
+                        ' <div class="modal-dialog modal-lg modal-lg modal-sm">' +
+                        '   <div class="modal-content">' +
+                        <!-- Modal Header -->
+                        '   <div class="modal-header">' +
+                        '      <h4 class="modal-title"><i class="fas fa-store"></i> Sửa bài viết</h4>' +
+                        '<button type="button" class="close" data-dismiss="modal">&times;</button>' +
+                        '       </div>' +
+                        <!-- Modal body -->
+                        ' <div class="modal-body">' +
+                        ' <form class="was-validated">' +
+                        '     <div class="form-group">' +
+                        '      <label>Tiêu đề</label>' +
+                        '<input type="text" class="form-control tenMoi" id="TenTieuDe' + data.idBV + '"' +
+                        '  placeholder="Nhập tiêu đề" value="' + data.tenBV + '" required>' +
+                        '    </div>' +
+                        '   <div class="form-group">' +
+                        '<label>Nội dung</label>' +
+                        '<textarea name="ckeditorBV' + data.idBV + '"' +
+                        'class="noidungMoi ckeditor">' + data.noidungBV + '</textarea>' +
+                        '</div>' +
+                        '  </form>' +
+                        '    </div>' +
+                        <!-- Modal footer -->
+                        '    <div class="modal-footer">' +
+                        '   <label id="' + data.idBV + '" class="btn btn-success btnSuaMoi">Xác nhận</label>' +
+                        '  <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>' +
+                        '         </div>' +
+                        '        </div>' +
+                        '    </div>' +
+                        '       </div>';
+                    $("#DanhSachModalSua").append(Html_Modal_SuaBV);
+                    var Html_Modal_XoaBV =
+                        '<div class="modal fade" id="modalXoa' + data.idBV + '">' +
+                        ' <div class="modal-dialog modal-sm">' +
+                        '     <div class="modal-content">' +
+                        '     <!-- Modal Header -->' +
+                        '  <div class="modal-header">' +
+                        '   <h4 class="modal-title"><i class="fas fa-store"></i> Xóa bài viết</h4>' +
+                        ' <button type="button" class="close" data-dismiss="modal">&times;</button>' +
+                        '   </div>' +
+                        '  <div class="modal-body">' +
+                        '    Bạn có thực sự muốn xóa bài viết này, thao tác này không thể hoàn tác ?' +
+                        '     </div>' +
+                        '  <div class="modal-footer">' +
+                        '  <label id="' + data.idBV + '" class="btn btn-success btnXoaMoi">Xác nhận</label>' +
+                        '  <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>' +
+                        '   </div>' +
+                        ' </div>' +
+                        '   </div>' +
+                        '     </div>';
+                    $("#DanhSachModalXoa").append(Html_Modal_XoaBV);
+                    // CKEDT();
+                    CKEDITOR.replace('ckeditorBV' + data.idBV, {
+                        language: 'vi',
+                        entities_latin: false,
+                        entities_greek: false,
+                    });
+                    toastr["success"](data.message);
+                    TongItem++;
+                    page = 1;
+                    TaiLaiPagination();
+                } else {
+                    toastr["error"](data.message);
+                }
+            }
+        });
+        /*  SoTrang ++;*/
+        return false;
+    });
+
+    //Sự kiện nút sửa của những bài viết được add bằng ajax
+    $('body').on('click', '.btnSuaMoi', function () {
+        var input = $(this).parent().parent().find(".noidungMoi").attr("name").toString();
+        var noiDungBV = CKEDITOR.instances[input].getData();
+        var modal = $(this).parent().parent().parent().parent(".modal").attr("id");
+        $.ajax({
+            url: "<%= domain %>/baiviets/" + $(this).attr("id") + "/" + $(this).parent().parent().find(".tenMoi").val() + "?token=" + $.cookie("token"),
+            method: "PUT",
+            cache: false,
+            data: {
+                noidungbaiviet: noiDungBV
+            },
+            error: function () {
+                toastr["error"]("Tên tiêu đề không được để trống !");
+            },
+            success: function (data) {
+                if (data.status == "ok") {
+                    $("#" + modal).modal('toggle');
+                    $("#tableBV").fadeOut();
+                    $("#tableBV").empty();
+                    LoadBaiViet();
+                    $("#tableBV").fadeIn();
+                    TaiLaiPagination();
+                    toastr["success"](data.message);
+                } else {
+                    toastr["error"](data.message);
+                }
+            }
+        });
+        return false;
+    });
+
+    //Sự kiện nút xóa của những bài viết được add bằng ajax
+    $('body').on('click', '.btnXoaMoi', function () {
+        var modal = $(this).parent().parent().parent().parent(".modal").attr("id");
+        var IDmodal = $(this).attr("id");
+        $.ajax({
+            url: "<%= domain %>/baiviets/" + $(this).attr("id") + "?token=" + $.cookie("token"),
+            method: "DELETE",
+            error: function () {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function (data) {
+                if (data.status == "ok") {
+                    $("#" + modal).modal('toggle');
+                    $("#tableBV").fadeOut();
+                    $("#tableBV").empty();
+                    LoadBaiViet();
+                    $("#tableBV").fadeIn();
+                    TaiLaiPagination();
+                    toastr["success"](data.message);
+                    TongItem--;
+                    page = 1;
+                    TaiLaiPagination();
+
+
+                } else {
+                    toastr["error"](data.message);
+                }
+            }
+        });
+        return false;
+    });
+
+</script>
+<script>
+    //Khai báo biến
+    var TongItem = "<%= tongItem %>";
+    var SoItemMoiPage = "<%= itemMoiPage %>";
+    var page = 1;
+    var SoTrang = "<%= soTrang %>";
+
+    //Sự kiện trang trước
+    $('body').on('click', '#pagiTruoc', function () {
+        if (page == 1) {
+            $("#pagiTruoc").addClass("disabled");
+            return false;
+        } else {
+            $(".page-item").removeClass("active");
+            $("#subpagi" + (page - 1)).addClass("active");
+            $.ajax({
+                url: "<%= domain %>/BaiViets/" + (page - 1) + "?token=" + $.cookie("token"),
+                method: "GET",
+                error: function () {
+                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                },
+                success: function (data) {
+                    $("#tableBV").empty();
+                    $.each(data.BaiViet, function (i, item) {
+                        var html_to_append;
+                        html_to_append +=
+                            '<tr id="BVitem' + item.ID_BaiViet + '">' +
+                            '<th scope="row">' + item.ID_BaiViet + '</th>' +
+                            '<td>' + item.TenTieuDe.Ten + '</td>' +
+                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_BaiViet + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_BaiViet + '"> Xóa </div> <div class="btn btn-success btnSaveLink"> Sao chép link <input  class="valueSaveLink" style="display: none" value="' + item.LinkBaiViet + '"/></div></td>' +
+                            '</tr>';
+                        $("#tableBV").append(html_to_append);
+                    });
+                }
+            });
+            page = page - 1;
+            $("#pagiSau").removeClass("disabled");
+            if (page == 1) {
+                $("#pagiTruoc").addClass("disabled");
+            }
+            return false;
+        }
+    });
+    //Sự kiện trang sau
+    $('body').on('click', '#pagiSau', function () {
+        if (page == SoTrang) {
+            $("#pagiSau").addClass("disabled");
+            return false;
+        } else {
+            $(".page-item").removeClass("active");
+            $("#subpagi" + (page + 1)).addClass("active");
+            $("#pagiTruoc").removeClass("disabled");
+            $.ajax({
+                url: "<%= domain %>/BaiViets/" + (page + 1) + "?token=" + $.cookie("token"),
+                method: "GET",
+                error: function () {
+                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                },
+                success: function (data) {
+                    $("#tableBV").empty();
+                    $.each(data.BaiViet, function (i, item) {
+                        var html_to_append;
+                        html_to_append +=
+                            '<tr id="BVitem' + item.ID_BaiViet + '">' +
+                            '<th scope="row">' + item.ID_BaiViet + '</th>' +
+                            '<td>' + item.TenTieuDe.Ten + '</td>' +
+                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_BaiViet + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_BaiViet + '"> Xóa </div> <div class="btn btn-success btnSaveLink"> Sao chép link <input  class="valueSaveLink" style="display: none" value="' + item.LinkBaiViet + '"/></div></td>' +
+                            '</tr>';
+                        $("#tableBV").append(html_to_append);
+                    });
+                }
+            });
+            page = page + 1;
+            return false;
+        }
+    });
+
+    ClickVaoCacTrang();
+
+    function ClickVaoCacTrang() {
+        <% for (i = 1;i <= soTrangLocal;i++){ %>
+        $("<%= "#subpagi" + i %>").click(function () {
+            $(".page-item").removeClass("active");
+            $("#pagiSau").removeClass("disabled");
+            $("<%= "#subpagi" + i %>").addClass("active");
+            $.ajax({
+                url: "<%= domain %>/BaiViets/" + <%= i %> +"?token=" + $.cookie("token"),
+                method: "GET",
+                error: function () {
+                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                },
+                success: function (data) {
+                    $("#tableBV").empty();
+                    $.each(data.BaiViet, function (i, item) {
+                        var html_to_append;
+                        html_to_append +=
+                            '<tr id="BVitem' + item.ID_BaiViet + '">' +
+                            '<th scope="row">' + item.ID_BaiViet + '</th>' +
+                            '<td>' + item.TenTieuDe.Ten + '</td>' +
+                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_BaiViet + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_BaiViet + '"> Xóa </div> <div class="btn btn-success btnSaveLink"> Sao chép link <input  class="valueSaveLink" style="display: none" value="' + item.LinkBaiViet + '"/></div></td>' +
+                            '</tr>';
+                        $("#tableBV").append(html_to_append);
+                    });
+                }
+            });
+            <%= "page=" + i %>;
+            if (page != 1) {
+                $("#pagiTruoc").removeClass("disabled");
+            }
+            return false;
+        });
+        <% } %>
+    }
+
+    function TaiLaiPagination() {
+        var SoTrangPagi = Math.ceil(TongItem / SoItemMoiPage);
+        SoTrang = SoTrangPagi;
+        $(".menu-phantrang").empty();
+        $(".menu-phantrang").append(' <li id="pagiTruoc" class="page-item "><a class="page-link" href="#">Trước</a></li>');
+        for (i = 1; i <= SoTrangPagi; i++) {
+            var html_pagi =
+                '  <li id="subpagi' + i + '" class="d-inline page-item pagesubitem active"><a class="page-link" href="#">' + i + '</a>';
+            $(".menu-phantrang").append(html_pagi);
+        }
+        $(".menu-phantrang").append(' <li id="pagiSau" class="page-item "><a class="page-link" href="#">Sau</a></li>');
+        $(".pagesubitem").removeClass("active");
+        $(".pagesubitem:first").addClass("active");
+        ClickVaoCacTrang();
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#btnTimKiem").click(function () {
+
+            $.ajax({
+                url: "<%= domain %>/baiviets/timtheoten/" + $("#inputTK").val() + "?token=" + $.cookie("token"),
+                method: "GET",
+                error: function () {
+                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                },
+                success: function (data) {
+                    $("#tableBV").empty();
+                    $.each(data.Items, function (i, item) {
+                        var html_to_append;
+                        html_to_append +=
+                            '<tr id="BVitem' + item.ID_BaiViet + '">' +
+                            '<th scope="row">' + item.ID_BaiViet + '</th>' +
+                            '<td>' + item.TenTieuDe.Ten + '</td>' +
+                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_BaiViet + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_BaiViet + '"> Xóa </div> <div class="btn btn-success btnSaveLink"> Sao chép link <input  class="valueSaveLink" style="display: none" value="' + item.LinkBaiViet + '"/></div></td>' +
+                            '</tr>';
+                        $("#tableBV").append(html_to_append);
+
+                    });
+                }
+            });
+            return false;
+        });
+    });
+
+</script>
+<script>
+    $('body').on('click', '.btnSaveLink', function () {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(this).find(".valueSaveLink").val()).select();
+        document.execCommand("copy");
+        $temp.remove();
+        toastr["info"]("Copy link thành công !");
+    });
+</script>

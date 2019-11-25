@@ -1,0 +1,46 @@
+<% layout('../Layout/layoutKhachHang.ejs') -%>
+<% script('../public/stylesheets/style') -%>
+
+<%-partial('../ThanhPhanWeb/Carousel.ejs')%>
+
+<div id="items-container"></div>
+<div class="container" style="padding: 1rem">
+    <div class="row">
+        <div class="col-sm-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="fas fa-store"></i> HQKStore</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                    <li class="breadcrumb-item active" aria-current="page"><%=bvData.TenTieuDe%>></li>
+                </ol>
+            </nav>
+            <div id ="datasp" class="row datasp ">
+                <div id="info"></div>
+                <div class="col-12 ">
+                    <%- bvData.NoiDung%>
+                </div>
+
+
+                <!-- Sản phẩm sẽ được load vào đây :)) -->
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script>
+
+
+    //Set hover cho sản phẩm khi load index
+    $("document").ready(function(){
+        itemHover();
+        FormartGia();
+    });
+</script>
+
+<script>
+
+
+
+
+</script>

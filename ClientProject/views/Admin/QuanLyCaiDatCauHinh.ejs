@@ -1,0 +1,102 @@
+<% layout('../Layout/layoutAdmin.ejs') -%>
+<div class="container">
+    <div class="row-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin"><i class="fas fa-store"></i> HQKStore Admin</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Cấu hình hệ thống</li>
+            </ol>
+        </nav>
+    </div>
+
+    <br><br>
+
+    <div class="container">
+        <!-- Số sản phẩm/trang -->
+        <form>
+            <div class="form-group form-inline">
+                <label for="email" class="col-sm-3">Số sản phẩm/trang:</label>
+                <input class="form-control col-sm-6 value" value="<%= soSanPhamPMoiPage %>" disabled>
+                <div class="col-sm-1">
+                    <div class="btn btn-warning btnSua ">Sửa</div>
+                </div>
+                <div class="col-sm-1">
+                    <button id="SoSanPhamMoiTrang" class="btn btn-success btnXacNhan" disabled>Xác nhận</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Số item/trang Admin -->
+        <form>
+            <div class="form-group form-inline">
+                <label for="email" class="col-sm-3">Số item/trang Admin:</label>
+                <input class="form-control col-sm-6 value" value="<%= soItemMoiPageQL %>" disabled>
+                <div class="col-sm-1">
+                    <div class="btn btn-warning btnSua ">Sửa</div>
+                </div>
+                <div class="col-sm-1">
+                    <button id="SoItemMoiTrangQL" class="btn btn-success btnXacNhan" disabled>Xác nhận</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Thời gian login -->
+        <form>
+            <div class="form-group form-inline">
+                <label for="email" class="col-sm-3">Thời gian login:</label>
+                <input class="form-control col-sm-6 value" value="<%= thoiGianLogin %>" disabled>
+                <div class="col-sm-1">
+                    <div class="btn btn-warning btnSua ">Sửa</div>
+                </div>
+                <div class="col-sm-1">
+                    <button id="ThoiGianLogin" class="btn btn-success btnXacNhan" disabled>Xác nhận</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Secret key -->
+        <form>
+            <div class="form-group form-inline">
+                <label for="email" class="col-sm-3">Secret key:</label>
+                <input class="form-control col-sm-6 value" value="<%= secretKeyAdmin %>" disabled>
+                <div class="col-sm-1">
+                    <div class="btn btn-warning btnSua ">Sửa</div>
+                </div>
+                <div class="col-sm-1">
+                    <button id="SecrectKey" class="btn btn-success btnXacNhan" disabled>Xác nhận</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="info"></div>
+</div>
+
+
+<script>
+    $('body').on('click', '.btnSua', function () {
+        $(".value").prop("disabled", true);
+        $(".btnXacNhan").prop("disabled", true);
+        $(this).parent().parent().find(".value").prop("disabled", false);
+        $(this).parent().parent().find(".btnXacNhan").prop("disabled", false);
+    });
+    $('body').on('click', '.btnXacNhan', function () {
+        var url = "<%= domain %>/CaiDats/" +$(this).attr("id")+"?thamso="+ $(this).parent().parent().find(".value").val() + "&token=" + $.cookie("token");
+        $.ajax({
+            url: url,
+            method: "PUT",
+            error: function (err) {
+                toastr["error"]("Trong link có kí tự không hợp lệ, vui lòng thử lại "+JSON.stringify(err)+"!");
+            },
+            success: function (data) {
+                if (data.status == "ok") {
+                    toastr["success"](data.message);
+                } else {
+                    toastr["error"](data.message);
+                }
+            }
+        });
+        $(".btnXacNhan").prop("disabled", true);
+        $(".value").prop("disabled", true);
+    });
+
+</script>

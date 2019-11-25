@@ -14,7 +14,8 @@
                 Thêm Carousel
             </button>
             <form class="form-inline ml-auto d-inline float-right ">
-                <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên Carousel" aria-label="Search">
+                <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên Carousel"
+                       aria-label="Search">
                 <button id="btnTimKiem" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
             </form>
         </div>
@@ -47,8 +48,8 @@
 
             <% for (i = 1;i <= soTrang;i++){ %>
                 <% if(i == 1){ %>
-                    <li id="<%= "subpagi" + i %>"  class="d-inline page-item active pagesubitem"><a class="page-link"
-                                                                                                    href="#"> <%= i %></a>
+                    <li id="<%= "subpagi" + i %>" class="d-inline page-item active pagesubitem"><a class="page-link"
+                                                                                                   href="#"> <%= i %></a>
                     </li>
                 <% }else{ %>
                     <li id="<%= "subpagi" + i %>" class="d-inline page-item pagesubitem"><a class="page-link "
@@ -76,13 +77,13 @@
                     <div class="form-group">
                         <label for="TenCarousel">Tên Carousel</label>
                         <input type="text" class="form-control" id="TenCarousel" placeholder="Nhập tên Carousel"
-                                onkeydown="EnterThemCRS()" required>
+                               onkeydown="EnterThemCRS()" required>
                         <label for="TenCarousel">Link ảnh</label>
                         <input type="text" class="form-control" id="LinkAnh" placeholder="Nhập link ảnh"
-                                onkeydown="EnterThemCRS()" required>
+                               onkeydown="EnterThemCRS()" required>
                         <label for="TenCarousel">Link bài viết</label>
                         <input type="text" class="form-control" id="LinkBaiViet" placeholder="Nhập link bài viết"
-                                onkeydown="EnterThemCRS()" required>
+                               onkeydown="EnterThemCRS()" required>
                     </div>
                 </form>
             </div>
@@ -127,7 +128,8 @@
                                        placeholder="Nhập link ảnh" value="<%= item.LinkAnh %>" required>
 
                                 <label for="LinkBaiViet<%= item.ID_Carousel %>">Link bài viết</label>
-                                <input type="text" class="form-control linkBaiVietMoi" id="LinkBaiViet<%= item.ID_Carousel %>"
+                                <input type="text" class="form-control linkBaiVietMoi"
+                                       id="LinkBaiViet<%= item.ID_Carousel %>"
                                        placeholder="Nhập link bài viết" value="<%= item.LinkBaiViet %>" required>
 
                             </div>
@@ -170,10 +172,11 @@
     <% }) %>
 </div>
 
-<script >
+<script>
 
     //Load danh sách Carousel
     LoadCarousel();
+
     function LoadCarousel() {
         $.ajax({
             url: "<%= domain %>/Carousels/1?token=" + $.cookie("token"),
@@ -188,31 +191,32 @@
                         '<tr id="CRSitem' + item.ID_Carousel + '">' +
                         '<th scope="row">' + item.ID_Carousel + '</th>' +
                         '<td>' + item.TenCarousel.Ten + '</td>' +
-                        '<td> <img src="'+item.LinkAnh+'" style="height: 2rem;width: 8rem"> </td>'+
-                        '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_Carousel + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_Carousel + '"> Xóa </div><td>' +
+                        '<td> <img src="' + item.LinkAnh + '" style="height: 2rem;width: 8rem"> </td>' +
+                        '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_Carousel + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_Carousel + '"> Xóa </div></td>' +
                         '</tr>';
                     $("#tableCRS").append(html_to_append);
                 });
             },
         });
     }
+
     //Thêm Carousel
     function ThemCarousel() {
         var tenCarousel = $("#TenCarousel").val();
         var linkAnh = $("#LinkAnh").val();
-        var linkBaiViet =$("#LinkBaiViet").val();
+        var linkBaiViet = $("#LinkBaiViet").val();
         $.ajax({
-            url: "<%= domain %>/Carousels/" + tenCarousel  + "/"+ encodeURIComponent(linkAnh) +"/"+encodeURIComponent(linkBaiViet) +"?token=" + $.cookie("token"),
+            url: "<%= domain %>/Carousels/" + tenCarousel + "/" + encodeURIComponent(linkAnh) + "/" + encodeURIComponent(linkBaiViet) + "?token=" + $.cookie("token"),
             method: "POST",
             error: function (err) {
-           /*     alert(encodeURIComponent($("#LinkAnh").val()));
-                alert(encodeURIComponent($("#LinkBaiViet").val()));*/
-               /* alert(($("#LinkAnh").val()));
-                alert(btoa($("#LinkAnh").val()));
-                alert($("#LinkBaiViet").val());
-                alert(btoa( $("#LinkBaiViet").val()));*/
+                /*     alert(encodeURIComponent($("#LinkAnh").val()));
+                     alert(encodeURIComponent($("#LinkBaiViet").val()));*/
+                /* alert(($("#LinkAnh").val()));
+                 alert(btoa($("#LinkAnh").val()));
+                 alert($("#LinkBaiViet").val());
+                 alert(btoa( $("#LinkBaiViet").val()));*/
                 toastr["error"]("Thông tin không được trống !");
-              /*  $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn '+err+':))</h2>');*/
+                /*  $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn '+err+':))</h2>');*/
             },
             success: function (data) {
                 if (data.status == "ok") {
@@ -232,13 +236,12 @@
                         ' <div class="modal-body">' +
                         '    <form  class="was-validated">' +
                         '  <div class="form-group">' +
-
-                   ' <label for="LinkAnh'+data.idCRS+'">Link ảnh</label> " '+
-                   ' "<input type="text" class="form-control linkAnhMoi" id="LinkAnh'+data.idCRS+'"'+
-                 '   placeholder="Nhập link ảnh" value="'+data.linkAnhCRS+'" required>'+
-                  '  <label for="LinkBaiViet'+data.idCRS+'">Link bài viết</label> "' +
-                   ' "<input type="text" class="form-control linkBaiVietMoi" id="LinkBaiViet'+data.idCRS+'"'+
-                   ' placeholder="Nhập link bài viết" value="'+data.linkBaiVietCRS+'" required>'+
+                        ' <label for="LinkAnh' + data.idCRS + '">Link ảnh</label> " ' +
+                        ' "<input type="text" class="form-control linkAnhMoi" id="LinkAnh' + data.idCRS + '"' +
+                        '   placeholder="Nhập link ảnh" value="' + data.linkAnhCRS + '" required>' +
+                        '  <label for="LinkBaiViet' + data.idCRS + '">Link bài viết</label> "' +
+                        ' "<input type="text" class="form-control linkBaiVietMoi" id="LinkBaiViet' + data.idCRS + '"' +
+                        ' placeholder="Nhập link bài viết" value="' + data.linkBaiVietCRS + '" required>' +
                         '   </div>' +
                         '   </form>' +
                         '   </div>' +
@@ -272,7 +275,7 @@
                     $("#DanhSachModalXoa").append(Html_Modal_XoaCRS);
                     toastr["success"](data.message);
                     TongItem++;
-                    page=1;
+                    page = 1;
                     TaiLaiPagination();
                 } else {
                     toastr["error"](data.message);
@@ -293,7 +296,7 @@
         var linkBaiVietMoi = $(this).parent().parent().find(".linkBaiVietMoi").val();
 
         $.ajax({
-            url: "<%= domain %>/Carousels/" + $(this).attr("id") + "/" + btoa(linkAnhMoi).replace(/\//g, '_').replace(/\+/g, '-') +"/"+ btoa(linkBaiVietMoi).replace(/\//g, '_').replace(/\+/g, '-')+ "?token=" + $.cookie("token"),
+            url: "<%= domain %>/Carousels/" + $(this).attr("id") + "/" + btoa(linkAnhMoi).replace(/\//g, '_').replace(/\+/g, '-') + "/" + btoa(linkBaiVietMoi).replace(/\//g, '_').replace(/\+/g, '-') + "?token=" + $.cookie("token"),
             method: "PUT",
             error: function () {
                 $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
@@ -335,7 +338,7 @@
                     TaiLaiPagination();
                     toastr["success"](data.message);
                     TongItem--;
-                    page =1;
+                    page = 1;
                     TaiLaiPagination();
 
 
@@ -352,10 +355,10 @@
 </script>
 <script>
     //Khai báo biến
-    var TongItem = "<%=tongItem%>";
-    var SoItemMoiPage ="<%=itemMoiPage%>";
+    var TongItem = "<%= tongItem %>";
+    var SoItemMoiPage = "<%= itemMoiPage %>";
     var page = 1;
-    var SoTrang = "<%=soTrang %>";
+    var SoTrang = "<%= soTrang %>";
 
     //Sự kiện trang trước
     $('body').on('click', '#pagiTruoc', function () {
@@ -379,8 +382,8 @@
                             '<tr id="DMitem' + item.ID_Carousel + '">' +
                             '<th scope="row">' + item.ID_Carousel + '</th>' +
                             '<td>' + item.TenCarousel.Ten + '</td>' +
-                            '<td> <img src="'+item.LinkAnh+'" style="height: 2rem;width: 8rem"> </td>'+
-                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_Carousel + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_Carousel + '"> Xóa </div><td>' +
+                            '<td> <img src="' + item.LinkAnh + '" style="height: 2rem;width: 8rem"> </td>' +
+                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_Carousel + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_Carousel + '"> Xóa </div></td>' +
                             '</tr>';
                         $("#tableCRS").append(html_to_append);
                     });
@@ -417,8 +420,8 @@
                             '<tr id="DMitem' + item.ID_Carousel + '">' +
                             '<th scope="row">' + item.ID_Carousel + '</th>' +
                             '<td>' + item.TenCarousel.Ten + '</td>' +
-                            '<td> <img src="'+item.LinkAnh+'" style="height: 2rem;width: 8rem"> </td>'+
-                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_Carousel + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_Carousel + '"> Xóa </div><td>' +
+                            '<td> <img src="' + item.LinkAnh + '" style="height: 2rem;width: 8rem"> </td>' +
+                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_Carousel + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_Carousel + '"> Xóa </div></td>' +
                             '</tr>';
                         $("#tableCRS").append(html_to_append);
                     });
@@ -430,6 +433,7 @@
     });
 
     ClickVaoCacTrang();
+
     function ClickVaoCacTrang() {
         <% for (i = 1;i <= soTrangLocal;i++){ %>
         $("<%= "#subpagi" + i %>").click(function () {
@@ -450,8 +454,8 @@
                             '<tr id="DMitem' + item.ID_Carousel + '">' +
                             '<th scope="row">' + item.ID_Carousel + '</th>' +
                             '<td>' + item.TenCarousel.Ten + '</td>' +
-                            '<td> <img src="'+item.LinkAnh+'" style="height: 2rem;width: 8rem"> </td>'+
-                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_Carousel + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_Carousel + '"> Xóa </div><td>' +
+                            '<td> <img src="' + item.LinkAnh + '" style="height: 2rem;width: 8rem"> </td>' +
+                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_Carousel + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_Carousel + '"> Xóa </div></td>' +
                             '</tr>';
                         $("#tableCRS").append(html_to_append);
                     });
@@ -465,9 +469,10 @@
         });
         <% } %>
     }
+
     function TaiLaiPagination() {
-        var SoTrangPagi  = Math.ceil(TongItem/SoItemMoiPage);
-        SoTrang =SoTrangPagi;
+        var SoTrangPagi = Math.ceil(TongItem / SoItemMoiPage);
+        SoTrang = SoTrangPagi;
         $(".menu-phantrang").empty();
         $(".menu-phantrang").append(' <li id="pagiTruoc" class="page-item "><a class="page-link" href="#">Trước</a></li>');
         for (i = 1; i <= SoTrangPagi; i++) {
@@ -486,7 +491,7 @@
         $("#btnTimKiem").click(function () {
 
             $.ajax({
-                url: "<%= domain %>/Carousels/timtheoten/"+$("#inputTK").val()+"?token=" + $.cookie("token"),
+                url: "<%= domain %>/Carousels/timtheoten/" + $("#inputTK").val() + "?token=" + $.cookie("token"),
                 method: "GET",
                 error: function () {
                     $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
@@ -499,8 +504,8 @@
                             '<tr id="DMitem' + item.ID_Carousel + '">' +
                             '<th scope="row">' + item.ID_Carousel + '</th>' +
                             '<td>' + item.TenCarousel.Ten + '</td>' +
-                            '<td> <img src="'+item.LinkAnh+'" style="height: 2rem;width: 8rem"> </td>'+
-                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_Carousel + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_Carousel + '"> Xóa </div><td>' +
+                            '<td> <img src="' + item.LinkAnh + '" style="height: 2rem;width: 8rem"> </td>' +
+                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_Carousel + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_Carousel + '"> Xóa </div></td>' +
                             '</tr>';
                         $("#tableCRS").append(html_to_append);
 

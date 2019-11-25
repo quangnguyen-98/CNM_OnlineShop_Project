@@ -3,29 +3,9 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 const CustomFunction = require('../Config/CustomFunction');
 const ids = require('short-id');
 const path = require('path');
-const fs = require('fs');
-const SoItemMoiPage =parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage_QuanLy.txt"))) ;
+const fs = require('fs');/*
+const SoItemMoiPage =parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage_QuanLy.txt"))) ;*/
 module.exports = {
-   /* LayTatCaFooter: function (req, res, next) {
-        var param = {
-            TableName: "Footer",
-            ProjectionExpression:"#yr, LoaiFooter, TenLienKet, Link",
-            ExpressionAttributeNames:{
-                "#yr":"ID_Footer",
-            }
-        };
-
-        docClient.scan(param,function (err,data) {
-            if (err) {
-                console.error(err);
-                res.end();
-            }
-            else{
-                console.log("Thành công!");
-                res.status(200).json(data);
-            }
-        });
-    },*/
     LayTatCaCuaHang: function (req, res, next) {
         var param = {
             TableName: "Footer",
@@ -47,13 +27,13 @@ module.exports = {
             else{
                 console.log("Thành công!");
                 var soTrang;
-                var count = data.Count/SoItemMoiPage;
+                var count = data.Count/global.SoItemMoiPageQL;
                 res.json(
                     {
                         CuaHang: data.Items,
                         SoTrang: Math.ceil(count),
                         TongItem: data.Count,
-                        ItemMoiPage:SoItemMoiPage
+                        ItemMoiPage:global.SoItemMoiPageQL
                     }
                 );
             }
@@ -61,8 +41,9 @@ module.exports = {
     },
     LayCuaHangTheoSoTrang: function (req, res, next) {
         var n = parseInt(req.query.pagenumber) ;
-        var begin =(n-1)*SoItemMoiPage;
-        var end = (n-1)*SoItemMoiPage +SoItemMoiPage;
+        var soItemMoiPageQL = parseInt(global.SoItemMoiPageQL) ;
+        var begin =(n-1)*soItemMoiPageQL;
+        var end = (n-1)*soItemMoiPageQL + soItemMoiPageQL;
         var param = {
             TableName: "Footer",
             ProjectionExpression:"#yr, LoaiFooter, TenLienKet, Link",
@@ -84,20 +65,21 @@ module.exports = {
             else{
                 console.log("Thành công!");
                 var soTrang;
-                var count = data.Count/SoItemMoiPage;
+                var count = data.Count/soItemMoiPageQL;
                 res.json(
                     {
                         CuaHang: data.Items.slice(begin,end),
                         SoTrang: Math.ceil(count),
                         TongItem: data.Count,
-                        ItemMoiPage:SoItemMoiPage
+                        ItemMoiPage:soItemMoiPageQL
                     }
                 );
             }
         });
     },
     LayCuaHangTheoTen:function(req,res,next){
-        var tenCuaHang = CustomFunction.BoDau(req.params.tencuahang.toString().toLowerCase())  ;
+
+        var tenCuaHang = CustomFunction.BoDau(req.query.tencuahang.toString().toLowerCase()) ;
         var param = {
             TableName: "Footer",
             ProjectionExpression:"#yr, TenLienKet, TrangThaiXoa",
@@ -120,6 +102,8 @@ module.exports = {
                 res.json(data);
             }
         });
+
+
 
     },
     ThemCuaHang: function (req, res, next) {
@@ -316,6 +300,7 @@ module.exports = {
     SuaMenuFooter: function (req, res, next) {
         var idFT = req.params.idfooter;
         var link = atob(req.params.lienket.replace(/_/g, '/').replace(/-/g, '+')) ;
+        var link1 = req.body.lienket ;
         var param = {
             TableName:'Footer',
             Key:{
@@ -323,7 +308,7 @@ module.exports = {
             },
             UpdateExpression: "set Link = :n",
             ExpressionAttributeValues:{
-                ":n": link
+                ":n": link1
             },
             ReturnValues:"UPDATED_NEW"
         };
@@ -343,7 +328,7 @@ module.exports = {
                     status:"ok",
                     message:"Sửa footer thành công !",
                     idDM:idFT,
-                    Link:link
+                    Link:link1
                 });
             }
         });

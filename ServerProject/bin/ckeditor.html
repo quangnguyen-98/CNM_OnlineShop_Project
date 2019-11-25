@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CKEditor 5 – Balloon editor</title>
+    <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+    <!-- jQuery library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+</head>
+<body>
+
+<h1>Balloon editor</h1>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<button class="btnSaveLink">Copy P1
+    <input  class="valueSaveLink" style="display: none" value="P1: I am paragraph 1"/>
+</button>
+<button class="btnSaveLink">Copy P1
+    <input class="valueSaveLink" style="display: none" value="P1: I am paragraph 2"/>
+</button>
+
+<button class="btnSaveLink">Copy P1
+    <input  class="valueSaveLink" style="display: none" value="P1: I am paragraph 3"/>
+</button>
+
+<div class="btn btn-success btnSaveLink"> Sao chép link <input  class="valueSaveLink" style="display: none" value="P1: I am paragraph 3"/></div>
+<br/><br/><input type="text" placeholder="Paste here for test" />
+
+
+<!--
+<p id="p1">P1: I am paragraph 1</p>
+<p id="p2">P2: I am a second paragraph</p>
+<button onclick="copyToClipboard('#p1')">Copy P1</button>
+<button onclick="copyToClipboard('#p2')">Copy P2</button>
+<br/><br/><input type="text" placeholder="Paste here for test" />
+-->
+
+<script>
+/*
+    $('body').on('click', '.btnSaveLink', function () {
+        /!* alert($(this).find(".valueSaveLink").val($(element).text()).select());*!/
+        $(this).find(".valueSaveLink").val($(element).text()).select();
+        document.execCommand("copy");
+    });
+*/
+
+$('body').on('click', '.btnSaveLink', function () {
+
+    alert($(this).find(".valueSaveLink").val());
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(this).find(".valueSaveLink").val()).select();
+    document.execCommand("copy");
+    $temp.remove();
+});
+
+/*function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+}*/
+
+</script>
+</body>
+</html>

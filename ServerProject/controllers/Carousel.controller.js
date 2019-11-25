@@ -4,7 +4,7 @@ const CustomFunction = require('../Config/CustomFunction');
 const ids = require('short-id');
 const path = require('path');
 const fs = require('fs');
-const SoItemMoiPage =parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage_QuanLy.txt"))) ;
+/*const SoItemMoiPage =parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage_QuanLy.txt"))) ;*/
 module.exports = {
     LayTatCaCarousel: function (req, res, next) {
         var n = parseInt(req.params.pagenumber) ;
@@ -27,13 +27,13 @@ module.exports = {
             }
             else{
                 console.log("Thành công!");
-                var count = data.Count/SoItemMoiPage;
+                var count = data.Count/global.SoItemMoiPageQL;
                 res.json(
                     {
                         Carousel: data.Items,
                         SoTrang: Math.ceil(count),
                         TongItem: data.Count,
-                        ItemMoiPage:SoItemMoiPage
+                        ItemMoiPage:global.SoItemMoiPageQL
                     }
                 );
             }
@@ -42,8 +42,9 @@ module.exports = {
     LayCarouselTheoSoTrang:function(req,res,next){
         var n = parseInt(req.params.pagenumber) ;
       /*  var soItemMoiPage= itemMoiPage;*/
-        var begin =(n-1)*SoItemMoiPage;
-        var end = (n-1)*SoItemMoiPage +SoItemMoiPage;
+        var soItemMoiPageQL = parseInt(global.SoItemMoiPageQL) ;
+        var begin =(n-1)*soItemMoiPageQL;
+        var end = (n-1)*soItemMoiPageQL + soItemMoiPageQL;
         var param = {
             TableName: "Carousel",
             ProjectionExpression:"#yr, TenCarousel,LinkAnh,LinkBaiViet, TrangThaiXoa",
@@ -63,13 +64,13 @@ module.exports = {
             else{
                 console.log("Thành công!");
                 var soTrang;
-                var count = data.Count/SoItemMoiPage;
+                var count = data.Count/soItemMoiPageQL;
                 res.json(
                     {
                         Carousel: data.Items.slice(begin,end),
                         SoTrang: Math.ceil(count),
                         TongItem: data.Count,
-                        ItemMoiPage:SoItemMoiPage
+                        ItemMoiPage:soItemMoiPageQL
                     }
                 );
             }

@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a322a82-60d2-4128-8ad3-7586c19b93fc" name="Default Changelist" comment=":))">
-      <change afterPath="$PROJECT_DIR$/views/Admin/QuanLyFooterCH.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/Admin/QuanLyFooterMenu.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/ServerDomain.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/ServerDomain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/Admin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/Admin.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/Login.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/Login.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/Admin.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/Admin.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/Admin/MenuDashboard.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/MenuDashboard.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyCarousel.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyCarousel.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyDanhMuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyDanhMuc.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/Layout/layoutKhachHang.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Layout/layoutKhachHang.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/ThanhPhanWeb/Carousel.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/ThanhPhanWeb/Carousel.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/ThanhPhanWeb/Footer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/ThanhPhanWeb/Footer.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +62,7 @@
     </option>
   </component>
   <component name="RunManager" selected="JavaScript Debug.ggg.html">
-    <configuration name="demo.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClientProject/views/layout/demo.html" useBuiltInWebServerPort="true">
+    <configuration name="QuanLyBaiViet.ejs" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClientProject/views/Admin/QuanLyBaiViet.ejs" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="dsa.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClientProject/bin/dsa.html" useBuiltInWebServerPort="true">
@@ -91,10 +80,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.ggg.html" />
+        <item itemvalue="JavaScript Debug.QuanLyBaiViet.ejs" />
         <item itemvalue="JavaScript Debug.dsa.html" />
         <item itemvalue="Node.js.a.js" />
         <item itemvalue="Node.js.abc.js" />
-        <item itemvalue="JavaScript Debug.demo.html" />
       </list>
     </recent_temporary>
   </component>
@@ -147,7 +136,10 @@
       <workItem from="1574323234480" duration="21280000" />
       <workItem from="1574400522014" duration="41919000" />
       <workItem from="1574447656227" duration="6094000" />
-      <workItem from="1574483129680" duration="34128000" />
+      <workItem from="1574483129680" duration="34713000" />
+      <workItem from="1574577864963" duration="38080000" />
+      <workItem from="1574658150342" duration="23888000" />
+      <workItem from="1574696666278" duration="18676000" />
     </task>
     <servers />
   </component>

@@ -103,16 +103,14 @@ dynamodb.deleteTable(paramsFooter, function(err, data) {
     }
 });
 
-
-/*
-//Xóa Bảng ChucNang
-var paramsChucNang = {
-    TableName : "ChucNang",
+// 9 Xóa Bảng Mã Giảm Giá
+var paramsMaGiamGia = {
+    TableName : "MaGiamGia",
 };
-dynamodb.deleteTable(paramsChucNang, function(err, data) {
+dynamodb.deleteTable(paramsMaGiamGia, function(err, data) {
     if (err) {
         console.error("Unable to delete table. Error JSON:", JSON.stringify(err, null, 2));
     } else {
-        console.log("Table ChucNang Deleted. Table description JSON:", JSON.stringify(data, null, 2));
+        console.log("Table MaGiamGia Deleted. Table description JSON:", JSON.stringify(data, null, 2));
     }
-});*/
+});

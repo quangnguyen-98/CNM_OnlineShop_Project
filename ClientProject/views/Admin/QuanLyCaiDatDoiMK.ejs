@@ -1,0 +1,77 @@
+<% layout('../Layout/layoutAdmin.ejs') -%>
+<div class="container">
+    <div class="row-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin"><i class="fas fa-store"></i> HQKStore Admin</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Đổi mật khẩu</li>
+            </ol>
+        </nav>
+    </div>
+
+    <br><br>
+
+    <div class="container">
+        <!-- Nhập mật khẩu cũ -->
+        <form>
+            <div class="form-group form-inline">
+                <label for="email" class="col-sm-4">Nhập mật khẩu cũ:</label>
+                <input id="nhapmkcu"class="form-control col-sm-8 value" >
+
+            </div>
+        </form>
+
+        <!-- Nhập mật khẩu mới -->
+        <form>
+            <div class="form-group form-inline">
+                <label for="email" class="col-sm-4">Nhập mật khẩu mới:</label>
+                <input id="nhapmkmoi"class="form-control col-sm-8 value" >
+
+            </div>
+        </form>
+        <!-- Nhập lại mật khẩu mới -->
+        <form>
+            <div class="form-group form-inline">
+                <label for="email" class="col-sm-4">Nhập lại mật khẩu mới:</label>
+                <input id="nhaplaimk" class="form-control col-sm-8 value" >
+
+            </div>
+        </form>
+        <div class="text-center">
+            <button id="SoSanPhamMoiTrang" class="col-sm-3 text-center push-2 btn btn-success btnXacNhan" >Xác nhận</button>
+        </div>
+
+    </div>
+    <div id="info"></div>
+</div>
+
+
+<script>
+    $('body').on('click', '.btnSua', function () {
+
+        $(".btnXacNhan").prop("disabled", true);
+        $(this).parent().parent().find(".value").prop("disabled", false);
+        $(this).parent().parent().find(".btnXacNhan").prop("disabled", false);
+    });
+
+    $('body').on('click', '.btnXacNhan', function () {
+        var url = "<%= domain %>/CaiDats/DoiMK?matkhaucu="+ $("#nhapmkcu").val() + "&matkhaumoi="+$("#nhapmkmoi").val() +"&nhaplaimatkhaumoi="+$("#nhaplaimk").val()+"&token=" + $.cookie("token");
+
+        $.ajax({
+            url: url,
+            method: "PUT",
+            error: function (err) {
+                toastr["error"]("Trong link có kí tự không hợp lệ, vui lòng thử lại "+JSON.stringify(err)+"!");
+            },
+            success: function (data) {
+                if (data.status == "ok") {
+                    toastr["success"](data.message);
+                    $(".value").val('');
+                } else {
+                    toastr["error"](data.message);
+                }
+            }
+        });
+    });
+
+</script>

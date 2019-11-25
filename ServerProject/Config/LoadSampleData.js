@@ -137,53 +137,55 @@ console.log("Importing movies into DynamoDB. Please wait.");
 // });
 //
 // 6 Load Bảng Carousel
-var allCarousel = JSON.parse(fs.readFileSync('../Database/Carousel.json', 'utf8'));
-allCarousel.forEach(function(carousel)
-{
-    var params = {
-        TableName: "Carousel",
-        Item: {
-            "ID_Carousel":  carousel.ID_Carousel,
-            "TenCarousel": carousel.TenCarousel,
-            "LinkAnh": carousel.LinkAnh,
-            "LinkBaiViet":carousel.LinkBaiViet
-        }
-    };
-
-    docClient.put(params, function(err, data) {
-        if (err) {
-            console.error("Unable to add Carousel:", carousel, ". Error JSON:", JSON.stringify(err, null, 2));
-        } else {
-            console.log("PutItem Carousel succeeded:", carousel);
-        }
-    });
-});
-
-// 7 Load Bảng BaiViet
-var allBaiViet = JSON.parse(fs.readFileSync('../Database/BaiViet.json', 'utf8'));
-allBaiViet.forEach(function(baiviet)
-{
-    var params = {
-        TableName: "BaiViet",
-        Item: {
-            "ID_BaiViet":  baiviet.ID_BaiViet,
-            "TenTieuDe": baiviet.TenTieuDe,
-            "NoiDung":baiviet.NoiDung
-        }
-    };
-
-    docClient.put(params, function(err, data) {
-        if (err) {
-            console.error("Unable to add BaiViet:", baiviet, ". Error JSON:", JSON.stringify(err, null, 2));
-        } else {
-            console.log("PutItem BaiViet succeeded:", baiviet);
-        }
-    });
-});
-
-
-
-// 8 Load Bảng Footer
+// var allCarousel = JSON.parse(fs.readFileSync('../Database/Carousel.json', 'utf8'));
+// allCarousel.forEach(function(carousel)
+// {
+//     var params = {
+//         TableName: "Carousel",
+//         Item: {
+//             "ID_Carousel":  carousel.ID_Carousel,
+//             "TenCarousel": carousel.TenCarousel,
+//             "LinkAnh": carousel.LinkAnh,
+//             "LinkBaiViet":carousel.LinkBaiViet,
+//             "TrangThaiXoa":carousel.TrangThaiXoa
+//         }
+//     };
+//
+//     docClient.put(params, function(err, data) {
+//         if (err) {
+//             console.error("Unable to add Carousel:", carousel, ". Error JSON:", JSON.stringify(err, null, 2));
+//         } else {
+//             console.log("PutItem Carousel succeeded:", carousel);
+//         }
+//     });
+// });
+//
+// // 7 Load Bảng BaiViet
+// var allBaiViet = JSON.parse(fs.readFileSync('../Database/BaiViet.json', 'utf8'));
+// allBaiViet.forEach(function(baiviet)
+// {
+//     var params = {
+//         TableName: "BaiViet",
+//         Item: {
+//             "ID_BaiViet":  baiviet.ID_BaiViet,
+//             "TenTieuDe": baiviet.TenTieuDe,
+//             "NoiDung":baiviet.NoiDung,
+//             "TrangThaiXoa":baiviet.TrangThaiXoa
+//         }
+//     };
+//
+//     docClient.put(params, function(err, data) {
+//         if (err) {
+//             console.error("Unable to add BaiViet:", baiviet, ". Error JSON:", JSON.stringify(err, null, 2));
+//         } else {
+//             console.log("PutItem BaiViet succeeded:", baiviet);
+//         }
+//     });
+// });
+//
+//
+//
+// //8 Load Bảng Footer
 // var allFooter = JSON.parse(fs.readFileSync('../Database/Footer.json', 'utf8'));
 // allFooter.forEach(function(footer)
 // {
@@ -193,7 +195,8 @@ allBaiViet.forEach(function(baiviet)
 //             "ID_Footer":footer.ID_Footer,
 //             "LoaiFooter":footer.LoaiFooter,
 //             "TenLienKet":footer.TenLienKet,
-//             "Link":footer.Link
+//             "Link":footer.Link,
+//             "TrangThaiXoa":footer.TrangThaiXoa
 //         }
 //     };
 //
@@ -206,25 +209,27 @@ allBaiViet.forEach(function(baiviet)
 //     });
 // });
 
+// 9 Load Bảng Mã Giảm Giá
 
-
-/*//Load Bảng ChucNang
-var allChucNang = JSON.parse(fs.readFileSync('../Database/ChucNang.json', 'utf8'));
-allChucNang.forEach(function(chucnang) {
+var allMaGiamGia = JSON.parse(fs.readFileSync('../Database/MaGiamGia.json', 'utf8'));
+allMaGiamGia.forEach(function(maGiamGia)
+{
     var params = {
-        TableName: "ChucNang",
+        TableName: "MaGiamGia",
         Item: {
-            "ID_Chucnang":  chucnang.ID_Chucnang,
-            "TenChucNang": chucnang.TenChucNang,
-            "ThanhPhan":  chucnang.ThanhPhan
+            "ID_MaGiamGia":  maGiamGia.ID_MaGiamGia,
+            "TenMaGiamGia": maGiamGia.TenMaGiamGia,
+            "TiLeSale":maGiamGia.TiLeSale,
+            "TrangThaiXoa":maGiamGia.TrangThaiXoa,
+            "SoLuong":maGiamGia.SoLuong
         }
     };
 
     docClient.put(params, function(err, data) {
         if (err) {
-            console.error("Unable to add ChucNang:", chucnang, ". Error JSON:", JSON.stringify(err, null, 2));
+            console.error("Unable to add MaGiamGia:", maGiamGia, ". Error JSON:", JSON.stringify(err, null, 2));
         } else {
-            console.log("PutItem ChucNang succeeded:", chucnang);
+            console.log("PutItem MaGiamGia succeeded:", maGiamGia);
         }
     });
-});*/
+});

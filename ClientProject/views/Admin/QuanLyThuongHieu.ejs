@@ -115,7 +115,7 @@
                         <form class="was-validated">
                             <div class="form-group">
                                 <label for="TenThuongHieu<%= item.ID_ThuongHieu %>">Tên thương hiệu</label>
-                                <input type="text" class="form-control" id="TenThuongHieu<%= item.ID_ThuongHieu %>"
+                                <input type="text" class="form-control tenMoi" id="TenThuongHieu<%= item.ID_ThuongHieu %>"
                                        placeholder="Nhập tên thương hiệu" value="<%= item.TenThuongHieu.Ten %>"
                                        required>
                             </div>
@@ -141,7 +141,7 @@
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h4 class="modal-title"><i class="fas fa-store"></i> Xóa danh mục</h4>
+                        <h4 class="modal-title"><i class="fas fa-store"></i> Xóa thương hiệu</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <!-- Modal body -->
@@ -162,7 +162,6 @@
 
 
 <script>
-
     //Load danh sách thương hiệu
     LoadThuongHieu();
     function LoadThuongHieu() {
@@ -170,16 +169,16 @@
             url: "<%= domain %>/ThuongHieus/1?token=" + $.cookie("token"),
             method: "GET",
             error: function () {
-                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                toastr["error"]("Server chưa được bật !");
             },
             success: function (data) {
                 $.each(data.ThuongHieu, function (i, item) {
                     var html_to_append;
                     html_to_append +=
-                        '<tr id="DMitem' + item.ID_ThuongHieu + '">' +
+                        '<tr id="THitem' + item.ID_ThuongHieu + '">' +
                         '<th scope="row">' + item.ID_ThuongHieu + '</th>' +
                         '<td>' + item.TenThuongHieu.Ten + '</td>' +
-                        '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_ThuongHieu + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_ThuongHieu + '"> Xóa </div><td>' +
+                        '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_ThuongHieu + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_ThuongHieu + '"> Xóa </div></td>' +
                         '</tr>';
                     $("#tableTH").append(html_to_append);
                 });
@@ -206,14 +205,14 @@
                         '   <div class="modal-dialog modal-lg modal-lg modal-sm">' +
                         '    <div class="modal-content">' +
                         '  <div class="modal-header">' +
-                        ' <h4 class="modal-title"><i class="fas fa-store"></i> Sửa danh mục</h4>' +
+                        ' <h4 class="modal-title"><i class="fas fa-store"></i> Sửa thương hiệu</h4>' +
                         ' <button type="button" class="close" data-dismiss="modal">&times;</button>' +
                         '   </div>' +
                         ' <div class="modal-body">' +
                         '    <form  class="was-validated">' +
                         '  <div class="form-group">' +
-                        '   <label for="TenDanhMuc' + data.idTH + '">Tên danh mục</label>' +
-                        '  <input type="text" class="form-control tenMoi"  id="TenDanhMuc' + data.idTH + '" placeholder="Nhập tên danh mục" value="' + data.tenTH + '" required>' +
+                        '   <label for="TenThuongHieu' + data.idTH + '">Tên thương hiệu</label>' +
+                        '  <input type="text" class="form-control tenMoi"  id="TenThuongHieu' + data.idTH + '" placeholder="Nhập tên thương hiệu" value="' + data.tenTH + '" required>' +
                         '   </div>' +
                         '   </form>' +
                         '   </div>' +
@@ -231,11 +230,11 @@
                         '     <div class="modal-content">' +
                         '     <!-- Modal Header -->' +
                         '  <div class="modal-header">' +
-                        '   <h4 class="modal-title"><i class="fas fa-store"></i> Xóa danh mục</h4>' +
+                        '   <h4 class="modal-title"><i class="fas fa-store"></i> Xóa thương hiệu</h4>' +
                         ' <button type="button" class="close" data-dismiss="modal">&times;</button>' +
                         '   </div>' +
                         '  <div class="modal-body">' +
-                        '    Bạn có thực sự muốn xóa danh mục này, thao tác này không thể hoàn tác ?' +
+                        '    Bạn có thực sự muốn xóa thương hiệu này, thao tác này không thể hoàn tác ?' +
                         '     </div>' +
                         '  <div class="modal-footer">' +
                         '  <label id="' + data.idTH + '" class="btn btn-success btnXoaMoi">Xác nhận</label>' +
@@ -261,6 +260,7 @@
     //Sự kiện nút sửa của những thương hiệu được add bằng ajax
     $('body').on('click', '.btnSuaMoi', function () {
         var modal = $(this).parent().parent().parent().parent(".modal").attr("id");
+        alert( $(this).parent().parent().find(".tenMoi").val());
         $.ajax({
             url: "<%= domain %>/ThuongHieus/" + $(this).attr("id") + "/" + $(this).parent().parent().find(".tenMoi").val() + "?token=" + $.cookie("token"),
             method: "PUT",
@@ -334,17 +334,17 @@
                 url: "<%= domain %>/ThuongHieus/" + (page - 1) + "?token=" + $.cookie("token"),
                 method: "GET",
                 error: function () {
-                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                    toastr["error"]("Tên thương hiệu không được để trống !");
                 },
                 success: function (data) {
                     $("#tableTH").empty();
                     $.each(data.ThuongHieu, function (i, item) {
                         var html_to_append;
                         html_to_append +=
-                            '<tr id="DMitem' + item.ID_ThuongHieu + '">' +
+                            '<tr id="THitem' + item.ID_ThuongHieu + '">' +
                             '<th scope="row">' + item.ID_ThuongHieu + '</th>' +
                             '<td>' + item.TenThuongHieu.Ten + '</td>' +
-                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_ThuongHieu + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_ThuongHieu + '"> Xóa </div><td>' +
+                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_ThuongHieu + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_ThuongHieu + '"> Xóa </div></td>' +
                             '</tr>';
                         $("#tableTH").append(html_to_append);
                     });
@@ -378,10 +378,10 @@
                     $.each(data.ThuongHieu, function (i, item) {
                         var html_to_append;
                         html_to_append +=
-                            '<tr id="DMitem' + item.ID_ThuongHieu + '">' +
+                            '<tr id="THitem' + item.ID_ThuongHieu + '">' +
                             '<th scope="row">' + item.ID_ThuongHieu + '</th>' +
                             '<td>' + item.TenThuongHieu.Ten + '</td>' +
-                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_ThuongHieu + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_ThuongHieu + '"> Xóa </div><td>' +
+                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_ThuongHieu + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_ThuongHieu + '"> Xóa </div></td>' +
                             '</tr>';
                         $("#tableTH").append(html_to_append);
                     });
@@ -403,17 +403,17 @@
                 url: "<%= domain %>/ThuongHieus/" + <%= i %> +"?token=" + $.cookie("token"),
                 method: "GET",
                 error: function () {
-                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                    toastr["error"]("Lỗi hệ thống !");
                 },
                 success: function (data) {
                     $("#tableTH").empty();
                     $.each(data.ThuongHieu, function (i, item) {
                         var html_to_append;
                         html_to_append +=
-                            '<tr id="DMitem' + item.ID_ThuongHieu + '">' +
+                            '<tr id="THitem' + item.ID_ThuongHieu + '">' +
                             '<th scope="row">' + item.ID_ThuongHieu + '</th>' +
                             '<td>' + item.TenThuongHieu.Ten + '</td>' +
-                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_ThuongHieu + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_ThuongHieu + '"> Xóa </div><td>' +
+                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_ThuongHieu + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_ThuongHieu + '"> Xóa </div></td>' +
                             '</tr>';
                         $("#tableTH").append(html_to_append);
                     });
@@ -451,14 +451,14 @@
                 url: "<%= domain %>/ThuongHieus/timtheoten/"+$("#inputTK").val()+"?token=" + $.cookie("token"),
                 method: "GET",
                 error: function () {
-                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                    toastr["error"]("Tên thương hiệu không được để trống !");
                 },
                 success: function (data) {
                     $("#tableTH").empty();
                     $.each(data.Items, function (i, item) {
                         var html_to_append;
                         html_to_append +=
-                            '<tr id="DMitem' + item.ID_ThuongHieu + '">' +
+                            '<tr id="THitem' + item.ID_ThuongHieu + '">' +
                             '<th scope="row">' + item.ID_ThuongHieu + '</th>' +
                             '<td>' + item.TenThuongHieu.Ten + '</td>' +
                             '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_ThuongHieu + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_ThuongHieu + '"> Xóa </div><td>' +

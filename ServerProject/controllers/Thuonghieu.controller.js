@@ -2,38 +2,8 @@ var AWS = require("aws-sdk");
 var docClient = new AWS.DynamoDB.DocumentClient();
 var CustomFunction = require('../Config/CustomFunction');
 var ids = require('short-id');
-const itemMoiPage = 3;
 module.exports = {
-  /*  LayTatCaThuongHieu: function (req, res, next) {
-        var param = {
-            TableName: "ThuongHieu",
-            ProjectionExpression:"#yr, TenThuongHieu, TrangThaiXoa",
-            FilterExpression:"TrangThaiXoa =:n",
-            ExpressionAttributeNames:{
-                "#yr":"ID_ThuongHieu",
-            },
-            ExpressionAttributeValues:{
-                ":n":false
-            }
-        };
-
-        docClient.scan(param,function (err,data) {
-            if (err) {
-                console.error(err);
-                res.end();
-            }
-            else{
-                console.log("Thành công!");
-                /!* res.end(JSON.stringify(data.Items.slice(0,2)));*!/
-                res.json(data);
-            }
-        });
-    },*/
     LayTatCaThuongHieu: function (req, res, next) {
-        var n = parseInt(req.params.pagenumber) ;
-        var soItemMoiPage= itemMoiPage;
-        var begin =(n-1)*soItemMoiPage;
-        var end = (n-1)*soItemMoiPage +soItemMoiPage;
         var param = {
             TableName: "ThuongHieu",
             ProjectionExpression:"#yr, TenThuongHieu, TrangThaiXoa",
@@ -53,23 +23,23 @@ module.exports = {
             else{
                 console.log("Thành công!");
                 var soTrang;
-                var count = data.Count/soItemMoiPage;
+                var count = data.Count/global.SoItemMoiPageQL;
                 res.json(
                     {
                         ThuongHieu: data.Items,
                         SoTrang: Math.ceil(count),
                         TongItem: data.Count,
-                        ItemMoiPage:soItemMoiPage
+                        ItemMoiPage:global.SoItemMoiPageQL,
                     }
                 );
             }
         });
     },
     LayThuongHieuTheoSoTrang:function(req,res,next){
+        var soItemMoiPageQL = parseInt(global.SoItemMoiPageQL);
         var n = parseInt(req.params.pagenumber) ;
-        var soItemMoiPage= itemMoiPage;
-        var begin =(n-1)*soItemMoiPage;
-        var end = (n-1)*soItemMoiPage +soItemMoiPage;
+        var begin =(n-1)*soItemMoiPageQL;
+        var end = (n-1)*soItemMoiPageQL +soItemMoiPageQL;
         var param = {
             TableName: "ThuongHieu",
             ProjectionExpression:"#yr, TenThuongHieu, TrangThaiXoa",
@@ -89,13 +59,13 @@ module.exports = {
             else{
                 console.log("Thành công!");
                 var soTrang;
-                var count = data.Count/soItemMoiPage;
+                var count = data.Count/soItemMoiPageQL;
                 res.json(
                     {
                         ThuongHieu: data.Items.slice(begin,end),
                         SoTrang: Math.ceil(count),
                         TongItem: data.Count,
-                        ItemMoiPage:soItemMoiPage
+                        ItemMoiPage:soItemMoiPageQL,
                     }
                 );
             }

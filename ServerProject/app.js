@@ -18,7 +18,6 @@ ids.configure({
 global.atob = require("atob");
 global.btoa = require("btoa");
 
-
 //Khai báo router
 var IndexRouter = require('./routes/Index.route');
 var AuthRouter = require('./routes/Auth.route');
@@ -27,10 +26,13 @@ var SanPhamRouter = require('./routes/SanPham.route');
 var DanhMucRouter = require('./routes/DanhMuc.route');
 var ThuongHieuRouter = require('./routes/ThuongHieu.route');
 var CarouselRouter = require('./routes/Carousel.route');
-var FooterlRouter = require('./routes/Footer.route');
+var BaiVietRouter  = require('./routes/BaiViet.route');
+var FooterRouter = require('./routes/Footer.route');
+var MaGiamGiaRouter = require('./routes/MaGiamGia.route');
+var CaiDatRouter = require('./routes/CaiDat.route');
 
 
-
+app.use(cookieParser('hello'));
 // view engine setup (web service không dùng view)
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -61,7 +63,10 @@ app.use('/api/Sanphams', SanPhamRouter);
 app.use('/api/DanhMucs', DanhMucRouter);
 app.use('/api/ThuongHieus', ThuongHieuRouter);
 app.use('/api/Carousels',CarouselRouter);
-app.use('/api/Footers',FooterlRouter);
+app.use('/api/BaiViets',BaiVietRouter);
+app.use('/api/Footers',FooterRouter);
+app.use('/api/MaGiamGias',MaGiamGiaRouter);
+app.use('/api/CaiDats',CaiDatRouter);
 
 
 // catch 404 and forward to error handler
@@ -79,5 +84,20 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+global.SoSanPhamMoiPage = 3;
+global.SoItemMoiPageQL = 3;
+global.ThoiGianLogin = 10;
+global.SecretKeyAdmin = "quangdeptrai01";
+/*
+app.use(function (req, res, next) {
+  res.locals = {
+    SoSanPhamMoiPage: 50,
+    pageTitle: "The Home Page",
+    author: "Cory Gross",
+    description: "My app's description",
+  };
+  next();
+});*/
 
 module.exports = app;

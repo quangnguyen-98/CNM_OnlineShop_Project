@@ -1,0 +1,23 @@
+[
+  {
+    "ID_MaGiamGia": "af93fd4fa1",
+    "TenMaGiamGia": "ABCF",
+    "TiLeSale": 5,
+    "SoLuong": 12,
+    "TrangThaiXoa": false
+  },
+  {
+    "ID_MaGiamGia": "af93fdgfi1",
+    "TenMaGiamGia": "ABCD",
+    "TiLeSale": 10,
+    "SoLuong": 15,
+    "TrangThaiXoa": false
+  },
+  {
+    "ID_MaGiamGia": "ad9jfd4fa1",
+    "TenMaGiamGia": "ABCE",
+    "TiLeSale": 9,
+    "SoLuong": 19,
+    "TrangThaiXoa": false
+  }
+]

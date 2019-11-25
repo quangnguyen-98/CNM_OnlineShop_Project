@@ -6,11 +6,13 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 
 var domain = require('./Config/ServerDomain');
-
+global.atob = require("atob");
+global.btoa = require("btoa");
 var IndexRouter = require('./routes/Index.route');
 var LoginRouter = require('./routes/Login.route');
 var AdminRouter = require('./routes/Admin.route');
 var SanphamRouter = require('./routes/Sanpham.route');
+var BaiVietRouter = require('./routes/BaiViet.route');
 var NguoiDungRouter = require('./routes/NguoiDung.route');
 
 var AuthController = require('./controller/Auth.controller');
@@ -51,6 +53,7 @@ app.use('/', IndexRouter);
 app.use('/Login', LoginRouter);
 app.use('/Admin', AuthController.KiemTraToken, AdminRouter);
 app.use('/SanPhams', SanphamRouter);
+app.use('/BaiViets', BaiVietRouter);
 app.use('/NguoiDungs',NguoiDungRouter);
 
 // catch 404 and forward to error handler

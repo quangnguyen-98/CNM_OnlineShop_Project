@@ -2,23 +2,27 @@
 <html lang="en">
 <head>
     <!-- Required meta tags -->
-    <title><%=title%></title>
+    <title><%= title %></title>
+    <meta property="fb:app_id" content="431101604251186"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--<link rel="shortcut icon" type="image/png" href="{{asset('img/favicon.jpeg')}}"/>-->
     <link rel="shortcut icon" type="image/png" href="https://bb4298.s3-us-west-1.amazonaws.com/favicon.ico"/>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
-   <!-- <link rel="stylesheet" type="text/css" href="../../public/stylesheets/style.css">-->
+    <!-- Toastr library-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
+    <!-- <link rel="stylesheet" type="text/css" href="../../public/stylesheets/style.css">-->
     <style>
-        .footer-item-color{
+        .footer-item-color {
             color: #337ab7;
         }
+
         /*Stye cho nút kéo lên.*/
         #back-to-top {
-            text-align:center;
+            text-align: center;
             position: fixed;
             bottom: 20px;
             left: 20px;
@@ -35,8 +39,7 @@
             opacity: 0;
         }
         #back-to-top:hover {
-            background:#555;
-
+            background: #555;
         }
         #back-to-top.show {
             opacity: 1;
@@ -46,9 +49,12 @@
         }
         .linksp:hover {
             text-decoration: none;
-            color:#ffb520;
+            color: #ffb520;
         }
-
+        .orangehover:hover {
+            text-decoration: none;
+            color: #ffb520;
+        }
         /*.jbtcustom{
             padding: 0.5rem;
         }*/
@@ -56,69 +62,59 @@
         .carousel-SP-prev {
             filter: invert(100%);
         }
-        .carousel-inner{
-            width:100%;
+        .carousel-inner {
+            width: 100%;
             max-height: 448px !important;
         }
     </style>
 
-
 </head>
-
 <body>
-
 <!-- jQuery library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
 <!-- jQuery LazyLoad -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
-
-<!-- Popper JS -->
+<!-- Popper Boostrap -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-
 <!-- Boostrap library -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<!--&lt;!&ndash; Easy-Loading library&ndash;&gt;-->
+<!--<script src="https://cdn.jsdelivr.net/npm/jquery-easy-loading@2.0.0-rc.2/dist/jquery.loading.min.js"></script>-->
 
-
-<!-- Easy-Loading library-->
-<script src="https://cdn.jsdelivr.net/npm/jquery-easy-loading@2.0.0-rc.2/dist/jquery.loading.min.js"></script>
-
-<%-partial('../ThanhPhanWeb/Header.ejs')%>
-
-    <%-body -%>
-
-<%-partial('../ThanhPhanWeb/Footer')%>
-
+<%- partial('../ThanhPhanWeb/Header.ejs') %>
+<%- body -%>            <!--Body được load vào đây-->
+<%- partial('../ThanhPhanWeb/Footer') %>
 
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
 <script>
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = function () {
         FB.init({
-            xfbml            : true,
-            version          : 'v5.0'
+            appId: '431101604251186',
+            cookie: true,
+            xfbml: true,
+            version: 'v5.0'
         });
+        FB.AppEvents.logPageView();
     };
-
-    (function(d, s, id) {
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-
 <!-- Your customer chat code -->
 <div class="fb-customerchat"
      attribution=setup_tool
      page_id="104943980975549"
      greeting_dialog_display="hide"
-     logged_in_greeting="Xin chào! Chúng tôi có thể giúp gì cho bạn?"
-     logged_out_greeting="Xin chào! Chúng tôi có thể giúp gì cho bạn?">
+     logged_in_greeting="Xin chào, chúng mình có thể giúp gì cho bạn không ?"
+     logged_out_greeting="Xin chào, chúng mình có thể giúp gì cho bạn không ?">
 </div>
 </body>
 <script>
-
     //code button top;
     if ($('#back-to-top').length) {
         var scrollTrigger = 400, // px
@@ -146,7 +142,7 @@
         interval: 2200
     });
 
-    $("document").ready(function(){
+    $("document").ready(function () {
         FormartGia();
     });
 

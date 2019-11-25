@@ -24,7 +24,7 @@ module.exports = {
                 res.render('index.ejs', {domain: domain, title: 'Trang chủ', dataSP: dataSP, dataDM:dataDM, dataTH:dataTH , soTrang:soTrang});
             })
             .catch(error => {
-                res.send("Web server chưa được bật, không lấy được data "+error);
+                res.render(' maintain.ejs');
             });
     }
 };

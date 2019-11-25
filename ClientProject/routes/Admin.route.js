@@ -23,7 +23,15 @@ router.get('/QuanLyFooterMenu', AdminController.HienThiQuanLyFooterMenu);
 
 router.get('/QuanLyFooterCH', AdminController.HienThiQuanLyFooterCH);
 
+router.get('/QuanLyCaiDatCauHinh', AdminController.HienThiQuanLyCaiDatCauHinh);
+
+router.get('/QuanLyCaiDatDoiMK', AdminController.HienThiQuanLyCaiDatDoiMK);
+
+router.get('/QuanLyCaiDatDoiMK', AdminController.HienThiQuanLyFooterCH);
+
 router.get('/QuanLyBaiViet', AdminController.HienThiQuanLyBaiViet);
+
+router.get('/QuanLyMaGiamGia', AdminController.HienThiQuanLyMaGiamGia);
 
 router.get('/DangXuat', AdminController.DangXuat);
 

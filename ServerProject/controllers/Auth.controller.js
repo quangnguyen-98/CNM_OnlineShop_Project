@@ -46,13 +46,13 @@ module.exports = {
 
                 if (data.Count == 1) {
                     var check = req.query.check;
-                    /*  var vaitro = req.query.vaitro;*/
-                    var SecretKey = fs.readFileSync(path.resolve(__dirname, "../Config/SecretKeyAdmin.txt")).toString();
+                    // var SecretKey = fs.readFileSync(path.resolve(__dirname, "../Config/SecretKeyAdmin.txt")).toString();
+                    var SecretKey = global.SecretKeyAdmin;
                     if (check == "yes") {
                         var payload = {
                             userId: data.Items[0].ID_NguoiDung
                         };
-                        var token = jwt.sign({payload}, SecretKey);
+                        var token = jwt.sign({payload}, SecretKey, {expiresIn: 60 * 7200}); //Hết hạn trong 5 ngày
                         res.cookie('token', token.toString());
                         idTK = data.Items[0].ID_NguoiDung.toString();
                         tokenTK = token.toString();
@@ -65,11 +65,12 @@ module.exports = {
                         });
                         return;
                     } else {
-                        var ThoiGianLogin = parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/ThoiGianLogin.txt")));
+                        // var ThoiGianLogin = parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/ThoiGianLogin.txt")));
+                        var ThoiGianLogin = global.ThoiGianLogin;
                         var payload = {
                             userId: data.Items[0].ID_NguoiDung
                         };
-                        var token = jwt.sign({payload}, SecretKey, {expiresIn: 60 * ThoiGianLogin});
+                        var token = jwt.sign({payload}, SecretKey, {expiresIn: 60 * ThoiGianLogin}); //Thòi gian login = số phút hết hạn
                         res.cookie('token', token.toString());
                         idTK = data.Items[0].ID_NguoiDung.toString();
                         tokenTK = token.toString();
@@ -95,7 +96,8 @@ module.exports = {
     },
     KiemTraTokenAdmin: function (req, res, next) {
         try {
-            var SecretKey = fs.readFileSync(path.resolve(__dirname, "../Config/SecretKeyAdmin.txt")).toString();
+            // var SecretKey = fs.readFileSync(path.resolve(__dirname, "../Config/SecretKeyAdmin.txt")).toString();
+            var SecretKey = global.SecretKeyAdmin;
             var token = req.query.token;
             jwt.verify(token, SecretKey, function (err, payload) {
                 req.user = payload;

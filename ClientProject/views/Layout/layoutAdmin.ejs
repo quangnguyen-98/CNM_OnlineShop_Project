@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" type="text/css" href="../../public/stylesheets/style.css">-->
-
+    <!-- Toastr library-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
     <style>
         .footer-item-color {
             color: #337ab7;
@@ -88,26 +88,19 @@
 
 <!-- jQuery library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
-
 <!-- jQuery LazyLoad -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js" ></script>
-
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" ></script>
-
 <!-- Boostrap library -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
-<!-- Toastr library-->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" ></script>
-
 <!-- JQuery Cookie library-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
-
-<!-- Easy-Loading library-->
-<script src="https://cdn.jsdelivr.net/npm/jquery-easy-loading@2.0.0-rc.2/dist/jquery.loading.min.js"></script>
-
+<!-- Easy-Loading library
+<script src="https://cdn.jsdelivr.net/npm/jquery-easy-loading@2.0.0-rc.2/dist/jquery.loading.min.js"></script>-->
+<!-- CK Editor library -->
+<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="/Admin/quanlysanpham"><i class="fas fa-store"></i> HQKStore Admin</a>
@@ -155,14 +148,14 @@
     $('.loadingDiv')
     .hide()
     .ajaxStart(function () {
-        // $(this).show();
-        timer = setTimeout(function () {
-            $(this).show();
-        }, 3500);
+         $(this).show();
+        // setTimeout(function(){ $(this).show() }, 3000);
+
+
     })
     .ajaxStop(function () {
         // $(this).hide();
-        clearTimeout(timer);
+
         $(this).hide();
     });
 

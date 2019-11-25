@@ -19,14 +19,19 @@ module.exports = {
                     /*listSize = {Size:item.Size};*/
                 });
                 for(var item in listSize)
-                  /*  result.push([item, listSize [item]]);*/
+                {
                     result.push(item);
+                }
+                if(typeof spData == "undefined"){
+                    res.render('error.ejs', { error:{status:404}  });
 
+                }else {
+                    res.render('./SanPham/ChiTietSanPham.ejs', {domain: domain, title: 'Chi Tiết Sản Phẩm', spData: spData, listSize:listSize,result:result });
+                }
 
-                res.render('./SanPham/ChiTietSanPham.ejs', {domain: domain, title: 'Chi Tiết Sản Phẩm', spData: spData, listSize:listSize,result:result });
             })
             .catch(error => {
-                res.send("Web server chưa được bật, hoặc không kết nối được, không lấy được data "+error);
+                res.render('maintain.ejs');
             });
     }
 

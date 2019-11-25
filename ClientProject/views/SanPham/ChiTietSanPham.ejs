@@ -111,6 +111,9 @@
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#menu1">Thông tin</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu2">Bình luận</a>
+            </li>
 
         </ul>
 
@@ -125,10 +128,17 @@
                 <p><span class="font-weight-bold">Chế độ bảo hành:</span> <%= spData.CheDoBaoHanh %></p>
                 <p><span class="font-weight-bold">Phụ kiện theo kèm:</span> <%= spData.PhuKienTheoKem %></p>
             </div>
+            <div id="menu2" class="container tab-pane fade"><br>
+                <div class="fb-comments" data-href="http://clientprojectonlineshop.herokuapp.com/SanPhams/<%=spData.ID_SanPham%>" data-width="6000px" data-numposts="5"></div>
+            </div>
         </div>
 
     </div>
 </div>
+
+<!--<div id="fb-root"></div>-->
+<!--<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v5.0&appId=431101604251186&autoLogAppEvents=1"></script>-->
+
 <script>
     //Hàm fortmat giá cho sản phẩm
     function FormartGia() {
