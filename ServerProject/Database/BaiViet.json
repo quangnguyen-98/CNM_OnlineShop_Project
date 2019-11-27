@@ -7,6 +7,12 @@
     },
     "NoiDung": "abc xyz fsdfds",
     "LinkBaiViet": "http://",
+    "SoLuotXem": 10,
+    "NgayTao": {
+      "Nam": 2019,
+      "Ngay": 3,
+      "Thang": 5
+    },
     "TrangThaiXoa":false
   },
   {
@@ -17,6 +23,12 @@
     },
     "NoiDung": "abc xyz fdsf",
     "LinkBaiViet": "http://",
+    "SoLuotXem": 10,
+    "NgayTao": {
+      "Nam": 2019,
+      "Ngay": 3,
+      "Thang": 5
+    },
     "TrangThaiXoa":false
   }
 ]

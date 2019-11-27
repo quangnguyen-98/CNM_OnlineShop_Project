@@ -72,41 +72,6 @@ module.exports = {
             }
         });
     },
-    /*LayDanhMucTheoSoTrang:function(req,res,next){
-        var n = parseInt(req.params.pagenumber) ;
-        var begin =(n-1)*1;
-        var end = (n-1)*1 +1;
-        var param = {
-            TableName: "DanhMuc",
-            ProjectionExpression:"#yr, TenDanhMuc, TrangThaiXoa",
-            FilterExpression:"TrangThaiXoa =:n",
-            ExpressionAttributeNames:{
-                "#yr":"ID_DanhMuc",
-            },
-            ExpressionAttributeValues:{
-                ":n":false
-            }
-        };
-        docClient.scan(param,function (err,data) {
-            if (err) {
-                console.error(err);
-                res.end();
-            }
-            else{
-                console.log("Thành công!");
-                var soTrang;
-                var count = data.Count/1;
-                res.json(
-                    {
-                        DanhMuc: data.Items.slice(begin,end),
-                        SoTrang: Math.ceil(count),
-                        TongItem: data.Count,
-                        ItemMoiPage:1
-                    }
-                );
-            }
-        });
-    },*/
     LayDanhMucTheoTen:function(req,res,next){
         var tenDanhMuc = CustomFunction.BoDau(req.params.tendanhmuc.toString().toLowerCase())  ;
         var param = {
@@ -201,7 +166,7 @@ module.exports = {
                     status:"ok",
                     message:"Sửa danh mục thành công !",
                     idDM:idDM,
-                    tendm:tenDM
+                    tenDM:tenDM
                 });
             }
         });

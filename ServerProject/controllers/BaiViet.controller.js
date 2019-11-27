@@ -8,7 +8,7 @@ module.exports = {
         var n = parseInt(req.params.pagenumber) ;
         var param = {
             TableName: "BaiViet",
-            ProjectionExpression:"#yr, TenTieuDe,NoiDung, LinkBaiViet, TrangThaiXoa",
+            ProjectionExpression:"#yr, TenTieuDe,NoiDung, LinkBaiViet, NgayTao, TrangThaiXoa",
             FilterExpression:"TrangThaiXoa =:n",
             ExpressionAttributeNames:{
                 "#yr":"ID_BaiViet",
@@ -43,7 +43,7 @@ module.exports = {
         var end = (n-1)*soItemMoiPageQL +soItemMoiPageQL;
         var param = {
             TableName: "BaiViet",
-            ProjectionExpression:"#yr, TenTieuDe, NoiDung, LinkBaiViet, TrangThaiXoa",
+            ProjectionExpression:"#yr, TenTieuDe, NoiDung, LinkBaiViet, NgayTao, SoLuotXem, TrangThaiXoa",
             FilterExpression:"TrangThaiXoa =:n",
             ExpressionAttributeNames:{
                 "#yr":"ID_BaiViet",
@@ -75,7 +75,7 @@ module.exports = {
         var idBaiViet = req.params.idbaiviet;
         var param = {
             TableName: "BaiViet",
-            ProjectionExpression:"#yr, TenTieuDe,NoiDung, LinkBaiViet, TrangThaiXoa",
+            ProjectionExpression:"#yr, TenTieuDe,NoiDung, LinkBaiViet, NgayTao, SoLuotXem, TrangThaiXoa",
             FilterExpression:"TrangThaiXoa =:n and #yr = :m",
             ExpressionAttributeNames:{
                 "#yr":"ID_BaiViet",
@@ -101,7 +101,7 @@ module.exports = {
         var tenBaiViet = CustomFunction.BoDau(req.params.tenbaiviet.toString().toLowerCase());
         var param = {
             TableName: "BaiViet",
-            ProjectionExpression:"#yr, TenTieuDe,NoiDung, TrangThaiXoa",
+            ProjectionExpression:"#yr, TenTieuDe,NoiDung, LinkBaiViet, NgayTao, SoLuotXem, TrangThaiXoa",
             FilterExpression:"TrangThaiXoa =:n and contains(TenTieuDe.TenKhongVietHoa, :m)",
             ExpressionAttributeNames:{
                 "#yr":"ID_BaiViet",
@@ -128,6 +128,7 @@ module.exports = {
         var noiDungBV = req.body.noidungbaiviet;
         var idBV = ids.generate();
         var linkBaiViet = DomainBaiViet+idBV;
+        var datetime = new Date();
 
         var paramBV = {
             TableName: "BaiViet",
@@ -139,6 +140,12 @@ module.exports = {
                     "TenKhongVietHoa": CustomFunction.BoDau(tenBV.toLowerCase())
                 },
                 "LinkBaiViet":linkBaiViet,
+                "NgayTao": {
+                    "Nam": parseInt(datetime.getFullYear())  ,
+                    "Ngay": parseInt(datetime.getDate()) ,
+                    "Thang": parseInt( datetime.getMonth())+1
+                },
+                "SoLuotXem":0,
                 "TrangThaiXoa": false
             }
         };
@@ -240,5 +247,63 @@ module.exports = {
                 });
             }
         });
-    }
+    },
+    TangSoLuotXem: function (req, res, next) {
+        var idBV = req.params.idbaiviet;
+        var parambv = {
+            TableName: "BaiViet",
+            ProjectionExpression:"#yr,SoLuotXem",
+            FilterExpression:"TrangThaiXoa =:n and #yr = :m",
+            ExpressionAttributeNames:{
+                "#yr":"ID_BaiViet",
+            },
+            ExpressionAttributeValues:{
+                ":n":false,
+                ":m":idBV
+            }
+        };
+        docClient.scan(parambv,function (err,data) {
+            if (err) {
+                console.error(err);
+                res.end();
+            }
+            else{
+                // res.json(data.Items[0].SoLuotXem);
+                var soLuotXem = parseInt(data.Items[0].SoLuotXem) +1 ;
+                var param = {
+                    TableName:'BaiViet',
+                    Key:{
+                        "ID_BaiViet": idBV
+                    },
+                    UpdateExpression: "set SoLuotXem = :n",
+                    ExpressionAttributeValues:{
+                        ":n": soLuotXem
+                    },
+                    ReturnValues:"UPDATED_NEW"
+                };
+
+                docClient.update(param,function (err,data) {
+                    if (err) {
+                        console.error(err);
+                        res.json({
+                            status:"fail",
+                            message:"Tăng lượt xem thất bại !",
+                            idBV:idBV,
+                        });
+                    }
+                    else{
+                        console.log("Thành công!");
+                        res.json({
+                            status:"ok",
+                            message:"Tăng lượt xem thành công !",
+                            idBV:idBV
+                        });
+                    }
+                });
+            }
+        });
+
+
+
+    },
 }

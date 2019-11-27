@@ -8,37 +8,37 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 console.log("Importing movies into DynamoDB. Please wait.");
 
 
-// // 1 Load Bảng SanPham
-// var allSanPham = JSON.parse(fs.readFileSync('../Database/SanPham.json', 'utf8'));
-// allSanPham.forEach(function(sanPham) {
-//     var params = {
-//         TableName: "SanPham",
-//         Item: {
-//             "ID_SanPham":  sanPham.ID_SanPham,
-//             "TenSanPham": sanPham.TenSanPham,
-//             "ID_DanhMuc":  sanPham.ID_DanhMuc,
-//             "ID_ThuongHieu":sanPham.ID_ThuongHieu,
-//             "MoTa":sanPham.MoTa,
-//             "ThongTin":sanPham.ThongTin,
-//             "Gia":sanPham.Gia,
-//             "TiLeSale":sanPham.TiLeSale,
-//             "Anh":sanPham.Anh,
-//             "NgayTao":sanPham.NgayTao,
-//             "Size":sanPham.Size,
-//             "TongSoLuong":sanPham.TongSoLuong,
-//             "TrangThaiBan":sanPham.TrangThaiBan,
-//         }
-//     };
-//
-//     docClient.put(params, function(err, data) {
-//         if (err) {
-//             console.error("Unable to add SanPham: ", sanPham, ". Error JSON:", JSON.stringify(err, null, 2));
-//         } else {
-//             console.log("PutItem SanPham succeeded:", sanPham);
-//         }
-//     });
-// });
-//
+// 1 Load Bảng SanPham
+var allSanPham = JSON.parse(fs.readFileSync('../Database/SanPham.json', 'utf8'));
+allSanPham.forEach(function(sanPham) {
+    var params = {
+        TableName: "SanPham",
+        Item: {
+            "ID_SanPham":  sanPham.ID_SanPham,
+            "TenSanPham": sanPham.TenSanPham,
+            "ID_DanhMuc":  sanPham.ID_DanhMuc,
+            "ID_ThuongHieu":sanPham.ID_ThuongHieu,
+            "MoTa":sanPham.MoTa,
+            "ThongTin":sanPham.ThongTin,
+            "Gia":sanPham.Gia,
+            "TiLeSale":sanPham.TiLeSale,
+            "Anh":sanPham.Anh,
+            "NgayTao":sanPham.NgayTao,
+            "Size":sanPham.Size,
+            "TrangThaiBan":sanPham.TrangThaiBan,
+            "TrangThaiXoa":sanPham.TrangThaiXoa
+        }
+    };
+
+    docClient.put(params, function(err, data) {
+        if (err) {
+            console.error("Unable to add SanPham: ", sanPham, ". Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            console.log("PutItem SanPham succeeded:", sanPham);
+        }
+    });
+});
+
 // // 2 Load Bảng NguoiDung
 // var allNguoiDung = JSON.parse(fs.readFileSync('../Database/NguoiDung.json', 'utf8'));
 // allNguoiDung.forEach(function(nguoiDung) {
@@ -211,25 +211,25 @@ console.log("Importing movies into DynamoDB. Please wait.");
 
 // 9 Load Bảng Mã Giảm Giá
 
-var allMaGiamGia = JSON.parse(fs.readFileSync('../Database/MaGiamGia.json', 'utf8'));
-allMaGiamGia.forEach(function(maGiamGia)
-{
-    var params = {
-        TableName: "MaGiamGia",
-        Item: {
-            "ID_MaGiamGia":  maGiamGia.ID_MaGiamGia,
-            "TenMaGiamGia": maGiamGia.TenMaGiamGia,
-            "TiLeSale":maGiamGia.TiLeSale,
-            "TrangThaiXoa":maGiamGia.TrangThaiXoa,
-            "SoLuong":maGiamGia.SoLuong
-        }
-    };
-
-    docClient.put(params, function(err, data) {
-        if (err) {
-            console.error("Unable to add MaGiamGia:", maGiamGia, ". Error JSON:", JSON.stringify(err, null, 2));
-        } else {
-            console.log("PutItem MaGiamGia succeeded:", maGiamGia);
-        }
-    });
-});
+// var allMaGiamGia = JSON.parse(fs.readFileSync('../Database/MaGiamGia.json', 'utf8'));
+// allMaGiamGia.forEach(function(maGiamGia)
+// {
+//     var params = {
+//         TableName: "MaGiamGia",
+//         Item: {
+//             "ID_MaGiamGia":  maGiamGia.ID_MaGiamGia,
+//             "TenMaGiamGia": maGiamGia.TenMaGiamGia,
+//             "TiLeSale":maGiamGia.TiLeSale,
+//             "TrangThaiXoa":maGiamGia.TrangThaiXoa,
+//             "SoLuong":maGiamGia.SoLuong
+//         }
+//     };
+//
+//     docClient.put(params, function(err, data) {
+//         if (err) {
+//             console.error("Unable to add MaGiamGia:", maGiamGia, ". Error JSON:", JSON.stringify(err, null, 2));
+//         } else {
+//             console.log("PutItem MaGiamGia succeeded:", maGiamGia);
+//         }
+//     });
+// });

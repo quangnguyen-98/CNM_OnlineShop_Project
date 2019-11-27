@@ -35,8 +35,35 @@
 <button onclick="copyToClipboard('#p2')">Copy P2</button>
 <br/><br/><input type="text" placeholder="Paste here for test" />
 -->
-
+<div class="testimonial" data-index="1" data-name="quang" data-sl="376">
+    Testimonial 1
+</div>
+<div class="testimonial" data-index="2" data-name="thanh" data-sl="376">
+    Testimonial 2
+</div>
+<div class="testimonial" data-index="3" data-name="teo" data-sl="53">
+    Testimonial 3
+</div>
+<div class="testimonial" data-index="4" data-name="ti" data-sl="65">
+    Testimonial 4
+</div>
+<div class="testimonial" data-index="5" data-name="loi" data-sl="6573">
+    Testimonial 5
+</div>
 <script>
+    var arr =[];
+    hh();
+    function hh(){
+        $('div[class="testimonial"]').each(function(index,item){
+            var a ={ stt:parseInt($(item).data('index')),name: $(item).data('name'),sl:$(item).data('sl')}
+            arr.push(a);
+            if(parseInt($(item).data('index'))>2){
+                $(item).html('Testimonial '+(index+1)+' by each loop');
+            }
+        });
+        alert(JSON.stringify(arr));
+    }
+
 /*
     $('body').on('click', '.btnSaveLink', function () {
         /!* alert($(this).find(".valueSaveLink").val($(element).text()).select());*!/

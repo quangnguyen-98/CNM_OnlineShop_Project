@@ -1,17 +1,17 @@
 <!--Carousel-->
 <div id="carousel-container">
-    <div id="SPCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
+    <div id="MainCRS" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators indicatorCRS">
             <!-- Load slider vào đây -->
         </ol>
-        <div class="carousel-inner">
+        <div class="carousel-inner dataCRS">
             <!-- Load carousel vào đây -->
         </div>
-        <a class="carousel-control-prev" href="#SPCarousel" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#MainCRS" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#SPCarousel" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#MainCRS" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
@@ -32,9 +32,9 @@ $("document").ready(function () {
             $.each(data.Carousel, function (i, item) {
                 var html_to_append1 = '';
                 html_to_append1 +=
-                '<li data-target="#SPCarousel" class="carousel-slider" data-slide-to="'+i+'"></li>';
+                '<li data-target="#MainCRS" class="carousel-slider" data-slide-to="'+i+'"></li>';
 
-                $(".carousel-indicators").append(html_to_append1);
+                $(".indicatorCRS").append(html_to_append1);
             });
             $.each(data.Carousel, function (i, item) {
                 var html_to_append2 = '';
@@ -45,7 +45,7 @@ $("document").ready(function () {
                     '</div>' +
                     '</a>';
 
-                $(".carousel-inner").append(html_to_append2);
+                $(".dataCRS").append(html_to_append2);
             });
             $('.carousel-item').first().addClass('active');
             $('.carousel-slider').first().addClass('active');

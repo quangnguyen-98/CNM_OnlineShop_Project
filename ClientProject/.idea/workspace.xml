@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a322a82-60d2-4128-8ad3-7586c19b93fc" name="Default Changelist" comment=":))">
+      <change afterPath="$PROJECT_DIR$/views/Layout/layoutAdminQLSanPhamChiTiet.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/ServerDomain.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/ServerDomain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/Admin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/Admin.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/SanPham.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/SanPham.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLySanPham.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLySanPham.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLySanPhamChiTiet.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLySanPhamChiTiet.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Layout/layoutKhachHang.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Layout/layoutKhachHang.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/SanPham/ChiTietSanPham.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/SanPham/ChiTietSanPham.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/ThanhPhanWeb/Header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/ThanhPhanWeb/Header.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -140,6 +148,10 @@
       <workItem from="1574577864963" duration="38080000" />
       <workItem from="1574658150342" duration="23888000" />
       <workItem from="1574696666278" duration="18676000" />
+      <workItem from="1574742465710" duration="24827000" />
+      <workItem from="1574772502123" duration="26000" />
+      <workItem from="1574777623202" duration="17273000" />
+      <workItem from="1574831097070" duration="28850000" />
     </task>
     <servers />
   </component>

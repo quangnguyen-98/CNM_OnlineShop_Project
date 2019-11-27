@@ -11,6 +11,8 @@ router.get('/', AdminController.HienThiQuanLySanPham);
 
 router.get('/QuanLySanPham', AdminController.HienThiQuanLySanPham);
 
+router.get('/QuanLySanPham/:idsanpham', AdminController.HienThiQuanLySanPhamChiTiet);
+
 router.get('/QuanLyDanhMuc', AdminController.HienThiQuanLyDanhMuc);
 
 router.get('/QuanLyThuongHieu', AdminController.HienThiQuanLyThuongHieu);

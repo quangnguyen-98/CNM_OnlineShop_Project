@@ -5,6 +5,9 @@
     <title><%= title %></title>
     <meta property="fb:app_id" content="431101604251186"/>
     <meta charset="utf-8">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--<link rel="shortcut icon" type="image/png" href="{{asset('img/favicon.jpeg')}}"/>-->
     <link rel="shortcut icon" type="image/png" href="https://bb4298.s3-us-west-1.amazonaws.com/favicon.ico"/>
@@ -15,7 +18,12 @@
     <!-- Toastr library-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
     <!-- <link rel="stylesheet" type="text/css" href="../../public/stylesheets/style.css">-->
+
     <style>
+        body {
+
+        }
+
         .footer-item-color {
             color: #337ab7;
         }
@@ -38,30 +46,38 @@
             transition: opacity 0.2s ease-out;
             opacity: 0;
         }
+
         #back-to-top:hover {
             background: #555;
         }
+
         #back-to-top.show {
             opacity: 1;
         }
+
         #content {
             height: 2000px;
         }
+
         .linksp:hover {
             text-decoration: none;
             color: #ffb520;
         }
-        .orangehover:hover {
-            text-decoration: none;
-            color: #ffb520;
-        }
-        /*.jbtcustom{
-            padding: 0.5rem;
-        }*/
+
         .carousel-SP-next,
         .carousel-SP-prev {
             filter: invert(100%);
         }
+
+        .loadingDiv {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 3000;
+            transform: translate(-50%, -50%);
+
+        }
+
         .carousel-inner {
             width: 100%;
             max-height: 448px !important;
@@ -78,11 +94,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <!-- Boostrap library -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<!-- Toastr library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <!--&lt;!&ndash; Easy-Loading library&ndash;&gt;-->
 <!--<script src="https://cdn.jsdelivr.net/npm/jquery-easy-loading@2.0.0-rc.2/dist/jquery.loading.min.js"></script>-->
 
+
 <%- partial('../ThanhPhanWeb/Header.ejs') %>
-<%- body -%>            <!--Body được load vào đây-->
+<%- body -%> <!--Body được load vào đây-->
 <%- partial('../ThanhPhanWeb/Footer') %>
 
 <!-- Load Facebook SDK for JavaScript -->
@@ -115,6 +134,17 @@
 </div>
 </body>
 <script>
+    $('.loadingDiv').hide();
+
+    $(document).on()
+            .ajaxStart(function () {
+                $(".loadingDiv").delay(3000).show();
+            })
+            .ajaxStop(function () {
+                $(".loadingDiv").hide();
+                $(this).unbind("ajaxStart");
+            });
+
     //code button top;
     if ($('#back-to-top').length) {
         var scrollTrigger = 400, // px
@@ -139,13 +169,30 @@
     }
     //Code Carousel;
     $('.carousel').carousel({
-        interval: 2200
+        interval: 2500
     });
 
     $("document").ready(function () {
         FormartGia();
     });
 
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "4000",
+        "extendedTimeOut": "10000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
 </script>
 </html>
 

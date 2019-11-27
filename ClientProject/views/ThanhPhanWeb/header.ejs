@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="/"><i class="fas fa-store"></i> HQKStore</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,6 +5,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <% if(key == "Index"){%>
         <ul class="navbar-nav ml-auto" style="margin-right:30px">
             <li class="nav-item">
                 <a class="nav-link" href="login">Đăng Nhập</a>
@@ -14,10 +14,22 @@
                 <a class="nav-link " href="#">Đăng ký</a>
             </li>
         </ul>
+            <div id="info"></div>
+
+
         <form class="form-inline my-2 my-lg-0">
             <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên sản phẩm" aria-label="Search">
-            <button id="btnTimKiem" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+            <button id="btnTimKiem" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>&nbsp;
+            <a href="#" class="fas fa-shopping-cart" style="color: #28a745; text-decoration: none"> 0 SP</a>
         </form>
+        <%}else {%>
+                <ul class="navbar-nav ml-auto" style="margin-right:30px">
+                    <li class="nav-item">
+                        <a href="#" class="fas fa-shopping-cart" style="color: #28a745; text-decoration: none"> 0 SP</a>
+                    </li>
+                </ul>
+
+        <%}%>
     </div>
 </nav>
 
@@ -29,11 +41,12 @@ $(document).ready(function(){
     $("#btnTimKiem").click(function () {
         tenSanPhamDangTim = $("#inputTK").val().toLowerCase();
         page =1;
+
         $.ajax({
             url: "<%=domain%>/sanphams/ten/"+$("#inputTK").val().toLowerCase()+"/1/ten",
             method: "GET",
             error: function() {
-                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                toastr["error"]("Bạn chưa nhập tên sản phẩm, vui lòng nhập tên sản phẩm để tìm kiếm!");
             },
             success: function(data) {
                 SoTrang =data.SoTrang;
@@ -47,7 +60,6 @@ $(document).ready(function(){
                         '<a href="/SanPhams/'+item.ID_SanPham+'">'+
                         '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
                         '</a>'+
-
                         ' <div class="card-body">'+
                         '<h5 class="card-title" style="height: 3rem" ><a class="linksp" href="/SanPhams/'+item.ID_SanPham+'">'+item.TenSanPham.Ten+'</a></h5>'+
                         ' <br>'+

@@ -3,25 +3,31 @@
 
 <%-partial('../ThanhPhanWeb/Carousel.ejs')%>
 
-<div id="items-container"></div>
-<div class="container" style="padding: 1rem">
+
+<div class="container" style="padding-top: 1rem">
     <div class="row">
         <div class="col-sm-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/"><i class="fas fa-store"></i> HQKStore</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Blog</li>
-                    <li class="breadcrumb-item active" aria-current="page"><%=bvData.TenTieuDe%>></li>
+                    <li class="breadcrumb-item active" aria-current="page"><%=bvData.TenTieuDe%></li>
+                    <li class="ml-auto"><%= bvData.NgayTao.Ngay%>/<%= bvData.NgayTao.Thang%>/<%= bvData.NgayTao.Nam%></li>
                 </ol>
             </nav>
-            <div id ="datasp" class="row datasp ">
-                <div id="info"></div>
+
+            <div>
                 <div class="col-12 ">
                     <%- bvData.NoiDung%>
                 </div>
+                <hr style="height:1px">
+                <div class="col-12 ">
+                    <div class="float-left text-primary h5"><a href="/">Về trang chủ</a></div>
+                    <div class="float-right text-secondary h5">Số lượt xem: <%= bvData.SoLuotXem + 1%></div>
+                </div>
 
 
-                <!-- Sản phẩm sẽ được load vào đây :)) -->
+                <!-- Bài viết sẽ được load vào đây :)) -->
             </div>
 
         </div>

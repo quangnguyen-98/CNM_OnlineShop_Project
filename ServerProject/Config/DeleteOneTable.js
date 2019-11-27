@@ -7,7 +7,7 @@ var dynamodb = new AWS.DynamoDB();
 
 
 var paramsSanPham = {
-    TableName : "NguoiDung",
+    TableName : "SanPham",
 };
 dynamodb.deleteTable(paramsSanPham, function(err, data) {
     if (err) {

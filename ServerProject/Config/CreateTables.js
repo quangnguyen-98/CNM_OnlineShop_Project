@@ -3,18 +3,16 @@ var configAWS = require("./ConfigAWS");
 configAWS.KetNoiAWS();
 var dynamodb = new AWS.DynamoDB();
 
-/*
+
 // 1 Tạo Bảng SanPham
 var paramsSanPham = {
     TableName : "SanPham",
     KeySchema: [
         { AttributeName: "ID_SanPham", KeyType: "HASH"},  //Partition key
-      /!*  { AttributeName: "TenSanPham", KeyType: "RANGE"},  //Range key*!/
 
     ],
     AttributeDefinitions: [
         { AttributeName: "ID_SanPham", AttributeType: "S" },
-        /!*{ AttributeName: "TenSanPham", AttributeType: "M" },*!/
 
     ],
     ProvisionedThroughput: {
@@ -28,7 +26,7 @@ dynamodb.createTable(paramsSanPham, function(err, data) {
     } else {
         console.log("Created table SanPham. Table description JSON:", JSON.stringify(data, null, 2));
     }
-});*/
+});
 
 
 // 2 Tạo Bảng Người Dùng
@@ -200,26 +198,26 @@ dynamodb.createTable(paramsFooter, function(err, data) {
     }
 });*/
 
-// 4 Tạo Bảng Mã Giảm Giá
-var paramsMaGiamGia = {
-    TableName : "MaGiamGia",
-    KeySchema: [
-        { AttributeName: "ID_MaGiamGia", KeyType: "HASH"},  //Partition key
-
-    ],
-    AttributeDefinitions: [
-        { AttributeName: "ID_MaGiamGia", AttributeType: "S" },
-
-    ],
-    ProvisionedThroughput: {
-        ReadCapacityUnits: 10,
-        WriteCapacityUnits: 10
-    }
-};
-dynamodb.createTable(paramsMaGiamGia, function(err, data) {
-    if (err) {
-        console.error("Unable to create table Mã Giảm Giá. Error JSON:", JSON.stringify(err, null, 2));
-    } else {
-        console.log("Created table Mã Giảm Giá. Table description JSON:", JSON.stringify(data, null, 2));
-    }
-});
+// // 4 Tạo Bảng Mã Giảm Giá
+// var paramsMaGiamGia = {
+//     TableName : "MaGiamGia",
+//     KeySchema: [
+//         { AttributeName: "ID_MaGiamGia", KeyType: "HASH"},  //Partition key
+//
+//     ],
+//     AttributeDefinitions: [
+//         { AttributeName: "ID_MaGiamGia", AttributeType: "S" },
+//
+//     ],
+//     ProvisionedThroughput: {
+//         ReadCapacityUnits: 10,
+//         WriteCapacityUnits: 10
+//     }
+// };
+// dynamodb.createTable(paramsMaGiamGia, function(err, data) {
+//     if (err) {
+//         console.error("Unable to create table Mã Giảm Giá. Error JSON:", JSON.stringify(err, null, 2));
+//     } else {
+//         console.log("Created table Mã Giảm Giá. Table description JSON:", JSON.stringify(data, null, 2));
+//     }
+// });

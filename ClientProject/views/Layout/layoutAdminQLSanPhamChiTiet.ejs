@@ -3,17 +3,31 @@
 <head>
     <!-- Required meta tags -->
     <title><%= title %></title>
+    <meta property="fb:app_id" content="431101604251186"/>
     <meta charset="utf-8">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--<link rel="shortcut icon" type="image/png" href="{{asset('img/favicon.jpeg')}}"/>-->
     <link rel="shortcut icon" type="image/png" href="https://bb4298.s3-us-west-1.amazonaws.com/favicon.ico"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <!--Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <!-- Toastr library-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
+
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+
+
+    <!-- <link rel="stylesheet" type="text/css" href="../../public/stylesheets/style.css">-->
+
+
     <style>
+        body {
+
+        }
+
         .footer-item-color {
             color: #337ab7;
         }
@@ -23,7 +37,7 @@
             text-align: center;
             position: fixed;
             bottom: 20px;
-            right: 20px;
+            left: 20px;
             z-index: 9999;
             padding: 7px;
             text-align: center;
@@ -39,7 +53,6 @@
 
         #back-to-top:hover {
             background: #555;
-
         }
 
         #back-to-top.show {
@@ -48,13 +61,6 @@
 
         #content {
             height: 2000px;
-        }
-        .orangehover:hover {
-            text-decoration: none;
-            color: #ffb520;
-        }
-        .jbtcustom {
-            padding: 0.5rem;
         }
 
         .carousel-SP-next,
@@ -66,24 +72,18 @@
             position: absolute;
             top: 50%;
             left: 50%;
+            z-index: 3000;
             transform: translate(-50%, -50%);
-       /*     position: relative;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;*/
+
         }
-        .listgroup-scroll{
-            max-height: 35rem;
-            margin-bottom: 10px;
-            overflow:scroll;
-            overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
+        .carousel-inner {
+            width: 100%;
+            max-height: 448px !important;
         }
     </style>
+
 </head>
-
 <body>
-
 <!-- jQuery library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
 <!-- jQuery LazyLoad -->
@@ -100,6 +100,9 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-easy-loading@2.0.0-rc.2/dist/jquery.loading.min.js"></script>-->
 <!-- CK Editor library -->
 <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="/Admin/quanlysanpham"><i class="fas fa-store"></i> HQKStore Admin</a>
@@ -123,40 +126,21 @@
 
     </div>
 </nav>
-<div style="margin-top:70px;"></div>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm-3">
-            <%- partial('../Admin/MenuDashboard') %>
-        </div>
-        <div class="col-sm-9">
-
-            <%- body -%>
-        </div>
-    </div>
-</div>
-<br>
-
+<%- body -%> <!--Body được load vào đây-->
 <%- partial('../ThanhPhanWeb/Footer') %>
 
-
+</body>
 <script>
+    $('.loadingDiv').hide();
 
-    $('.loadingDiv')
-    .hide()
-    .ajaxStart(function () {
-         $(this).show();
-        // setTimeout(function(){ $(this).show() }, 3000);
-
-
-    })
-    .ajaxStop(function () {
-        // $(this).hide();
-
-        $(this).hide();
-    });
+    $(document).on()
+        .ajaxStart(function () {
+            $(".loadingDiv").delay(3000).show();
+        })
+        .ajaxStop(function () {
+            $(".loadingDiv").hide();
+            $(this).unbind("ajaxStart");
+        });
 
     //code button top;
     if ($('#back-to-top').length) {
@@ -182,10 +166,8 @@
     }
     //Code Carousel;
     $('.carousel').carousel({
-        interval: 2200
+        interval: 2500
     });
-
-
 
     toastr.options = {
         "closeButton": true,
@@ -205,7 +187,6 @@
         "hideMethod": "fadeOut"
     }
 </script>
-</body>
 </html>
 
 

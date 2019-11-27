@@ -1,0 +1,394 @@
+<% layout('../Layout/layoutAdminQLSanPhamChiTiet.ejs') -%>
+<% script('../public/stylesheets/style') -%>
+
+<%- partial('../ThanhPhanWeb/Carousel.ejs') %>
+
+<div id="items-container"></div>
+<div class="container" style="padding: 1rem">
+    <div class="row">
+
+        <div class="col-sm-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active text-primary font-weight-bold"><h5>Quản lý thông tin Sản phẩm</h5>
+                    </li>
+                </ol>
+            </nav>
+            <div class="col-sm-12 text-right">
+                <span><h5 class="text-primary font-weight-bold">Trạng thái bán : <input id="toggle-event"
+                                                                                        type="checkbox" checked
+                                                                                        data-toggle="toggle"
+                                                                                        data-on="Đang được bán"
+                                                                                        data-off="Ngưng bán"
+                                                                                        data-onstyle="success"
+                                                                                        data-offstyle="secondary">
+                    <div id="console-event"></div>
+                    </h5> </span>
+            </div>
+<div id="info"></div>
+            <div class="row was-validated">
+                <div class="col-sm-5">
+
+                    <div class="form-group">
+                        <label for="tbIDSanPham">ID sản phẩm</label>
+                        <input type="text" class="form-control" id="tbIDSanPham" placeholder="Nhập ID sản phẩm"
+                               name="tbTenSanPham" value="<%= spData.ID_SanPham %>" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label >Danh Mục</label>
+                        <select class="form-control" id="tbDanhMuc" >
+
+                            <!--List danh mục được load vào đây-->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label >Thương Hiệu</label>
+                        <select class="form-control" id="tbThuongHieu" >
+
+                            <!--List thương hiệu được load vào đây-->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tbNoiSanXuat">Nơi sản xuất</label>
+                        <input type="text" class="form-control" id="tbNoiSanXuat" placeholder="Nhập nơi sản xuất"
+                               name="tbNoiSanXuat" value="<%if(spData.ThongTin.NoiSanXuat!=null){%><%= spData.ThongTin.NoiSanXuat%><%} %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tbCDBH">Chế độ bảo hành</label>
+                        <input type="text" class="form-control" id="tbCDBH" placeholder="Nhập chế độ bảo hành"
+                               name="tbCDBH" value="<%if(spData.ThongTin.CheDoBaoHanh!=null){%><%= spData.ThongTin.CheDoBaoHanh%><%} %>"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tbPKDK">Phụ kiện đi kèm</label>
+                        <input type="text" class="form-control" id="tbPKDK" placeholder="Nhập phụ kiện đi kèm"
+                               name="tbPKDK" value="<%if(spData.ThongTin.PhuKienTheoKem!=null){%><%= spData.ThongTin.PhuKienTheoKem%><%} %>"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tbAnh1">Ảnh 1</label>
+                        <input type="text" class="form-control" id="tbAnh1" placeholder="Nhập link ảnh 1"
+                               value="<%if(spData.Anh.Avatar!=null){%><%= spData.Anh.Avatar%><%} %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tbAnh2">Ảnh 2</label>
+                        <input type="text" class="form-control" id="tbAnh2" placeholder="Nhập link ảnh 2"
+                               value="<%if(spData.Anh.Avatar!=null){%><%= spData.Anh.AvtDetail1%><%} %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tbAnh3">Ảnh 3</label>
+                        <input type="text" class="form-control" id="tbAnh3" placeholder="Nhập link ảnh 3"
+                               value="<%if(spData.Anh.AvtDetail2!=null){%><%= spData.Anh.AvtDetail2%><%} %>" required>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="form-group">
+                        <label for="tbTenSanPham">Tên sản phẩm</label>
+                        <input type="text" class="form-control" id="tbTenSanPham" placeholder="Nhập tên sản phẩm"
+                               name="tbTenSanPham" value="<%= spData.TenSanPham %>" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="tbGia">Giá</label>
+                        <input type="text" class="form-control" id="tbGia" placeholder="Nhập giá" name="tbGia"
+                               value="<%if(spData.Gia!=null){%><%= spData.Gia%><%} %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tbTiLeSale">Tỉ lệ sale</label>
+                        <input type="text" class="form-control" id="tbTiLeSale" placeholder="Nhập tỉ lệ sale"
+                               name="tbTiLeSale" value="<%if(spData.TiLeSale!=null){%><%= spData.TiLeSale%><%} %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tbTongQuan">Mô tả tổng quát</label>
+                        <textarea class="form-control" id="tbTongQuan" rows="2"
+                                  required><%if(spData.MoTa.TongQuan!=null){%><%= spData.MoTa.TongQuan%><%} %></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="tbChiTiet">Mô tả chi tiết</label>
+                        <textarea class="form-control" name="ckeditor" required><%if(spData.MoTa.ChiTiet!=null){%><%= spData.MoTa.ChiTiet%><%} %></textarea>
+                    </div>
+
+                </div>
+                <div class="col-sm-12 text-center">
+                    <div id="btnLuu" class="btn btn-primary col-sm-5">Lưu</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-12" style="margin-top: 1rem">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active text-primary font-weight-bold"><h5>Quản lý Size</h5></li>
+                    </ol>
+                </nav>
+                <div class="row-fluid">
+                    <div class=" ml-auto ">
+                        <button type="button" class="btn btn-primary d-inline " data-toggle="modal"
+                                data-target="#modalThem">
+                            Thêm size
+                        </button>
+                        <form class="form-inline ml-auto d-inline float-right ">
+                            <div class="text-primary font-weight-bold"><h5>Tổng số lượng sản phẩm :</h5></div>
+                        </form>
+                    </div>
+                </div>
+
+                <br><br>
+
+                <table class="table table-hover">
+                    <img src="https://bb4298.s3-us-west-1.amazonaws.com/index.svg" class="loadingDiv" alt="loadingIcon">
+                    <thead>
+                    <tr>
+
+                        <th scope="col">Tên size</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Thao tác</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tableSize">
+                    <%listSize.forEach(function (item) {%>
+                        <tr>
+                            <td><%=item.TenSize%></td>
+                            <td><input class="form-control col-sm-6 value"  value="<%=item.SoLuong%>" disabled></td>
+                            <td>
+                                <div class="btn btn-warning " data-toggle="modal"
+                                     data-target="#modalThem' + item.ID_BaiViet + '"> Sửa
+                                </div>
+                                <div class="btn btn-danger" data-toggle="modal"
+                                     data-target="#modalXoa' + item.ID_BaiViet + '"> Xóa
+                                </div>
+                                <div id="<%=item.STT%>" class="btn btn-success btnSaveLink"> Xác nhận </div>
+                            </td>
+                        </tr>
+                    <%});%>
+
+                    <!--Bài viết được load vào đây-->
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Thêm bài viết-->
+
+    <div class="modal fade" id="modalThem">
+        <div class="modal-dialog modal-lg modal-lg modal-sm">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title"><i class="fas fa-store"></i> Thêm bài viết</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form class="was-validated">
+                        <div class="form-group">
+                            <label for="TenSize">Tên size</label>
+                            <input type="text" class="form-control" id="TenSize" placeholder="Nhập tên size"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="SoLuong">Số lượng</label>
+                            <input type="text" class="form-control" id="SoLuong" placeholder="Nhập số lượng"
+                                   required>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <label id="btnXacNhanThem" class="btn btn-success">Xác nhận</label>
+                    <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // var tenDM ;
+    // var tenTH ;
+    var ListSize = [];
+    ListSize ="<%- JSON.stringify(listSize)%>";
+    var idDM ="<%=spData.ID_DanhMuc%>";
+    var idTH ="<%=spData.ID_ThuongHieu%>";
+    var idSP ="<%=spData.ID_SanPham%>";
+    var trangThai = "<%=spData.TrangThaiBan%>";
+    LoadDanhMucThuongHieu();
+    <% if(spData.TrangThaiBan == true){ %>
+    $('#toggle-event').bootstrapToggle('on');
+
+    <% }else { %>
+    $('#toggle-event').bootstrapToggle('off');
+
+    <% } %>
+
+    $(document).ready(function () {
+        CKEDT()
+    });
+
+    function CKEDT() {
+        CKEDITOR.config.language = 'vi';
+        CKEDITOR.config.entities_latin = false;
+        CKEDITOR.config.entities_greek = false;
+        CKEDITOR.replace('ckeditor', {
+            language: 'vi',
+            entities_latin: false,
+            entities_greek: false,
+        });
+    }
+
+    function LoadDanhMucThuongHieu() {
+        $.ajax({
+            url: "<%= domain %>/DanhMucs?token="+ $.cookie("token"),
+            method: "GET",
+            error: function () {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function (data) {
+                $.each(data.DanhMuc, function (i, item) {
+                    if(item.ID_DanhMuc == idDM){
+                        tenDM = item.TenDanhMuc.Ten;
+                        var html_to_append =
+                            '<option id="'+ item.ID_DanhMuc+'" value="'+ item.TenDanhMuc.Ten+'" class="itemDM" selected>'+ item.TenDanhMuc.Ten+'</option>';
+                        $("#tbDanhMuc").append(html_to_append);
+                    }else {
+                        var html_to_append =
+                            '<option id="'+ item.ID_DanhMuc+'" value="'+ item.TenDanhMuc.Ten+'" class="itemDM">'+ item.TenDanhMuc.Ten+'</option>';
+                        $("#tbDanhMuc").append(html_to_append);
+                    }
+
+                });
+            },
+        });
+        $.ajax({
+            url: "<%= domain %>/ThuongHieus?token="+ $.cookie("token"),
+            method: "GET",
+            error: function () {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function (data) {
+
+                $.each(data.ThuongHieu, function (i, item) {
+                    if(item.ID_ThuongHieu == idTH){
+                        tenTH = item.TenThuongHieu.Ten;
+                        var html_to_append =
+                            '<option id="'+ item.ID_ThuongHieu+'" value="'+ item.TenThuongHieu.Ten+'" class="itemTH" selected >'+ item.TenThuongHieu.Ten+'</option>';
+                        $("#tbThuongHieu").append(html_to_append);
+                    }else {
+                        var html_to_append =
+                            '<option id="'+ item.ID_ThuongHieu+'" value="'+ item.TenThuongHieu.Ten+'" class="itemTH" >'+ item.TenThuongHieu.Ten+'</option>';
+                        $("#tbThuongHieu").append(html_to_append);
+                    }
+
+
+                });
+            },
+        });
+    }
+
+    $('body').on('change', '#tbDanhMuc', function (e) {
+        idDM = $(e.target).find("option:selected").attr("id");
+    });
+
+    $('body').on('change', '#tbThuongHieu', function (e) {
+        idTH = $(e.target).find("option:selected").attr("id");
+    });
+
+    //Sự kiện nút sửa sản phẩm
+    $('body').on('click', '#btnLuu', function () {
+        ListSize.forEach(function (item) {
+            alert(item);
+        });
+        alert("HT");
+        var ChiTiet = CKEDITOR.instances['ckeditor'].getData();
+        $.ajax({
+            url: "<%= domain %>/SanPhams/QlSp/Admin/" + $("#tbIDSanPham").val() + "?token=" + $.cookie("token"),
+            method: "PUT",
+            cache:false,
+            data:{
+                ID_DanhMuc:idDM,
+                ID_ThuongHieu:idTH,
+                NoiSanXuat: $("#tbNoiSanXuat").val(),
+                CheDoBaoHanh:$("#tbCDBH").val(),
+                PhuKienTheoKem:$("#tbPKDK").val(),
+                Anh1:$("#tbAnh1").val(),
+                Anh2:$("#tbAnh2").val(),
+                Anh3:$("#tbAnh3").val(),
+                Gia:$("#tbGia").val(),
+                TiLeSale:$("#tbTiLeSale").val(),
+                TongQuan:$("#tbTongQuan").val(),
+                ChiTiet:ChiTiet
+            },
+            error: function () {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function (data) {
+                if (data.status == "ok") {
+
+                    toastr["success"](data.message);
+                } else {
+                    toastr["error"](data.message);
+                }
+            }
+        });
+        return false;
+    });
+    $('#toggle-event').change(function() {
+
+        if(trangThai == "true"){
+            HuyBan();
+            return false;
+        }
+      if(trangThai == "false"){
+        MoBan();
+          return false;
+      }
+    });
+    function HuyBan() {
+        $.ajax({
+            url: "<%= domain %>/SanPhams/QlSp/Admin/huyban/sp?token=" + $.cookie("token"),
+            method: "PUT",
+            cache:false,
+            data:{
+                idsanpham:idSP
+            },
+            error: function () {
+                toastr["error"]("Khóa sản phẩm thất bại !");
+            },
+            success: function (data) {
+                if (data.status == "ok") {
+
+                    // toastr["success"](data.message);
+                } else {
+                    toastr["error"](data.message);
+                }
+            }
+        });
+        trangThai = "false";
+
+    }
+    function MoBan() {
+        $.ajax({
+            url: "<%= domain %>/SanPhams/QlSp/Admin/moban/sp?token=" + $.cookie("token"),
+            method: "PUT",
+            cache:false,
+            data:{
+                idsanpham:idSP
+            },
+            error: function () {
+                toastr["error"]("Khóa sản phẩm thất bại !");
+            },
+            success: function (data) {
+                if (data.status == "ok") {
+
+                    // toastr["success"](data.message);
+                } else {
+                    toastr["error"](data.message);
+                    $('#toggle-event').bootstrapToggle('off');
+                }
+            }
+        });
+        trangThai = "true";
+    }
+</script>

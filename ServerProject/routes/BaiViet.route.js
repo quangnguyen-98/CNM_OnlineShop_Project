@@ -14,7 +14,7 @@ router.get('/', BaiVietController.LayTatCaBaiViet);
 //Lấy bài viết theo số trang
 router.get('/:pagenumber',BaiVietController.LayBaiVietTheoSoTrang);
 
-//Lấy bài viết theo tên
+//Lấy bài viết theo id
 router.get('/timtheoid/:idbaiviet',BaiVietController.LayBaiVietTheoID);
 
 //Lấy bài viết theo tên
@@ -28,6 +28,9 @@ router.put('/:idbaiviet/:tenbaiviet',  BaiVietController.SuaBaiViet);
 
 //Xóa bài viết
 router.delete('/:idbaiviet', BaiVietController.XoaBaiViet);
+
+//Tăng số lượt xem
+router.post('/tangluotxem/:idbaiviet', BaiVietController.TangSoLuotXem);
 
 
 module.exports = router;

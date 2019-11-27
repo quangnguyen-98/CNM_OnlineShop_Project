@@ -3,7 +3,85 @@ const domain = require('../Config/ServerDomain');
 
 module.exports = {
     HienThiQuanLySanPham: function (req, res, next) {
-        res.render('./Admin/QuanLySanPham.ejs', {domain: domain, title: 'Quản lý sản phẩm', key: 'QLSP'});
+        api_helper.API_Call_Get(domain + '/SanPhams/QlSp/AdminAll?token=' + req.cookies.token)
+            .then(response => {
+                var dataSP = [];
+                var soTrang = response.SoTrang;
+                var tongItem = response.TongItem;
+                var itemMoiPage = response.ItemMoiPage;
+                response.SanPham.forEach(function (item) {
+                    var dm = {ID_SanPham: item.ID_SanPham, TenSanPham: item.TenSanPham, Anh: item.Anh};
+                    dataSP.push(dm);
+                });
+                res.render('./Admin/QuanLySanPham.ejs', {
+                    domain: domain,
+                    title: 'Quản lý sản phẩm',
+                    key: 'QLSP',
+                    dataSP: dataSP,
+                    soTrang: soTrang,
+                    tongItem: tongItem,
+                    itemMoiPage: itemMoiPage
+                });
+            })
+            .catch(error => {
+                res.send("Web server chưa được bật, không lấy được data " + error);
+            });
+
+    },
+    HienThiQuanLySanPhamChiTiet: function (req, res, next) {
+        var idSP = req.params.idsanpham;
+        var spData;
+        var listDM = [];
+        var listTH = [];
+        var listSize = [];
+        var key = true;
+
+        api_helper.API_Call_Get(domain + '/SanPhams/QlSp/Admin/timtheoid/a/b/' + idSP + '?token=' + req.cookies.token)
+            .then(response => {
+                response.Items.forEach(function (item) {
+                    spData = {
+                        ID_SanPham: item.ID_SanPham,
+                        ID_ThuongHieu: item.ID_ThuongHieu,
+                        ID_DanhMuc: item.ID_DanhMuc,
+                        TenSanPham: item.TenSanPham.Ten,
+                        MoTa: item.MoTa,
+                        ThongTin: item.ThongTin,
+                        Gia: item.Gia,
+                        TiLeSale: item.TiLeSale,
+                        NgayTao: item.NgayTao,
+                        Size: item.Size,
+                        TrangThaiBan: item.TrangThaiBan,
+                        Anh: item.Anh
+                    };
+                });
+                if(spData == null){
+                    res.render('error.ejs',{error:{status:404} });
+                }
+                if (spData.Size != null) {
+                    spData.Size.forEach(function (item) {
+                        var itemSize = {TenSize: item.TenSize, SoLuong: item.SoLuong,STT:item.STT};
+                        listSize.push(itemSize);
+                    });
+                }
+
+                if (spData.Gia == null) {
+                    key = false;
+
+                }
+                res.render('./Admin/QuanLySanPhamChiTiet.ejs', {
+                    domain: domain,
+                    title: 'Quản lý sản phẩm',
+                    key: "QLSPCT",
+                    listDM: listDM,
+                    listTH: listTH,
+                    spData: spData,
+                    listSize: listSize,
+                    key: key
+                });
+            })
+            .catch(error => {
+                res.send("Web server chưa được bật, không lấy được data " + error);
+            });
     },
     HienThiQuanLyDanhMuc: function (req, res, next) {
         api_helper.API_Call_Get(domain + '/DanhMucs?token=' + req.cookies.token)
@@ -95,8 +173,8 @@ module.exports = {
                 var itemMoiPage = response.ItemMoiPage;
 
                 response.BaiViet.forEach(function (item) {
-                   /* var nd = decodeURIComponent(escape(atob(item.NoiDung))).toString();*/
-                    var bv = {ID_BaiViet: item.ID_BaiViet, TenTieuDe: item.TenTieuDe, NoiDung:item.NoiDung};
+                    /* var nd = decodeURIComponent(escape(atob(item.NoiDung))).toString();*/
+                    var bv = {ID_BaiViet: item.ID_BaiViet, TenTieuDe: item.TenTieuDe, NoiDung: item.NoiDung};
                     dataBV.push(bv);
                 });
                 res.render('./Admin/QuanLyBaiViet.ejs', {
@@ -175,7 +253,12 @@ module.exports = {
                 var tongItem = response.TongItem;
                 var itemMoiPage = response.ItemMoiPage;
                 response.MaGiamGia.forEach(function (item) {
-                    var mgg = {ID_MaGiamGia: item.ID_MaGiamGia, TenMaGiamGia: item.TenMaGiamGia, SoLuong:item.SoLuong, TiLeSale:item.TiLeSale};
+                    var mgg = {
+                        ID_MaGiamGia: item.ID_MaGiamGia,
+                        TenMaGiamGia: item.TenMaGiamGia,
+                        SoLuong: item.SoLuong,
+                        TiLeSale: item.TiLeSale
+                    };
                     dataMGG.push(mgg);
                 });
                 res.render('./Admin/QuanLyMaGiamGia.ejs', {
@@ -206,7 +289,7 @@ module.exports = {
                     soSanPhamPMoiPage: soSanPhamPMoiPage,
                     soItemMoiPageQL: soItemMoiPageQL,
                     thoiGianLogin: thoiGianLogin,
-                    secretKeyAdmin:secretKeyAdmin
+                    secretKeyAdmin: secretKeyAdmin
                 });
             })
             .catch(error => {
