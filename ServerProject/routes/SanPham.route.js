@@ -46,6 +46,8 @@ router.post('/QlSp/Admin/:tensanpham', SanPhamQLController.ThemSanPham);
 //Sửa sản phẩm ở trang quản lý SP chi tiết
 router.put('/QlSp/Admin/:idsanpham', SanPhamQLController.SuaSanPham);
 
+//Xóa sản phẩm
+router.delete('/QlSp/Admin/:idsanpham', SanPhamQLController.XoaSanPham);
 
 //Kích hoạt chế độ bán sản phẩm ở trang quản lý SP chi tiết
 router.put('/QlSp/Admin/moban/sp', SanPhamQLController.MoBanSanPham);
@@ -53,10 +55,17 @@ router.put('/QlSp/Admin/moban/sp', SanPhamQLController.MoBanSanPham);
 //Kích hoạt chế độ khóa sản phẩm ở trang quản lý SP chi tiết
 router.put('/QlSp/Admin/huyban/sp', SanPhamQLController.HuyBanSanPham);
 
-//Thêm size cho sp ở trang quản lý SP chi tiết
-router.put('/QlSp/Admin/suasize/sp', SanPhamQLController.SuaSizeSanPham);
+//Lấy size theo id sản phẩm
+router.get('/QlSp/Admin/timsize/theoidsp/size',SanPhamQLController.LaySizeTheoIdSP);
 
-//Xóa sản phẩm
-router.delete('/QlSp/Admin/:idsanpham', SanPhamQLController.XoaSanPham);
+//Thêm size cho sp ở trang quản lý SP chi tiết
+router.post('/QlSp/Admin/themsize/sp', SanPhamQLController.ThemSize);
+
+//Sửa size cho sp ở trang quản lý SP chi tiết
+router.put('/QlSp/Admin/suasize/sp', SanPhamQLController.SuaSize);
+
+//Xóa size sp ở trang quản lý SP chi tiết
+router.delete('/QlSp/Admin/xoasize/sp', SanPhamQLController.XoaSize);
+
 
 module.exports = router;

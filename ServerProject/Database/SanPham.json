@@ -29,18 +29,6 @@
       "Thang":5,
       "Nam": 2019
     },
-    "Size": [
-      {
-        "TenSize": "23",
-        "SoLuong": 15,
-        "STT": 0
-
-      },
-      { "TenSize": "24",
-        "SoLuong": 17,
-        "STT": 1
-      }
-    ],
     "TrangThaiBan":true,
     "TrangThaiXoa": false
   },
@@ -74,19 +62,6 @@
       "Thang":5,
       "Nam": 2019
     },
-    "Size": [
-      {
-        "TenSize": "23",
-        "SoLuong": 15,
-        "STT": 0
-
-      },
-      { "TenSize": "24",
-        "SoLuong": 17,
-        "STT": 1
-
-      }
-    ],
     "TrangThaiBan":true,
     "TrangThaiXoa": false
   },
@@ -120,14 +95,6 @@
       "Thang":5,
       "Nam": 2019
     },
-    "Size": [
-      {
-        "TenSize": "OS",
-        "SoLuong": 15,
-        "STT": 0
-
-      }
-    ],
     "TrangThaiBan": true,
     "TrangThaiXoa": false
   },
@@ -161,14 +128,6 @@
       "Thang":5,
       "Nam": 2019
     },
-    "Size": [
-      {
-        "TenSize": "OS",
-        "SoLuong": 15,
-        "STT": 0
-
-      }
-    ],
     "TrangThaiBan":true,
     "TrangThaiXoa": false
   },
@@ -202,19 +161,6 @@
       "Thang":5,
       "Nam": 2019
     },
-    "Size": [
-      {
-        "TenSize": "23",
-        "SoLuong": 153,
-        "STT": 0
-
-      },
-      { "TenSize": "24",
-        "SoLuong": 173,
-        "STT": 1
-
-      }
-    ],
     "TrangThaiBan":true,
     "TrangThaiXoa": false
   },
@@ -248,19 +194,6 @@
       "Thang":5,
       "Nam": 2019
     },
-    "Size": [
-      {
-        "TenSize": "21",
-        "SoLuong": 345,
-        "STT": 0
-
-      },
-      { "TenSize": "23",
-        "SoLuong": 173,
-        "STT": 1
-
-      }
-    ],
     "TrangThaiBan":true,
     "TrangThaiXoa": false
   },
@@ -294,19 +227,6 @@
       "Thang":5,
       "Nam": 2019
     },
-    "Size": [
-      {
-        "TenSize": "27",
-        "SoLuong": 153,
-        "STT": 0
-
-      },
-      { "TenSize": "28",
-        "SoLuong": 175,
-        "STT": 1
-
-      }
-    ],
     "TrangThaiBan":true,
     "TrangThaiXoa": false
   },
@@ -340,30 +260,6 @@
       "Thang":5,
       "Nam": 2019
     },
-    "Size": [
-      {
-        "TenSize": "23",
-        "SoLuong": 154,
-        "STT": 0
-
-      },
-      { "TenSize": "24",
-        "SoLuong": 175,
-        "STT": 1
-
-      },
-      {
-        "TenSize": "25",
-        "SoLuong": 156,
-        "STT": 2
-
-      },
-      { "TenSize": "26",
-        "SoLuong": 176,
-        "STT": 3
-
-      }
-    ],
     "TrangThaiBan":true,
     "TrangThaiXoa": false
   },
@@ -397,24 +293,6 @@
       "Thang":5,
       "Nam": 2019
     },
-    "Size": [
-      {
-        "TenSize": "23",
-        "SoLuong": 47,
-        "STT": 0
-
-      },
-      { "TenSize": "24",
-        "SoLuong": 10,
-        "STT": 1
-
-      },
-      { "TenSize": "24",
-        "SoLuong": 14,
-        "STT": 2
-
-      }
-    ],
     "TrangThaiBan":true,
     "TrangThaiXoa": false
   },
@@ -448,24 +326,6 @@
       "Thang":5,
       "Nam": 2019
     },
-    "Size": [
-      {
-        "TenSize": "S",
-        "SoLuong": 17,
-        "STT": 0
-
-      },
-      { "TenSize": "M",
-        "SoLuong": 176,
-        "STT": 1
-
-      },
-      { "TenSize": "L",
-        "SoLuong": 48,
-        "STT": 2
-
-      }
-    ],
     "TrangThaiBan":true,
     "TrangThaiXoa": false
   }

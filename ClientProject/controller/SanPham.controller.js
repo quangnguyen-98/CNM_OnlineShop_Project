@@ -36,25 +36,26 @@ module.exports = {
     }*/
     HienThiChiTietSanPham:function(req, res, next) {
         var idsp = req.params.id ;
-
+        var spData;
+        var listSize =[] ;
         api_helper.API_Call_Get(domain+'/SanPhams/'+idsp)
             .then(response => {
-                var listSize =[] ;
-                var spData;
-                response.Items.forEach(function (item) {
+                response.SanPham.forEach(function (item) {
                     spData = {ID_SanPham:item.ID_SanPham, ID_ThuongHieu:item.ID_ThuongHieu,ID_DanhMuc:item.ID_DanhMuc,TenSanPham:item.TenSanPham.Ten,MoTa:item.MoTa,ThongTin:item.ThongTin,Gia:item.Gia,TiLeSale:item.TiLeSale,NgayTao:item.NgayTao,Size:item.Size,TrangThaiBan:item.TrangThaiBan, Anh:item.Anh};
                 });
                 if(spData == null){
                     res.render('error.ejs',{error:{status:404} });
                 }
-                spData.Size.forEach(function (item) {
-                    var itemSize = {TenSize:item.TenSize,SoLuong: item.SoLuong};
-                    listSize.push(itemSize);
-                });
-                if(typeof spData == "undefined"){
+
+
+                if(spData == null){
                     res.render('error.ejs', { error:{status:404}  });
 
                 }else {
+                    response.listSize.forEach(function (item) {
+                        var size ={ID_Size:item.ID_Size, TenSize:item.TenSize, SoLuong:item.SoLuong};
+                        listSize.push(size);
+                    });
                     res.render('./SanPham/ChiTietSanPham.ejs', {domain: domain, title: 'Chi Tiết Sản Phẩm', spData: spData, listSize:listSize ,key:"SP"});
                 }
 

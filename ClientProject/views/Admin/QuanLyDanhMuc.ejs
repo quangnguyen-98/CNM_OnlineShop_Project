@@ -14,7 +14,8 @@
                 Thêm danh mục
             </button>
             <form class="form-inline ml-auto d-inline float-right ">
-                <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên danh mục" aria-label="Search">
+                <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên danh mục"
+                       aria-label="Search">
                 <button id="btnTimKiem" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
             </form>
         </div>
@@ -46,12 +47,12 @@
 
             <% for (i = 1;i <= soTrang;i++){ %>
                 <% if(i == 1){ %>
-                    <li id="<%= "subpagi" + i %>"  class="d-inline page-item active pagesubitem"><a class="page-link"
-                                                                                       href="#"> <%= i %></a>
+                    <li id="<%= "subpagi" + i %>" class="d-inline page-item active pagesubitem"><a class="page-link"
+                                                                                                   href="#"> <%= i %></a>
                     </li>
                 <% }else{ %>
                     <li id="<%= "subpagi" + i %>" class="d-inline page-item pagesubitem"><a class="page-link "
-                                                                                href="#"> <%= i %></a></li>
+                                                                                            href="#"> <%= i %></a></li>
                 <% } %>
             <% } %>
 
@@ -156,10 +157,11 @@
     <% }) %>
 </div>
 
-<script >
+<script>
 
     //Load danh sách danh mục
     LoadDanhMuc();
+
     function LoadDanhMuc() {
         $.ajax({
             url: "<%= domain %>/DanhMucs/1?token=" + $.cookie("token"),
@@ -181,6 +183,7 @@
             },
         });
     }
+
     //Thêm danh mục
     function ThemDanhMuc() {
         $.ajax({
@@ -242,14 +245,14 @@
                     $("#DanhSachModalXoa").append(Html_Modal_XoaDM);
                     toastr["success"](data.message);
                     TongItem++;
-                    page=1;
+                    page = 1;
                     TaiLaiPagination();
                 } else {
                     toastr["error"](data.message);
                 }
             }
         });
-      /*  SoTrang ++;*/
+        /*  SoTrang ++;*/
         return false;
     }
 
@@ -299,7 +302,7 @@
                     TaiLaiPagination();
                     toastr["success"](data.message);
                     TongItem--;
-                    page =1;
+                    page = 1;
                     TaiLaiPagination();
 
 
@@ -308,7 +311,7 @@
                 }
             }
         });
-       /* SoTrang --;*/
+        /* SoTrang --;*/
         return false;
     });
 
@@ -316,10 +319,10 @@
 </script>
 <script>
     //Khai báo biến
-    var TongItem = "<%=tongItem%>";
-    var SoItemMoiPage ="<%=itemMoiPage%>";
+    var TongItem = "<%= tongItem %>";
+    var SoItemMoiPage = "<%= itemMoiPage %>";
     var page = 1;
-    var SoTrang = "<%=soTrang %>";
+    var SoTrang = "<%= soTrang %>";
 
     //Sự kiện trang trước
     $('body').on('click', '#pagiTruoc', function () {
@@ -392,6 +395,7 @@
     });
 
     ClickVaoCacTrang();
+
     function ClickVaoCacTrang() {
         <% for (i = 1;i <= soTrangLocal;i++){ %>
         $("<%= "#subpagi" + i %>").click(function () {
@@ -426,9 +430,10 @@
         });
         <% } %>
     }
+
     function TaiLaiPagination() {
-        var SoTrangPagi  = Math.ceil(TongItem/SoItemMoiPage);
-        SoTrang =SoTrangPagi;
+        var SoTrangPagi = Math.ceil(TongItem / SoItemMoiPage);
+        SoTrang = SoTrangPagi;
         $(".menu-phantrang").empty();
         $(".menu-phantrang").append(' <li id="pagiTruoc" class="page-item "><a class="page-link" href="#">Trước</a></li>');
         for (i = 1; i <= SoTrangPagi; i++) {
@@ -443,32 +448,32 @@
     }
 </script>
 <script>
-$(document).ready(function () {
-    $("#btnTimKiem").click(function () {
+    $(document).ready(function () {
+        $("#btnTimKiem").click(function () {
 
-        $.ajax({
-            url: "<%= domain %>/danhmucs/timtheoten/"+$("#inputTK").val()+"?token=" + $.cookie("token"),
-            method: "GET",
-            error: function () {
-                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
-            },
-            success: function (data) {
-                $("#tableDM").empty();
-                $.each(data.Items, function (i, item) {
-                    var html_to_append;
-                    html_to_append +=
-                        '<tr id="DMitem' + item.ID_DanhMuc + '">' +
-                        '<th scope="row">' + item.ID_DanhMuc + '</th>' +
-                        '<td>' + item.TenDanhMuc.Ten + '</td>' +
-                        '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_DanhMuc + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_DanhMuc + '"> Xóa </div></td>' +
-                        '</tr>';
-                    $("#tableDM").append(html_to_append);
+            $.ajax({
+                url: "<%= domain %>/danhmucs/timtheoten/" + $("#inputTK").val() + "?token=" + $.cookie("token"),
+                method: "GET",
+                error: function () {
+                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                },
+                success: function (data) {
+                    $("#tableDM").empty();
+                    $.each(data.Items, function (i, item) {
+                        var html_to_append;
+                        html_to_append +=
+                            '<tr id="DMitem' + item.ID_DanhMuc + '">' +
+                            '<th scope="row">' + item.ID_DanhMuc + '</th>' +
+                            '<td>' + item.TenDanhMuc.Ten + '</td>' +
+                            '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_DanhMuc + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_DanhMuc + '"> Xóa </div></td>' +
+                            '</tr>';
+                        $("#tableDM").append(html_to_append);
 
-                });
-            }
+                    });
+                }
+            });
+            return false;
         });
-        return false;
     });
-});
 
 </script>

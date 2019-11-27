@@ -31,14 +31,12 @@ module.exports = {
     HienThiQuanLySanPhamChiTiet: function (req, res, next) {
         var idSP = req.params.idsanpham;
         var spData;
-        var listDM = [];
-        var listTH = [];
         var listSize = [];
         var key = true;
 
         api_helper.API_Call_Get(domain + '/SanPhams/QlSp/Admin/timtheoid/a/b/' + idSP + '?token=' + req.cookies.token)
             .then(response => {
-                response.Items.forEach(function (item) {
+                response.SanPham.forEach(function (item) {
                     spData = {
                         ID_SanPham: item.ID_SanPham,
                         ID_ThuongHieu: item.ID_ThuongHieu,
@@ -57,12 +55,10 @@ module.exports = {
                 if(spData == null){
                     res.render('error.ejs',{error:{status:404} });
                 }
-                if (spData.Size != null) {
-                    spData.Size.forEach(function (item) {
-                        var itemSize = {TenSize: item.TenSize, SoLuong: item.SoLuong,STT:item.STT};
-                        listSize.push(itemSize);
-                    });
-                }
+                response.listSize.forEach(function (item) {
+                   var size ={ID_Size:item.ID_Size, TenSize:item.TenSize, SoLuong:item.SoLuong};
+                   listSize.push(size);
+                });
 
                 if (spData.Gia == null) {
                     key = false;
@@ -72,8 +68,6 @@ module.exports = {
                     domain: domain,
                     title: 'Quản lý sản phẩm',
                     key: "QLSPCT",
-                    listDM: listDM,
-                    listTH: listTH,
                     spData: spData,
                     listSize: listSize,
                     key: key

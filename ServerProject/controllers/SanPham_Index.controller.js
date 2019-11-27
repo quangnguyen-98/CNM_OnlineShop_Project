@@ -32,7 +32,7 @@ module.exports = {
         var idsp = req.params.id;
         var param = {
             TableName: "SanPham",
-            ProjectionExpression: "#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Size, ThongTin, Gia, TiLeSale, Anh, NgayTao, SoLuong, TrangThaiBan",
+            ProjectionExpression: "#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa,  ThongTin, Gia, TiLeSale, Anh, NgayTao, TrangThaiBan",
             FilterExpression: "#yr = :n and TrangThaiBan = :m",
             ExpressionAttributeNames: {
                 "#yr": "ID_SanPham",
@@ -48,8 +48,34 @@ module.exports = {
                 console.error(err);
                 res.end();
             } else {
-                console.log("Thành công!");
-                res.json(data);
+                var param = {
+                    TableName: "Size",
+                    ProjectionExpression: "#yr, TenSize, SoLuong, ID_Size",
+                    FilterExpression: "#yr = :n",
+                    ExpressionAttributeNames: {
+                        "#yr": "ID_SanPham",
+                    },
+                    ExpressionAttributeValues: {
+                        ":n": idsp
+                    }
+                };
+                docClient.scan(param,function (err,dataSize) {
+                    if (err) {
+                        console.error(err);
+                        res.end();
+                    }
+                    else{
+                        console.log("Thành công!");
+                        res.json(
+                            {
+                                SanPham: data.Items,
+                                listSize: dataSize.Items
+                            }
+                        );
+                    }
+                });
+                /* console.log("Thành công!");
+                 res.json(data);*/
             }
         });
     },

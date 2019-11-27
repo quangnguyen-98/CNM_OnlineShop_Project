@@ -221,3 +221,28 @@ dynamodb.createTable(paramsFooter, function(err, data) {
 //         console.log("Created table Mã Giảm Giá. Table description JSON:", JSON.stringify(data, null, 2));
 //     }
 // });
+
+
+//10 Bản Size
+// var paramsSize = {
+//     TableName : "Size",
+//     KeySchema: [
+//         { AttributeName: "ID_Size", KeyType: "HASH"},  //Partition key
+//
+//     ],
+//     AttributeDefinitions: [
+//         { AttributeName: "ID_Size", AttributeType: "S" },
+//
+//     ],
+//     ProvisionedThroughput: {
+//         ReadCapacityUnits: 10,
+//         WriteCapacityUnits: 10
+//     }
+// };
+// dynamodb.createTable(paramsSize, function(err, data) {
+//     if (err) {
+//         console.error("Unable to create table SanPham. Error JSON:", JSON.stringify(err, null, 2));
+//     } else {
+//         console.log("Created table SanPham. Table description JSON:", JSON.stringify(data, null, 2));
+//     }
+// });

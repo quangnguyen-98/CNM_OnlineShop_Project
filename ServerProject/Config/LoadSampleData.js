@@ -38,7 +38,7 @@ allSanPham.forEach(function(sanPham) {
         }
     });
 });
-
+//
 // // 2 Load Bảng NguoiDung
 // var allNguoiDung = JSON.parse(fs.readFileSync('../Database/NguoiDung.json', 'utf8'));
 // allNguoiDung.forEach(function(nguoiDung) {
@@ -230,6 +230,29 @@ allSanPham.forEach(function(sanPham) {
 //             console.error("Unable to add MaGiamGia:", maGiamGia, ". Error JSON:", JSON.stringify(err, null, 2));
 //         } else {
 //             console.log("PutItem MaGiamGia succeeded:", maGiamGia);
+//         }
+//     });
+// });
+
+// // 1 Load Bảng Size
+// var allSize = JSON.parse(fs.readFileSync('../Database/Size.json', 'utf8'));
+// allSize.forEach(function(size) {
+//     var params = {
+//         TableName: "Size",
+//         Item: {
+//             "ID_Size":  size.ID_Size,
+//             "ID_SanPham":size.ID_SanPham,
+//             "TenSize": size.TenSize,
+//             "SoLuong":  size.SoLuong,
+//
+//         }
+//     };
+//
+//     docClient.put(params, function(err, data) {
+//         if (err) {
+//             console.error("Unable to add Size: ", size, ". Error JSON:", JSON.stringify(err, null, 2));
+//         } else {
+//             console.log("PutItem Size succeeded:", size);
 //         }
 //     });
 // });
