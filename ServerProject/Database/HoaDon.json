@@ -8,25 +8,35 @@
     },
     "ThongTinKhachHang": {
       "Ten": "Nguyễn Hồng Quang",
-      "SoDienThoai":"0346065968",
+      "SoDienThoai": "0346065968",
       "DiaChi": "Quận 12",
-      "Email": "quang@gmail.com"
+      "GhiChu":"hello"
     },
-    "ChiTietDonDat": [
-       {
-          "ID_SanPham": 1,
-          "SL":1,
-          "Gia": 1650000
-       },
-       {
-          "ID_SanPham": 1,
-          "SL":2,
-          "Gia": 3600000
-       }
-    ]
-    ,
-    "TongTien":5250000,
-    "TrangThaiThanhToan":false
+    "ChiTietHoaDon": [
+      {
+        "ID_SanPham": "1",
+        "TenSanPham": "",
+        "Anh": "",
+        "ID_Size": "",
+        "TenSize": "",
+        "SoLuong": 2,
+        "DonGia": 1650000,
+        "ThanhTien":3300000
+      },
+      {
+        "ID_SanPham": "2",
+        "TenSanPham": "",
+        "Anh": "",
+        "ID_Size": "",
+        "TenSize": "",
+        "SoLuong": 2,
+        "DonGia": 1650000,
+        "ThanhTien":3300000
+      }
+    ],
+    "MaGiamGia": "Quang",
+    "TongSoTien": 2423423,
+    "TrangThaiXacNhan": false
   },
   {
     "ID_HoaDon": "095247922a",
@@ -37,23 +47,22 @@
     },
     "ThongTinKhachHang": {
       "Ten": "Lê Trung Nghĩa",
-      "SoDienThoai":"0346065968",
-      "DiaChi": "Quận 12",
-      "Email": "nghia@gmail.com"
+      "SoDienThoai": "0346065968",
+      "DiaChi": "Quận 12"
     },
-    "ChiTietDonDat": [
+    "ChiTietHoaDon": [
       {
         "ID_SanPham": 1,
-        "SL":1,
+        "SL": 1,
         "Gia": 1650000
       },
       {
         "ID_SanPham": 2,
-        "SL":2,
+        "SL": 2,
         "Gia": 3600000
       }
     ],
-    "TongTien":5250000,
-    "TrangThaiThanhToan":false
+    "TongTien": 5250000,
+    "TrangThaiThanhToan": false
   }
 ]

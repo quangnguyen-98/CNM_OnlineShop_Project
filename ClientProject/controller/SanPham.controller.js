@@ -64,6 +64,13 @@ module.exports = {
                 res.send(error);
                 // res.render('maintain.ejs');
             });
+    },
+    HienThiTrangThanhToan:function(req, res, next) {
+        // var idsp = req.cookies.gioHang ;
+        // res.send(idsp);
+        var spData;
+        var listSize =[] ;
+        res.render('./SanPham/ThanhToan.ejs', {domain: domain, title: 'Thanh toán' ,key:"TT"});
     }
 
 };

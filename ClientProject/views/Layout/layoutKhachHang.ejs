@@ -6,8 +6,7 @@
     <meta property="fb:app_id" content="431101604251186"/>
     <meta charset="utf-8">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Asap+Condensed|Fira+Sans+Condensed&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--<link rel="shortcut icon" type="image/png" href="{{asset('img/favicon.jpeg')}}"/>-->
     <link rel="shortcut icon" type="image/png" href="https://bb4298.s3-us-west-1.amazonaws.com/favicon.ico"/>
@@ -21,7 +20,10 @@
 
     <style>
         body {
-
+            font-family: 'Fira Sans Condensed', sans-serif;
+            /*font-family: 'Baloo Bhai', cursive;*/
+           /*font-family: 'Asap Condensed', sans-serif;*/
+            font-size: 1rem;
         }
 
         .footer-item-color {
@@ -96,8 +98,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <!-- Toastr library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<!--&lt;!&ndash; Easy-Loading library&ndash;&gt;-->
-<!--<script src="https://cdn.jsdelivr.net/npm/jquery-easy-loading@2.0.0-rc.2/dist/jquery.loading.min.js"></script>-->
+<!-- JQuery Cookie library-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+<!--JQuery Lazyload-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
 
 
 <%- partial('../ThanhPhanWeb/Header.ejs') %>
@@ -172,9 +177,22 @@
         interval: 2500
     });
 
-    $("document").ready(function () {
-        FormartGia();
-    });
+    //Hàm fortmat giá cho sản phẩm
+    function FormartGia() {
+        $('.itemPrice').text(function () {
+            var str = $(this).html() + '';
+            x = str.split('.');
+            x1 = x[0];
+            x2 = x.length > 1 ? '.' + x[1] : '';
+            var rgx = /(\d+)(\d{3})/;
+            while (rgx.test(x1)) {
+                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+            }
+            $(this).html(x1 + x2);
+        });
+    }
+
+
 
     toastr.options = {
         "closeButton": true,

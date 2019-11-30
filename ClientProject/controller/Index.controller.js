@@ -21,6 +21,8 @@ module.exports = {
                     var th ={ID_ThuongHieu:item.ID_ThuongHieu, TenThuongHieu:item.TenThuongHieu};
                     dataTH.push(th);
                 });
+                var TongSoLuong = 0;
+
                 res.render('index.ejs', {domain: domain, title: 'Trang chủ', dataSP: dataSP, dataDM:dataDM, dataTH:dataTH , soTrang:soTrang, key:"Index"});
             })
             .catch(error => {

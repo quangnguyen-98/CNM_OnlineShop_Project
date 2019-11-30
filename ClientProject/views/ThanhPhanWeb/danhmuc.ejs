@@ -6,7 +6,7 @@
                Danh Mục
            </div>
            <%dataDM.forEach(function (item) { %>
-           <a id="<%=item.ID_DanhMuc%>" href="#" class="<%="DM"+item.ID_DanhMuc%> list-group-item list-group-item-action DMitem" ><%=item.TenDanhMuc.Ten%></a>
+           <a id="<%=item.ID_DanhMuc%>" href="#" class="<%="DM"+item.ID_DanhMuc%> list-group-item DMitem" ><%=item.TenDanhMuc.Ten%></a>
            <%}); %>
        </div>
        <!-- Thương Hiệu-->
@@ -15,7 +15,7 @@
                Thương hiệu
            </div>
            <%dataTH.forEach(function (item) { %>
-           <a id="<%=item.ID_ThuongHieu%>" href="#" class="<%="TH"+item.ID_ThuongHieu%> list-group-item list-group-item-action THitem"><%=item.TenThuongHieu.Ten%></a>
+           <a id="<%=item.ID_ThuongHieu%>" href="#" class="<%="TH"+item.ID_ThuongHieu%> list-group-item THitem"><%=item.TenThuongHieu.Ten%></a>
            <%}); %>
        </div>
 
@@ -30,7 +30,7 @@
                            <div class="row">
                                <label for="first_name" class="col-sm-2 col-form-label">Từ</label>
                                <div class="col">
-                                   <input id="tbGiaTu" type="text" class="col-sm-10 tbGia form-control" >
+                                   <input id="tbGiaTu" type="text" class="col-sm-10 tbGia form-control " >
                                </div>
                            </div>
                        </div>
@@ -97,7 +97,6 @@ $("document").ready(function(){
                 SoTrang =data.SoTrang;
                 $('.page-item').remove();
                 $(".datasp").empty();
-                $(".DMitem").removeClass("list-group-item-action");
                 $(".DMitem").removeClass("list-group-item-success");
                 $(".THitem").removeClass("list-group-item-success");
                 $("<%=".DM"+item.ID_DanhMuc%>").addClass("list-group-item-action");
@@ -171,7 +170,6 @@ $("document").ready(function(){
                 SoTrang =data.SoTrang;
                 $('.page-item').remove();
                 $(".datasp").empty();
-                $(".THitem").removeClass("list-group-item-action");
                 $(".THitem").removeClass("list-group-item-success");
                 $(".DMitem").removeClass("list-group-item-success");
                 $("<%=".TH"+item.ID_ThuongHieu%>").addClass("list-group-item-action");

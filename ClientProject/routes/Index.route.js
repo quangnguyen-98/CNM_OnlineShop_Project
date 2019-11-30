@@ -4,7 +4,9 @@ var router = express.Router();
 //Khai báo conntroller
 var IndexController = require('../controller/Index.controller');
 
-/* GET home page. */
+//Route Index (Web/)
+
+//Trang chủ
 router.get('/', IndexController.LayDuLieuTuAPITraVeView);
 
 

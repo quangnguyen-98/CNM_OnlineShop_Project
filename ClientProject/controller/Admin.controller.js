@@ -269,6 +269,36 @@ module.exports = {
                 res.send("Web server chưa được bật, không lấy được data " + error);
             });
     },
+    HienThiQuanLyDonHang: function (req, res, next) {
+        api_helper.API_Call_Get(domain + '/MaGiamGias?token=' + req.cookies.token)
+            .then(response => {
+                var dataMGG = [];
+                var soTrang = response.SoTrang;
+                var tongItem = response.TongItem;
+                var itemMoiPage = response.ItemMoiPage;
+                response.MaGiamGia.forEach(function (item) {
+                    var mgg = {
+                        ID_MaGiamGia: item.ID_MaGiamGia,
+                        TenMaGiamGia: item.TenMaGiamGia,
+                        SoLuong: item.SoLuong,
+                        TiLeSale: item.TiLeSale
+                    };
+                    dataMGG.push(mgg);
+                });
+                res.render('./Admin/QuanLyMaGiamGia.ejs', {
+                    domain: domain,
+                    title: 'Quản lý mã giảm giá',
+                    key: 'QLMGG',
+                    dataMGG: dataMGG,
+                    soTrang: soTrang,
+                    tongItem: tongItem,
+                    itemMoiPage: itemMoiPage
+                });
+            })
+            .catch(error => {
+                res.send("Web server chưa được bật, không lấy được data " + error);
+            });
+    },
     HienThiQuanLyCaiDatCauHinh: function (req, res, next) {
         api_helper.API_Call_Get(domain + '/CaiDats?token=' + req.cookies.token)
             .then(response => {

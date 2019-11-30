@@ -3,31 +3,36 @@
     "ID_Footer": "bcc2faf156",
     "LoaiFooter": "TT",
     "TenLienKet": "Giới thiệu về HQKboutique",
-    "Link": "http://"
+    "Link": "http://",
+    "TrangThaiXoa": false
   },
   {
     "ID_Footer": "bcc2faf157",
     "LoaiFooter": "TT",
     "TenLienKet": "Tuyển dụng",
-    "Link": "http://"
+    "Link": "http://",
+    "TrangThaiXoa": false
   },
   {
     "ID_Footer": "797446e751",
     "LoaiFooter": "CSKH",
     "TenLienKet": "Than phiền/Chăm sóc khách hàng",
-    "Link": "http://"
+    "Link": "http://",
+    "TrangThaiXoa": false
   },
   {
     "ID_Footer": "f755ceb9bd",
     "LoaiFooter": "FAQ",
     "TenLienKet": "Vận chuyển",
-    "Link": "http://"
+    "Link": "http://",
+    "TrangThaiXoa": false
   },
   {
     "ID_Footer": "d80ccd381b",
     "LoaiFooter": "FAQ",
     "TenLienKet": "Chính sách đổi trả",
-    "Link": "http://"
+    "Link": "http://",
+    "TrangThaiXoa": false
   },
   {
     "ID_Footer": "41aedb2106",
@@ -36,7 +41,8 @@
       "Ten":"128 Trần Quang Khải, Q1",
       "TenKhongVietHoa":"128 tran quang khai, q1"
     },
-    "Link": "http://"
+    "Link": "http://",
+    "TrangThaiXoa": false
 
   },
   {
@@ -46,6 +52,7 @@
       "Ten": "19 Đồng Khởi, Q1",
       "TenKhongVietHoa": "19 dong khoi, q1"
     },
-    "Link": "http://"
+    "Link": "http://",
+    "TrangThaiXoa": false
   }
 ]

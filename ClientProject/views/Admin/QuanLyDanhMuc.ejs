@@ -252,7 +252,6 @@
                 }
             }
         });
-        /*  SoTrang ++;*/
         return false;
     }
 
@@ -341,8 +340,7 @@
                 success: function (data) {
                     $("#tableDM").empty();
                     $.each(data.DanhMuc, function (i, item) {
-                        var html_to_append;
-                        html_to_append +=
+                        var html_to_append=
                             '<tr id="DMitem' + item.ID_DanhMuc + '">' +
                             '<th scope="row">' + item.ID_DanhMuc + '</th>' +
                             '<td>' + item.TenDanhMuc.Ten + '</td>' +
@@ -378,8 +376,7 @@
                 success: function (data) {
                     $("#tableDM").empty();
                     $.each(data.DanhMuc, function (i, item) {
-                        var html_to_append;
-                        html_to_append +=
+                        var html_to_append=
                             '<tr id="DMitem' + item.ID_DanhMuc + '">' +
                             '<th scope="row">' + item.ID_DanhMuc + '</th>' +
                             '<td>' + item.TenDanhMuc.Ten + '</td>' +
@@ -395,7 +392,6 @@
     });
 
     ClickVaoCacTrang();
-
     function ClickVaoCacTrang() {
         <% for (i = 1;i <= soTrangLocal;i++){ %>
         $("<%= "#subpagi" + i %>").click(function () {

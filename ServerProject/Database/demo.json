@@ -1,0 +1,22 @@
+[
+  {
+    "ID_SanPham": "9557b9956c",
+    "TenSanPham": " Balo Vans Old Skool III Backpack ",
+    "Anh": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Old+_Skool_III_Backpack.jpg",
+    "ID_Size": "cf8ee456c5",
+    "TenSize": "24",
+    "SoLuong": "3",
+    "Gia": 373500,
+    "TongGia": 1120500
+  },
+  {
+    "ID_SanPham": "9e10fb431a",
+    "TenSanPham": " Vans Logo Benched Bag ",
+    "Anh": "https://bb4298.s3-us-west-1.amazonaws.com/SanPham/Balo/Balo_Vans_Logo_Benched_Bag.jpg",
+    "ID_Size": "ghdja5sgfs",
+    "TenSize": "S",
+    "SoLuong": 4,
+    "Gia": 246500,
+    "TongGia": 986000
+  }
+]

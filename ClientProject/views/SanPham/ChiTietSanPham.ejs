@@ -1,14 +1,14 @@
 <% layout('../Layout/layoutKhachHang.ejs') -%>
 
 <%- partial('../ThanhPhanWeb/Carousel.ejs') %>
-
+<script src="https://bb4298.s3-us-west-1.amazonaws.com/JS/bootstrap-input-spinner.js"></script>
 <div class="container" style="padding-top: 1rem">
     <div class="col-12">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/"><i class="fas fa-store"></i> HQKStore</a></li>
                 <li class="breadcrumb-item"><a href="/">Sản Phẩm</a></li>
-                <li class="breadcrumb-item active" aria-current="page"> <%= spData.TenSanPham %> </li>
+                <li id="tbTenSanPham" class="breadcrumb-item active" aria-current="page"> <%= spData.TenSanPham %> </li>
             </ol>
         </nav>
     </div>
@@ -26,7 +26,7 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item  active">
-                                <img class="d-block w-100 " src="<%= spData.Anh.Avatar %>">
+                                <img id="tbAnh" class="d-block w-100 " src="<%= spData.Anh.Avatar %>">
                                 <div class="carousel-caption d-none d-md-block">
                                 </div>
                             </div>
@@ -71,32 +71,34 @@
 
                 </div>
                 <div class="row">
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle tenSize" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Vui lòng chọn size
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <select class="form-control" id="dropDownSize">
+                                <option id="0">Vui lòng chọn size</option>
                                 <% listSize.forEach(function (item) { %>
-                                    <button class="dropdown-item" type="button"><%= item.TenSize %></button>
+                                    <option id="<%= item.ID_Size %>" value="<%= item.SoLuong %>"
+                                            class="itemSize"><%= item.TenSize %></option>
                                 <% }); %>
-                            </div>
+                                <!--List size được load vào đây-->
+                            </select>
                             <br>
-                        </div>
-                        <div>
-                            </span>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-5">
-                        <input class="col-lg-3 tbSoLuong " type="number" value="0" min="0" max="100" step="1" disabled/>
+                        <input id="inputSoLuong" class="col-lg-3 tbSoLuong " type="number" value="0" min="0" max="100"
+                               step="1" disabled/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
                         <br>
-                        <button type="button" class="col-lg-3 btn btn-lg btn-success d-inline"><i class="fas fa-money-check-alt"></i> Thanh toán</button>
-                        <button type="button" class="col-lg-3 btn btn-lg btn-info d-inline"><i class="fas fa-cart-plus"></i> Thêm vào giỏ</button>
+                        <button id="btnThanhToan" type="button"
+                                class="col-sm-4 col-lg-4 btn btn-lg btn-success d-inline"><i
+                                    class="fas fa-money-check-alt"></i> Thanh toán
+                        </button>
+                        <button id="btnThemVaoGio" type="button" class="col-sm-4 col-lg-4 btn btn-lg btn-info d-inline">
+                            <i class="fas fa-cart-plus"></i> Thêm vào giỏ
+                        </button>
                     </div>
 
                 </div>
@@ -126,7 +128,7 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div id="home" class="container tab-pane active"><br>
-
+                <div id="testck" class="btn btn-primary"></div>
                 <p><%- spData.MoTa.ChiTiet %></p>
             </div>
             <div id="menu1" class="container tab-pane fade"><br>
@@ -143,21 +145,33 @@
 
     </div>
 </div>
-
 <script>
-/*    $("body").on("change", function() {
-        var selectedVal = $(this).find(':selected').val();
-        var selectedText = $(this).find(':selected').text();
-    });*/
-    $('body').on('click', '.dropdown-item', function () {
-        $(this).parent().parent().find(".tenSize").text($(this).text());
-        /*alert($(this).text());*/
-        $(".tbSoLuong").prop("disabled",false);
+    $("document").ready(function () {
+        FormartGia();
     });
+
+    $("input[type='number']").inputSpinner();
+
+    var idSP = "<%= spData.ID_SanPham %>";
+    var idSize = "0";
+    var tenSize;
+    var SoLuong = 0;
+    var $soLuong = $("#inputSoLuong");
+    var gioHang =[];
+
+    $soLuong.on("change", function (event) {
+        SoLuong = parseInt($soLuong.val());
+        $("#val").html(SoLuong);
+    });
+    $soLuong.on("input", function (event) {
+        SoLuong = parseInt($soLuong.val());
+        $("#val").html(SoLuong);
+    });
+
     // Ngăn người dùng nhập chữ vào input số lượng
-    (function($) {
-        $.fn.inputFilter = function(inputFilter) {
-            return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+    (function ($) {
+        $.fn.inputFilter = function (inputFilter) {
+            return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function () {
                 if (inputFilter(this.value)) {
                     this.oldValue = this.value;
                     this.oldSelectionStart = this.selectionStart;
@@ -169,33 +183,109 @@
             });
         };
     }(jQuery));
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Restrict input to digits by using a regular expression filter.
-        $(".tbSoLuong").inputFilter(function(value) {
+        $(".tbSoLuong").inputFilter(function (value) {
             return /^\d*$/.test(value);
         });
     });
-    //Hàm fortmat giá cho sản phẩm
-    function FormartGia() {
-        $('.itemPrice').text(function () {
-            var str = $(this).html() + '';
-            x = str.split('.');
-            x1 = x[0];
-            x2 = x.length > 1 ? '.' + x[1] : '';
-            var rgx = /(\d+)(\d{3})/;
-            while (rgx.test(x1)) {
-                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+
+
+
+    $('body').on('change', '#dropDownSize', function (e) {
+        idSize = $(e.target).find("option:selected").attr("id");
+        tenSize = $(e.target).find("option:selected").text();
+        $(".tbSoLuong").prop("disabled", false);
+       /*  alert(idSize);*/
+    });
+
+    $('body').on('change', '#inputSoLuong', function (e) {
+        soLuong = parseInt($(e.target).find("option:selected").attr("value"));
+        // $(".tbSoLuong").prop("disabled", false);
+        // alert(soLuong);
+    });
+
+    //Lưu giỏ hàng vào cookie
+    $('body').on('click', '#btnThemVaoGio', function () {
+
+        if (SoLuong == 0 || idSize == "0") {
+            toastr["error"]("Vui lòng chọn size và số lượng trước khi đặt hàng !");
+        }
+        else {
+            $.ajax({
+                url: "<%= domain %>/SanPhams/qlsp/admin/kiemtrasize/sp?idsize="+idSize+"&soluong="+SoLuong+"&token=" + $.cookie("token"),
+                method: "GET",
+                error: function () {
+                    toastr["success"]("Lỗi máy chủ !");
+                },
+                success: function (data) {
+                 if(data.status == "ok"){
+                     ThemSPVaoGio();
+                 }
+                 else {
+                     toastr["error"](data.message);
+                 }
+                }
+            });
+            return false;
+        }
+    });
+
+
+    //Lưu giỏ hàng vào cookie
+    $('body').on('click', '#btnThanhToan', function (e) {
+        if (SoLuong == 0 || idSize == "0") {
+            toastr["error"]("Vui lòng chọn size và số lượng trước khi thanh toán !");
+        }
+        else {
+            $.ajax({
+                url: "<%= domain %>/SanPhams/qlsp/admin/kiemtrasize/sp?idsize="+idSize+"&soluong="+SoLuong+"&token=" + $.cookie("token"),
+                method: "GET",
+                error: function () {
+                    toastr["success"]("Lỗi máy chủ !");
+                },
+                success: function (data) {
+                    if(data.status == "ok"){
+                        ThemSPVaoGio();
+                        window.location.replace("/SanPhams/ThanhToan/sp");
+                    }
+                    else {
+                        toastr["error"](data.message);
+                    }
+                }
+            });
+        }
+    });
+    function ThemSPVaoGio() {
+        if ($.cookie("gioHang") == null) {
+            var sp = {ID_SanPham: idSP,TenSanPham:$("#tbTenSanPham").text() ,Anh:$("#tbAnh").attr("src") ,ID_Size:idSize,TenSize: tenSize,SoLuong:SoLuong};
+
+            gioHang.push(sp);
+            $.cookie("gioHang",JSON.stringify(gioHang), { path: '/' });
+        }
+        else if($.cookie("gioHang") != null){
+            var count = 0;
+            gioHang = JSON.parse($.cookie("gioHang"));
+            gioHang.forEach(function(item, index) {
+                if(item.ID_SanPham == idSP && item.ID_Size == idSize ){
+                    gioHang[index] ={ID_SanPham: item.ID_SanPham, TenSanPham:item.TenSanPham, Anh:item.Anh, ID_Size:item.ID_Size, TenSize:item.TenSize, SoLuong:SoLuong};
+                    count++;
+                }
+            });
+            if(count == 0){
+                var sp = {ID_SanPham: idSP, TenSanPham:$("#tbTenSanPham").text() ,Anh:$("#tbAnh").attr("src"), ID_Size:idSize, TenSize: tenSize,SoLuong:SoLuong};
+                gioHang.push(sp);
+                $.cookie("gioHang",JSON.stringify(gioHang), { path: '/' });
+            }else if(count != 0){
+                $.cookie("gioHang",JSON.stringify(gioHang), { path: '/' });
             }
-            $(this).html(x1 + x2);
-        });
+        }
+        toastr["success"]("Thêm sản phẩm vào giỏ thành công !");
+        $.cookie("TongSoLuong",gioHang.length, { path: '/' });
+        $("#TongSP").text($.cookie("TongSoLuong"));
     }
 
-    $("document").ready(function () {
-        FormartGia();
+    $("#testck").click(function () {
+        alert($.cookie("gioHang"));
     });
-</script>
-
-<script src="https://bb4298.s3-us-west-1.amazonaws.com/JS/bootstrap-input-spinner.js"></script>
-<script>
-    $("input[type='number']").inputSpinner();
 </script>

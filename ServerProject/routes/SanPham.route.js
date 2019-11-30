@@ -64,6 +64,12 @@ router.post('/QlSp/Admin/themsize/sp', SanPhamQLController.ThemSize);
 //Sửa size cho sp ở trang quản lý SP chi tiết
 router.put('/QlSp/Admin/suasize/sp', SanPhamQLController.SuaSize);
 
+//Kiểm tra số lượng size có đủ không
+router.get('/QlSp/Admin/kiemtrasize/sp', SanPhamQLController.KiemTraSize);
+
+//Lấy giá và thông tin sản phẩm trả về trang thanh toán
+router.post('/QlSp/Admin/laythongtinthanhtoan/sp', SanPhamQLController.LayThongTinTuCookie);
+
 //Xóa size sp ở trang quản lý SP chi tiết
 router.delete('/QlSp/Admin/xoasize/sp', SanPhamQLController.XoaSize);
 

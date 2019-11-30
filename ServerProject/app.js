@@ -29,6 +29,7 @@ var CarouselRouter = require('./routes/Carousel.route');
 var BaiVietRouter  = require('./routes/BaiViet.route');
 var FooterRouter = require('./routes/Footer.route');
 var MaGiamGiaRouter = require('./routes/MaGiamGia.route');
+var HoaDonRouter = require('./routes/HoaDon.route');
 var CaiDatRouter = require('./routes/CaiDat.route');
 
 
@@ -66,6 +67,7 @@ app.use('/api/Carousels',CarouselRouter);
 app.use('/api/BaiViets',BaiVietRouter);
 app.use('/api/Footers',FooterRouter);
 app.use('/api/MaGiamGias',MaGiamGiaRouter);
+app.use('/api/HoaDons',HoaDonRouter);
 app.use('/api/CaiDats',CaiDatRouter);
 
 
@@ -89,6 +91,8 @@ global.SoSanPhamMoiPage = 3;
 global.SoItemMoiPageQL = 3;
 global.ThoiGianLogin = 10;
 global.SecretKeyAdmin = "quangdeptrai01";
+
+global.tiLeSale = 0;
 /*
 app.use(function (req, res, next) {
   res.locals = {

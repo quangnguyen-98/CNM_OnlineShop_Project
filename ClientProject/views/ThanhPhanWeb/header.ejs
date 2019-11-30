@@ -7,25 +7,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <% if(key == "Index"){%>
         <ul class="navbar-nav ml-auto" style="margin-right:30px">
-            <li class="nav-item">
-                <a class="nav-link" href="login">Đăng Nhập</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="#">Đăng ký</a>
-            </li>
+
         </ul>
-            <div id="info"></div>
+
 
 
         <form class="form-inline my-2 my-lg-0">
             <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên sản phẩm" aria-label="Search">
-            <button id="btnTimKiem" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>&nbsp;
-            <a href="#" class="fas fa-shopping-cart" style="color: #28a745; text-decoration: none"> 0 SP</a>
+            <button id="btnTimKiem" class="btn btn-outline-success " type="submit">Tìm kiếm</button>&nbsp;
+            <a href="/SanPhams/ThanhToan/sp" class="fas fa-shopping-cart" style="color: #28a745; text-decoration: none"> <span id="TongSP">0</span> SP</a>
         </form>
         <%}else {%>
                 <ul class="navbar-nav ml-auto" style="margin-right:30px">
                     <li class="nav-item">
-                        <a href="#" class="fas fa-shopping-cart" style="color: #28a745; text-decoration: none"> 0 SP</a>
+                        <a href="/SanPhams/ThanhToan/sp" class="fas fa-shopping-cart" style="color: #28a745; text-decoration: none"> <span id="TongSP">0</span> SP</a>
                     </li>
                 </ul>
 
@@ -34,7 +29,12 @@
 </nav>
 
 <div style="margin-top:30px;"></div>
+<script>
+    if($.cookie("TongSoLuong") != null){
+        $("#TongSP").text($.cookie("TongSoLuong"));
+    }
 
+</script>
 <script>
     var tenSanPhamDangTim;
 $(document).ready(function(){
@@ -43,7 +43,7 @@ $(document).ready(function(){
         page =1;
 
         $.ajax({
-            url: "<%=domain%>/sanphams/ten/"+$("#inputTK").val().toLowerCase()+"/1/ten",
+            url: "<%=domain%>/sanphams/ten/"+$("#inputTK").val()+"/1/ten",
             method: "GET",
             error: function() {
                 toastr["error"]("Bạn chưa nhập tên sản phẩm, vui lòng nhập tên sản phẩm để tìm kiếm!");

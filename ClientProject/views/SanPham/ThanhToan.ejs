@@ -1,0 +1,377 @@
+<% layout('../Layout/layoutKhachHang.ejs') -%>
+<% script('../public/stylesheets/style') -%>
+<%- partial('../ThanhPhanWeb/Carousel.ejs') %>
+
+<div id="items-container"></div>
+<div class="container" style="padding: 1rem">
+    <div class="row">
+        <div class="col-sm-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="fas fa-store"></i> HQKStore</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Thanh toán</li>
+                    <% var dateTime = new Date() %>
+                    <li class="ml-auto"><%= dateTime.getDate() %>/<%= dateTime.getMonth() + 1 %>
+                        /<%= dateTime.getFullYear() %></li>
+                </ol>
+            </nav>
+            <div id="info"></div>
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="form-group">
+                        <label class="text-info h4 font-weight-bold">Chi tiết giỏ hàng</label>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">Ảnh</th>
+                                <th scope="col">Tên sản phẩm</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Số lượng</th>
+                                <th scope="col">Đơn giá</th>
+                                <th scope="col">Thành tiền</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tableSP">
+                            <!-- Sản phẩm trong giỏ hàng được load vào đây-->
+                            </tbody>
+                        </table>
+                        <div id="thongBaoSP" class="text-primary h4"></div>
+
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <label class="text-info h4 font-weight-bold">Thông tin người mua</label><br>
+                        <label for="tbTenKH">Tên</label>
+                        <input type="text" class="form-control" id="tbTenKH" placeholder="Nhập tên" value="">
+                        <label for="tbSDT">Điện thoại liên lạc</label>
+                        <input type="text" class="form-control" id="tbSDT" placeholder="Nhập số điện thoại" value="">
+                        <!-- Check box-->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                   value="option1" checked>
+                            <label class="form-check-label" for="exampleRadios1">Nhận hàng tại nhà</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                                   value="option2">
+                            <label class="form-check-label" for="exampleRadios2">Nhận hàng tại chi nhánh</label>
+                        </div>
+                        <!-- TB địa chỉ-->
+                        <input type="text" class="form-control" id="tbDiaChi" placeholder="Nhập địa chỉ giao hàng">
+
+                        <select class="form-control dropdown" id="dropDownChiNhanh" style="display: none">
+
+                            <!--Danh sách cửa hàng được load vào đây-->
+
+                        </select>
+                        <label for="tbGhiChu">Ghi chú</label>
+                        <textarea class="form-control" id="tbGhiChu" ></textarea>
+                        <br>
+                        <div>
+                            <div id="btnDatHang" class="btn btn-primary col-sm-12">Đặt hàng</div>
+                        </div>
+                        <hr>
+                        <div>
+                            <a href="/" id="btnLuu" class="btn btn-warning col-sm-12">Quay trở lại trang mua hàng</a>
+                        </div>
+                        <div class="ttt"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script>
+    // alert($.cookie("gioHang"));
+    var dataSanPham = [];
+    var tongGiaCacDonHang = 0;
+    var diaChi;
+    LoadSanPham();
+    function LoadSanPham() {
+        if ($.cookie("gioHang") == null || parseInt($.cookie("TongSoLuong")) == 0) {
+            $("#thongBaoSP").text("Chưa có sản phẩm nào trong giỏ hàng !");
+        } else if ($.cookie("gioHang") != null) {
+            $.ajax({
+                url: "<%= domain %>/SanPhams/QlSp/Admin/laythongtinthanhtoan/sp?token=" + $.cookie("token"),
+                method: "POST",
+                cache: false,
+                data: {
+                    dataSP: $.cookie("gioHang")
+                },
+                error: function () {
+                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                },
+                success: function (data) {
+                    tongGiaCacDonHang = 0;
+                    data.dataSP.forEach(function (item) {
+                        tongGiaCacDonHang += item.TongGia;
+                        var html_to_append =
+                            '  <tr id="tr' + item.ID_Size + '">' +
+                            ' <td><img src="' + item.Anh + '" style="height: 3rem;width: 3rem"></td>' +
+                            '  <td>' + item.TenSanPham + '</td>' +
+                            '  <td>' + item.TenSize + '</td>' +
+                            '  <td><input class="form-control col-sm-4 value d-inline tbSoLuong " value="' + item.SoLuong + '" >' +
+                            ' <div class="btn btn-primary btnSua" id="' + item.ID_SanPham + '" idSize="' + item.ID_Size + '"><i class="fas fa-sync-alt"></i></div>' +
+                            '  <div class="btn btn-danger btnXoa"  id="' + item.ID_SanPham + '" idSize="' + item.ID_Size + '"> <i class="fas fa-times"></i></div>' +
+                            '  </td>' +
+                            '  <td class="itemPrice">' + item.Gia + '</td>' +
+                            '  <td class="itemPrice">' + item.TongGia + '</td>' +
+                            ' </tr>';
+                        $("#tableSP").append(html_to_append);
+                        dataSanPham = data.dataSP;
+                        $.cookie("gioHang",JSON.stringify(data.dataSP), { path: '/' });
+                        activeCheckInput();
+
+                    });
+                    var html_tongGia =
+                        '  <tr id="trtongGia">' +
+                        ' <td colspan="4"><span class="font-weight-bold h6 d-inline">Nhập mã giảm giá:</span> <input class="MGGvalue form-control col-sm-5 d-inline"  > <div id="btnMGG" class="btn btn-success d-inline " ><i class="fas fa-check"></i></div></td>' +
+                        '  <td id="TG" colspan="2">Tổng Giá:<span id="TGHT"  class="text-primary itemPrice font-weight-bold h6 d-inline"> '+tongGiaCacDonHang+'</span></td>' +
+                        ' </tr>';
+                    $("#tableSP").append(html_tongGia);
+                    FormartGia();
+                }
+            });
+        }
+
+    }
+
+    LoadCuaHang();
+    function LoadCuaHang() {
+        $.ajax({
+            url: "<%= domain %>/Footers/laytatcacuahang?token=" + $.cookie("token"),
+            method: "GET",
+            error: function () {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function (data) {
+                $.each(data.CuaHang, function (i, item) {
+                    if(i == 0){
+                        diaChi = item.TenLienKet.Ten;
+                      // alert(item.TenLienKet.Ten);
+                    }
+                    var html_to_append =
+                        '  <option id="' + item.ID_Footer + '" class="itemSize">' + item.TenLienKet.Ten + '</option>';
+                    $("#dropDownChiNhanh").append(html_to_append);
+                });
+            },
+        });
+
+    }
+
+    var noiNhanHang = 0; // 0 là nhận tại nhà, 1 là nhận tại cửa hàng.
+    $('body').on('click', '#exampleRadios1', function () {
+        $("#dropDownChiNhanh").hide();
+        $("#tbDiaChi").show();
+        noiNhanHang = 0;
+    });
+    $('body').on('click', '#exampleRadios2', function () {
+        $("#dropDownChiNhanh").show();
+        $("#tbDiaChi").hide();
+        noiNhanHang = 1;
+    });
+
+    $('body').on('change', '#dropDownChiNhanh', function (e) {
+        diaChi = $(e.target).find("option:selected").text();
+        // alert(diaChi);
+
+    });
+
+    var idSP;
+    var idSize;
+    var soLuong;
+    var tongSoLuong = $.cookie("TongSoLuong");
+
+    //Sửa số lượng sản phẩm trong giỏ hàng.
+    $('body').on('click', '.btnSua', function () {
+        idSP = $(this).attr("id");
+        idSize = $(this).attr("idSize");
+        soLuong = $(this).parent().find(".value").val();
+        /* alert(soLuong);*/
+        // alert(idSanPham);
+        $.ajax({
+            url: "<%= domain %>/SanPhams/qlsp/admin/kiemtrasize/sp?idsize=" + idSize + "&soluong=" + soLuong + "&token=" + $.cookie("token"),
+            method: "GET",
+            error: function () {
+                toastr["error"]("Thông tin không hợp lệ !");
+            },
+            success: function (data) {
+                if (data.status == "ok") {
+                    dataSanPham.forEach(function (item, index) {
+                        if (item.ID_SanPham == idSP) {
+                            dataSanPham[index] = {
+                                ID_SanPham: item.ID_SanPham,
+                                TenSanPham: item.TenSanPham,
+                                Anh: item.Anh,
+                                ID_Size: item.ID_Size,
+                                TenSize: item.TenSize,
+                                SoLuong: soLuong
+                            };
+                        }
+                    });
+                    $.cookie("gioHang", JSON.stringify(dataSanPham), {path: '/'});
+                    $("#tableSP").fadeOut();
+                    $("#tableSP").empty();
+                    LoadSanPham();
+                     $("#tableSP").fadeIn();
+                    toastr["success"]("Thay đổi số lượng thành công !");
+                } else {
+                    $("#tableSP").fadeOut();
+                    $("#tableSP").empty();
+                    LoadSanPham();
+                    $("#tableSP").fadeIn();
+                    toastr["error"](data.message);
+                }
+            }
+        });
+        return false;
+    });
+
+    //Xóa sản phẩm khỏi giỏ hàng.
+    $('body').on('click', '.btnXoa', function () {
+        idSP = $(this).attr("id");
+        idSize = $(this).attr("idSize");
+        dataSanPham.forEach(function (item, index) {
+            if (item.ID_SanPham == idSP && item.ID_Size == idSize) {
+                tongGiaCacDonHang -= item.TongGia;
+                dataSanPham.splice(index, 1);
+                tongSoLuong--;
+            }
+            $.cookie("gioHang", JSON.stringify(dataSanPham), {path: '/'});
+            $.cookie("TongSoLuong", JSON.stringify(tongSoLuong), {path: '/'});
+            if(parseInt($.cookie("TongSoLuong")) == 0){
+                $.removeCookie('gioHang', { path: '/' });
+                $.removeCookie('TongSoLuong', { path: '/' });
+            }
+            $("#TongSP").text(tongSoLuong);
+            $("#tr" + idSize).remove();
+            $("#tbTongGiaCacSP").text(tongGiaCacDonHang);
+            if ($.cookie("TongSoLuong") == null) {
+                $("#trtongGia").empty();
+                $("#thongBaoSP").text("Chưa có sản phẩm nào trong giỏ hàng !");
+            }
+
+        });
+        FormartGia();
+        toastr["success"]("Xóa sản phẩm khỏi giỏ hàng thành công !");
+    });
+
+    var MGG = "none";
+    //Sự kiện kiểm tra mã giảm giá
+    $('body').on('click', '#btnMGG', function () {
+        var tenMGG = $(this).parent().parent().find(".MGGvalue").val();
+        // alert(tenMGG);
+        $.ajax({
+            url: "<%= domain %>/MaGiamGias/kiemtramgg?token=" + $.cookie("token"),
+            method: "POST",
+            data:{
+                tenmagiamgia:tenMGG
+            },
+            error: function () {
+                toastr["error"]("Lỗi hệ thống !");
+            },
+            success: function (data) {
+                if(data.status == "ok"){
+                    MGG = $(".MGGvalue").val();
+                    // alert(MGG);
+                    var tiLeSale = parseInt(data.tilesale);
+                    var giaGiam = tongGiaCacDonHang -(tongGiaCacDonHang /100 *tiLeSale);
+                    // alert(tongGiaCacDonHang);
+                    var html_to_append =
+                       ' Tổng Giá:<del id="TGHT"  class="text-secondary itemPrice font-weight-bold h6 d-inline"> '+tongGiaCacDonHang+'</del><br> Tổng Giá: <span class=" text-primary itemPrice font-weight-bold h6 d-inline"> '+giaGiam+'</span>';
+                    $("#TG").empty();
+                    $("#TG").append(html_to_append);
+                    FormartGia();
+
+                    $(".MGGvalue").prop("disabled",true);
+                    $("#btnMGG").prop("disabled",true);
+                    $(".tbSoLuong").prop("disabled",true);
+                    $(".btnXoa").prop("disabled",true);
+                    $(".btnSua").prop("disabled",true);
+                    toastr["success"]("Áp dụng mã giảm giá thành công !");
+                }else {
+                    toastr["error"]("Mã giảm giá không tồn tại trong hệ thống !");
+                }
+            },
+        });
+    });
+
+
+    //Sự kiện đặt hàng
+    $('body').on('click', '#btnDatHang', function () {
+        alert(diaChi);
+        var gioHang = $.cookie("gioHang");
+        var tenKH = $("#tbTenKH").val();
+        var SDT = $("#tbSDT").val();
+        var ghiChu = $("#tbGhiChu").val();
+        // alert(MGG);
+        // alert(tenKH);
+        // alert(SDT);
+        // alert(diaChi);
+        // alert(ghiChu);
+
+        if(noiNhanHang == 0){
+            diaChi = $("#tbDiaChi").val();
+        }
+
+        // alert(noiNhanHang);
+        // alert(diaChi);
+        $.ajax({
+            url: "<%= domain %>/HoaDons/themhoadon?token=" + $.cookie("token"),
+            method: "POST",
+            cache:false,
+            data:{
+                mgg:MGG,
+                tenkh:tenKH,
+                sdt:SDT,
+                diachi:diaChi,
+                ghichu:ghiChu,
+                giohang:gioHang
+            },
+            error: function (err) {
+                toastr["error"]("Lỗi hệ thống "+JSON.stringify(err)+"!");
+            },
+            success: function (data) {
+                if(data.status == "ok"){
+
+                    toastr["success"]("TC !");
+                    toastr["success"](data.message);
+                    alert(JSON.stringify(data.message));
+
+                }else {
+                    toastr["error"]("FAIL !");
+                }
+            },
+        });
+    });
+</script>
+<script>
+    // Ngăn người dùng nhập chữ vào input số lượng
+    (function ($) {
+        $.fn.inputFilter = function (inputFilter) {
+            return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function () {
+                if (inputFilter(this.value)) {
+                    this.oldValue = this.value;
+                    this.oldSelectionStart = this.selectionStart;
+                    this.oldSelectionEnd = this.selectionEnd;
+                } else if (this.hasOwnProperty("oldValue")) {
+                    this.value = this.oldValue;
+                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                }
+            });
+        };
+    }(jQuery));
+
+    function activeCheckInput() {
+        // Restrict input to digits by using a regular expression filter.
+        $(".tbSoLuong").inputFilter(function (value) {
+            return /^\d*$/.test(value);
+        });
+    }
+$(".ttt").text($.cookie("gioHang"));
+// alert($.cookie("gioHang"));
+</script>

@@ -14,9 +14,9 @@
                 Thêm Carousel
             </button>
             <form class="form-inline ml-auto d-inline float-right ">
-                <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên Carousel"
+                <input id="inputTK" class="form-control " type="search" placeholder="Nhập tên Carousel"
                        aria-label="Search">
-                <button id="btnTimKiem" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                <button id="btnTimKiem" class="btn btn-outline-success " type="submit">Tìm kiếm</button>
             </form>
         </div>
     </div>
@@ -122,6 +122,9 @@
                         <form class="was-validated">
                             <div class="form-group">
 
+                                <label for="TenCRS<%= item.ID_Carousel %>">Tên Carousel</label>
+                                <input type="text" class="form-control tenMoi" id="TenCRS<%= item.ID_Carousel %>"
+                                       placeholder="Nhập tên" value="<%= item.TenCarousel.Ten %>" required>
 
                                 <label for="LinkAnh<%= item.ID_Carousel %>">Link ảnh</label>
                                 <input type="text" class="form-control linkAnhMoi" id="LinkAnh<%= item.ID_Carousel %>"
@@ -186,8 +189,7 @@
             },
             success: function (data) {
                 $.each(data.Carousel, function (i, item) {
-                    var html_to_append;
-                    html_to_append +=
+                    var html_to_append=
                         '<tr id="CRSitem' + item.ID_Carousel + '">' +
                         '<th scope="row">' + item.ID_Carousel + '</th>' +
                         '<td>' + item.TenCarousel.Ten + '</td>' +
@@ -206,17 +208,16 @@
         var linkAnh = $("#LinkAnh").val();
         var linkBaiViet = $("#LinkBaiViet").val();
         $.ajax({
-            url: "<%= domain %>/Carousels/" + tenCarousel + "/" + encodeURIComponent(linkAnh) + "/" + encodeURIComponent(linkBaiViet) + "?token=" + $.cookie("token"),
+            url: "<%= domain %>/Carousels/themcarousel?token=" + $.cookie("token"),
             method: "POST",
+            cache: false,
+            data: {
+                tenCarousel:tenCarousel,
+                linkAnh:linkAnh,
+                linkBaiViet:linkBaiViet
+            },
             error: function (err) {
-                /*     alert(encodeURIComponent($("#LinkAnh").val()));
-                     alert(encodeURIComponent($("#LinkBaiViet").val()));*/
-                /* alert(($("#LinkAnh").val()));
-                 alert(btoa($("#LinkAnh").val()));
-                 alert($("#LinkBaiViet").val());
-                 alert(btoa( $("#LinkBaiViet").val()));*/
                 toastr["error"]("Thông tin không được trống !");
-                /*  $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn '+err+':))</h2>');*/
             },
             success: function (data) {
                 if (data.status == "ok") {
@@ -236,11 +237,14 @@
                         ' <div class="modal-body">' +
                         '    <form  class="was-validated">' +
                         '  <div class="form-group">' +
-                        ' <label for="LinkAnh' + data.idCRS + '">Link ảnh</label> " ' +
-                        ' "<input type="text" class="form-control linkAnhMoi" id="LinkAnh' + data.idCRS + '"' +
+                        '   <label for="TenCRS' + data.idCRS + '">Tên Carousel</label>' +
+                        ' <input type="text" class="form-control tenMoi" id="TenCRS' + data.idCRS + '"' +
+                        '  placeholder="Nhập tên" value="' + data.tenCRS + '" required>' +
+                        ' <label for="LinkAnh' + data.idCRS + '">Link ảnh</label>  ' +
+                        ' <input type="text" class="form-control linkAnhMoi" id="LinkAnh' + data.idCRS +
                         '   placeholder="Nhập link ảnh" value="' + data.linkAnhCRS + '" required>' +
-                        '  <label for="LinkBaiViet' + data.idCRS + '">Link bài viết</label> "' +
-                        ' "<input type="text" class="form-control linkBaiVietMoi" id="LinkBaiViet' + data.idCRS + '"' +
+                        '  <label for="LinkBaiViet' + data.idCRS + '">Link bài viết</label> ' +
+                        ' <input type="text" class="form-control linkBaiVietMoi" id="LinkBaiViet' + data.idCRS +
                         ' placeholder="Nhập link bài viết" value="' + data.linkBaiVietCRS + '" required>' +
                         '   </div>' +
                         '   </form>' +
@@ -289,15 +293,21 @@
     //Sự kiện nút sửa của những Carousel được add bằng ajax
     $('body').on('click', '.btnSuaMoi', function () {
         var modal = $(this).parent().parent().parent().parent(".modal").attr("id");
-        // $("#info").append($(this).parent().parent().find(".linkAnhMoi").val());
-        // $("#info").append('<br>');
-        // $("#info").append($(this).parent().parent().find(".linkBaiVietMoi").val());
+        var idCRS = $(this).attr("id");
         var linkAnhMoi = $(this).parent().parent().find(".linkAnhMoi").val();
         var linkBaiVietMoi = $(this).parent().parent().find(".linkBaiVietMoi").val();
+        var tenMoi = $(this).parent().parent().find(".tenMoi").val();
 
         $.ajax({
-            url: "<%= domain %>/Carousels/" + $(this).attr("id") + "/" + btoa(linkAnhMoi).replace(/\//g, '_').replace(/\+/g, '-') + "/" + btoa(linkBaiVietMoi).replace(/\//g, '_').replace(/\+/g, '-') + "?token=" + $.cookie("token"),
+            url: "<%= domain %>/Carousels/suacarousel?token=" + $.cookie("token"),
             method: "PUT",
+            cache:false,
+            data:{
+                idCarousel:idCRS,
+                tenCarousel:tenMoi,
+                linkAnh:linkAnhMoi,
+                linkBaiViet:linkBaiVietMoi
+            },
             error: function () {
                 $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
             },

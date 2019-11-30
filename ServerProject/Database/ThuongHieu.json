@@ -5,7 +5,7 @@
       "Ten": "Vans",
       "TenKhongVietHoa": "vans"
     },
-    "TrangThaiXoa": "False"
+    "TrangThaiXoa": false
   },
   {
     "ID_ThuongHieu": "a386aeaab6",
@@ -13,7 +13,7 @@
       "Ten": "Converse",
       "TenKhongVietHoa": "converse"
     },
-    "TrangThaiXoa": "False"
+    "TrangThaiXoa": false
   },
   {
     "ID_ThuongHieu": "6ba17421a2",
@@ -21,6 +21,6 @@
       "Ten": "Paladium",
       "TenKhongVietHoa": "paladium"
     },
-    "TrangThaiXoa": "False"
+    "TrangThaiXoa":false
   }
 ]

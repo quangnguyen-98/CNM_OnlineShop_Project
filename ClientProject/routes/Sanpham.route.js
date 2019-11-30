@@ -4,9 +4,14 @@ var router = express.Router();
 //Khai báo conntroller
 var SanPhamController = require('../controller/SanPham.controller');
 
-/* GET trang chủ */
+
+//Route SanPham (Web/SanPhams/)
+
+//Hiển thị chi tiết sản phấm
 router.get('/:id', SanPhamController.HienThiChiTietSanPham);
 
+//Hiển thị trang thanh toán
+router.get('/thanhtoan/sp', SanPhamController.HienThiTrangThanhToan);
 
 
 

@@ -6,14 +6,14 @@ module.exports = {
     LayTatCaThuongHieu: function (req, res, next) {
         var param = {
             TableName: "ThuongHieu",
-            ProjectionExpression:"#yr, TenThuongHieu, TrangThaiXoa",
-            FilterExpression:"TrangThaiXoa =:n",
-            ExpressionAttributeNames:{
-                "#yr":"ID_ThuongHieu",
-            },
-            ExpressionAttributeValues:{
-                ":n":false
-            }
+            // ProjectionExpression:"#yr, TenThuongHieu, TrangThaiXoa",
+            // FilterExpression:"TrangThaiXoa =:n",
+            // ExpressionAttributeNames:{
+            //     "#yr":"ID_ThuongHieu",
+            // },
+            // ExpressionAttributeValues:{
+            //     ":n":false
+            // }
         };
         docClient.scan(param,function (err,data) {
             if (err) {

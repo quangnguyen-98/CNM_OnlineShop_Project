@@ -18,10 +18,10 @@ router.get('/:pagenumber',CarouselController.LayCarouselTheoSoTrang);
 router.get('/timtheoten/:tenCarousel',CarouselController.LayCarouselTheoTen);
 
 //Tạo carousel
-router.post('/:tenCarousel/:linkAnh/:linkBaiViet',CarouselValidate.KiemTraTrungTen,  CarouselController.ThemCarousel);
+router.post('/themcarousel',CarouselValidate.KiemTraTrungTen,  CarouselController.ThemCarousel);
 
 //Sửa carousel
-router.put('/:idCarousel/:linkAnh/:linkBaiViet',   CarouselController.SuaCarousel);
+router.put('/suacarousel',   CarouselController.SuaCarousel);
 
 //Xóa carousel
 router.delete('/:idCarousel',  CarouselController.XoaCarousel);

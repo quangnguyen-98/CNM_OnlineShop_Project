@@ -17,6 +17,15 @@ module.exports = {
             secretAccessKey:"dz9ipYWenvQVfmKyaNhaQ8nxyWGxJt8kdjAehY9d"
         });
     },
+    KetNoiAWSVirnigia: function() {
+        var AWS = require("aws-sdk");
+        AWS.config.update({
+            region: "us-east-1",
+            endpoint: "http://dynamodb.us-east-1.amazonaws.com/",
+            accessKeyId:"AKIASUBOKNNVUTTPRMZ3",
+            secretAccessKey:"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"
+        });
+    },
     KetNoiAWS: function() {
         var AWS = require("aws-sdk");
         AWS.config.update({
@@ -26,4 +35,10 @@ module.exports = {
             secretAccessKey:"dz9ipYWenvQVfmKyaNhaQ8nxyWGxJt8kdjAehY9d"
         });
     }
+
+    //region california
+    //dynamodb.us-east-1.amazonaws.com
+
+    //region vinnigia
+    //dynamodb.us-east-1.amazonaws.com
 };

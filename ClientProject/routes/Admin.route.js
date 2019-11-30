@@ -35,6 +35,8 @@ router.get('/QuanLyBaiViet', AdminController.HienThiQuanLyBaiViet);
 
 router.get('/QuanLyMaGiamGia', AdminController.HienThiQuanLyMaGiamGia);
 
+router.get('/QuanLyDonHang', AdminController.HienThiQuanLyDonHang);
+
 router.get('/DangXuat', AdminController.DangXuat);
 
 

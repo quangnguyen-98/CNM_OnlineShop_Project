@@ -288,35 +288,74 @@ module.exports = {
                     });
                     return;
                 }else {
-                    var param = {
-                        TableName: 'SanPham',
-                        Key: {
-                            "ID_SanPham": idSP
-                        },
-                        UpdateExpression: "set TrangThaiBan = :a",
-                        ExpressionAttributeValues: {
-                            ":a": true,
 
+                    var param = {
+                        TableName: "SanPham",
+                        ProjectionExpression: "#yr, Gia",
+                        FilterExpression: "#yr = :n",
+                        ExpressionAttributeNames: {
+                            "#yr": "ID_SanPham",
                         },
-                        ReturnValues: "UPDATED_NEW"
+                        ExpressionAttributeValues: {
+                            ":n": idSP
+                        }
                     };
-                    docClient.update(param, function (err, data) {
+
+                    docClient.scan(param, function (err, data) {
                         if (err) {
                             console.error(err);
-                            res.json({
-                                status: "fail",
-                                message: "Mở bán sản phẩm thất bại !",
-                                idSP: idSP
-                            });
+                            res.end();
                         } else {
-                            console.log("Thành công!");
-                            res.json({
-                                status: "ok",
-                                message: "Mở bán phẩm thành công !",
-                                idSP: idSP,
-                            });
+                           if(data.Items[0].Gia == null){
+                               res.json({
+                                   status: "fail",
+                                   message: "Vui lòng điền đẩy đủ thông tin sản phẩm trước khi mở bán !",
+
+                               });
+                           }else {
+                               var param = {
+                                   TableName: 'SanPham',
+                                   Key: {
+                                       "ID_SanPham": idSP
+                                   },
+                                   UpdateExpression: "set TrangThaiBan = :a",
+                                   ExpressionAttributeValues: {
+                                       ":a": true,
+
+                                   },
+                                   ReturnValues: "UPDATED_NEW"
+                               };
+                               docClient.update(param, function (err, data) {
+                                   if (err) {
+                                       console.error(err);
+                                       res.json({
+                                           status: "fail",
+                                           message: "Mở bán sản phẩm thất bại !",
+                                           idSP: idSP
+                                       });
+                                   } else {
+                                       console.log("Thành công!");
+                                       res.json({
+                                           status: "ok",
+                                           message: "Mở bán phẩm thành công !",
+                                           idSP: idSP
+                                       });
+                                   }
+                               });
+                           }
                         }
                     });
+
+
+
+
+
+
+
+
+
+
+
                 }
 
             }
@@ -487,16 +526,95 @@ module.exports = {
             }
         });
     },
+    KiemTraSize: function (req, res, next) {
+        var idSize = req.query.idsize;
+        var soLuong =parseInt(req.query.soluong);
+        var param = {
+            TableName: "Size",
+            ProjectionExpression: "#yr, SoLuong",
+            FilterExpression: "#yr =:n ",
+            ExpressionAttributeNames: {
+                "#yr": "ID_Size",
+            },
+            ExpressionAttributeValues: {
+                ":n": idSize
+            }
+        };
+        docClient.scan(param, function (err, data) {
+            if (err) {
+                console.error(err);
+                res.end();
+            } else {
+                console.log("Thành công!");
+              //  res.json(data.Items[0].SoLuong );
+                if(parseInt(data.Items[0].SoLuong)  >= soLuong){
+                    res.json({
+                        status: "ok",
+                        message: "Đủ số lượng !",
+                    });
+                    return;
+                } else {
+                    res.json({
+                        status: "fail",
+                        message: "Không đủ số lượng sản phẩm để đặt !",
+                    });
+                    return;
+                }
+            }
+        });
+
+    },
+    LayThongTinTuCookie: function (req, res, next) {
+        // res.json("cc");
+        var dataSP =JSON.parse(req.body.dataSP);
+        // res.json(dataSP);
+        var param = {
+            TableName: "SanPham",
+            ProjectionExpression: "#yr, Gia, TiLeSale",
+            FilterExpression: "TrangThaiBan = :m and TrangThaiXoa = :n",
+            ExpressionAttributeNames: {
+                "#yr": "ID_SanPham",
+            },
+            ExpressionAttributeValues: {
+                ":m":true,
+                ":n": false
+            }
+        };
+        docClient.scan(param, function (err, data) {
+            // res.json(data);
+            if (err) {
+                console.error(err);
+                res.end();
+            } else {
+                data.Items.forEach(function (item1) {
+                    dataSP.forEach(function (item2, index) {
+                       if(item2.ID_SanPham == item1.ID_SanPham){
+                           var gia = item1.Gia-(item1.Gia/100*item1.TiLeSale);
+                           var tonggia = gia*item2.SoLuong;
+                           dataSP[index] ={ID_SanPham: item2.ID_SanPham, TenSanPham:item2.TenSanPham, Anh:item2.Anh, ID_Size:item2.ID_Size, TenSize:item2.TenSize, SoLuong:item2.SoLuong, Gia:gia, TongGia:tonggia};
+                       }
+                    });
+                });
+                console.log("Thành công!");
+                res.json({
+                    status: "ok",
+                    message: "Đủ số lượng !",
+                    dataSP: dataSP
+                });
+                return;
+            }
+        });
+
+    },
     XoaSize: function (req, res, next) {
         var idSize = req.body.idsize;
+        var idSP = req.body.idSP;
         var param = {
             TableName: 'Size',
             Key: {
                 "ID_Size": idSize
             }
         };
-
-
         docClient.delete(param, function (err, data) {
             if (err) {
                 console.error(err);
@@ -505,11 +623,61 @@ module.exports = {
                     message: "Xóa sản phẩm thất bại !",
                 });
             } else {
-                console.log("Thành công!");
-                res.json({
-                    status: "ok",
-                    message: "Xóa sản phẩm thành công !",
+                var param = {
+                    TableName: "Size",
+                    ProjectionExpression: "#yr, SoLuong",
+                    FilterExpression: "ID_SanPham =:n ",
+                    ExpressionAttributeNames: {
+                        "#yr": "ID_Size",
+                    },
+                    ExpressionAttributeValues: {
+                        ":n": idSP
+                    }
+                };
+                docClient.scan(param, function (err, data) {
+                    if (err) {
+                        console.error(err);
+                        res.end();
+                    } else {
+                        console.log("Thành công!");
+                        //  res.json(data.Items[0].SoLuong );
+                        if(parseInt(data.Count)  == 0){
+                            var param = {
+                                TableName: 'SanPham',
+                                Key: {
+                                    "ID_SanPham": idSP
+                                },
+                                UpdateExpression: "set TrangThaiBan = :n",
+                                ExpressionAttributeValues: {
+                                    ":n": false,
+                                },
+                                ReturnValues: "UPDATED_NEW"
+                            };
+                            docClient.update(param, function (err, data) {
+                                if (err) {
+                                    console.error(err);
+                                    res.json({
+                                        status: "fail",
+                                        message: "Xóa sản phẩm thất bại !",
+                                    });
+                                } else {
+                                    res.json({
+                                        status: "ok",
+                                        message: "Xóa sản phẩm thành công !",
+                                        key:"khoa"
+                                    });
+                                }
+                            });
+                        } else {
+                            res.json({
+                                status: "ok",
+                                message: "Xóa sản phẩm thành công !",
+                                key:"mo"
+                            });
+                        }
+                    }
                 });
+
             }
         });
     },

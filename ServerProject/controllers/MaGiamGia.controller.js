@@ -98,6 +98,47 @@ module.exports = {
         });
 
     },
+    KiemTraTonTaiMGG:function(req,res,next){
+        var tenMaGiamGia = req.body.tenmagiamgia;
+        var param = {
+            TableName: "MaGiamGia",
+            ProjectionExpression:"#yr, TenMaGiamGia, TiLeSale",
+            FilterExpression:"TrangThaiXoa =:n and TenMaGiamGia = :m",
+            ExpressionAttributeNames:{
+                "#yr":"ID_MaGiamGia",
+            },
+            ExpressionAttributeValues:{
+                ":n":false,
+                ":m":tenMaGiamGia
+            }
+        };
+        docClient.scan(param,function (err,data) {
+            if (err) {
+                console.error(err);
+                return res.json({
+                    status:"fail",
+                    message:"Lỗi hệ thống !",
+
+                });
+            }
+            else{
+             if(data.Count == 1){
+                 return res.json({
+                     status:"ok",
+                     message:"Áp dụng mã giảm giá thành công !",
+                     tilesale:data.Items[0].TiLeSale
+                 });
+             }else {
+                 return res.json({
+                     status:"fail",
+                     message:"Mã giảm giá không tồn tại trong hệ thống !",
+
+                 });
+             }
+            }
+        });
+
+    },
     ThemMaGiamGia: function (req, res, next) {
         var tenMGG =  CustomFunction.BoDau(req.params.tenmagiamgia.toLowerCase()).toUpperCase().replace(/\s+/g, '');
         var tiLeSale = parseInt(req.params.tilesale) ;

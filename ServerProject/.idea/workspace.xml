@@ -2,22 +2,54 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29931dd8-b35f-4161-9625-b148465567bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Database/Size.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/abc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyDonHang.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ClientProject/views/SanPham/ThanhToan.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ClientProject/views/SanPham/ThongBaoDatHang.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Database/demo.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/Config/ServerDomain.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/Config/ServerDomain.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/controller/Admin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/controller/Admin.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/controller/Index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/controller/Index.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/controller/SanPham.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/controller/SanPham.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/routes/Admin.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/routes/Admin.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/routes/Index.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/routes/Index.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/routes/Sanpham.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/routes/Sanpham.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/MenuDashboard.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/MenuDashboard.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyCarousel.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyCarousel.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyDanhMuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyDanhMuc.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLySanPham.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLySanPham.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLySanPhamChiTiet.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLySanPhamChiTiet.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutAdmin.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutAdmin.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutAdminQLSanPhamChiTiet.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutAdminQLSanPhamChiTiet.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutKhachHang.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutKhachHang.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/SanPham/ChiTietSanPham.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/SanPham/ChiTietSanPham.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/danhmuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/danhmuc.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/header.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/index.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/ClientDomain.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/ClientDomain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/ConfigAWS.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/ConfigAWS.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/CreateTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/CreateTables.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/LoadSampleData.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/LoadSampleData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/SanPham.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/SanPham.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ckeditor.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ckeditor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/SoItemMoiPage.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Config/SoItemMoiPage.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Footer.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/Footer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/HoaDon.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/HoaDon.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/ThuongHieu.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/ThuongHieu.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Validator/Carousel.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/Validator/Carousel.validate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/abc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ckeditor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/Carousel.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Carousel.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/HoaDon.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/HoaDon.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/Index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Index.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/MaGiamGia.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/MaGiamGia.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/SanPham_Index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SanPham_Index.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/SanPham_QL.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SanPham_QL.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/Thuonghieu.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Thuonghieu.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/Carousel.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/Carousel.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/HoaDon.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/HoaDon.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/MaGiamGia.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/MaGiamGia.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/SanPham.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/SanPham.route.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +62,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="tsconfig.json" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -70,16 +102,16 @@
     </option>
   </component>
   <component name="RunManager" selected="Node.js.LoadSampleData.js">
-    <configuration name="ckeditor.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ServerProject/bin/ckeditor.html" useBuiltInWebServerPort="true">
+    <configuration name="aa.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ServerProject/bin/aa.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="maintain.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ServerProject/bin/maintain.html" useBuiltInWebServerPort="true">
+    <configuration name="ckeditor.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ServerProject/bin/ckeditor.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="CreateTables.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Config/CreateTables.js" working-dir="$PROJECT_DIR$/Config">
       <method v="2" />
     </configuration>
-    <configuration name="DeleteOneTable.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Config/DeleteOneTable.js" working-dir="$PROJECT_DIR$/Config">
+    <configuration name="DeleAllTables.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Config/DeleAllTables.js" working-dir="$PROJECT_DIR$/Config">
       <method v="2" />
     </configuration>
     <configuration name="LoadSampleData.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Config/LoadSampleData.js" working-dir="$PROJECT_DIR$/Config">
@@ -89,9 +121,9 @@
       <list>
         <item itemvalue="Node.js.LoadSampleData.js" />
         <item itemvalue="Node.js.CreateTables.js" />
-        <item itemvalue="Node.js.DeleteOneTable.js" />
+        <item itemvalue="Node.js.DeleAllTables.js" />
+        <item itemvalue="JavaScript Debug.aa.html" />
         <item itemvalue="JavaScript Debug.ckeditor.html" />
-        <item itemvalue="JavaScript Debug.maintain.html" />
       </list>
     </recent_temporary>
   </component>
@@ -157,6 +189,14 @@
       <workItem from="1574777667287" duration="6103000" />
       <workItem from="1574831127188" duration="22052000" />
       <workItem from="1574870820869" duration="12808000" />
+      <workItem from="1574895118019" duration="642000" />
+      <workItem from="1574917766716" duration="8764000" />
+      <workItem from="1574941846993" duration="889000" />
+      <workItem from="1574943056769" duration="700000" />
+      <workItem from="1574955012113" duration="4751000" />
+      <workItem from="1575013457684" duration="2754000" />
+      <workItem from="1575016287033" duration="3094000" />
+      <workItem from="1575024111708" duration="28112000" />
     </task>
     <servers />
   </component>

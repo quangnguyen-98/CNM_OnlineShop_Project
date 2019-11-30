@@ -17,6 +17,9 @@ router.get('/:pagenumber',MaGiamGiaController.LayMaGiamGiaTheoSoTrang);
 //Lấy mã giảm giá theo tên
 router.get('/timtheoten/:tenmagiamgia',MaGiamGiaController.LayMaGiamGiaTheoTen);
 
+//Kiểm tra mã giảm giá có tồn tại không
+router.post('/kiemtramgg',MaGiamGiaController.KiemTraTonTaiMGG);
+
 //Tạo mã giảm giá
 router.post('/:tenmagiamgia/:tilesale/:soluong',  MaGiamGiaValidate.KiemTraTrungTen, MaGiamGiaController.ThemMaGiamGia);
 

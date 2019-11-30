@@ -103,9 +103,9 @@ module.exports = {
 
     },
     ThemCarousel: function (req, res, next) {
-        var tenCRS = req.params.tenCarousel;
-        var linkAnhCRS = decodeURIComponent(req.params.linkAnh) ;
-        var linkBaiVietCRS = decodeURIComponent(req.params.linkBaiViet);
+        var tenCRS = req.body.tenCarousel;
+        var linkAnhCRS = req.body.linkAnh;
+        var linkBaiVietCRS = req.body.linkBaiViet;
         var idCRS = ids.generate();
         var paramCRS = {
             TableName: "Carousel",
@@ -144,21 +144,23 @@ module.exports = {
         });
     },
     SuaCarousel: function (req, res, next) {
-        var idCRS = req.params.idCarousel;
-        // var tenCRS = req.params.tenCarousel;
-        var linkAnhCRS = atob(req.params.linkAnh.replace(/_/g, '/').replace(/-/g, '+'));
-        var linkBaiVietCRS = atob(req.params.linkBaiViet.replace(/_/g, '/').replace(/-/g, '+'));
-      /*  var tenKhongVietHoa = CustomFunction.BoDau(tenCRS.toLowerCase());*/
+        var idCRS = req.body.idCarousel;
+        var tenCRS = req.body.tenCarousel;
+        var linkAnhCRS = req.body.linkAnh;
+        var linkBaiVietCRS = req.body.linkBaiViet;
+        var tenKhongVietHoa = CustomFunction.BoDau(tenCRS.toLowerCase());
 
         var param = {
             TableName:'Carousel',
             Key:{
                 "ID_Carousel": idCRS
             },
-            UpdateExpression: "set LinkAnh = :n, LinkBaiViet = :m",
+            UpdateExpression: "set LinkAnh = :n, LinkBaiViet = :m, TenCarousel.Ten =:k, TenCarousel.TenKhongVietHoa =:l",
             ExpressionAttributeValues:{
                 ":n": linkAnhCRS,
-                ":m":linkBaiVietCRS
+                ":m":linkBaiVietCRS,
+                ":k":tenCRS,
+                ":l":tenKhongVietHoa
             },
             ReturnValues:"UPDATED_NEW"
         };

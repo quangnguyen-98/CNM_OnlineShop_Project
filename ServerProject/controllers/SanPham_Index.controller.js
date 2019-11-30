@@ -23,7 +23,6 @@ module.exports = {
                 res.end();
             } else {
                 console.log("Thành công!");
-                /* res.end(JSON.stringify(data.Items.slice(0,2)));*/
                 res.json(data);
             }
         });
@@ -80,9 +79,9 @@ module.exports = {
         });
     },
     LaySanPhamTheoTen: function (req, res) {
-        var tensp = req.params.ten;
+        var tensp = req.params.ten.toString().toLowerCase();
         var n = parseInt(req.params.pagenumber);
-        var soItemMoiPage = parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage.txt")));
+        var soItemMoiPage = parseInt(global.SoSanPhamMoiPage);
         var begin = (n - 1) * soItemMoiPage;
         var end = (n - 1) * soItemMoiPage + soItemMoiPage;
         var param = {
@@ -121,7 +120,7 @@ module.exports = {
         var tu = parseInt(req.params.tu);
         var den = parseInt(req.params.den);
         var n = parseInt(req.params.pagenumber);
-        var soItemMoiPage = parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage.txt")));
+        var soItemMoiPage = parseInt(global.SoSanPhamMoiPage);
         var begin = (n - 1) * soItemMoiPage;
         var end = (n - 1) * soItemMoiPage + soItemMoiPage;
         var param = {
@@ -160,7 +159,7 @@ module.exports = {
     LaySanPhamTheoSoTrang: function (req, res) {
         if (req.params.sorttype == '*' || req.params.sortkey == '*') {
             var n = parseInt(req.params.pagenumber);
-            var soItemMoiPage = parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage.txt")));
+            var soItemMoiPage = parseInt(global.SoSanPhamMoiPage);
             var begin = (n - 1) * soItemMoiPage;
             var end = (n - 1) * soItemMoiPage + soItemMoiPage;
             var param = {
@@ -196,7 +195,7 @@ module.exports = {
             if (sorttype == 'dm') {
                 var sortkey = req.params.sortkey;
                 var n = parseInt(req.params.pagenumber);
-                var soItemMoiPage = parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage.txt")));
+                var soItemMoiPage = parseInt(global.SoSanPhamMoiPage);
                 var begin = (n - 1) * soItemMoiPage;
                 var end = (n - 1) * soItemMoiPage + soItemMoiPage;
                 var param = {
@@ -229,7 +228,7 @@ module.exports = {
             if (sorttype == 'th') {
                 var sortkey = req.params.sortkey;
                 var n = parseInt(req.params.pagenumber);
-                var soItemMoiPage = parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage.txt")));
+                var soItemMoiPage = parseInt(global.SoSanPhamMoiPage);
                 var begin = (n - 1) * soItemMoiPage;
                 var end = (n - 1) * soItemMoiPage + soItemMoiPage;
                 var param = {

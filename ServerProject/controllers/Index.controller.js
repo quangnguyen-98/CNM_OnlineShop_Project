@@ -6,7 +6,7 @@ const path = require("path");
 module.exports = {
     LayTatCaSanPham_DanhMuc_ThuongHieu:function(req, res, next) {
         var n = parseInt(req.params.pagenumber) || 1 ;
-        var soItemMoiPage= parseInt(fs.readFileSync(path.resolve(__dirname, "../Config/SoItemMoiPage.txt")));
+        var soItemMoiPage= parseInt(global.SoSanPhamMoiPage);
         var begin =(n-1)*soItemMoiPage;
         var end = (n-1)*soItemMoiPage +soItemMoiPage;
 

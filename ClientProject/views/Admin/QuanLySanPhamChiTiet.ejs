@@ -224,8 +224,6 @@
     <% }) %>
 </div>
 <script>
-    // var tenDM ;
-    // var tenTH ;
     var ListSize = [];
     var idDM = "<%= spData.ID_DanhMuc %>";
     var idTH = "<%= spData.ID_ThuongHieu %>";
@@ -498,6 +496,8 @@
         $(this).parent().parent().find(".value").prop( "disabled", false );
         $(this).parent().parent().find(".btnXacNhan").prop( "disabled", false );
     });
+
+    //Sự kiện sửa size
     $('body').on('click', '.btnXacNhan', function () {
         var soLuong = $(this).parent().parent().find(".value").val();
         $.ajax({
@@ -543,13 +543,14 @@
             method: "DELETE",
             cache:false,
             data:{
+                idSP:$("#tbIDSanPham").val(),
                 idsize:$(this).attr("id")
             },
             error: function () {
                 $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
             },
             success: function (data) {
-                if (data.status == "ok") {
+                if (data.status == "ok" && data.key == "mo") {
                     $("#" + modal).modal('toggle');
                     $("#tableSize").fadeOut();
                     $("#tableSize").empty();
@@ -558,7 +559,16 @@
 
                     toastr["success"](data.message);
 
-                } else {
+                }
+                else if(data.status == "ok" && data.key == "khoa"){
+                    $("#" + modal).modal('toggle');
+                    $("#tableSize").fadeOut();
+                    $("#tableSize").empty();
+                    LoadSize();
+                    $("#tableSize").fadeIn();
+                    $('#toggle-event').bootstrapToggle('off');
+                }
+                else {
                     toastr["error"](data.message);
                 }
             }

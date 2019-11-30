@@ -66,19 +66,6 @@ function itemHover(){
 
 }
 
-//Hàm fortmat giá cho sản phẩm
-function FormartGia(){
-  $('.itemPrice').text(function () {
-    var str = $(this).html() + '';
-    x = str.split('.');
-    x1 = x[0]; x2 = x.length > 1 ? '.' + x[1] : '';
-    var rgx = /(\d+)(\d{3})/;
-    while (rgx.test(x1)) {
-      x1 = x1.replace(rgx, '$1' + ',' + '$2');
-    }
-    $(this).html(x1 + x2);
-  });
-}
 //Set hover cho sản phẩm khi load index
 $("document").ready(function(){
   itemHover();
@@ -103,7 +90,7 @@ $("document").ready(function(){
                 '<div class="col-12 col-sm-6 col-md-4 col-lg-3 lazyitem d-flex">'+
                 '<div id="SP'+item.ID_SanPham+'" class="card" style=" margin-bottom: 1rem">'+
                 '<a href="/SanPhams/'+item.ID_SanPham+'">'+
-                '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
+                '<img id="subSP'+item.ID_SanPham+'" class="card-img-top " src="'+item.Anh.Avatar+'" alt="Card image cap">'+
                 '</a>'+
                 ' <div class="card-body">'+
                 '<h5 class="card-title" style="height: 3rem" ><a class="linksp" href="/SanPhams/'+item.ID_SanPham+'">'+item.TenSanPham.Ten+'</a></h5>'+
@@ -127,7 +114,8 @@ $("document").ready(function(){
 var page = 1;
 var sorttype ='*';
 var sortkey ='*';
-<%='var SoTrang = '+soTrang +';'%>
+
+var SoTrang = "<%= soTrang%>";
 
 //Sự kiện trang trước
 TrangTruoc();
@@ -156,7 +144,6 @@ function TrangTruoc() {
                     '<a href="/SanPhams/'+item.ID_SanPham+'">'+
                     '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
                     '</a>'+
-
                     ' <div class="card-body">'+
                     '<h5 class="card-title" style="height: 3rem" ><a class="linksp" href="/SanPhams/'+item.ID_SanPham+'">'+item.TenSanPham.Ten+'</a></h5>'+
                     ' <br>'+
@@ -213,7 +200,6 @@ function TrangSau() {
                     '<a href="/SanPhams/'+item.ID_SanPham+'">'+
                     '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
                     '</a>'+
-
                     ' <div class="card-body">'+
                     '<h5 class="card-title" style="height: 3rem" ><a class="linksp" href="/SanPhams/'+item.ID_SanPham+'">'+item.TenSanPham.Ten+'</a></h5>'+
                     ' <br>'+
@@ -236,10 +222,9 @@ function TrangSau() {
   });
 }
 <%=soTrangLocal = soTrang%>
-//Sự kiện click vào các trang của sản phẩm\
+//Sự kiện click vào các trang của sản phẩm
 ClickVaoCacTrang();
 function ClickVaoCacTrang(){
-
   <%for (i=1;i<= soTrangLocal;i++){%>
   $("<%="#subpagi"+i %>").click(function () {
     $(".page-item").removeClass("active");
@@ -261,7 +246,6 @@ function ClickVaoCacTrang(){
                   '<a href="/SanPhams/'+item.ID_SanPham+'">'+
                   '<img id="subSP'+item.ID_SanPham+'" class="card-img-top" src="'+item.Anh.Avatar+'" alt="Card image cap" >'+
                   '</a>'+
-
                   ' <div class="card-body">'+
                   '<h5 class="card-title" style="height: 3rem" ><a class="linksp" href="/SanPhams/'+item.ID_SanPham+'">'+item.TenSanPham.Ten+'</a></h5>'+
                   ' <br>'+
