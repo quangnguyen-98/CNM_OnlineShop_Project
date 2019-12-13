@@ -95,12 +95,12 @@
                                name="tbTenSanPham" value="<%= spData.TenSanPham %>" disabled>
                     </div>
                     <div class="form-group">
-                        <label for="tbGia">Giá</label>
+                        <label for="tbGia">Giá (VNĐ)</label>
                         <input type="text" class="form-control" id="tbGia" placeholder="Nhập giá" name="tbGia"
                                value="<% if(spData.Gia != null){ %><%= spData.Gia %><% } %>" required>
                     </div>
                     <div class="form-group">
-                        <label for="tbTiLeSale">Tỉ lệ sale</label>
+                        <label for="tbTiLeSale">Tỉ lệ sale ( Nhập số % muốn sale, nếu không sale vui lòng nhập 0) </label>
                         <input type="text" class="form-control" id="tbTiLeSale" placeholder="Nhập tỉ lệ sale"
                                name="tbTiLeSale" value="<% if(spData.TiLeSale != null){ %><%= spData.TiLeSale %><% } %>"
                                required>
@@ -116,6 +116,17 @@
                             <% if(spData.MoTa.ChiTiet != null){ %><%= spData.MoTa.ChiTiet %><% } %>
                         </textarea>
                     </div>
+
+                </div>
+                <div class="col-sm-12 ">
+                    <h5 class="float-left text-primary ">Menu upload ảnh: </h5><br>
+                </div>
+                <div class="col-sm-12 ">
+                        <input class="float-left" type="file" id="fileInput" name="fileInput" />
+                        <input class="float-left" type="button" id="button" value="Upload ảnh"/> &nbsp;
+
+                        Url: <a href="" target="_blank" class="new_url"></a><br /><br />
+
 
                 </div>
                 <div class="col-sm-12 text-center">
@@ -146,7 +157,7 @@
                 <br><br>
 
                 <table class="table table-hover">
-                    <img src="https://bb4298.s3-us-west-1.amazonaws.com/index.svg" class="loadingDiv" alt="loadingIcon">
+                    <img src="<%=urlLoading%>" class="loadingDiv" alt="loadingIcon">
                     <thead>
                     <tr>
 
@@ -170,7 +181,7 @@
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title"><i class="fas fa-store"></i> Thêm bài viết</h4>
+                    <h4 class="modal-title"><i class="fas fa-store"></i> Thêm size</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- Modal body -->
@@ -521,7 +532,10 @@
                         },
                         success: function (data) {
                             $("#tongSL").text(data.TongSL);
+                            $(".btnXacNhan").prop("disabled",true);
+                            $(".value").prop("disabled",true);
                         }
+
                     });
                     toastr["success"](data.message);
 
@@ -531,8 +545,7 @@
             }
         });
 
-        $(".btnXacNhan").prop("disabled",true);
-        $(".value").prop("disabled",true);
+
     });
 
     //Sự kiện xóa size
@@ -584,5 +597,37 @@
             }
         });
         return false;
+    });
+</script>
+
+<script>
+    //Upload ảnh
+    $(document).ready(function() {
+
+        $('#button').click(function() {
+            var files = $('#fileInput').prop('files')[0];
+            var filename = "new_" +files.name;
+            var fd = new FormData();
+            fd.append( 'file', files );
+            var contentType = files.type;
+            $.get('<%=domain%>/uploadanh?fileName='+filename+'&type='+contentType, function(signedUrl) {
+                // alert(signedUrl);
+                $.ajax({
+                    url: signedUrl,
+                    type: 'PUT',
+                    dataType: 'html',
+                    processData: false,
+                    headers: {'Content-Type': contentType},
+                    crossDomain: true,
+                    data: files
+                }).done(function(data,textStatus,error) {
+                    $(".new_url").html('https://hqk.s3.us-west-1.amazonaws.com/'+filename);
+                    $(".new_url").attr("href",'https://hqk.s3.us-west-1.amazonaws.com/'+filename);
+                    // alert("ok");
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    alert("Error: "+errorThrown);
+                });
+            });
+        });
     });
 </script>

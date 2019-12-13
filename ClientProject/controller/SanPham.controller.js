@@ -66,11 +66,10 @@ module.exports = {
             });
     },
     HienThiTrangThanhToan:function(req, res, next) {
-        // var idsp = req.cookies.gioHang ;
-        // res.send(idsp);
-        var spData;
-        var listSize =[] ;
         res.render('./SanPham/ThanhToan.ejs', {domain: domain, title: 'Thanh toán' ,key:"TT"});
+    },
+    HienThiTrangThongBao:function(req, res, next) {
+        var idHD = req.query.idhd;
+        res.render('./SanPham/ThongBaoDatHang.ejs', {domain: domain, title: 'Thanh toán',idHD:idHD ,key:"TT"});
     }
-
 };

@@ -9,4 +9,5 @@ module.exports ={
         str = str.replace(/đ/g, "d");
         return str;
     }
+
 }

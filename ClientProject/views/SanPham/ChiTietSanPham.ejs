@@ -1,7 +1,7 @@
 <% layout('../Layout/layoutKhachHang.ejs') -%>
 
 <%- partial('../ThanhPhanWeb/Carousel.ejs') %>
-<script src="https://bb4298.s3-us-west-1.amazonaws.com/JS/bootstrap-input-spinner.js"></script>
+<script src="https://hqk.s3.us-west-1.amazonaws.com/JS/bootstrap-input-spinner.js"></script>
 <div class="container" style="padding-top: 1rem">
     <div class="col-12">
         <nav aria-label="breadcrumb">
@@ -128,7 +128,7 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div id="home" class="container tab-pane active"><br>
-                <div id="testck" class="btn btn-primary"></div>
+
                 <p><%- spData.MoTa.ChiTiet %></p>
             </div>
             <div id="menu1" class="container tab-pane fade"><br>
@@ -138,7 +138,7 @@
             </div>
             <div id="menu2" class="container tab-pane fade"><br>
                 <div class="fb-comments"
-                     data-href="http://clientprojectonlineshop.herokuapp.com/SanPhams/<%= spData.ID_SanPham %>"
+                     data-href="http://hqkclient.us-west-1.elasticbeanstalk.com/SanPhams/<%= spData.ID_SanPham %>"
                      data-width="6000px" data-numposts="5"></div>
             </div>
         </div>
@@ -256,9 +256,10 @@
             });
         }
     });
+
     function ThemSPVaoGio() {
         if ($.cookie("gioHang") == null) {
-            var sp = {ID_SanPham: idSP,TenSanPham:$("#tbTenSanPham").text() ,Anh:$("#tbAnh").attr("src") ,ID_Size:idSize,TenSize: tenSize,SoLuong:SoLuong};
+            var sp = {ID_SanPham: idSP,TenSanPham:$("#tbTenSanPham").text() ,Anh:$("#tbAnh").attr("src") ,ID_Size:idSize,TenSize: tenSize,SoLuong: parseInt(SoLuong)};
 
             gioHang.push(sp);
             $.cookie("gioHang",JSON.stringify(gioHang), { path: '/' });
@@ -268,12 +269,12 @@
             gioHang = JSON.parse($.cookie("gioHang"));
             gioHang.forEach(function(item, index) {
                 if(item.ID_SanPham == idSP && item.ID_Size == idSize ){
-                    gioHang[index] ={ID_SanPham: item.ID_SanPham, TenSanPham:item.TenSanPham, Anh:item.Anh, ID_Size:item.ID_Size, TenSize:item.TenSize, SoLuong:SoLuong};
+                    gioHang[index] ={ID_SanPham: item.ID_SanPham, TenSanPham:item.TenSanPham, Anh:item.Anh, ID_Size:item.ID_Size, TenSize:item.TenSize, SoLuong: parseInt(SoLuong)};
                     count++;
                 }
             });
             if(count == 0){
-                var sp = {ID_SanPham: idSP, TenSanPham:$("#tbTenSanPham").text() ,Anh:$("#tbAnh").attr("src"), ID_Size:idSize, TenSize: tenSize,SoLuong:SoLuong};
+                var sp = {ID_SanPham: idSP, TenSanPham:$("#tbTenSanPham").text() ,Anh:$("#tbAnh").attr("src"), ID_Size:idSize, TenSize: tenSize,SoLuong:parseInt(SoLuong)};
                 gioHang.push(sp);
                 $.cookie("gioHang",JSON.stringify(gioHang), { path: '/' });
             }else if(count != 0){
@@ -285,7 +286,8 @@
         $("#TongSP").text($.cookie("TongSoLuong"));
     }
 
-    $("#testck").click(function () {
-        alert($.cookie("gioHang"));
+
+    $(document).ready(function () {
+        $("img").attr("class","img-fluid");
     });
 </script>

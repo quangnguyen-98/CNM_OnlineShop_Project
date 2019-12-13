@@ -6,38 +6,38 @@ configAWS.KetNoiAWS();
 var docClient = new AWS.DynamoDB.DocumentClient();
 
 console.log("Importing movies into DynamoDB. Please wait.");
-//
-//
-// // 1 Load Bảng SanPham
-// var allSanPham = JSON.parse(fs.readFileSync('../Database/SanPham.json', 'utf8'));
-// allSanPham.forEach(function(sanPham) {
-//     var params = {
-//         TableName: "SanPham",
-//         Item: {
-//             "ID_SanPham":  sanPham.ID_SanPham,
-//             "TenSanPham": sanPham.TenSanPham,
-//             "ID_DanhMuc":  sanPham.ID_DanhMuc,
-//             "ID_ThuongHieu":sanPham.ID_ThuongHieu,
-//             "MoTa":sanPham.MoTa,
-//             "ThongTin":sanPham.ThongTin,
-//             "Gia":sanPham.Gia,
-//             "TiLeSale":sanPham.TiLeSale,
-//             "Anh":sanPham.Anh,
-//             "NgayTao":sanPham.NgayTao,
-//             "Size":sanPham.Size,
-//             "TrangThaiBan":sanPham.TrangThaiBan,
-//             "TrangThaiXoa":sanPham.TrangThaiXoa
-//         }
-//     };
-//
-//     docClient.put(params, function(err, data) {
-//         if (err) {
-//             console.error("Unable to add SanPham: ", sanPham, ". Error JSON:", JSON.stringify(err, null, 2));
-//         } else {
-//             console.log("PutItem SanPham succeeded:", sanPham);
-//         }
-//     });
-// });
+
+
+// 1 Load Bảng SanPham
+var allSanPham = JSON.parse(fs.readFileSync('../Database/SanPham.json', 'utf8'));
+allSanPham.forEach(function(sanPham) {
+    var params = {
+        TableName: "SanPham",
+        Item: {
+            "ID_SanPham":  sanPham.ID_SanPham,
+            "TenSanPham": sanPham.TenSanPham,
+            "ID_DanhMuc":  sanPham.ID_DanhMuc,
+            "ID_ThuongHieu":sanPham.ID_ThuongHieu,
+            "MoTa":sanPham.MoTa,
+            "ThongTin":sanPham.ThongTin,
+            "Gia":sanPham.Gia,
+            "TiLeSale":sanPham.TiLeSale,
+            "Anh":sanPham.Anh,
+            "NgayTao":sanPham.NgayTao,
+            "Size":sanPham.Size,
+            "TrangThaiBan":sanPham.TrangThaiBan,
+            "TrangThaiXoa":sanPham.TrangThaiXoa
+        }
+    };
+
+    docClient.put(params, function(err, data) {
+        if (err) {
+            console.error("Unable to add SanPham: ", sanPham, ". Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            console.log("PutItem SanPham succeeded:", sanPham);
+        }
+    });
+});
 //
 // // 2 Load Bảng NguoiDung
 // var allNguoiDung = JSON.parse(fs.readFileSync('../Database/NguoiDung.json', 'utf8'));
@@ -135,31 +135,31 @@ console.log("Importing movies into DynamoDB. Please wait.");
 //         }
 //     });
 // });
-//
-// //6 Load Bảng Carousel
-// var allCarousel = JSON.parse(fs.readFileSync('../Database/Carousel.json', 'utf8'));
-// allCarousel.forEach(function(carousel)
-// {
-//     var params = {
-//         TableName: "Carousel",
-//         Item: {
-//             "ID_Carousel":  carousel.ID_Carousel,
-//             "TenCarousel": carousel.TenCarousel,
-//             "LinkAnh": carousel.LinkAnh,
-//             "LinkBaiViet":carousel.LinkBaiViet,
-//             "TrangThaiXoa":carousel.TrangThaiXoa
-//         }
-//     };
-//
-//     docClient.put(params, function(err, data) {
-//         if (err) {
-//             console.error("Unable to add Carousel:", carousel, ". Error JSON:", JSON.stringify(err, null, 2));
-//         } else {
-//             console.log("PutItem Carousel succeeded:", carousel);
-//         }
-//     });
-// });
-//
+
+//6 Load Bảng Carousel
+var allCarousel = JSON.parse(fs.readFileSync('../Database/Carousel.json', 'utf8'));
+allCarousel.forEach(function(carousel)
+{
+    var params = {
+        TableName: "Carousel",
+        Item: {
+            "ID_Carousel":  carousel.ID_Carousel,
+            "TenCarousel": carousel.TenCarousel,
+            "LinkAnh": carousel.LinkAnh,
+            "LinkBaiViet":carousel.LinkBaiViet,
+            "TrangThaiXoa":carousel.TrangThaiXoa
+        }
+    };
+
+    docClient.put(params, function(err, data) {
+        if (err) {
+            console.error("Unable to add Carousel:", carousel, ". Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            console.log("PutItem Carousel succeeded:", carousel);
+        }
+    });
+});
+
 // // 7 Load Bảng BaiViet
 // var allBaiViet = JSON.parse(fs.readFileSync('../Database/BaiViet.json', 'utf8'));
 // allBaiViet.forEach(function(baiviet)
@@ -182,32 +182,33 @@ console.log("Importing movies into DynamoDB. Please wait.");
 //         }
 //     });
 // });
-
-
-
-//8 Load Bảng Footer
-var allFooter = JSON.parse(fs.readFileSync('../Database/Footer.json', 'utf8'));
-allFooter.forEach(function(footer)
-{
-    var params = {
-        TableName: "Footer",
-        Item: {
-            "ID_Footer":footer.ID_Footer,
-            "LoaiFooter":footer.LoaiFooter,
-            "TenLienKet":footer.TenLienKet,
-            "Link":footer.Link,
-            "TrangThaiXoa":footer.TrangThaiXoa
-        }
-    };
-
-    docClient.put(params, function(err, data) {
-        if (err) {
-            console.error("Unable to add Footer:", footer, ". Error JSON:", JSON.stringify(err, null, 2));
-        } else {
-            console.log("PutItem Footer succeeded:", footer);
-        }
-    });
-});
+//
+//
+//
+// //8 Load Bảng Footer
+// var allFooter = JSON.parse(fs.readFileSync('../Database/Footer.json', 'utf8'));
+// allFooter.forEach(function(footer)
+// {
+//     var params = {
+//         TableName: "Footer",
+//         Item: {
+//             "ID_Footer":footer.ID_Footer,
+//             "LoaiFooter":footer.LoaiFooter,
+//             "TenLienKet":footer.TenLienKet,
+//             "Link":footer.Link,
+//             "TrangThaiXoa":footer.TrangThaiXoa
+//         }
+//     };
+//
+//     docClient.put(params, function(err, data) {
+//         if (err) {
+//             console.error("Unable to add Footer:", footer, ". Error JSON:", JSON.stringify(err, null, 2));
+//         } else {
+//             console.log("PutItem Footer succeeded:", footer);
+//         }
+//     });
+// });
+//
 //
 // //9 Load Bảng Mã Giảm Giá
 //

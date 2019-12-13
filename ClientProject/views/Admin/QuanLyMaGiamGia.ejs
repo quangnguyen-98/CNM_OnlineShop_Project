@@ -9,38 +9,41 @@
         </nav>
     </div>
     <div class="row-fluid">
-        <div class="co ml-auto ">
-            <button type="button" class="btn btn-primary d-inline " data-toggle="modal" data-target="#modalThem">
+        <div>
+            <button type="button" class="col-12 col-lg-3 btn btn-primary d-inline " data-toggle="modal" data-target="#modalThem">
                 Thêm mã giảm giá
             </button>
             <form class="form-inline ml-auto d-inline float-right ">
-                <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên mã giảm giá"
+                <input id="inputTK" class="form-control " type="search" placeholder="Nhập tên mã giảm giá"
                        aria-label="Search">
-                <button id="btnTimKiem" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                <button id="btnTimKiem" class="btn btn-outline-success " type="submit">Tìm kiếm</button>
             </form>
         </div>
     </div>
 
     <br><br>
 
-    <table class="table table-hover">
-        <img src="https://bb4298.s3-us-west-1.amazonaws.com/index.svg" class="loadingDiv" alt="loadingIcon">
-        <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Tên mã giảm giá</th>
-            <th scope="col">Tỉ Lệ sale</th>
-            <th scope="col">Số lượng</th>
-            <th scope="col">Thao tác</th>
-        </tr>
-        </thead>
-        <tbody id="tableMGG">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <img src="<%=urlLoading%>" class="loadingDiv" alt="loadingIcon">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Tên mã giảm giá</th>
+                <th scope="col">Tỉ Lệ sale</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Thao tác</th>
+            </tr>
+            </thead>
+            <tbody id="tableMGG">
 
 
-        <!--Mã giảm giá được load vào đây-->
+            <!--Mã giảm giá được load vào đây-->
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+
     <div id="info"></div>
     <!--Pagination-->
     <nav aria-label="Page navigation example">
@@ -218,7 +221,7 @@
             url: "<%= domain %>/magiamgias/" + $("#TenMaGiamGia").val() + "/" + $("#TiLeSaleGiamGia").val() + "/" + $("#SoLuongGiamGia").val() + "?token=" + $.cookie("token"),
             method: "POST",
             error: function () {
-                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                toastr["error"]("Vui lòng điền đầy đủ thông tin !");
             },
             success: function (data) {
                 if (data.status == "ok") {
@@ -245,7 +248,7 @@
                         ' <div class="form-group">' +
                         ' <label for="TiLeSaleGiamGia' + data.idMGG + '">Tỉ lệ sales</label>' +
                         ' <input type="text" class="form-control  TiLeSaleMoi" id="TiLeSaleGiamGia' + data.idMGG + '"' +
-                        '     placeholder="Nhập tỉ lệ sales" value="' + data.TiLeSale + '" required>' +
+                        '     placeholder="Nhập tỉ lệ sales" value="' + data.tiLeSale + '" required>' +
                         '    </div>' +
                         '     <div class="form-group">' +
                         '  <label for="SoLuongGiamGia' + data.idMGG + '">Số lượng</label>' +
@@ -286,6 +289,7 @@
                     TongItem++;
                     page = 1;
                     TaiLaiPagination();
+                    ResetDataSauKhiCreate();
                 } else {
                     toastr["error"](data.message);
                 }
@@ -294,14 +298,21 @@
         /*  SoTrang ++;*/
         return false;
     }
+    function ResetDataSauKhiCreate() {
+        $("#TenMaGiamGia").val("");
+        $("#TiLeSaleGiamGia").val("");
+        $("#SoLuongGiamGia").val("");
+
+
+    }
 
     //Sự kiện nút sửa của những mã giảm giá được add bằng ajax
     $('body').on('click', '.btnSuaMoi', function () {
         var modal = $(this).parent().parent().parent().parent(".modal").attr("id");
         var tiLeSalMoi = $(this).parent().parent().find(".TiLeSaleMoi").val();
         var soLuongMoi = $(this).parent().parent().find(".SoLuongMoi").val();
-        alert($(this).parent().parent().find(".TiLeSaleMoi").val());
-        alert($(this).parent().parent().find(".SoLuongMoi").val());
+        // alert($(this).parent().parent().find(".TiLeSaleMoi").val());
+        // alert($(this).parent().parent().find(".SoLuongMoi").val());
         $.ajax({
             url: "<%= domain %>/magiamgias/" + $(this).attr("id") + "/" + tiLeSalMoi + "/" + soLuongMoi + "?token=" + $.cookie("token"),
             method: "PUT",

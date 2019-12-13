@@ -15,9 +15,8 @@
     "ChiTietHoaDon": [
       {
         "ID_SanPham": "1",
-        "TenSanPham": "",
-        "Anh": "",
-        "ID_Size": "",
+        "TenSanPham": "abc",
+        "Anh": "dsad",
         "TenSize": "",
         "SoLuong": 2,
         "DonGia": 1650000,
@@ -27,7 +26,6 @@
         "ID_SanPham": "2",
         "TenSanPham": "",
         "Anh": "",
-        "ID_Size": "",
         "TenSize": "",
         "SoLuong": 2,
         "DonGia": 1650000,
@@ -35,34 +33,9 @@
       }
     ],
     "MaGiamGia": "Quang",
+    "TiLeSale": 20,
     "TongSoTien": 2423423,
-    "TrangThaiXacNhan": false
-  },
-  {
-    "ID_HoaDon": "095247922a",
-    "NgayTao": {
-      "Ngay": 4,
-      "Thang": 5,
-      "Nam": 2019
-    },
-    "ThongTinKhachHang": {
-      "Ten": "Lê Trung Nghĩa",
-      "SoDienThoai": "0346065968",
-      "DiaChi": "Quận 12"
-    },
-    "ChiTietHoaDon": [
-      {
-        "ID_SanPham": 1,
-        "SL": 1,
-        "Gia": 1650000
-      },
-      {
-        "ID_SanPham": 2,
-        "SL": 2,
-        "Gia": 3600000
-      }
-    ],
-    "TongTien": 5250000,
-    "TrangThaiThanhToan": false
+    "TrangThai": "cho"
   }
+
 ]

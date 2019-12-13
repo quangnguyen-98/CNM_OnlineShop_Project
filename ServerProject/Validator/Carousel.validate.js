@@ -4,10 +4,6 @@ const { check} = require('express-validator');
 var _ = require('lodash');
 var CustomFunction = require('../Config/CustomFunction');
 module.exports = {
-    ValidateCRS:[
-        check('username','khong duoc trong').not().isEmpty(),
-        check('password','it nhat 5 chu').isLength({ min: 5,max:10 })
-    ],
     KiemTraTrungTen:function (req,res,next) {
         var tenCRS = req.body.tenCarousel;
         var param = {
@@ -47,6 +43,22 @@ module.exports = {
                 }
             }
         });
-    }
+    },
+    ValidateCarousel:function (req,res,next) {
+        var tenCRS = req.body.tenCarousel;
+        var linkAnhCRS = req.body.linkAnh;
+        var linkBaiVietCRS = req.body.linkBaiViet;
+
+        if(tenCRS.length == 0 || linkBaiVietCRS.length == 0 || linkAnhCRS.length == 0){
+            res.json({
+                status: "fail",
+                message: "Vui lòng nhập đầy đủ thông tin carousel !"
+            });
+            return;
+        }
+        else {
+            next();
+        }
+    },
 };
 

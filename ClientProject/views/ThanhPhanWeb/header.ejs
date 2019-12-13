@@ -15,12 +15,13 @@
         <form class="form-inline my-2 my-lg-0">
             <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên sản phẩm" aria-label="Search">
             <button id="btnTimKiem" class="btn btn-outline-success " type="submit">Tìm kiếm</button>&nbsp;
-            <a href="/SanPhams/ThanhToan/sp" class="fas fa-shopping-cart" style="color: #28a745; text-decoration: none"> <span id="TongSP">0</span> SP</a>
+            <div class="shopping-card"><a href="/SanPhams/ThanhToan/sp" class="fas fa-cart-plus" style="color: #28a745; text-decoration: none"> <span id="TongSP">0</span> SP</a></div>
         </form>
+
         <%}else {%>
                 <ul class="navbar-nav ml-auto" style="margin-right:30px">
                     <li class="nav-item">
-                        <a href="/SanPhams/ThanhToan/sp" class="fas fa-shopping-cart" style="color: #28a745; text-decoration: none"> <span id="TongSP">0</span> SP</a>
+                        <a href="/SanPhams/ThanhToan/sp" class="fas fa-cart-plus" style="color: #28a745; text-decoration: none"> <span id="TongSP">0</span> SP</a>
                     </li>
                 </ul>
 

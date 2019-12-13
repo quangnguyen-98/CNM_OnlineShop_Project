@@ -18,13 +18,13 @@ router.get('/:pagenumber',CarouselController.LayCarouselTheoSoTrang);
 router.get('/timtheoten/:tenCarousel',CarouselController.LayCarouselTheoTen);
 
 //Tạo carousel
-router.post('/themcarousel',CarouselValidate.KiemTraTrungTen,  CarouselController.ThemCarousel);
+router.post('/themcarousel',AuthController.KiemTraTokenAdmin,CarouselValidate.KiemTraTrungTen, CarouselValidate.ValidateCarousel, CarouselController.ThemCarousel);
 
 //Sửa carousel
-router.put('/suacarousel',   CarouselController.SuaCarousel);
+router.put('/suacarousel', AuthController.KiemTraTokenAdmin, CarouselValidate.ValidateCarousel, CarouselController.SuaCarousel);
 
 //Xóa carousel
-router.delete('/:idCarousel',  CarouselController.XoaCarousel);
+router.delete('/:idCarousel', AuthController.KiemTraTokenAdmin, CarouselController.XoaCarousel);
 
 module.exports = router;
 

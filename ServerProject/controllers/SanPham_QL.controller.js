@@ -119,7 +119,7 @@ module.exports = {
         });
     },
     LaySanPhamTheoTen: function (req, res, next) {
-        var tenSanPham = CustomFunction.BoDau(req.params.tensanpham.toString().toLowerCase());
+        var tenSanPham = CustomFunction.BoDau(req.query.tensanpham.toString().toLowerCase());
         var param = {
             TableName: "SanPham",
             ProjectionExpression: "#yr, TenSanPham, Anh, TrangThaiBan, TrangThaiXoa",
@@ -169,7 +169,7 @@ module.exports = {
                 "Gia": null,
                 "TiLeSale": null,
                 "Anh": {
-                    "AnhTemp": "https://bb4298.s3-us-west-1.amazonaws.com/index.svg",
+                    "AnhTemp": "https://hqk.s3.us-west-1.amazonaws.com/LoadingIMG/loading.svg",
                     "Avatar": null,
                     "AvtDetail1": null,
                     "AvtDetail2": null
@@ -213,8 +213,8 @@ module.exports = {
         var Anh1 = req.body.Anh1;
         var Anh2 = req.body.Anh2;
         var Anh3 = req.body.Anh3;
-        var Gia = req.body.Gia;
-        var TiLeSale = req.body.TiLeSale;
+        var Gia = parseInt( req.body.Gia);
+        var TiLeSale = parseInt(req.body.TiLeSale);
         var TongQuan = req.body.TongQuan;
         var ChiTiet = req.body.ChiTiet;
 
@@ -591,7 +591,7 @@ module.exports = {
                        if(item2.ID_SanPham == item1.ID_SanPham){
                            var gia = item1.Gia-(item1.Gia/100*item1.TiLeSale);
                            var tonggia = gia*item2.SoLuong;
-                           dataSP[index] ={ID_SanPham: item2.ID_SanPham, TenSanPham:item2.TenSanPham, Anh:item2.Anh, ID_Size:item2.ID_Size, TenSize:item2.TenSize, SoLuong:item2.SoLuong, Gia:gia, TongGia:tonggia};
+                           dataSP[index] ={ID_SanPham: item2.ID_SanPham, TenSanPham:item2.TenSanPham, Anh:item2.Anh, ID_Size:item2.ID_Size, TenSize:item2.TenSize, SoLuong: parseInt(item2.SoLuong), Gia:parseInt(gia), TongGia: parseInt(tonggia)};
                        }
                     });
                 });
@@ -620,7 +620,7 @@ module.exports = {
                 console.error(err);
                 res.json({
                     status: "fail",
-                    message: "Xóa sản phẩm thất bại !",
+                    message: "Xóa size thất bại !",
                 });
             } else {
                 var param = {
@@ -658,12 +658,12 @@ module.exports = {
                                     console.error(err);
                                     res.json({
                                         status: "fail",
-                                        message: "Xóa sản phẩm thất bại !",
+                                        message: "Xóa size thất bại !",
                                     });
                                 } else {
                                     res.json({
                                         status: "ok",
-                                        message: "Xóa sản phẩm thành công !",
+                                        message: "Xóa size thành công !",
                                         key:"khoa"
                                     });
                                 }
@@ -671,7 +671,7 @@ module.exports = {
                         } else {
                             res.json({
                                 status: "ok",
-                                message: "Xóa sản phẩm thành công !",
+                                message: "Xóa size thành công !",
                                 key:"mo"
                             });
                         }

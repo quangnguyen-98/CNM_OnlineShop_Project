@@ -18,19 +18,19 @@ router.get('/:pagenumber',BaiVietController.LayBaiVietTheoSoTrang);
 router.get('/timtheoid/:idbaiviet',BaiVietController.LayBaiVietTheoID);
 
 //Lấy bài viết theo tên
-router.get('/timtheoten/:tenbaiviet',BaiVietController.LayBaiVietTheoTen);
+router.get('/timtheoten/:tenbaiviet', BaiVietController.LayBaiVietTheoTen);
 
 //Tạo bài viết
-router.post('/:tenbaiviet',  BaiVietValidate.KiemTraTrungTen, BaiVietController.ThemBaiViet);
+router.post('/:tenbaiviet', AuthController.KiemTraTokenAdmin, BaiVietValidate.Validate_ThongTinBaiViet, BaiVietValidate.KiemTraTrungTen, BaiVietController.ThemBaiViet);
 
 //Sửa bài viết
-router.put('/:idbaiviet/:tenbaiviet',  BaiVietController.SuaBaiViet);
+router.put('/:idbaiviet/:tenbaiviet',  AuthController.KiemTraTokenAdmin, BaiVietValidate.Validate_ThongTinBaiViet, BaiVietValidate.KiemTraTrungTenKhiSua, BaiVietController.SuaBaiViet);
 
 //Xóa bài viết
-router.delete('/:idbaiviet', BaiVietController.XoaBaiViet);
+router.delete('/:idbaiviet', AuthController.KiemTraTokenAdmin, BaiVietController.XoaBaiViet);
 
 //Tăng số lượt xem
-router.post('/tangluotxem/:idbaiviet', BaiVietController.TangSoLuotXem);
+router.post('/tangluotxem/:idbaiviet',  BaiVietController.TangSoLuotXem);
 
 
 module.exports = router;

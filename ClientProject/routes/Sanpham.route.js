@@ -13,6 +13,7 @@ router.get('/:id', SanPhamController.HienThiChiTietSanPham);
 //Hiển thị trang thanh toán
 router.get('/thanhtoan/sp', SanPhamController.HienThiTrangThanhToan);
 
-
+//Hiển thị trang thông báo thnah toán thành công
+router.get('/thongbao/sp', SanPhamController.HienThiTrangThongBao);
 
 module.exports = router;

@@ -31,8 +31,8 @@ module.exports = {
         AWS.config.update({
             region: "us-west-1",
             endpoint: "http://dynamodb.us-west-1.amazonaws.com/",
-            accessKeyId:"AKIASUBOKNNVUTTPRMZ3",
-            secretAccessKey:"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"
+            accessKeyId:"AKIAJI3SVDGCNLYGR6FA",
+            secretAccessKey:"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"
         });
     }
 

@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Asap+Condensed|Fira+Sans+Condensed&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--<link rel="shortcut icon" type="image/png" href="{{asset('img/favicon.jpeg')}}"/>-->
-    <link rel="shortcut icon" type="image/png" href="https://bb4298.s3-us-west-1.amazonaws.com/favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="https://hqk.s3.us-west-1.amazonaws.com/Icon/favicon.ico"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <!--Font Awesome-->
@@ -84,6 +84,18 @@
             width: 100%;
             max-height: 448px !important;
         }
+
+        .shopping-card {
+            display: inline-block;
+            position: relative;
+        }
+        .user-panel .up-item {
+            display: inline-block;
+            font-size: 14px;
+        }
+        .site-logo {
+            display: inline-block;
+        }
     </style>
 
 </head>
@@ -137,6 +149,10 @@
      logged_in_greeting="Xin chào, chúng mình có thể giúp gì cho bạn không ?"
      logged_out_greeting="Xin chào, chúng mình có thể giúp gì cho bạn không ?">
 </div>
+
+
+
+
 </body>
 <script>
     $('.loadingDiv').hide();

@@ -114,3 +114,15 @@ dynamodb.deleteTable(paramsMaGiamGia, function(err, data) {
         console.log("Table MaGiamGia Deleted. Table description JSON:", JSON.stringify(data, null, 2));
     }
 });
+
+// 9 Xóa Bảng Size
+var paramsSize = {
+    TableName : "Size",
+};
+dynamodb.deleteTable(paramsSize, function(err, data) {
+    if (err) {
+        console.error("Unable to delete table. Error JSON:", JSON.stringify(err, null, 2));
+    } else {
+        console.log("Table MaGiamGia Deleted. Table description JSON:", JSON.stringify(data, null, 2));
+    }
+});

@@ -11,7 +11,7 @@
       <%-partial('ThanhPhanWeb/Danhmuc')%>
     </div>
     <div class="col-sm-9">
-      <img src="https://bb4298.s3-us-west-1.amazonaws.com/index.svg" class="loadingDiv" alt="loadingIcon">
+      <img src="https://hqk.s3.us-west-1.amazonaws.com/LoadingIMG/loading.svg" class="loadingDiv" alt="loadingIcon">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/"><i class="fas fa-store"></i> HQKStore</a></li>
@@ -53,13 +53,12 @@ function itemHover(){
       $("<%="#subSP"+item.ID_SanPham %>").fadeOut('fast');
       $("<%="#subSP"+item.ID_SanPham %>").attr('src','<%= item.AvtDetail1%>');
       $("<%="#SP"+item.ID_SanPham %>").addClass('border-info');
-      $("<%="#subSP"+item.ID_SanPham %>").fadeIn('low');
+      $("<%="#subSP"+item.ID_SanPham %>").fadeIn('fast');
     },
     mouseleave: function () {
-      $("<%="#subSP"+item.ID_SanPham %>").fadeOut('fast');
       $("<%="#subSP"+item.ID_SanPham %>").attr('src','<%= item.Avatar%>');
       $("<%="#SP"+item.ID_SanPham %>").removeClass('border-info');
-      $("<%="#subSP"+item.ID_SanPham %>").fadeIn('low');
+      $("<%="#subSP"+item.ID_SanPham %>").fadeIn('fast');
     }
   });
   <%}); %>
@@ -77,6 +76,7 @@ $("document").ready(function(){
 
 //Load sản phẩm sau khi load xong trang
 $("document").ready(function(){
+  // var TongSoTrangPAGI = 0;
   $.ajax({
     url: "<%=domain%>/sanphams/*/*/1",
     method: "GET",
@@ -84,6 +84,8 @@ $("document").ready(function(){
       $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
     },
     success: function(data) {
+      // TongSoTrangPAGI = parseInt(data.SoTrang);
+      // alert(TongSoTrangPAGI);
       $.each(data.SanPham, function(i, item) {
         var html_to_append ='';
         html_to_append +=

@@ -11,62 +11,65 @@
 
 
     <br><br>
-<div class="container">
+    <div class="container">
 
-    <form>
-        <%dataFT.forEach(function (item) {%>
-            <div class="form-group form-inline">
-                <label for="email" class="col-12 col-sm-3 col-md-3 col-lg-3"><%= item.TenLienKet%></label>
-                <input class="form-control col-12 col-sm-5 col-md-5 col-lg-7 value" value="<%=item.Link%>"  disabled>
-                <div class="col-5 col-sm-2 col-md-2 col-lg-1">
-                    <div  class="btn btn-warning btnSua ">Sửa</div>
+        <form>
+            <% dataFT.forEach(function (item) { %>
+                <div class="form-group form-inline">
+                    <label for="email" class="col-12 col-sm-3 col-md-3 col-lg-3"><%= item.TenLienKet %></label>
+                    <input class="form-control col-12 col-sm-5 col-md-5 col-lg-7 value" value="<%= item.Link %>"
+                           disabled>
+                    <div class="col-5 col-sm-2 col-md-2 col-lg-1">
+                        <div class="btn btn-warning btnSua ">Sửa</div>
+                    </div>
+                    <div class="col-5 col-sm-2 col-md-2 col-lg-1">
+                        <button id="<%= item.ID_Footer %>" class="btn btn-success btnXacNhan" disabled>Xác nhận</button>
+                    </div>
                 </div>
-                <div class="col-5 col-sm-2 col-md-2 col-lg-1">
-                    <button id="<%=item.ID_Footer%>"  class="btn btn-success btnXacNhan" disabled>Xác nhận</button>
-                </div>
-            </div>
-        <%});%>
-    </form>
-</div>
+            <% }); %>
+        </form>
+    </div>
 
     <div id="info"></div>
 </div>
 
 
-<script >
+<script>
     $('body').on('click', '.btnSua', function () {
-        $(".value").prop("disabled",true);
-        $(".btnXacNhan").prop("disabled",true);
-        $(this).parent().parent().find(".value").prop( "disabled", false );
-        $(this).parent().parent().find(".btnXacNhan").prop( "disabled", false );
+        $(".value").prop("disabled", true);
+        $(".btnXacNhan").prop("disabled", true);
+        $(this).parent().parent().find(".value").prop("disabled", false);
+        $(this).parent().parent().find(".btnXacNhan").prop("disabled", false);
     });
     $('body').on('click', '.btnXacNhan', function () {
-
+        var trangThai;
         var lienket = $(this).parent().parent().find(".value").val();
-    /*    alert(lienket);
-        alert($(this).attr("id"));*/
+        /*    alert(lienket);
+            alert($(this).attr("id"));*/
         $.ajax({
-            url: "<%= domain %>/Footers/" + $(this).attr("id") +"/"+btoa(lienket).replace(/\//g, '_').replace(/\+/g, '-')+ "?token=" + $.cookie("token"),
+            url: "<%= domain %>/Footers/" + $(this).attr("id") + "?token=" + $.cookie("token"),
             method: "PUT",
-            cache:false,
-            data:{
-                lienket : lienket
+            cache: false,
+            data: {
+                lienket: lienket
             },
             error: function (err) {
-               /* $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn '+err+' :))</h2>');*/
+                /* $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn '+err+' :))</h2>');*/
                 toastr["error"]("Trong link có kí tự không hợp lệ, vui lòng thử lại !");
             },
             success: function (data) {
                 if (data.status == "ok") {
+                    trangThai = true;
                     toastr["success"](data.message);
                 } else {
                     toastr["error"](data.message);
                 }
             }
         });
+        $(".value").prop("disabled", true);
+        $(".btnXacNhan").prop("disabled", true);
 
-        $(".btnXacNhan").prop("disabled",true);
-        $(".value").prop("disabled",true);
+
     });
 
 </script>

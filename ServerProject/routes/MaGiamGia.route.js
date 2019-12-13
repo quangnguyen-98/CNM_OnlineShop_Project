@@ -9,7 +9,7 @@ var MaGiamGiaValidate = require('../Validator/MaGiamGia.validate');
 //Route (Web/api/MaGiamGias/)
 
 //Lấy tất cả mã giảm giá
-router.get('/', MaGiamGiaController.LayTatCaMaGiamGia);
+router.get('/',  MaGiamGiaController.LayTatCaMaGiamGia);
 
 //Lấy mã giảm giá theo số trang
 router.get('/:pagenumber',MaGiamGiaController.LayMaGiamGiaTheoSoTrang);
@@ -18,16 +18,16 @@ router.get('/:pagenumber',MaGiamGiaController.LayMaGiamGiaTheoSoTrang);
 router.get('/timtheoten/:tenmagiamgia',MaGiamGiaController.LayMaGiamGiaTheoTen);
 
 //Kiểm tra mã giảm giá có tồn tại không
-router.post('/kiemtramgg',MaGiamGiaController.KiemTraTonTaiMGG);
+router.post('/kiemtramgg',  MaGiamGiaController.KiemTraTonTaiMGG);
 
 //Tạo mã giảm giá
-router.post('/:tenmagiamgia/:tilesale/:soluong',  MaGiamGiaValidate.KiemTraTrungTen, MaGiamGiaController.ThemMaGiamGia);
+router.post('/:tenmagiamgia/:tilesale/:soluong', AuthController.KiemTraTokenAdmin, MaGiamGiaValidate.KiemTraTrungTen, MaGiamGiaValidate.ValidateMaGiamGia, MaGiamGiaController.ThemMaGiamGia);
 
 //Sửa mã giảm giá
-router.put('/:idmagiamgia/:tilesale/:soluong', MaGiamGiaController.SuaMaGiamGia);
+router.put('/:idmagiamgia/:tilesale/:soluong', AuthController.KiemTraTokenAdmin, MaGiamGiaValidate.ValidateMaGiamGiaKhiSua, MaGiamGiaController.SuaMaGiamGia);
 
 //Xóa mã giảm giá
-router.delete('/:idmagiamgia', MaGiamGiaController.XoaMaGiamGia);
+router.delete('/:idmagiamgia', AuthController.KiemTraTokenAdmin, MaGiamGiaController.XoaMaGiamGia);
 
 
 module.exports = router;

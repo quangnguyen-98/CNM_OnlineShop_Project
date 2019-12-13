@@ -9,8 +9,8 @@
         </nav>
     </div>
     <div class="row-fluid">
-        <div class="co ml-auto ">
-            <button type="button" class="btn btn-primary d-inline " data-toggle="modal" data-target="#modalThem">
+        <div>
+            <button type="button" class="col-12 col-lg-3 btn btn-primary d-inline " data-toggle="modal" data-target="#modalThem">
                 Thêm Carousel
             </button>
             <form class="form-inline ml-auto d-inline float-right ">
@@ -22,24 +22,26 @@
     </div>
 
     <br><br>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <img src="<%=urlLoading%>" class="loadingDiv" alt="loadingIcon">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Tên Carousel</th>
+                <th scope="col">Ảnh</th>
+                <th scope="col">Thao tác</th>
+            </tr>
+            </thead>
+            <tbody id="tableCRS">
 
-    <table class="table table-hover">
-        <img src="https://bb4298.s3-us-west-1.amazonaws.com/index.svg" class="loadingDiv" alt="loadingIcon">
-        <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Tên Carousel</th>
-            <th scope="col">Ảnh</th>
-            <th scope="col">Thao tác</th>
-        </tr>
-        </thead>
-        <tbody id="tableCRS">
 
+            <!--Carousel được load vào đây-->
 
-        <!--Carousel được load vào đây-->
+            </tbody>
+        </table>
+    </div>
 
-        </tbody>
-    </table>
     <div id="info"></div>
     <!--Pagination-->
     <nav aria-label="Page navigation example">
@@ -84,6 +86,19 @@
                         <label for="TenCarousel">Link bài viết</label>
                         <input type="text" class="form-control" id="LinkBaiViet" placeholder="Nhập link bài viết"
                                onkeydown="EnterThemCRS()" required>
+                    </div>
+                    <!--  Menu upload ảnh  -->
+                    <div class="form-group">
+                        <h5 class="float-left text-primary ">Menu upload ảnh: </h5><br>
+                    </div>
+                    <div class="form-group">
+                        <input class="float-left" type="file" id="fileInput" name="fileInput" />
+                        <input class="float-left" type="button" id="button" value="Upload ảnh"/><br>
+
+                    </div>
+                    <div class="form-group">
+                        <p> Url: <a href="" target="_blank" class="new_url"></a></p>
+
                     </div>
                 </form>
             </div>
@@ -281,6 +296,7 @@
                     TongItem++;
                     page = 1;
                     TaiLaiPagination();
+                    ResetDataSauKhiCreate();
                 } else {
                     toastr["error"](data.message);
                 }
@@ -289,7 +305,11 @@
         /*  SoTrang ++;*/
         return false;
     }
-
+    function ResetDataSauKhiCreate() {
+        $("#TenCarousel").val("");
+        $("#LinkAnh").val("");
+        $("#LinkBaiViet").val("");
+    }
     //Sự kiện nút sửa của những Carousel được add bằng ajax
     $('body').on('click', '.btnSuaMoi', function () {
         var modal = $(this).parent().parent().parent().parent(".modal").attr("id");
@@ -526,4 +546,36 @@
         });
     });
 
+</script>
+
+<script>
+    //Upload ảnh
+    $(document).ready(function() {
+
+        $('#button').click(function() {
+            var files = $('#fileInput').prop('files')[0];
+            var filename = "new_" +files.name;
+            var fd = new FormData();
+            fd.append( 'file', files );
+            var contentType = files.type;
+            $.get('<%=domain%>/uploadanh?fileName='+filename+'&type='+contentType, function(signedUrl) {
+                // alert(signedUrl);
+                $.ajax({
+                    url: signedUrl,
+                    type: 'PUT',
+                    dataType: 'html',
+                    processData: false,
+                    headers: {'Content-Type': contentType},
+                    crossDomain: true,
+                    data: files
+                }).done(function(data,textStatus,error) {
+                    $(".new_url").html('https://hqk.s3.us-west-1.amazonaws.com/'+filename);
+                    $(".new_url").attr("href",'https://hqk.s3.us-west-1.amazonaws.com/'+filename);
+                    // alert("ok");
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    alert("Error: "+errorThrown);
+                });
+            });
+        });
+    });
 </script>

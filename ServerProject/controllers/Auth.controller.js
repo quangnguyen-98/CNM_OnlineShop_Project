@@ -52,7 +52,7 @@ module.exports = {
                         var payload = {
                             userId: data.Items[0].ID_NguoiDung
                         };
-                        var token = jwt.sign({payload}, SecretKey, {expiresIn: 60 * 7200}); //Hết hạn trong 5 ngày
+                        var token = jwt.sign({payload}, SecretKey, {expiresIn: 60 * 4320}); //Hết hạn trong 3 ngày
                         res.cookie('token', token.toString());
                         idTK = data.Items[0].ID_NguoiDung.toString();
                         tokenTK = token.toString();

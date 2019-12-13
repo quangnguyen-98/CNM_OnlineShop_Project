@@ -3,7 +3,8 @@ var router = express.Router();
 
 //Khai báo conntroller
 var FooterController = require('../controllers/Footer.controller');
-
+var AuthController = require('../controllers/Auth.controller');
+var CaiDatValidate = require('../Validator/CaiDat.validate');
 
 
 //Lấy tất cả liên kết footer  (Web/api/Footers/)
@@ -21,15 +22,15 @@ router.get('/Menu', FooterController.LayFooterMenu);
 
 router.get('/timtheoten/tencuahang', FooterController.LayCuaHangTheoTen);
 
-router.put('/:idfooter/:lienket', FooterController.SuaMenuFooter);
+router.put('/:idfooter', AuthController.KiemTraTokenAdmin, CaiDatValidate.Validate_Footer, FooterController.SuaMenuFooter);
 
 router.get('/laytatcacuahang', FooterController.LayTatCaCuaHang);
 
 router.get('/laycuahangtheotrang', FooterController.LayCuaHangTheoSoTrang);
 
-router.post('/:tencuahang', FooterController.ThemCuaHang);
+router.post('/:tencuahang',AuthController.KiemTraTokenAdmin, CaiDatValidate.Validate_CuaHang, FooterController.ThemCuaHang);
 
-router.delete('/:idcuahang', FooterController.XoaCuaHang);
+router.delete('/:idcuahang',AuthController.KiemTraTokenAdmin, FooterController.XoaCuaHang);
 
 
 

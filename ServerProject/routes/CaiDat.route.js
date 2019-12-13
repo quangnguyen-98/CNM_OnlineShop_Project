@@ -13,19 +13,19 @@ var CaiDatValidate = require('../Validator/CaiDat.validate');
 router.get('/', CaiDatController.LayTatCaCaiDat);
 
 //Sửa số sản phẩm mỗi trang
-router.put('/SoSanPhamMoiTrang', CaiDatController.SuaSoSanPhamMoiTrang);
+router.put('/SoSanPhamMoiTrang', AuthController.KiemTraTokenAdmin, CaiDatValidate.Validate_SoSanPhamMoiTrang,CaiDatController.SuaSoSanPhamMoiTrang);
 
 //Sửa số item mỗi trang quản lý
-router.put('/SoItemMoiTrangQL', CaiDatController.SuaSoItemMoiTrangQL);
+router.put('/SoItemMoiTrangQL', AuthController.KiemTraTokenAdmin, CaiDatValidate.Validate_SoSanPhamMoiTrang, CaiDatController.SuaSoItemMoiTrangQL);
 
 //Sửa thời gian login
-router.put('/ThoiGianLogin', CaiDatController.SuaThoiGianLogin);
+router.put('/ThoiGianLogin', AuthController.KiemTraTokenAdmin, CaiDatValidate.Validate_SoSanPhamMoiTrang, CaiDatController.SuaThoiGianLogin);
 
 //Sửa secretkey
-router.put('/SecrectKey', CaiDatController.SuaSecrectKeyAdmin);
+router.put('/SecrectKey', AuthController.KiemTraTokenAdmin,CaiDatValidate.Validate_SecetKey, CaiDatController.SuaSecrectKeyAdmin);
 
 //Đổi mật khẩu
-router.put('/DoiMK', CaiDatController.DoiMK);
+router.put('/DoiMK', AuthController.KiemTraTokenAdmin, CaiDatValidate.Validate_MatKhau, CaiDatController.DoiMK);
 
 
 

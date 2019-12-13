@@ -3,7 +3,7 @@
         <div id="info-footer"></div>
         <div class="row text-center" style="padding-top: 2rem">
             <div class="col-md-4 ">
-                <img src="https://bb4298.s3-us-west-1.amazonaws.com/logo.png" style="height: 10rem; padding-left:2rem ">
+                <img src="https://hqk.s3.us-west-1.amazonaws.com/Logo/logo.png" style="height: 10rem; padding-left:2rem ">
                 <br><br>
                 <ul id="dataTT" style="list-style-type: none; text-align: center">
                     <li><h5>Thông tin</h5></li>
@@ -30,12 +30,7 @@
                     <br>
                     <ul id="dataCH" style="list-style-type: none; text-align: center">
                         <li><h5>Hệ thống cửa hàng HQKStore</h5></li>
-                        <!--<li><a href="https://www.google.com/maps/search/Nguyen Thien Thuat"
-                               class="footer-item-color">128 fdsfdTrần Quang Khải, Q1</a></li>
-                        <li><a href="https://www.google.com/maps/search/Nguyen Thien Thuat"
-                               class="footer-item-color">128 Trần Quang Khải, Q1</a></li>
-                        <li><a href="https://www.google.com/maps/search/Nguyen Thien Thuat"
-                               class="footer-item-color">128 Trầndsfsdfdsf Quang Khải, Q1</a></li>-->
+                        <!-- Data cửa hàng được load vào đây-->
                     </ul>
                 </div>
             </div>
@@ -58,7 +53,7 @@
             </div>
             <div class="col-sm-2 col-xs-12">
                 <a href="#">
-                    <img src="https://bb4298.s3-us-west-1.amazonaws.com/dathongbao.png" alt=""
+                    <img src="https://hqk.s3.us-west-1.amazonaws.com/bocongthuong.png" alt=""
                          style="width: 100%; max-width:200px; margin-top:10px;">
                 </a>
             </div>
@@ -78,10 +73,8 @@ $("document").ready(function(){
         success: function(data) {
             $.each(data.Items, function(i, item) {
 
-                var html_to_append ='';
-                html_to_append +=
-                    /*'<li><a id="" href="#" class="footer-item-color">cac'+i+'</a></li>';*/
-                    '<li><a id="'+item.ID_LienKet+'" href="'+item.Link+'" class="footer-item-color" target="_blank">'+item.TenLienKet+'</a></li>';
+                var html_to_append =
+                    '<li><a href="'+item.Link+'" class="footer-item-color" target="_blank">'+item.TenLienKet+'</a></li>';
                 $("#dataTT").append(html_to_append);
             });
         }
@@ -100,10 +93,8 @@ $("document").ready(function(){
         success: function(data) {
             $.each(data.Items, function(i, item) {
 
-                var html_to_append ='';
-                html_to_append +=
-                    /*'<li><a id="" href="#" class="footer-item-color">cac'+i+'</a></li>';*/
-                    '<li><a id="'+item.ID_LienKet+'" href="'+item.Link+'" class="footer-item-color" target="_blank">'+item.TenLienKet+'</a></li>';
+                var html_to_append =
+                    '<li><a  href="'+item.Link+'" class="footer-item-color" target="_blank">'+item.TenLienKet+'</a></li>';
                 $("#dataCSKH").append(html_to_append);
             });
         }
@@ -122,10 +113,8 @@ $("document").ready(function(){
         success: function(data) {
             $.each(data.Items, function(i, item) {
 
-                var html_to_append ='';
-                html_to_append +=
-                    /*'<li><a id="" href="#" class="footer-item-color">cac'+i+'</a></li>';*/
-                    '<li><a id="'+item.ID_LienKet+'" href="'+item.Link+'" class="footer-item-color" target="_blank">'+item.TenLienKet+'</a></li>';
+                var html_to_append =
+                    '<li><a href="'+item.Link+'" class="footer-item-color" target="_blank">'+item.TenLienKet+'</a></li>';
                 $("#dataFAQ").append(html_to_append);
             });
         }
@@ -143,11 +132,8 @@ $("document").ready(function(){
         },
         success: function(data) {
             $.each(data.Items, function(i, item) {
-
-                var html_to_append ='';
-                html_to_append +=
-                    /*'<li><a id="" href="#" class="footer-item-color">cac'+i+'</a></li>';*/
-            '<li><a id="'+item.ID_Footer+'" href="https://www.google.com/maps/search/'+item.TenLienKet.Ten+'" class="footer-item-color" target="_blank">'+item.TenLienKet.Ten+'</a></li>';
+                var html_to_append =
+            '<li><a href="https://www.google.com/maps/search/'+item.TenLienKet.Ten+'" class="footer-item-color" target="_blank">'+item.TenLienKet.Ten+'</a></li>';
                 $("#dataCH").append(html_to_append);
             });
         }

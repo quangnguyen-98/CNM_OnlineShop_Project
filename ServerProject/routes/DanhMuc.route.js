@@ -18,10 +18,10 @@ router.get('/:pagenumber',DanhMucController.LayDanhMucTheoSoTrang);
 router.get('/timtheoten/:tendanhmuc',DanhMucController.LayDanhMucTheoTen);
 
 //Tạo danh mục
-router.post('/:tendanhmuc',  DanhMucValidate.KiemTraTrungTen, DanhMucController.ThemDanhMuc);
+router.post('/:tendanhmuc', AuthController.KiemTraTokenAdmin, DanhMucValidate.KiemTraTrungTen, DanhMucController.ThemDanhMuc);
 
 //Sửa danh mục
-router.put('/:iddanhmuc/:tendanhmuc', AuthController.KiemTraTokenAdmin, DanhMucValidate.KiemTraTrungTen, DanhMucController.SuaDanhMuc);
+router.put('/:iddanhmuc/:tendanhmuc', AuthController.KiemTraTokenAdmin, DanhMucValidate.KiemTraTrungTenKhiSua, DanhMucController.SuaDanhMuc);
 
 //Xóa danh mục
 router.delete('/:iddanhmuc', AuthController.KiemTraTokenAdmin, DanhMucController.XoaDanhMuc);

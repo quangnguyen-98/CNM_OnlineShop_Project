@@ -5,26 +5,31 @@ var router = express.Router();
 var HoaDonController = require('../controllers/HoaDon.controller');
 var AuthController = require('../controllers/Auth.controller');
 var HoaDonValidate = require('../Validator/HoaDon.validate');
-
+var ThongKeController = require('../controllers/ThongKe.controller');
 //Route (Web/api/HoaDons/)
 
 //Lấy tất cả hóa đơn
-router.get('/', HoaDonController.LayTatCaHoaDon);
+router.get('/:sorttype', HoaDonController.LayTatCaHoaDon);
 
 //Lấy hóa đơn theo số trang
-router.get('/:pagenumber',HoaDonController.LayHoaDonTheoSoTrang);
+router.get('/:sorttype/:pagenumber',  HoaDonController.LayHoaDonTheoSoTrang);
 
-//Lấy hóa đơn theo tên
-router.get('/timtheoten/:tenhoadon',HoaDonController.LayHoaDonTheoTen);
+//Lấy hóa đơn theo id, tên, sđt
+router.get('/timhoadon/:sorttype/:searchtype/:searchkey', HoaDonController.LayHoaDonTheoSearchKey);
 
 //Tạo hóa đơn
-router.post('/themhoadon', HoaDonController.ThemHoaDon);
+router.post('/themhoadon', HoaDonValidate.ValidateHoaDon, HoaDonController.ThemHoaDon);
 
-//Sửa hóa đơn
-router.put('/:idhoadon/:tenhoadon', AuthController.KiemTraTokenAdmin, HoaDonValidate.KiemTraTrungTen, HoaDonController.SuaHoaDon);
+//Chuyển trạng thái hóa đơn
+router.put('/:idhoadon/:trangthai', AuthController.KiemTraTokenAdmin, HoaDonController.ChuyenTrangThaiHoaDon);
 
-//Xóa hóa đơn
-router.delete('/:idhoadon', AuthController.KiemTraTokenAdmin, HoaDonController.XoaHoaDon);
+//Chuyển trạng thái hóa đơn sang hoàn thành (cập nhật số lượng size)
+router.put('/hoanthanh/:idhoadon/:trangthai', AuthController.KiemTraTokenAdmin, HoaDonController.ChuyenTrangThaiHoaDon_HoanThanh);
+
+//Thống kê
+router.get('/thongke/:thang/:nam/:pagenumber', AuthController.KiemTraTokenAdmin, HoaDonValidate.Validate_Ngay_Nam_ThongKe,  ThongKeController.LayHoaDonTheoSoTrang);
+
+
 
 
 module.exports = router;

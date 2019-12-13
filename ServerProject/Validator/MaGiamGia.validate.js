@@ -4,10 +4,6 @@ const { check} = require('express-validator');
 var _ = require('lodash');
 var CustomFunction = require('../Config/CustomFunction');
 module.exports = {
-    ValidateMGG:[
-        check('username','khong duoc trong').not().isEmpty(),
-        check('password','it nhat 5 chu').isLength({ min: 5,max:10 })
-    ],
     KiemTraTrungTen:function (req,res,next) {
         var tenMGG = CustomFunction.BoDau(req.params.tenmagiamgia.toLowerCase()).toUpperCase().replace(/\s+/g, '')
         var param = {
@@ -47,6 +43,63 @@ module.exports = {
                 }
             }
         });
+    },
+    ValidateMaGiamGia:function (req,res,next) {
+        var tenMGG =  CustomFunction.BoDau(req.params.tenmagiamgia.toLowerCase()).toUpperCase().replace(/\s+/g, '');
+        var tiLeSale = parseInt(req.params.tilesale) ;
+        var soLuong = parseInt(req.params.soluong) ;
+
+        if(tenMGG.length == 0 || tiLeSale.length == 0 || soLuong.length == 0  ){
+            res.json({
+                status: "fail",
+                message: "Vui lòng nhập đầy đủ thông tin mã giảm giá trước khi lưu !"
+            });
+            return;
+        }else if(parseInt(tiLeSale) <0 || parseInt(tiLeSale) >100 || parseInt( soLuong)<0) {
+            res.json({
+                status: "fail",
+                message: "Số lượng không được bé hơn 0, tỉ lệ sale phải nằm trong khoảng [0-100] !"
+            });
+            return;
+        }
+        else if(/^[0-9]*$/.test(soLuong) == false  || /^[0-9]*$/.test(tiLeSale) == false){
+            res.json({
+                status: "fail",
+                message: "Giá hoặc số lượng phải là số !"
+            });
+            return;
+        }
+        else {
+            next();
+        }
+    },
+    ValidateMaGiamGiaKhiSua:function (req,res,next) {
+        var tiLeSale = parseInt(req.params.tilesale) ;
+        var soLuong = parseInt(req.params.soluong) ;
+
+        if( tiLeSale.length == 0 || soLuong.length == 0  ){
+            res.json({
+                status: "fail",
+                message: "Vui lòng nhập đầy đủ thông tin mã giảm giá trước khi lưu !"
+            });
+            return;
+        }else if(parseInt(tiLeSale) <0 || parseInt(tiLeSale) >100 || parseInt( soLuong)<0) {
+            res.json({
+                status: "fail",
+                message: "Số lượng không được bé hơn 0, tỉ lệ sale phải nằm trong khoảng [0-100] !"
+            });
+            return;
+        }
+        else if(/^[0-9]*$/.test(soLuong) == false  || /^[0-9]*$/.test(tiLeSale) == false){
+            res.json({
+                status: "fail",
+                message: "Giá hoặc số lượng phải là số !"
+            });
+            return;
+        }
+        else {
+            next();
+        }
     }
 };
 

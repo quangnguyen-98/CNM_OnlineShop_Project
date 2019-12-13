@@ -185,7 +185,6 @@ module.exports = {
             ReturnValues:"UPDATED_NEW"
         };
 
-
         docClient.update(param,function (err,data) {
             if (err) {
                 console.error(err);
@@ -197,10 +196,45 @@ module.exports = {
             }
             else{
                 console.log("Thành công!");
-                res.json({
-                    status:"ok",
-                    message:"Xóa danh mục thành công !",
-                    idDM:idDM
+                var param1 = {
+                    TableName: "SanPham",
+                    ProjectionExpression:"#yr, TenSanPham, ID_DanhMuc, TrangThaiXoa",
+                    FilterExpression:"TrangThaiXoa =:n and ID_DanhMuc = :m",
+                    ExpressionAttributeNames:{
+                        "#yr":"ID_SanPham",
+                    },
+                    ExpressionAttributeValues:{
+                        ":n":false,
+                        ":m":idDM
+                    }
+                };
+                docClient.scan(param1,function (err,data) {
+                    if (err) {
+                        console.error(err);
+                        res.end();
+                    }
+                    else{
+                        console.log(data);
+                       data.Items.forEach(function (item) {
+                           var param = {
+                               TableName:'SanPham',
+                               Key:{
+                                   "ID_SanPham": item.ID_SanPham
+                               },
+                               UpdateExpression: "set TrangThaiXoa = :n",
+                               ExpressionAttributeValues:{
+                                   ":n": true
+                               },
+                               ReturnValues:"UPDATED_NEW"
+                           };
+                           docClient.update(param,function (err, data) {});
+                       });
+                        res.json({
+                            status:"ok",
+                            message:"Xóa danh mục thành công !",
+                            idDM:idDM
+                        });
+                    }
                 });
             }
         });

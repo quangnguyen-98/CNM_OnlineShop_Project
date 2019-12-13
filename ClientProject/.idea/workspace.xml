@@ -2,14 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a322a82-60d2-4128-8ad3-7586c19b93fc" name="Default Changelist" comment=":))">
-      <change afterPath="$PROJECT_DIR$/views/Admin/QuanLyDonHang.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/SanPham/ThongBaoDatHang.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/ServerDomain.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/ServerDomain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/Admin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/Admin.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/QLSPdemo.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/abc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/bbb.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.bin/btoa" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.bin/btoa.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/btoa/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/btoa/LICENSE.DOCS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/btoa/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/btoa/bin/btoa.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/btoa/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/btoa/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/btoa/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/Admin.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/Admin.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/DangNhap.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/DangNhap.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyBaiViet.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyBaiViet.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyCaiDatCauHinh.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyCaiDatCauHinh.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyCarousel.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyCarousel.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyDanhMuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyDanhMuc.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyFooterCH.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyFooterCH.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyFooterMenu.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyFooterMenu.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyMaGiamGia.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyMaGiamGia.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLySanPham.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLySanPham.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/Admin/QuanLySanPhamChiTiet.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLySanPhamChiTiet.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyThuongHieu.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyThuongHieu.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/ThongKe.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/ThongKe.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/demo.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Layout/layoutKhachHang.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Layout/layoutKhachHang.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/SanPham/ChiTietSanPham.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/SanPham/ChiTietSanPham.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/SanPham/ThanhToan.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/SanPham/ThanhToan.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/ThanhPhanWeb/Danhmuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/ThanhPhanWeb/Danhmuc.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/ThanhPhanWeb/demo.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,17 +69,17 @@
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\public\stylesheets" />
-      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\templates" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\SanPham" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\models" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\controller" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\layout" />
       <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\ThanhPhanWeb" />
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\public\stylesheets" />
+      <recent name="G:\HK7\Công Nghệ Mới\CNM_OnlineShop_Project\ClientProject\views\templates" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -67,8 +94,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.bin\www">
+  <component name="RunManager" selected="JavaScript Debug.abc.html">
     <configuration name="QuanLyBaiViet.ejs" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClientProject/views/Admin/QuanLyBaiViet.ejs" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="abc.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClientProject/bin/abc.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="bbb.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClientProject/bin/bbb.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="dsa.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClientProject/bin/dsa.html" useBuiltInWebServerPort="true">
@@ -77,19 +110,13 @@
     <configuration name="ggg.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClientProject/bin/ggg.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="a.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/bin/a.js" working-dir="$PROJECT_DIR$/bin">
-      <method v="2" />
-    </configuration>
-    <configuration name="abc.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Config/abc.js" working-dir="$PROJECT_DIR$/Config">
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.abc.html" />
+        <item itemvalue="JavaScript Debug.bbb.html" />
         <item itemvalue="JavaScript Debug.ggg.html" />
         <item itemvalue="JavaScript Debug.QuanLyBaiViet.ejs" />
         <item itemvalue="JavaScript Debug.dsa.html" />
-        <item itemvalue="Node.js.a.js" />
-        <item itemvalue="Node.js.abc.js" />
       </list>
     </recent_temporary>
   </component>
@@ -158,6 +185,29 @@
       <workItem from="1574955002704" duration="14729000" />
       <workItem from="1575013446177" duration="9748000" />
       <workItem from="1575024202046" duration="26797000" />
+      <workItem from="1575101926607" duration="4046000" />
+      <workItem from="1575106192336" duration="3059000" />
+      <workItem from="1575112751386" duration="2948000" />
+      <workItem from="1575122468886" duration="623000" />
+      <workItem from="1575196897708" duration="465000" />
+      <workItem from="1575653982969" duration="4273000" />
+      <workItem from="1575699724102" duration="8347000" />
+      <workItem from="1575723804070" duration="10356000" />
+      <workItem from="1575785253711" duration="9001000" />
+      <workItem from="1575813448901" duration="17139000" />
+      <workItem from="1575987516911" duration="638000" />
+      <workItem from="1576064469468" duration="23758000" />
+      <workItem from="1576133010764" duration="3453000" />
+      <workItem from="1576136772186" duration="38000" />
+      <workItem from="1576136948966" duration="3654000" />
+      <workItem from="1576157210173" duration="18837000" />
+      <workItem from="1576216706167" duration="7832000" />
+      <workItem from="1576230668436" duration="1619000" />
+      <workItem from="1576232787517" duration="2576000" />
+      <workItem from="1576237776012" duration="402000" />
+      <workItem from="1576238492338" duration="3286000" />
+      <workItem from="1576241952531" duration="44000" />
+      <workItem from="1576249290817" duration="1460000" />
     </task>
     <servers />
   </component>

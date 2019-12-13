@@ -1,0 +1,52 @@
+<% layout('../Layout/layoutKhachHang.ejs') -%>
+<% script('../public/stylesheets/style') -%>
+
+<%- partial('../ThanhPhanWeb/Carousel.ejs') %>
+
+<div class="container" style="padding-top: 1rem">
+    <div class="row">
+        <div class="col-sm-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="fas fa-store"></i> HQKStore</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Thông báo đặt hàng</li>
+                    <% var dateTime = new Date() %>
+                    <li class="ml-auto"><%= dateTime.getDate() %>/<%= dateTime.getMonth() + 1 %>
+                        /<%= dateTime.getFullYear() %></li>
+                </ol>
+            </nav>
+
+            <div>
+                <div class="col-12 ">
+                    <div class="row">
+                        <div class="text-info h5">
+                            <p>Đơn hàng của bạn đã được ghi nhận.</p>
+                            <p>Mã đơn hàng của bạn là <a href="#" class="font-weight-bold"><%=idHD%></a> , xin giữ lại mã này.</p>
+                            <p>Bộ phận chăm sóc khách hàng sẽ liên hệ bạn trong 24h để xác nhận đơn hàng.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <img style="width: 68rem" src="https://hqk.s3-us-west-1.amazonaws.com/thanks.jpg">
+                    </div>
+                </div>
+
+
+                <!-- Bài viết sẽ được load vào đây :)) -->
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script>
+
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("img").attr("class", "img-fluid");
+    });
+
+
+</script>

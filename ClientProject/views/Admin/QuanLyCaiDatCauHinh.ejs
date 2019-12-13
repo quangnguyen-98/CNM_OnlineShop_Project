@@ -12,16 +12,15 @@
     <br><br>
 
     <div class="container">
+        <img src="<%=urlLoading%>" class="loadingDiv" alt="loadingIcon">
         <!-- Số sản phẩm/trang -->
         <form>
             <div class="form-group form-inline">
                 <label for="email" class="col-sm-3">Số sản phẩm/trang:</label>
-                <input class="form-control col-sm-6 value" value="<%= soSanPhamPMoiPage %>" disabled>
+                <input class="form-control col-sm-6 value" value="<%= soSanPhamPMoiPage %>" >
+
                 <div class="col-sm-1">
-                    <div class="btn btn-warning btnSua ">Sửa</div>
-                </div>
-                <div class="col-sm-1">
-                    <button id="SoSanPhamMoiTrang" class="btn btn-success btnXacNhan" disabled>Xác nhận</button>
+                    <div id="SoSanPhamMoiTrang" class="btn btn-success btnXacNhan" >Xác nhận</div>
                 </div>
             </div>
         </form>
@@ -30,12 +29,10 @@
         <form>
             <div class="form-group form-inline">
                 <label for="email" class="col-sm-3">Số item/trang Admin:</label>
-                <input class="form-control col-sm-6 value" value="<%= soItemMoiPageQL %>" disabled>
+                <input class="form-control col-sm-6 value" value="<%= soItemMoiPageQL %>" >
+
                 <div class="col-sm-1">
-                    <div class="btn btn-warning btnSua ">Sửa</div>
-                </div>
-                <div class="col-sm-1">
-                    <button id="SoItemMoiTrangQL" class="btn btn-success btnXacNhan" disabled>Xác nhận</button>
+                    <div id="SoItemMoiTrangQL" class="btn btn-success btnXacNhan" >Xác nhận</div>
                 </div>
             </div>
         </form>
@@ -44,12 +41,10 @@
         <form>
             <div class="form-group form-inline">
                 <label for="email" class="col-sm-3">Thời gian login:</label>
-                <input class="form-control col-sm-6 value" value="<%= thoiGianLogin %>" disabled>
+                <input class="form-control col-sm-6 value" value="<%= thoiGianLogin %>" >
+
                 <div class="col-sm-1">
-                    <div class="btn btn-warning btnSua ">Sửa</div>
-                </div>
-                <div class="col-sm-1">
-                    <button id="ThoiGianLogin" class="btn btn-success btnXacNhan" disabled>Xác nhận</button>
+                    <div id="ThoiGianLogin" class="btn btn-success btnXacNhan" >Xác nhận</div>
                 </div>
             </div>
         </form>
@@ -58,12 +53,10 @@
         <form>
             <div class="form-group form-inline">
                 <label for="email" class="col-sm-3">Secret key:</label>
-                <input class="form-control col-sm-6 value" value="<%= secretKeyAdmin %>" disabled>
+                <input class="form-control col-sm-6 value" value="<%= secretKeyAdmin %>" >
+
                 <div class="col-sm-1">
-                    <div class="btn btn-warning btnSua ">Sửa</div>
-                </div>
-                <div class="col-sm-1">
-                    <button id="SecrectKey" class="btn btn-success btnXacNhan" disabled>Xác nhận</button>
+                    <div id="SecrectKey" class="btn btn-success btnXacNhan">Xác nhận</div>
                 </div>
             </div>
         </form>
@@ -73,6 +66,7 @@
 
 
 <script>
+    var tranThai;
     $('body').on('click', '.btnSua', function () {
         $(".value").prop("disabled", true);
         $(".btnXacNhan").prop("disabled", true);
@@ -80,23 +74,30 @@
         $(this).parent().parent().find(".btnXacNhan").prop("disabled", false);
     });
     $('body').on('click', '.btnXacNhan', function () {
+        tranThai =$(this).attr("id");
         var url = "<%= domain %>/CaiDats/" +$(this).attr("id")+"?thamso="+ $(this).parent().parent().find(".value").val() + "&token=" + $.cookie("token");
         $.ajax({
             url: url,
             method: "PUT",
             error: function (err) {
-                toastr["error"]("Trong link có kí tự không hợp lệ, vui lòng thử lại "+JSON.stringify(err)+"!");
+                toastr["error"]("Thông tin không được trống !");
             },
             success: function (data) {
                 if (data.status == "ok") {
                     toastr["success"](data.message);
+                     // $(".btnXacNhan").prop("disabled", true);
+                     // $(".value").prop("disabled", true);
+
+                    if(tranThai == "SecrectKey"){
+                        window.location.replace("/Admin/QuanLyCaiDatCauHinh");
+                    }
+
                 } else {
                     toastr["error"](data.message);
                 }
             }
         });
-        $(".btnXacNhan").prop("disabled", true);
-        $(".value").prop("disabled", true);
+
     });
 
 </script>

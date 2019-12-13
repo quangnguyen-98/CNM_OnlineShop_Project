@@ -126,7 +126,7 @@ module.exports = {
                 console.error(err);
                 return res.json({
                     status:"fail",
-                    message:"Lỗi hệ thống"
+                    message:"Lỗi hệ thống !"
                 });
 
             }
@@ -134,7 +134,7 @@ module.exports = {
                 console.log("Thành công!");
                 return res.json({
                     status:"ok",
-                    message:"Tạo danh mục thành công !",
+                    message:"Tạo carousel thành công !",
                     idCRS:idCRS,
                     tenCRS:tenCRS,
                     linkAnhCRS:linkAnhCRS,
@@ -171,7 +171,7 @@ module.exports = {
                 console.error(err);
                 res.json({
                     status:"fail",
-                    message:"Sửa danh mục thất bại !",
+                    message:"Sửa carousel thất bại !",
                     idCRS:idCRS
                 });
             }
@@ -179,7 +179,7 @@ module.exports = {
                 console.log("Thành công!");
                 res.json({
                     status:"ok",
-                    message:"Sửa danh mục thành công !",
+                    message:"Sửa carousel thành công !",
                     idCRS:idCRS,
                     linkAnhCRS:linkAnhCRS,
                     linkBaiVietCRS:linkBaiVietCRS
@@ -207,7 +207,7 @@ module.exports = {
                 console.error(err);
                 res.json({
                     status:"fail",
-                    message:"Xóa danh mục thất bại !",
+                    message:"Xóa carousel thất bại !",
                     idCRS:idCRS
                 });
             }
@@ -215,7 +215,7 @@ module.exports = {
                 console.log("Thành công!");
                 res.json({
                     status:"ok",
-                    message:"Xóa danh mục thành công !",
+                    message:"Xóa carousel thành công !",
                     idCRS:idCRS
                 });
             }

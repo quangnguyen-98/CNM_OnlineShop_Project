@@ -299,7 +299,6 @@ module.exports = {
     },
     SuaMenuFooter: function (req, res, next) {
         var idFT = req.params.idfooter;
-        var link = atob(req.params.lienket.replace(/_/g, '/').replace(/-/g, '+')) ;
         var link1 = req.body.lienket ;
         var param = {
             TableName:'Footer',

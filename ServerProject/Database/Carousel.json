@@ -6,7 +6,7 @@
       "TenKhongVietHoa": "vans",
       "TrangThaiXoa": false
     },
-    "LinkAnh": "https://bb4298.s3-us-west-1.amazonaws.com/Carousel/crs_1.jpg",
+    "LinkAnh": "https://hqk.s3.us-west-1.amazonaws.com/Carousel/crs_1.jpg",
     "LinkBaiViet": "http://",
     "TrangThaiXoa": false
   },
@@ -16,7 +16,7 @@
       "Ten": "Palladium",
       "TenKhongVietHoa": "palladium"
     },
-    "LinkAnh": "https://bb4298.s3-us-west-1.amazonaws.com/Carousel/crs_2.jpg",
+    "LinkAnh": "https://hqk.s3.us-west-1.amazonaws.com/Carousel/crs_2.jpg",
     "LinkBaiViet": "http://",
     "TrangThaiXoa": false
   },
@@ -26,7 +26,7 @@
       "Ten": "Vans3",
       "TenKhongVietHoa": "vans3"
     },
-    "LinkAnh": "https://bb4298.s3-us-west-1.amazonaws.com/Carousel/crs_3.jpg",
+    "LinkAnh": "https://hqk.s3.us-west-1.amazonaws.com/Carousel/crs_3.jpg",
     "LinkBaiViet": "http://",
     "TrangThaiXoa": false
   },
@@ -36,7 +36,7 @@
       "Ten": "Vans2",
       "TenKhongVietHoa": "vans2"
     },
-    "LinkAnh": "https://bb4298.s3-us-west-1.amazonaws.com/Carousel/crs_4.jpg",
+    "LinkAnh": "https://hqk.s3.us-west-1.amazonaws.com/Carousel/crs_4.jpg",
     "LinkBaiViet": "http://",
     "TrangThaiXoa": false
   }

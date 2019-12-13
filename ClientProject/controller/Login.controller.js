@@ -27,4 +27,27 @@ module.exports = {
             });
 
     },
+    Auth:function (req, res,next) {
+        var token = req.cookies.token;
+        // res.send(a);
+        api_helper.API_Call_Get(domain+'/auth/token?token='+token)
+            .then(response => {
+                if(response.status == "ok"){
+                    // res.cookie('token', response.token.toString());
+                    // res.cookie('userId',response.userId);
+                    // /*res.render('./Admin/QuanLySanPham.ejs', {domain: domain, title: 'Đăng nhập Admin'});*/
+                    res.redirect('/Admin/QuanLySanPham');
+                }
+                else {
+                    // res.render('./Admin/DangNhap.ejs', {domain: domain, title: 'Đăng nhập Admin', err:"", values:""});
+                    res.render('./Admin/DangNhap.ejs', {domain: domain, title: 'Đăng nhập Admin'});
+
+                }
+
+            })
+            .catch(error => {
+                // var err="Mật khẩu có chứa kí tự đặc biệt, vui lòng nhập lại mật khẩu !";
+                res.render('./Admin/DangNhap.ejs', {domain: domain, title: 'Đăng nhập Admin'});
+            });
+    }
 };

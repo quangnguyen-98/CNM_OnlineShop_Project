@@ -1,0 +1,513 @@
+<% layout('../Layout/layoutAdmin.ejs') -%>
+<div class="container">
+    <div class="row-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin"><i class="fas fa-store"></i> HQKStore Admin</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Đơn hàng đang chờ xử lý</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row-fluid">
+        <div>
+            <button id="btnID" type="button" class="btnTuyChon col-12 col-lg-2 btn btn-success d-inline ">Tìm theo ID
+            </button>
+            <button id="btnTEN" type="button" class="btnTuyChon col-12 col-lg-2 btn btn-primary d-inline ">Tìm theo
+                Tên KH
+            </button>
+            <button id="btnSDT" type="button" class="btnTuyChon col-12 col-lg-2 btn btn-primary d-inline ">Tìm theo
+                SĐT
+            </button>
+            <form class="form-inline ml-auto d-inline float-right ">
+                <input id="inputTK" class="form-control " type="search" placeholder="Nhập nội dung tìm kiếm"
+                       aria-label="Search">
+                <div id="btnTimKiem" class="btn btn-outline-success ">Tìm kiếm</div>
+            </form>
+        </div>
+    </div>
+
+    <br><br>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <img src="<%=urlLoading%>" class="loadingDiv"
+                 alt="loadingIcon">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Tên khách hàng</th>
+                <th scope="col">Số điện thoại</th>
+                <th scope="col">Tổng số tiền</th>
+                <th scope="col">Ngày tạo đơn</th>
+                <th scope="col">Thao tác</th>
+            </tr>
+            </thead>
+            <tbody id="tableHD">
+
+
+            <!--Đơn hàng được load vào đây-->
+
+            </tbody>
+        </table>
+    </div>
+
+    <div id="info"></div>
+    <!--Pagination-->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination menu-phantrang">
+            <li id="pagiTruoc" class="page-item "><a class="page-link" href="#">Trước</a></li>
+
+            <% for (i = 1;i <= soTrang;i++){ %>
+                <% if(i == 1){ %>
+                    <li id="<%= "subpagi" + i %>" class="d-inline page-item active pagesubitem"><a class="page-link"
+                                                                                                   href="#"> <%= i %></a>
+                    </li>
+                <% }else{ %>
+                    <li id="<%= "subpagi" + i %>" class="d-inline page-item pagesubitem"><a class="page-link "
+                                                                                            href="#"> <%= i %></a></li>
+                <% } %>
+            <% } %>
+
+            <li id="pagiSau" class="page-item"><a class="page-link" href="#">Sau</a></li>
+        </ul>
+    </nav>
+</div>
+
+
+<!-- Danh sách Modal Sửa đơn hàng-->
+<div id="DanhSachModalSua">
+    <% dataHD.forEach(function (item) { %>
+
+        <div class="modal fade" id="modalSua<%= item.ID_HoaDon %>">
+            <div class="modal-dialog modal-lg modal-lg modal-sm">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title"><i class="fas fa-store"></i> Chi tiết đơn hàng</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="row was-validated">
+                            <div class="col-sm-4">
+
+                                <div class="form-group">
+                                    <label for="tbIDSanPham">ID Hóa đơn</label>
+                                    <input type="text" class="form-control"
+                                       value="<%= item.ID_HoaDon %>" disabled>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tbNoiSanXuat">Ngày đặt</label>
+                                    <input type="text" class="form-control"
+                                           value="<%= item.NgayTao.Ngay %>/<%= item.NgayTao.Thang %>/<%= item.NgayTao.Nam %>"
+                                           disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tbCDBH">Mã giảm giá</label>
+                                    <input type="text" class="form-control"
+                                        <%if(item.MaGiamGia != null){%>
+                                         <%="value="+item.MaGiamGia%>
+                                        <%}%> disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tbPKDK">Tỉ lệ sale MGG</label>
+                                    <input type="text" class="form-control"
+                                       <%if(item.TiLeSale != null){%>
+                                            <%="value="+item.TiLeSale%>
+                                       <%}%> disabled>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label for="tbTenSanPham">Tên khách hàng</label>
+                                    <input type="text" class="form-control"
+                                           value="<%= item.ThongTinKhachHang.Ten %>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tbGia">Số điện thoại</label>
+                                    <input type="text" class="form-control"
+                                            value="<%= item.ThongTinKhachHang.SoDienThoai %>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tbTiLeSale">Địa chỉ </label>
+                                    <input type="text" class="form-control"
+                                          value="<%= item.ThongTinKhachHang.DiaChi %>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tbTiLeSale">Ghi chú</label>
+                                    <input type="text" class="form-control"
+                                       value="<%= item.ThongTinKhachHang.GhiChu %>" disabled>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Ảnh</th>
+                                    <th scope="col">Tên sản phẩm</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Đơn giá</th>
+                                    <th scope="col">Thành tiền</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tableSP">
+                                <!-- Sản phẩm trong giỏ hàng được load vào đây-->
+                                <% item.ChiTietHoaDon.forEach(function (itemsub) { %>
+                                    <tr>
+                                        <td><img src="<%= itemsub.Anh %>" style="height: 3rem;width: 3rem"></td>
+                                        <td><%= itemsub.TenSanPham %></td>
+                                        <td><%= itemsub.TenSize %></td>
+                                        <td><%= itemsub.SoLuong %></td>
+                                        <td class="itemPrice"><%= itemsub.Gia %></td>
+                                        <td class="itemPrice"><%= itemsub.TongGia %></td>
+                                    </tr>
+
+                                <% }); %>
+                                <tr id="trtongGia">
+                                    <td colspan="4"></td>
+                                    <td colspan="1">Tổng Giá:</td>
+                                    <td colspan="1"><span id="TGHT"
+                                                          class="text-primary itemPrice font-weight-bold h6 d-inline"><%= item.TongSoTien %></span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <label id="<%= item.ID_HoaDon %>" class="btn btn-success btnShipMoi">Xác nhận ship</label>
+                        <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</div>
+</div>
+
+<!-- Danh sách Modal Hủy đơn hàng-->
+<div id="DanhSachModalXoa">
+    <% dataHD.forEach(function (item) { %>
+        <div class="modal fade" id="modalXoa<%= item.ID_HoaDon %>">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title"><i class="fas fa-store"></i> Xóa đơn hàng</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        Bạn có thực sự muốn hủy đơn hàng này, thao tác này không thể hoàn tác ?
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <label id="<%= item.ID_HoaDon %>" class="btn btn-success btnXoaMoi">Xác nhận</label>
+                        <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</div>
+
+<!-- Danh sách Modal chuyển trạng thái đơn hàng sang ship-->
+<div id="DanhSachModalShip">
+    <% dataHD.forEach(function (item) { %>
+        <div class="modal fade" id="modalShip<%= item.ID_HoaDon %>">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title"><i class="fas fa-store"></i> Xóa đơn hàng</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        Nhấn xác nhận để chuyển đơn hàng sang trạng thái ship !
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <label id="<%= item.ID_HoaDon %>" class="btn btn-success btnShipMoi">Xác nhận</label>
+                        <label class="btn btn-secondary" data-dismiss="modal">Hủy</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</div>
+<script>
+
+    //Load danh sách đơn hàng
+    LoadHoaDon();
+
+    function LoadHoaDon() {
+        $.ajax({
+            url: "<%= domain %>/HoaDons/cho/1?token=" + $.cookie("token"),
+            method: "GET",
+            error: function () {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function (data) {
+                $.each(data.HoaDon, function (i, item) {
+                    var html_to_append =
+                        '<tr id="HDitem' + item.ID_HoaDon + '">' +
+                        '<th scope="row">' + item.ID_HoaDon + '</th>' +
+                        '<td>' + item.ThongTinKhachHang.Ten + '</td>' +
+                        '<td> ' + item.ThongTinKhachHang.SoDienThoai + ' </td>' +
+                        '<td class="itemPrice"> ' + item.TongSoTien + ' </td>' +
+                        '<td class="trangthai">' + item.NgayTao.Ngay + '/' + item.NgayTao.Thang + '/' + item.NgayTao.Nam + '</td>' +
+                        '<td><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_HoaDon + '"> Chi tiết </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_HoaDon + '"> Hủy đơn</div></td>' +
+                        '</tr>';
+                    $("#tableHD").append(html_to_append);
+                    FormartGia();
+
+                });
+            },
+        });
+    }
+
+
+    //Sự kiện chuyển trạng thái đơn hàng sang ship
+    $('body').on('click', '.btnShipMoi', function () {
+        var modal = $(this).parent().parent().parent().parent(".modal").attr("id");
+        $.ajax({
+            url: "<%= domain %>/HoaDons/" + $(this).attr("id") + "/ship?token=" + $.cookie("token"),
+            method: "PUT",
+            error: function () {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function (data) {
+                if (data.status == "ok") {
+                    $("#" + modal).modal('toggle');
+                    $("#tableHD").fadeOut();
+                    $("#tableHD").empty();
+                    LoadHoaDon();
+                    $("#tableHD").fadeIn();
+                    TaiLaiPagination();
+                    toastr["success"](data.message);
+                    TongItem--;
+                    page = 1;
+                    TaiLaiPagination();
+
+
+                } else {
+                    toastr["error"](data.message);
+                }
+            }
+        });
+        /* SoTrang --;*/
+        return false;
+    });
+    var searchType = "ID";
+
+    $('body').on('click', '#btnID', function () {
+        searchType = "ID";
+
+        $(".btnTuyChon").removeClass("btn-success");
+        $(".btnTuyChon").addClass("btn-primary");
+        $(this).addClass("btn-success");
+
+    });
+
+    $('body').on('click', '#btnTEN', function () {
+        searchType = "TEN";
+
+        $(".btnTuyChon").removeClass("btn-success");
+        $(".btnTuyChon").addClass("btn-primary");
+        $(this).addClass("btn-success");
+    });
+
+    $('body').on('click', '#btnSDT', function () {
+        searchType = "SDT";
+
+        $(".btnTuyChon").removeClass("btn-success");
+        $(".btnTuyChon").addClass("btn-primary");
+        $(this).addClass("btn-success");
+    });
+</script>
+<script>
+    //Khai báo biến
+    var TongItem = "<%= tongItem %>";
+    var SoItemMoiPage = "<%= itemMoiPage %>";
+    var page = 1;
+    var SoTrang = "<%= soTrang %>";
+
+    //Sự kiện trang trước
+    $('body').on('click', '#pagiTruoc', function () {
+        if (page == 1) {
+            $("#pagiTruoc").addClass("disabled");
+            return false;
+        } else {
+            $(".page-item").removeClass("active");
+            $("#subpagi" + (page - 1)).addClass("active");
+            $.ajax({
+                url: "<%= domain %>/HoaDons/cho/" + (page - 1) + "?token=" + $.cookie("token"),
+                method: "GET",
+                error: function () {
+                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                },
+                success: function (data) {
+                    $("#tableHD").empty();
+                    $.each(data.HoaDon, function (i, item) {
+                        var html_to_append =
+                            '<tr id="HDitem' + item.ID_HoaDon + '">' +
+                            '<th scope="row">' + item.ID_HoaDon + '</th>' +
+                            '<td>' + item.ThongTinKhachHang.Ten + '</td>' +
+                            '<td> ' + item.ThongTinKhachHang.SoDienThoai + ' </td>' +
+                            '<td class="itemPrice"> ' + item.TongSoTien + ' </td>' +
+                            '<td>' + item.NgayTao.Ngay + '/' + item.NgayTao.Thang + '/' + item.NgayTao.Nam + '</td>' +
+                            '<td><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_HoaDon + '"> Chi tiết </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_HoaDon + '"> Hủy đơn</div> </td>' +
+                            '</tr>';
+                        $("#tableHD").append(html_to_append);
+                        FormartGia();
+                    });
+                }
+            });
+            page = page - 1;
+            $("#pagiSau").removeClass("disabled");
+            if (page == 1) {
+                $("#pagiTruoc").addClass("disabled");
+            }
+            return false;
+        }
+    });
+    //Sự kiện trang sau
+    $('body').on('click', '#pagiSau', function () {
+        if (page == SoTrang) {
+            $("#pagiSau").addClass("disabled");
+            return false;
+        } else {
+            $(".page-item").removeClass("active");
+            $("#subpagi" + (page + 1)).addClass("active");
+            $("#pagiTruoc").removeClass("disabled");
+            $.ajax({
+                url: "<%= domain %>/HoaDons/cho/" + (page + 1) + "?token=" + $.cookie("token"),
+                method: "GET",
+                error: function () {
+                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                },
+                success: function (data) {
+                    $("#tableHD").empty();
+                    $.each(data.HoaDon, function (i, item) {
+                        var html_to_append =
+                            '<tr id="HDitem' + item.ID_HoaDon + '">' +
+                            '<th scope="row">' + item.ID_HoaDon + '</th>' +
+                            '<td>' + item.ThongTinKhachHang.Ten + '</td>' +
+                            '<td> ' + item.ThongTinKhachHang.SoDienThoai + ' </td>' +
+                            '<td class="itemPrice"> ' + item.TongSoTien + ' </td>' +
+                            '<td>' + item.NgayTao.Ngay + '/' + item.NgayTao.Thang + '/' + item.NgayTao.Nam + '</td>' +
+                            '<td><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_HoaDon + '"> Chi tiết </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_HoaDon + '"> Hủy đơn</div></td>' +
+                            '</tr>';
+                        $("#tableHD").append(html_to_append);
+                        FormartGia();
+                    });
+                }
+            });
+            page = page + 1;
+            return false;
+        }
+    });
+
+    ClickVaoCacTrang();
+
+    function ClickVaoCacTrang() {
+        <% for (i = 1;i <= soTrangLocal;i++){ %>
+        $("<%= "#subpagi" + i %>").click(function () {
+            $(".page-item").removeClass("active");
+            $("#pagiSau").removeClass("disabled");
+            $("<%= "#subpagi" + i %>").addClass("active");
+            $.ajax({
+                url: "<%= domain %>/HoaDons/cho/" + <%= i %> +"?token=" + $.cookie("token"),
+                method: "GET",
+                error: function () {
+                    $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                },
+                success: function (data) {
+                    $("#tableHD").empty();
+                    $.each(data.HoaDon, function (i, item) {
+                        var html_to_append =
+                            '<tr id="HDitem' + item.ID_HoaDon + '">' +
+                            '<th scope="row">' + item.ID_HoaDon + '</th>' +
+                            '<td>' + item.ThongTinKhachHang.Ten + '</td>' +
+                            '<td> ' + item.ThongTinKhachHang.SoDienThoai + ' </td>' +
+                            '<td class="itemPrice"> ' + item.TongSoTien + ' </td>' +
+                            '<td>' + item.NgayTao.Ngay + '/' + item.NgayTao.Thang + '/' + item.NgayTao.Nam + '</td>' +
+                            '<td><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_HoaDon + '"> Chi tiết </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_HoaDon + '"> Hủy đơn</div></td>' +
+                            '</tr>';
+                        $("#tableHD").append(html_to_append);
+                        FormartGia();
+                    });
+                }
+            });
+            <%= "page=" + i %>;
+            if (page != 1) {
+                $("#pagiTruoc").removeClass("disabled");
+            }
+            return false;
+        });
+        <% } %>
+    }
+
+    function TaiLaiPagination() {
+        var SoTrangPagi = Math.ceil(TongItem / SoItemMoiPage);
+        SoTrang = SoTrangPagi;
+        $(".menu-phantrang").empty();
+        $(".menu-phantrang").append(' <li id="pagiTruoc" class="page-item "><a class="page-link" href="#">Trước</a></li>');
+        for (i = 1; i <= SoTrangPagi; i++) {
+            var html_pagi =
+                '  <li id="subpagi' + i + '" class="d-inline page-item pagesubitem active"><a class="page-link" href="#">' + i + '</a>';
+            $(".menu-phantrang").append(html_pagi);
+        }
+        $(".menu-phantrang").append(' <li id="pagiSau" class="page-item "><a class="page-link" href="#">Sau</a></li>');
+        $(".pagesubitem").removeClass("active");
+        $(".pagesubitem:first").addClass("active");
+        ClickVaoCacTrang();
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#btnTimKiem").click(function () {
+            if ($("#inputTK").val().length == 0) {
+                toastr["error"]("Vui lòng nhập nội dung cần tìm!");
+            } else {
+                $.ajax({
+                    url: "<%= domain %>/HoaDons/timhoadon/cho/" + searchType + "/" + $("#inputTK").val() + "?token=" + $.cookie("token"),
+                    method: "GET",
+                    error: function () {
+                        $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                    },
+                    success: function (data) {
+                        if (data.Count == 0) {
+                            toastr["error"]("Không có kết quả trùng khớp !");
+                        } else {
+                            $("#tableHD").empty();
+                            $.each(data.Items, function (i, item) {
+                                var html_to_append =
+                                    '<tr id="HDitem' + item.ID_HoaDon + '">' +
+                                    '<th scope="row">' + item.ID_HoaDon + '</th>' +
+                                    '<td>' + item.ThongTinKhachHang.Ten + '</td>' +
+                                    '<td> ' + item.ThongTinKhachHang.SoDienThoai + ' </td>' +
+                                    '<td class="itemPrice"> ' + item.TongSoTien + ' </td>' +
+                                    '<td>' + item.NgayTao.Ngay + '/' + item.NgayTao.Thang + '/' + item.NgayTao.Nam + '</td>' +
+                                    '<td><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_HoaDon + '"> Chi tiết </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_HoaDon + '"> Hủy đơn</div></td>' +
+                                    '</tr>';
+                                $("#tableHD").append(html_to_append);
+                                FormartGia();
+                            });
+                        }
+                    }
+                });
+                return false;
+            }
+
+        });
+    });
+
+</script>

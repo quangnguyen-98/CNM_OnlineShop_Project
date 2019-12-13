@@ -4,10 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
-
 var domain = require('./Config/ServerDomain');
-global.atob = require("atob");
-global.btoa = require("btoa");
 var IndexRouter = require('./routes/Index.route');
 var LoginRouter = require('./routes/Login.route');
 var AdminRouter = require('./routes/Admin.route');
@@ -74,6 +71,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.locals.soTrangLocal = 200;
+app.locals.soTrangLocal = 100;
 module.exports = app;
 

@@ -4,145 +4,153 @@ const CustomFunction = require('../Config/CustomFunction');
 const ids = require('short-id');
 module.exports = {
     LayTatCaMaGiamGia: function (req, res, next) {
-        var n = parseInt(req.params.pagenumber) ;
+        var n = parseInt(req.params.pagenumber);
         var param = {
             TableName: "MaGiamGia",
-            ProjectionExpression:"#yr, TenMaGiamGia, TiLeSale, SoLuong, TrangThaiXoa",
-            FilterExpression:"TrangThaiXoa =:n",
-            ExpressionAttributeNames:{
-                "#yr":"ID_MaGiamGia",
+            ProjectionExpression: "#yr, TenMaGiamGia, TiLeSale, SoLuong, TrangThaiXoa",
+            FilterExpression: "TrangThaiXoa =:n",
+            ExpressionAttributeNames: {
+                "#yr": "ID_MaGiamGia",
             },
-            ExpressionAttributeValues:{
-                ":n":false
+            ExpressionAttributeValues: {
+                ":n": false
             }
         };
-        docClient.scan(param,function (err,data) {
+        docClient.scan(param, function (err, data) {
             if (err) {
                 console.error(err);
                 res.end();
-            }
-            else{
+            } else {
                 console.log("Thành công!");
                 var soTrang;
-                var count = data.Count/global.SoItemMoiPageQL;
+                var count = data.Count / global.SoItemMoiPageQL;
                 res.json(
                     {
                         MaGiamGia: data.Items,
                         SoTrang: Math.ceil(count),
                         TongItem: data.Count,
-                        ItemMoiPage:global.SoItemMoiPageQL
+                        ItemMoiPage: global.SoItemMoiPageQL
                     }
                 );
             }
         });
     },
-    LayMaGiamGiaTheoSoTrang:function(req,res,next){
-        var soItemMoiPageQL = parseInt(global.SoItemMoiPageQL) ;
-        var n = parseInt(req.params.pagenumber) ;
-        var begin =(n-1)* soItemMoiPageQL;
-        var end = (n-1)*soItemMoiPageQL +soItemMoiPageQL;
+    LayMaGiamGiaTheoSoTrang: function (req, res, next) {
+        var soItemMoiPageQL = parseInt(global.SoItemMoiPageQL);
+        var n = parseInt(req.params.pagenumber);
+        var begin = (n - 1) * soItemMoiPageQL;
+        var end = (n - 1) * soItemMoiPageQL + soItemMoiPageQL;
         var param = {
             TableName: "MaGiamGia",
-            ProjectionExpression:"#yr, TenMaGiamGia, TiLeSale, SoLuong, TrangThaiXoa",
-            FilterExpression:"TrangThaiXoa =:n",
-            ExpressionAttributeNames:{
-                "#yr":"ID_MaGiamGia",
+            ProjectionExpression: "#yr, TenMaGiamGia, TiLeSale, SoLuong, TrangThaiXoa",
+            FilterExpression: "TrangThaiXoa =:n",
+            ExpressionAttributeNames: {
+                "#yr": "ID_MaGiamGia",
             },
-            ExpressionAttributeValues:{
-                ":n":false
+            ExpressionAttributeValues: {
+                ":n": false
             }
         };
-        docClient.scan(param,function (err,data) {
+        docClient.scan(param, function (err, data) {
             if (err) {
                 console.error(err);
                 res.end();
-            }
-            else{
+            } else {
                 console.log("Thành công!");
                 var soTrang;
-                var count = data.Count/soItemMoiPageQL;
+                var count = data.Count / soItemMoiPageQL;
                 res.json(
                     {
-                        MaGiamGia: data.Items.slice(begin,end),
+                        MaGiamGia: data.Items.slice(begin, end),
                         SoTrang: Math.ceil(count),
                         TongItem: data.Count,
-                        ItemMoiPage:soItemMoiPageQL
+                        ItemMoiPage: soItemMoiPageQL
                     }
                 );
             }
         });
     },
-    LayMaGiamGiaTheoTen:function(req,res,next){
+    LayMaGiamGiaTheoTen: function (req, res, next) {
         var tenMaGiamGia = CustomFunction.BoDau(req.params.tenmagiamgia.toString().toUpperCase());
         var param = {
             TableName: "MaGiamGia",
-            ProjectionExpression:"#yr, TenMaGiamGia, TiLeSale, SoLuong, TrangThaiXoa",
-            FilterExpression:"TrangThaiXoa =:n and contains(TenMaGiamGia, :m)",
-            ExpressionAttributeNames:{
-                "#yr":"ID_MaGiamGia",
+            ProjectionExpression: "#yr, TenMaGiamGia, TiLeSale, SoLuong, TrangThaiXoa",
+            FilterExpression: "TrangThaiXoa =:n and contains(TenMaGiamGia, :m)",
+            ExpressionAttributeNames: {
+                "#yr": "ID_MaGiamGia",
             },
-            ExpressionAttributeValues:{
-                ":n":false,
-                ":m":tenMaGiamGia
+            ExpressionAttributeValues: {
+                ":n": false,
+                ":m": tenMaGiamGia
             }
         };
-        docClient.scan(param,function (err,data) {
+        docClient.scan(param, function (err, data) {
             if (err) {
                 console.error(err);
                 res.end();
-            }
-            else{
+            } else {
                 console.log("Thành công!");
                 res.json(data);
             }
         });
 
     },
-    KiemTraTonTaiMGG:function(req,res,next){
+    KiemTraTonTaiMGG: function (req, res, next) {
         var tenMaGiamGia = req.body.tenmagiamgia;
         var param = {
             TableName: "MaGiamGia",
-            ProjectionExpression:"#yr, TenMaGiamGia, TiLeSale",
-            FilterExpression:"TrangThaiXoa =:n and TenMaGiamGia = :m",
-            ExpressionAttributeNames:{
-                "#yr":"ID_MaGiamGia",
+            ProjectionExpression: "#yr, TenMaGiamGia,SoLuong, TiLeSale",
+            FilterExpression: "TrangThaiXoa =:n and TenMaGiamGia = :m",
+            ExpressionAttributeNames: {
+                "#yr": "ID_MaGiamGia",
             },
-            ExpressionAttributeValues:{
-                ":n":false,
-                ":m":tenMaGiamGia
+            ExpressionAttributeValues: {
+                ":n": false,
+                ":m": tenMaGiamGia
             }
         };
-        docClient.scan(param,function (err,data) {
+        docClient.scan(param, function (err, data) {
             if (err) {
                 console.error(err);
                 return res.json({
-                    status:"fail",
-                    message:"Lỗi hệ thống !",
+                    status: "fail",
+                    message: "Lỗi hệ thống !",
 
                 });
-            }
-            else{
-             if(data.Count == 1){
-                 return res.json({
-                     status:"ok",
-                     message:"Áp dụng mã giảm giá thành công !",
-                     tilesale:data.Items[0].TiLeSale
-                 });
-             }else {
-                 return res.json({
-                     status:"fail",
-                     message:"Mã giảm giá không tồn tại trong hệ thống !",
+            } else {
+                if (data.Count == 1) {
+                    if (data.Items[0].SoLuong == 0) {
+                        res.json({
+                            status: "fail",
+                            message: "Mã giảm giá không còn hiệu lực !",
 
-                 });
-             }
+                        });
+                        return;
+                    } else {
+                        res.json({
+                            status: "ok",
+                            message: "Áp dụng mã giảm giá thành công !",
+                            tilesale: data.Items[0].TiLeSale
+                        });
+                        return;
+                    }
+
+
+                } else {
+                    res.json({
+                        status: "fail",
+                        message: "Mã giảm giá không tồn tại trong hệ thống !",
+                    });
+                    return;
+                }
             }
         });
 
     },
     ThemMaGiamGia: function (req, res, next) {
-        var tenMGG =  CustomFunction.BoDau(req.params.tenmagiamgia.toLowerCase()).toUpperCase().replace(/\s+/g, '');
-        var tiLeSale = parseInt(req.params.tilesale) ;
-        var soLuong = parseInt(req.params.soluong) ;
+        var tenMGG = CustomFunction.BoDau(req.params.tenmagiamgia.toLowerCase()).toUpperCase().replace(/\s+/g, '');
+        var tiLeSale = parseInt(req.params.tilesale);
+        var soLuong = parseInt(req.params.soluong);
         var idMGG = ids.generate();
         var paramMGG = {
             TableName: "MaGiamGia",
@@ -150,29 +158,28 @@ module.exports = {
                 "ID_MaGiamGia": idMGG,
                 "TenMaGiamGia": tenMGG,
                 "TiLeSale": tiLeSale,
-                "SoLuong":soLuong,
+                "SoLuong": soLuong,
                 "TrangThaiXoa": false
             }
         };
 
-        docClient.put(paramMGG,function (err,data) {
+        docClient.put(paramMGG, function (err, data) {
             if (err) {
                 console.error(err);
                 return res.json({
-                    status:"fail",
-                    message:"Lỗi hệ thống !"
+                    status: "fail",
+                    message: "Lỗi hệ thống !"
                 });
 
-            }
-            else{
+            } else {
                 console.log("Thành công!");
                 return res.json({
-                    status:"ok",
-                    message:"Tạo mã giảm giá thành công !",
-                    idMGG:idMGG,
-                    tenMGG:tenMGG,
-                    tiLeSale:tiLeSale,
-                    soLuong:soLuong
+                    status: "ok",
+                    message: "Tạo mã giảm giá thành công !",
+                    idMGG: idMGG,
+                    tenMGG: tenMGG,
+                    tiLeSale: tiLeSale,
+                    soLuong: soLuong
 
                 });
             }
@@ -182,38 +189,37 @@ module.exports = {
         var idMGG = req.params.idmagiamgia;
         // var tenMGG = CustomFunction.BoDau(req.params.tenmagiamgia.toUpperCase().replace(/\s+/g, ''));
         var tiLeSale = parseInt(req.params.tilesale);
-        var soLuong = parseInt(req.params.soluong) ;
+        var soLuong = parseInt(req.params.soluong);
         var param = {
-            TableName:'MaGiamGia',
-            Key:{
+            TableName: 'MaGiamGia',
+            Key: {
                 "ID_MaGiamGia": idMGG
             },
             UpdateExpression: "set  TiLeSale = :n, SoLuong = :m",
-            ExpressionAttributeValues:{
-                ":n":tiLeSale,
-                ":m":soLuong
+            ExpressionAttributeValues: {
+                ":n": tiLeSale,
+                ":m": soLuong
             },
-            ReturnValues:"UPDATED_NEW"
+            ReturnValues: "UPDATED_NEW"
         };
 
 
-        docClient.update(param,function (err,data) {
+        docClient.update(param, function (err, data) {
             if (err) {
                 console.error(err);
                 res.json({
-                    status:"fail",
-                    message:"Sửa mã giảm giá thất bại !",
-                    idMGG:idMGG
+                    status: "fail",
+                    message: "Sửa mã giảm giá thất bại !",
+                    idMGG: idMGG
                 });
-            }
-            else{
+            } else {
                 console.log("Thành công!");
                 res.json({
-                    status:"ok",
-                    message:"Sửa mã giảm giá thành công !",
-                    idMGG:idMGG,
-                    tiLeSale:tiLeSale,
-                    SoLuong:soLuong
+                    status: "ok",
+                    message: "Sửa mã giảm giá thành công !",
+                    idMGG: idMGG,
+                    tiLeSale: tiLeSale,
+                    SoLuong: soLuong
                 });
             }
         });
@@ -221,32 +227,31 @@ module.exports = {
     XoaMaGiamGia: function (req, res, next) {
         var idMGG = req.params.idmagiamgia;
         var param = {
-            TableName:'MaGiamGia',
-            Key:{
+            TableName: 'MaGiamGia',
+            Key: {
                 "ID_MaGiamGia": idMGG
             },
             UpdateExpression: "set TrangThaiXoa = :n",
-            ExpressionAttributeValues:{
+            ExpressionAttributeValues: {
                 ":n": true
             },
-            ReturnValues:"UPDATED_NEW"
+            ReturnValues: "UPDATED_NEW"
         };
 
-        docClient.update(param,function (err,data) {
+        docClient.update(param, function (err, data) {
             if (err) {
                 console.error(err);
                 res.json({
-                    status:"fail",
-                    message:"Xóa mã giảm giá thất bại !",
-                    idMGG:idMGG
+                    status: "fail",
+                    message: "Xóa mã giảm giá thất bại !",
+                    idMGG: idMGG
                 });
-            }
-            else{
+            } else {
                 console.log("Thành công!");
                 res.json({
-                    status:"ok",
-                    message:"Xóa mã giảm giá thành công !",
-                    idMGG:idMGG
+                    status: "ok",
+                    message: "Xóa mã giảm giá thành công !",
+                    idMGG: idMGG
                 });
             }
         });

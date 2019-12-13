@@ -9,36 +9,37 @@
         </nav>
     </div>
     <div class="row-fluid">
-        <div class="co ml-auto ">
-            <button type="button" class="btn btn-primary d-inline " data-toggle="modal" data-target="#modalThem">
+        <div>
+            <button type="button" class="col-12 col-lg-3 btn btn-primary d-inline " data-toggle="modal" data-target="#modalThem">
                 Thêm danh mục
             </button>
             <form class="form-inline ml-auto d-inline float-right ">
-                <input id="inputTK" class="form-control mr-sm-2" type="search" placeholder="Nhập tên danh mục"
-                       aria-label="Search">
-                <button id="btnTimKiem" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                <input id="inputTK" class="form-control " type="search" placeholder="Nhập tên danh mục" aria-label="Search">
+                <button id="btnTimKiem" class="btn btn-outline-success " type="submit">Tìm kiếm</button>
             </form>
         </div>
     </div>
 
     <br><br>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <img src="<%=urlLoading%>" class="loadingDiv" alt="loadingIcon">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Tên danh mục</th>
+                <th scope="col">Thao tác</th>
+            </tr>
+            </thead>
+            <tbody id="tableDM">
 
-    <table class="table table-hover">
-        <img src="https://bb4298.s3-us-west-1.amazonaws.com/index.svg" class="loadingDiv" alt="loadingIcon">
-        <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Tên danh mục</th>
-            <th scope="col">Thao tác</th>
-        </tr>
-        </thead>
-        <tbody id="tableDM">
 
+            <!--Danh mục được load vào đây-->
 
-        <!--Danh mục được load vào đây-->
+            </tbody>
+        </table>
+    </div>
 
-        </tbody>
-    </table>
     <div id="info"></div>
     <!--Pagination-->
     <nav aria-label="Page navigation example">
@@ -91,6 +92,7 @@
 </div>
 
 <script>
+
     function EnterThemDM() {
         if (event.key === 'Enter') {
             ThemDanhMuc();
@@ -144,7 +146,7 @@
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
-                        Bạn có thực sự muốn xóa danh mục này, thao tác này không thể hoàn tác ?
+                        Bạn có thực sự muốn xóa danh mục này, tất cả sản phẩm thuộc danh mục này sẽ bị xóa. Thao tác này không thể hoàn tác ?
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
@@ -161,7 +163,6 @@
 
     //Load danh sách danh mục
     LoadDanhMuc();
-
     function LoadDanhMuc() {
         $.ajax({
             url: "<%= domain %>/DanhMucs/1?token=" + $.cookie("token"),
@@ -171,12 +172,11 @@
             },
             success: function (data) {
                 $.each(data.DanhMuc, function (i, item) {
-                    var html_to_append;
-                    html_to_append +=
+                    var html_to_append =
                         '<tr id="DMitem' + item.ID_DanhMuc + '">' +
                         '<th scope="row">' + item.ID_DanhMuc + '</th>' +
                         '<td>' + item.TenDanhMuc.Ten + '</td>' +
-                        '<td class=""><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_DanhMuc + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_DanhMuc + '"> Xóa </div></td>' +
+                        '<td><div class="btn btn-warning " data-toggle="modal" data-target="#modalSua' + item.ID_DanhMuc + '"> Sửa </div> <div class="btn btn-danger" data-toggle="modal" data-target="#modalXoa' + item.ID_DanhMuc + '"> Xóa </div></td>' +
                         '</tr>';
                     $("#tableDM").append(html_to_append);
                 });
@@ -190,10 +190,11 @@
             url: "<%= domain %>/danhmucs/" + $("#TenDanhMuc").val() + "?token=" + $.cookie("token"),
             method: "POST",
             error: function () {
-                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+                toastr["error"]("Tên danh mục không được trống !");
             },
             success: function (data) {
                 if (data.status == "ok") {
+
                     $("#tableDM").fadeOut();
                     $("#tableDM").empty();
                     LoadDanhMuc();
@@ -233,7 +234,7 @@
                         ' <button type="button" class="close" data-dismiss="modal">&times;</button>' +
                         '   </div>' +
                         '  <div class="modal-body">' +
-                        '    Bạn có thực sự muốn xóa danh mục này, thao tác này không thể hoàn tác ?' +
+                        '    Bạn có thực sự muốn xóa danh mục này, tất cả sản phẩm thuộc danh mục này sẽ bị xóa. Thao tác này không thể hoàn tác ?' +
                         '     </div>' +
                         '  <div class="modal-footer">' +
                         '  <label id="' + data.idDM + '" class="btn btn-success btnXoaMoi">Xác nhận</label>' +
@@ -247,6 +248,7 @@
                     TongItem++;
                     page = 1;
                     TaiLaiPagination();
+                    ResetDataSauKhiCreate();
                 } else {
                     toastr["error"](data.message);
                 }
@@ -254,6 +256,10 @@
         });
         return false;
     }
+    function ResetDataSauKhiCreate() {
+        $("#TenDanhMuc").val("");
+    }
+
 
     //Sự kiện nút sửa của những danh mục được add bằng ajax
     $('body').on('click', '.btnSuaMoi', function () {
@@ -442,6 +448,7 @@
         $(".pagesubitem:first").addClass("active");
         ClickVaoCacTrang();
     }
+
 </script>
 <script>
     $(document).ready(function () {

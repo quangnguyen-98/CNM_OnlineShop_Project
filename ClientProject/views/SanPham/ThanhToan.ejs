@@ -20,21 +20,24 @@
                 <div class="col-sm-7">
                     <div class="form-group">
                         <label class="text-info h4 font-weight-bold">Chi tiết giỏ hàng</label>
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th scope="col">Ảnh</th>
-                                <th scope="col">Tên sản phẩm</th>
-                                <th scope="col">Size</th>
-                                <th scope="col">Số lượng</th>
-                                <th scope="col">Đơn giá</th>
-                                <th scope="col">Thành tiền</th>
-                            </tr>
-                            </thead>
-                            <tbody id="tableSP">
-                            <!-- Sản phẩm trong giỏ hàng được load vào đây-->
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Ảnh</th>
+                                    <th scope="col">Tên sản phẩm</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Đơn giá</th>
+                                    <th scope="col">Thành tiền</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tableSP">
+                                <!-- Sản phẩm trong giỏ hàng được load vào đây-->
+                                </tbody>
+                            </table>
+                        </div>
+
                         <div id="thongBaoSP" class="text-primary h4"></div>
 
                     </div>
@@ -90,6 +93,7 @@
     var dataSanPham = [];
     var tongGiaCacDonHang = 0;
     var diaChi;
+    var diaChiDropDown;
     LoadSanPham();
     function LoadSanPham() {
         if ($.cookie("gioHang") == null || parseInt($.cookie("TongSoLuong")) == 0) {
@@ -151,7 +155,7 @@
             success: function (data) {
                 $.each(data.CuaHang, function (i, item) {
                     if(i == 0){
-                        diaChi = item.TenLienKet.Ten;
+                        diaChiDropDown = item.TenLienKet.Ten;
                       // alert(item.TenLienKet.Ten);
                     }
                     var html_to_append =
@@ -176,7 +180,7 @@
     });
 
     $('body').on('change', '#dropDownChiNhanh', function (e) {
-        diaChi = $(e.target).find("option:selected").text();
+        diaChiDropDown = $(e.target).find("option:selected").text();
         // alert(diaChi);
 
     });
@@ -237,7 +241,7 @@
         idSize = $(this).attr("idSize");
         dataSanPham.forEach(function (item, index) {
             if (item.ID_SanPham == idSP && item.ID_Size == idSize) {
-                tongGiaCacDonHang -= item.TongGia;
+                tongGiaCacDonHang -= parseInt(item.TongGia);
                 dataSanPham.splice(index, 1);
                 tongSoLuong--;
             }
@@ -249,7 +253,7 @@
             }
             $("#TongSP").text(tongSoLuong);
             $("#tr" + idSize).remove();
-            $("#tbTongGiaCacSP").text(tongGiaCacDonHang);
+            $("#TGHT").text(tongGiaCacDonHang);
             if ($.cookie("TongSoLuong") == null) {
                 $("#trtongGia").empty();
                 $("#thongBaoSP").text("Chưa có sản phẩm nào trong giỏ hàng !");
@@ -292,9 +296,9 @@
                     $(".tbSoLuong").prop("disabled",true);
                     $(".btnXoa").prop("disabled",true);
                     $(".btnSua").prop("disabled",true);
-                    toastr["success"]("Áp dụng mã giảm giá thành công !");
+                    toastr["success"](data.message);
                 }else {
-                    toastr["error"]("Mã giảm giá không tồn tại trong hệ thống !");
+                    toastr["error"](data.message);
                 }
             },
         });
@@ -303,21 +307,18 @@
 
     //Sự kiện đặt hàng
     $('body').on('click', '#btnDatHang', function () {
-        alert(diaChi);
+        // alert(diaChi);
         var gioHang = $.cookie("gioHang");
         var tenKH = $("#tbTenKH").val();
         var SDT = $("#tbSDT").val();
         var ghiChu = $("#tbGhiChu").val();
-        // alert(MGG);
-        // alert(tenKH);
-        // alert(SDT);
-        // alert(diaChi);
-        // alert(ghiChu);
+
 
         if(noiNhanHang == 0){
             diaChi = $("#tbDiaChi").val();
+        }else if (noiNhanHang == 1){
+            diaChi = diaChiDropDown;
         }
-
         // alert(noiNhanHang);
         // alert(diaChi);
         $.ajax({
@@ -338,12 +339,12 @@
             success: function (data) {
                 if(data.status == "ok"){
 
-                    toastr["success"]("TC !");
-                    toastr["success"](data.message);
-                    alert(JSON.stringify(data.message));
-
+                    // toastr["success"](data.message);
+                    $.removeCookie('gioHang', { path: '/' });
+                    $.removeCookie('TongSoLuong', { path: '/' });
+                    location.replace("/sanphams/thongbao/sp?idhd="+data.idHD);
                 }else {
-                    toastr["error"]("FAIL !");
+                    toastr["error"](data.message);
                 }
             },
         });
@@ -372,6 +373,6 @@
             return /^\d*$/.test(value);
         });
     }
-$(".ttt").text($.cookie("gioHang"));
+// $(".ttt").text($.cookie("gioHang"));
 // alert($.cookie("gioHang"));
 </script>

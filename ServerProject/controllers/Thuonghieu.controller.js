@@ -6,14 +6,14 @@ module.exports = {
     LayTatCaThuongHieu: function (req, res, next) {
         var param = {
             TableName: "ThuongHieu",
-            // ProjectionExpression:"#yr, TenThuongHieu, TrangThaiXoa",
-            // FilterExpression:"TrangThaiXoa =:n",
-            // ExpressionAttributeNames:{
-            //     "#yr":"ID_ThuongHieu",
-            // },
-            // ExpressionAttributeValues:{
-            //     ":n":false
-            // }
+            ProjectionExpression:"#yr, TenThuongHieu, TrangThaiXoa",
+            FilterExpression:"TrangThaiXoa =:n",
+            ExpressionAttributeNames:{
+                "#yr":"ID_ThuongHieu",
+            },
+            ExpressionAttributeValues:{
+                ":n":false
+            }
         };
         docClient.scan(param,function (err,data) {
             if (err) {
@@ -193,11 +193,48 @@ module.exports = {
             }
             else{
                 console.log("Thành công!");
-                res.json({
-                    status:"ok",
-                    message:"Xóa danh mục thành công !",
-                    idTH:idTH
+
+                var param1 = {
+                    TableName: "SanPham",
+                    ProjectionExpression:"#yr, TenSanPham, ID_ThuongHieu, TrangThaiXoa",
+                    FilterExpression:"TrangThaiXoa =:n and ID_ThuongHieu = :m",
+                    ExpressionAttributeNames:{
+                        "#yr":"ID_SanPham",
+                    },
+                    ExpressionAttributeValues:{
+                        ":n":false,
+                        ":m":idTH
+                    }
+                };
+                docClient.scan(param1,function (err,data) {
+                    if (err) {
+                        console.error(err);
+                        res.end();
+                    }
+                    else{
+                        console.log(data);
+                        data.Items.forEach(function (item) {
+                            var param = {
+                                TableName:'SanPham',
+                                Key:{
+                                    "ID_SanPham": item.ID_SanPham
+                                },
+                                UpdateExpression: "set TrangThaiXoa = :n",
+                                ExpressionAttributeValues:{
+                                    ":n": true
+                                },
+                                ReturnValues:"UPDATED_NEW"
+                            };
+                            docClient.update(param,function (err, data) {});
+                        });
+                        res.json({
+                            status:"ok",
+                            message:"Xóa thương hiệu thành công !",
+                            idTH:idTH
+                        });
+                    }
                 });
+
             }
         });
     }

@@ -1,5 +1,6 @@
 var AWS = require("aws-sdk");
 var docClient = new AWS.DynamoDB.DocumentClient();
+const CustomFunction = require('../Config/CustomFunction');
 var fs = require('fs');
 const path = require("path");
 module.exports = {
@@ -79,7 +80,7 @@ module.exports = {
         });
     },
     LaySanPhamTheoTen: function (req, res) {
-        var tensp = req.params.ten.toString().toLowerCase();
+        var tensp =CustomFunction.BoDau(req.params.ten.toString().toLowerCase());
         var n = parseInt(req.params.pagenumber);
         var soItemMoiPage = parseInt(global.SoSanPhamMoiPage);
         var begin = (n - 1) * soItemMoiPage;
@@ -157,7 +158,7 @@ module.exports = {
         });
     },
     LaySanPhamTheoSoTrang: function (req, res) {
-        if (req.params.sorttype == '*' || req.params.sortkey == '*') {
+        if (req.params.sorttype === '*' || req.params.sortkey === '*') {
             var n = parseInt(req.params.pagenumber);
             var soItemMoiPage = parseInt(global.SoSanPhamMoiPage);
             var begin = (n - 1) * soItemMoiPage;
@@ -192,7 +193,7 @@ module.exports = {
             });
         } else {
             var sorttype = req.params.sorttype;
-            if (sorttype == 'dm') {
+            if (sorttype === 'dm') {
                 var sortkey = req.params.sortkey;
                 var n = parseInt(req.params.pagenumber);
                 var soItemMoiPage = parseInt(global.SoSanPhamMoiPage);
@@ -225,7 +226,7 @@ module.exports = {
                     }
                 });
             }
-            if (sorttype == 'th') {
+            if (sorttype === 'th') {
                 var sortkey = req.params.sortkey;
                 var n = parseInt(req.params.pagenumber);
                 var soItemMoiPage = parseInt(global.SoSanPhamMoiPage);

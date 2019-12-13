@@ -15,8 +15,6 @@ ids.configure({
   algorithm: 'sha1',  // The hashing algoritm to use in generating keys
   salt: Math.random   // A salt value or function
 });
-global.atob = require("atob");
-global.btoa = require("btoa");
 
 //Khai báo router
 var IndexRouter = require('./routes/Index.route');
@@ -89,7 +87,7 @@ app.use(function(err, req, res, next) {
 
 global.SoSanPhamMoiPage = 3;
 global.SoItemMoiPageQL = 3;
-global.ThoiGianLogin = 10;
+global.ThoiGianLogin = 1;
 global.SecretKeyAdmin = "quangdeptrai01";
 
 global.tiLeSale = 0;

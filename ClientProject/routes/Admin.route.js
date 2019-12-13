@@ -21,6 +21,18 @@ router.get('/QuanLyCarousel', AdminController.HienThiQuanLyCarousel);
 
 router.get('/QuanLyBaiViet', AdminController.HienThiQuanLyBaiViet);
 
+router.get('/QuanLyMaGiamGia', AdminController.HienThiQuanLyMaGiamGia);
+
+router.get('/QuanLyDonHang_DangCho', AdminController.HienThiQuanLyDonHang_DangCho);
+
+router.get('/QuanLyDonHang_DangShip', AdminController.HienThiQuanLyDonHang_DangShip);
+
+router.get('/QuanLyDonHang_HoanThanh', AdminController.HienThiQuanLyDonHang_HoanThanh);
+
+router.get('/QuanLyDonHang_Huy', AdminController.HienThiQuanLyDonHang_Huy);
+
+router.get('/ThongKe', AdminController.ThongKe);
+
 router.get('/QuanLyFooterMenu', AdminController.HienThiQuanLyFooterMenu);
 
 router.get('/QuanLyFooterCH', AdminController.HienThiQuanLyFooterCH);
@@ -28,14 +40,6 @@ router.get('/QuanLyFooterCH', AdminController.HienThiQuanLyFooterCH);
 router.get('/QuanLyCaiDatCauHinh', AdminController.HienThiQuanLyCaiDatCauHinh);
 
 router.get('/QuanLyCaiDatDoiMK', AdminController.HienThiQuanLyCaiDatDoiMK);
-
-router.get('/QuanLyCaiDatDoiMK', AdminController.HienThiQuanLyFooterCH);
-
-router.get('/QuanLyBaiViet', AdminController.HienThiQuanLyBaiViet);
-
-router.get('/QuanLyMaGiamGia', AdminController.HienThiQuanLyMaGiamGia);
-
-router.get('/QuanLyDonHang', AdminController.HienThiQuanLyDonHang);
 
 router.get('/DangXuat', AdminController.DangXuat);
 
