@@ -24,6 +24,8 @@ router.get('/gia/:tu/:den/:pagenumber', SanPhamIndexController.LaySanPhamTheoKho
 //Lấy sản phẩm theo số trang
 router.get('/:sorttype/:sortkey/:pagenumber', SanPhamIndexController.LaySanPhamTheoSoTrang);
 
+//Lấy sản phẩm liên quan
+router.get('/laysanphamlienquan/sp', SanPhamIndexController.LaySanPhamLienQuan);
 
 
 

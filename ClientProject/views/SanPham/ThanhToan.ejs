@@ -6,7 +6,7 @@
 <div class="container" style="padding: 1rem">
     <div class="row">
         <div class="col-sm-12">
-            <nav aria-label="breadcrumb">
+            <nav id="abc" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/"><i class="fas fa-store"></i> HQKStore</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Thanh toán</li>
@@ -15,9 +15,13 @@
                         /<%= dateTime.getFullYear() %></li>
                 </ol>
             </nav>
-            <div id="info"></div>
-            <div class="row">
-                <div class="col-sm-7">
+            <div id="TBL">
+                <div id="info"></div>
+                <div id="thongBaoSP" class="text-primary h4"></div>
+            </div>
+            <div class="row ThongTinDonHang">
+<!--               Data Thông tin đơn hàng xuất hiện nếu giỏ hàng có sản phẩm-->
+                <div class="col-sm-7 ">
                     <div class="form-group">
                         <label class="text-info h4 font-weight-bold">Chi tiết giỏ hàng</label>
                         <div class="table-responsive">
@@ -37,9 +41,6 @@
                                 </tbody>
                             </table>
                         </div>
-
-                        <div id="thongBaoSP" class="text-primary h4"></div>
-
                     </div>
                 </div>
                 <div class="col-sm-5">
@@ -81,11 +82,8 @@
                         <div class="ttt"></div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
 </div>
 <script>
@@ -95,9 +93,15 @@
     var diaChi;
     var diaChiDropDown;
     LoadSanPham();
+
+
     function LoadSanPham() {
-        if ($.cookie("gioHang") == null || parseInt($.cookie("TongSoLuong")) == 0) {
+        if ($.cookie("gioHang") == null || parseInt($.cookie("TongSoLuong")) == null) {
             $("#thongBaoSP").text("Chưa có sản phẩm nào trong giỏ hàng !");
+            $(".ThongTinDonHang").empty();
+            var html_to_append =
+       ' <a href="/" class="text-primary h4"><span class="fas fa-store"></span> Quay lại trang chủ</a>';
+            $("#TBL").append(html_to_append);
         } else if ($.cookie("gioHang") != null) {
             $.ajax({
                 url: "<%= domain %>/SanPhams/QlSp/Admin/laythongtinthanhtoan/sp?token=" + $.cookie("token"),
@@ -255,8 +259,11 @@
             $("#tr" + idSize).remove();
             $("#TGHT").text(tongGiaCacDonHang);
             if ($.cookie("TongSoLuong") == null) {
-                $("#trtongGia").empty();
                 $("#thongBaoSP").text("Chưa có sản phẩm nào trong giỏ hàng !");
+                $(".ThongTinDonHang").empty();
+                var html_to_append =
+                    ' <a href="/" class="text-primary h4"><span class="fas fa-store"></span> Quay lại trang chủ</a>';
+                $("#TBL").append(html_to_append);
             }
 
         });

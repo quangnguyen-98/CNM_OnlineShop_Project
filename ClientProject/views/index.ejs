@@ -87,9 +87,8 @@ $("document").ready(function(){
       // TongSoTrangPAGI = parseInt(data.SoTrang);
       // alert(TongSoTrangPAGI);
       $.each(data.SanPham, function(i, item) {
-        var html_to_append ='';
-        html_to_append +=
-                '<div class="col-12 col-sm-6 col-md-4 col-lg-3 lazyitem d-flex">'+
+        var html_to_append =
+                '<div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">'+
                 '<div id="SP'+item.ID_SanPham+'" class="card" style=" margin-bottom: 1rem">'+
                 '<a href="/SanPhams/'+item.ID_SanPham+'">'+
                 '<img id="subSP'+item.ID_SanPham+'" class="card-img-top " src="'+item.Anh.Avatar+'" alt="Card image cap">'+
@@ -97,7 +96,7 @@ $("document").ready(function(){
                 ' <div class="card-body">'+
                 '<h5 class="card-title" style="height: 3rem" ><a class="linksp" href="/SanPhams/'+item.ID_SanPham+'">'+item.TenSanPham.Ten+'</a></h5>'+
                 ' <br>'+
-                ' <h6><span class="card-text text-danger  d-flex justify-content-center">'+item.TiLeSale+'% off</span><h6>'+
+                ' <h6><span class="card-text text-danger  d-flex justify-content-center">'+item.TiLeSale+'% off</span></h6>'+
                 '  <h6><p class="card-text text-secondary itemPrice d-flex justify-content-center" style="margin-bottom: 2px;"> <del>'+ item.Gia +' Đ</del></p> </h6>'+
                 ' <span class="d-flex justify-content-center">Giá hiện tại:</span>'+
                 '<h4><span class="card-text badge badge-pill badge-success itemPrice d-flex justify-content-center">'+ parseInt(item.Gia - (item.Gia/100*item.TiLeSale)) +' Đ</span></h4>'+

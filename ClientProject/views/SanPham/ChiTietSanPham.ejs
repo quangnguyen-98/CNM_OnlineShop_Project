@@ -139,10 +139,17 @@
             <div id="menu2" class="container tab-pane fade"><br>
                 <div class="fb-comments"
                      data-href="http://hqkclient.us-west-1.elasticbeanstalk.com/SanPhams/<%= spData.ID_SanPham %>"
-                     data-width="6000px" data-numposts="5"></div>
+                     data-width="100%" data-numposts="5"></div>
             </div>
         </div>
 
+    </div>
+<hr>
+    <div class="col-12 text-center">
+        <h4 class=""><b>Sản phẩm liên quan</b></h4>
+        <div id="dataSPLQ" class="row justify-content-center align-items-center">
+
+        </div>
     </div>
 </div>
 <script>
@@ -153,11 +160,13 @@
     $("input[type='number']").inputSpinner();
 
     var idSP = "<%= spData.ID_SanPham %>";
+    var idTH = "<%= spData.ID_ThuongHieu %>";
     var idSize = "0";
     var tenSize;
     var SoLuong = 0;
     var $soLuong = $("#inputSoLuong");
     var gioHang =[];
+
 
     $soLuong.on("change", function (event) {
         SoLuong = parseInt($soLuong.val());
@@ -166,28 +175,6 @@
     $soLuong.on("input", function (event) {
         SoLuong = parseInt($soLuong.val());
         $("#val").html(SoLuong);
-    });
-
-    // Ngăn người dùng nhập chữ vào input số lượng
-    (function ($) {
-        $.fn.inputFilter = function (inputFilter) {
-            return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function () {
-                if (inputFilter(this.value)) {
-                    this.oldValue = this.value;
-                    this.oldSelectionStart = this.selectionStart;
-                    this.oldSelectionEnd = this.selectionEnd;
-                } else if (this.hasOwnProperty("oldValue")) {
-                    this.value = this.oldValue;
-                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-                }
-            });
-        };
-    }(jQuery));
-    $(document).ready(function () {
-        // Restrict input to digits by using a regular expression filter.
-        $(".tbSoLuong").inputFilter(function (value) {
-            return /^\d*$/.test(value);
-        });
     });
 
 
@@ -204,6 +191,44 @@
         // $(".tbSoLuong").prop("disabled", false);
         // alert(soLuong);
     });
+
+$(document).ready(function () {
+    LoadSanPhamLienQuan();
+});
+    function LoadSanPhamLienQuan(){
+        $.ajax({
+            url: "<%=domain%>/sanphams/laysanphamlienquan/sp?idth="+idTH+"&idsp="+idSP,
+            method: "GET",
+            error: function() {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function(data) {
+                $.each(data.SanPham, function(i, item) {
+                    var html_to_append =
+                        '<div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">'+
+                        '<div id="SP'+item.ID_SanPham+'" class="card" style=" margin-bottom: 1rem">'+
+                        '<a href="/SanPhams/'+item.ID_SanPham+'">'+
+                        '<img id="subSP'+item.ID_SanPham+'" class="card-img-top " src="'+item.Anh.Avatar+'" alt="Card image cap">'+
+                        '</a>'+
+                        ' <div class="card-body">'+
+                        '<h5 class="card-title" style="height: 3rem" ><a class="linksp" href="/SanPhams/'+item.ID_SanPham+'">'+item.TenSanPham.Ten+'</a></h5>'+
+                        ' <br>'+
+                        ' <h6><span class="card-text text-danger  d-flex justify-content-center">'+item.TiLeSale+'% off</span></h6>'+
+                        '  <h6><p class="card-text text-secondary itemPrice d-flex justify-content-center" style="margin-bottom: 2px;"> <del>'+ item.Gia +' Đ</del></p> </h6>'+
+                        ' <span class="d-flex justify-content-center">Giá hiện tại:</span>'+
+                        '<h4><span class="card-text badge badge-pill badge-success itemPrice d-flex justify-content-center">'+ parseInt(item.Gia - (item.Gia/100*item.TiLeSale)) +' Đ</span></h4>'+
+                        '</div>'+
+                        '</div>'+
+                        '   </div>';
+                    $("#dataSPLQ").append(html_to_append);
+                });
+                itemHover();
+                FormartGia();
+            }
+        });
+        return false;
+    }
+
 
     //Lưu giỏ hàng vào cookie
     $('body').on('click', '#btnThemVaoGio', function () {
@@ -289,5 +314,28 @@
 
     $(document).ready(function () {
         $("img").attr("class","img-fluid");
+    });
+</script>
+<script>
+    // Ngăn người dùng nhập chữ vào input số lượng
+    (function ($) {
+        $.fn.inputFilter = function (inputFilter) {
+            return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function () {
+                if (inputFilter(this.value)) {
+                    this.oldValue = this.value;
+                    this.oldSelectionStart = this.selectionStart;
+                    this.oldSelectionEnd = this.selectionEnd;
+                } else if (this.hasOwnProperty("oldValue")) {
+                    this.value = this.oldValue;
+                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                }
+            });
+        };
+    }(jQuery));
+    $(document).ready(function () {
+        // Restrict input to digits by using a regular expression filter.
+        $(".tbSoLuong").inputFilter(function (value) {
+            return /^\d*$/.test(value);
+        });
     });
 </script>

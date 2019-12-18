@@ -1,5 +1,6 @@
 var AWS = require("aws-sdk");
 var docClient = new AWS.DynamoDB.DocumentClient();
+var _ = require('lodash');
 const CustomFunction = require('../Config/CustomFunction');
 var fs = require('fs');
 const path = require("path");
@@ -104,13 +105,14 @@ module.exports = {
                 console.error(err);
                 res.end();
             } else {
-                /*console.log("Thành công!");
-                res.json(data);*/
-                console.log("Thành công!");
+                var sortData = [];
+                sortData = data.Items.sort(function (b, a) {
+                    return  (b.Gia- (b.Gia/100*b.TiLeSale))  - (a.Gia- (a.Gia/100*a.TiLeSale));
+                });
                 var count = data.Count / soItemMoiPage;
                 res.json(
                     {
-                        SanPham: data.Items.slice(begin, end),
+                        SanPham: sortData.slice(begin, end),
                         SoTrang: Math.ceil(count)
                     }
                 );
@@ -144,13 +146,14 @@ module.exports = {
                 console.error(err);
                 res.end();
             } else {
-                /*  console.log("Thành công!");
-                  res.json(data);*/
-                console.log("Thành công!");
+                var sortData = [];
+                sortData = data.Items.sort(function (b, a) {
+                    return  (b.Gia- (b.Gia/100*b.TiLeSale))  - (a.Gia- (a.Gia/100*a.TiLeSale));
+                });
                 var count = data.Count / soItemMoiPage;
                 res.json(
                     {
-                        SanPham: data.Items.slice(begin, end),
+                        SanPham: sortData.slice(begin, end),
                         SoTrang: Math.ceil(count)
                     }
                 );
@@ -180,12 +183,15 @@ module.exports = {
                     console.error(err);
                     res.end();
                 } else {
-                    console.log("Thành công!");
-                    var soTrang;
+                    var sortData = [];
+                    sortData = data.Items.sort(function (b, a) {
+                        return  (b.Gia- (b.Gia/100*b.TiLeSale))  - (a.Gia- (a.Gia/100*a.TiLeSale));
+                    });
+
                     var count = data.Count / soItemMoiPage;
                     res.json(
                         {
-                            SanPham: data.Items.slice(begin, end),
+                            SanPham: sortData.slice(begin, end),
                             SoTrang: Math.ceil(count)
                         }
                     );
@@ -202,12 +208,14 @@ module.exports = {
                 var param = {
                     TableName: "SanPham",
                     ProjectionExpression: "#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
-                    FilterExpression: "ID_DanhMuc = :n",
+                    FilterExpression: "ID_DanhMuc = :n and TrangThaiXoa = :m and TrangThaiBan =:k",
                     ExpressionAttributeNames: {
                         "#yr": "ID_SanPham",
                     },
                     ExpressionAttributeValues: {
                         ":n": sortkey,
+                        ":m": false,
+                        ":k": true
                     }
                 };
                 docClient.scan(param, function (err, data) {
@@ -215,11 +223,14 @@ module.exports = {
                         console.error(err);
                         res.end();
                     } else {
-                        console.log("Thành công!");
+                        var sortData = [];
+                        sortData = data.Items.sort(function (b, a) {
+                            return  (b.Gia- (b.Gia/100*b.TiLeSale))  - (a.Gia- (a.Gia/100*a.TiLeSale));
+                        });
                         var count = data.Count / soItemMoiPage;
                         res.json(
                             {
-                                SanPham: data.Items.slice(begin, end),
+                                SanPham: sortData.slice(begin, end),
                                 SoTrang: Math.ceil(count)
                             }
                         );
@@ -236,12 +247,14 @@ module.exports = {
                     TableName: "SanPham",
 
                     ProjectionExpression: "#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThai",
-                    FilterExpression: "ID_ThuongHieu = :n",
+                    FilterExpression: "ID_ThuongHieu = :n and TrangThaiXoa = :m and TrangThaiBan =:k",
                     ExpressionAttributeNames: {
                         "#yr": "ID_SanPham",
                     },
                     ExpressionAttributeValues: {
                         ":n": sortkey,
+                        ":m": false,
+                        ":k": true
                     }
                 };
                 docClient.scan(param, function (err, data) {
@@ -249,11 +262,14 @@ module.exports = {
                         console.error(err);
                         res.end();
                     } else {
-                        console.log("Thành công!");
+                        var sortData = [];
+                        sortData = data.Items.sort(function (b, a) {
+                            return  (b.Gia- (b.Gia/100*b.TiLeSale))  - (a.Gia- (a.Gia/100*a.TiLeSale));
+                        });
                         var count = data.Count / soItemMoiPage;
                         res.json(
                             {
-                                SanPham: data.Items.slice(begin, end),
+                                SanPham: sortData.slice(begin, end),
                                 SoTrang: Math.ceil(count)
                             }
                         );
@@ -261,5 +277,48 @@ module.exports = {
                 });
             }
         }
+    },
+    LaySanPhamLienQuan:function (req,res,next) {
+        var idTH = req.query.idth;
+        var idSP = req.query.idsp;
+
+        var param = {
+            TableName: "SanPham",
+            ProjectionExpression: "#yr, TenSanPham, ID_DanhMuc,ID_ThuongHieu, MoTa, Gia, TiLeSale, Anh.Avatar, Anh.AvtDetail1, Anh.AvtDetail2, NgayTao.Ngay, NgayTao.Thang, NgayTao.Nam, SoLuong, TrangThaiBan",
+            FilterExpression: "TrangThaiXoa = :n and TrangThaiBan =:m and ID_ThuongHieu = :k and NOT ID_SanPham in(:l)",
+            ExpressionAttributeNames: {
+                "#yr": "ID_SanPham",
+            },
+            ExpressionAttributeValues: {
+                ":n": false,
+                ":m": true,
+                ":k":idTH,
+                ":l":idSP
+            }
+        };
+        docClient.scan(param, function (err, data) {
+            if (err) {
+                console.error(err);
+                res.end();
+            } else {
+                var dataShuffle = [];
+             dataShuffle = shuffle(data.Items);
+
+                res.json(
+                    {
+                        SanPham: dataShuffle.slice(0, 3)
+                    }
+                );
+            }
+        });
     }
 };
+
+//Hàm viết riêng
+function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}

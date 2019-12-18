@@ -52,38 +52,38 @@
 
                     <div class="form-group">
                         <label for="tbNoiSanXuat">Nơi sản xuất</label>
-                        <input type="text" class="form-control" id="tbNoiSanXuat" placeholder="Nhập nơi sản xuất"
+                        <input type="text" class="form-control" id="tbNoiSanXuat" placeholder="Nhập nơi sản xuất" autocomplete="off"
                                name="tbNoiSanXuat"
                                value="<% if(spData.ThongTin.NoiSanXuat != null){ %><%= spData.ThongTin.NoiSanXuat %><% } %>"
                                required>
                     </div>
                     <div class="form-group">
                         <label for="tbCDBH">Chế độ bảo hành</label>
-                        <input type="text" class="form-control" id="tbCDBH" placeholder="Nhập chế độ bảo hành"
+                        <input type="text" class="form-control" id="tbCDBH" placeholder="Nhập chế độ bảo hành" autocomplete="off"
                                name="tbCDBH"
                                value="<% if(spData.ThongTin.CheDoBaoHanh != null){ %><%= spData.ThongTin.CheDoBaoHanh %><% } %>"
                                required>
                     </div>
                     <div class="form-group">
                         <label for="tbPKDK">Phụ kiện đi kèm</label>
-                        <input type="text" class="form-control" id="tbPKDK" placeholder="Nhập phụ kiện đi kèm"
+                        <input type="text" class="form-control" id="tbPKDK" placeholder="Nhập phụ kiện đi kèm" autocomplete="off"
                                name="tbPKDK"
                                value="<% if(spData.ThongTin.PhuKienTheoKem != null){ %><%= spData.ThongTin.PhuKienTheoKem %><% } %>"
                                required>
                     </div>
                     <div class="form-group">
                         <label for="tbAnh1">Ảnh 1</label>
-                        <input type="text" class="form-control" id="tbAnh1" placeholder="Nhập link ảnh 1"
+                        <input type="text" class="form-control" id="tbAnh1" placeholder="Nhập link ảnh 1" autocomplete="off"
                                value="<% if(spData.Anh.Avatar != null){ %><%= spData.Anh.Avatar %><% } %>" required>
                     </div>
                     <div class="form-group">
                         <label for="tbAnh2">Ảnh 2</label>
-                        <input type="text" class="form-control" id="tbAnh2" placeholder="Nhập link ảnh 2"
+                        <input type="text" class="form-control" id="tbAnh2" placeholder="Nhập link ảnh 2" autocomplete="off"
                                value="<% if(spData.Anh.Avatar != null){ %><%= spData.Anh.AvtDetail1 %><% } %>" required>
                     </div>
                     <div class="form-group">
                         <label for="tbAnh3">Ảnh 3</label>
-                        <input type="text" class="form-control" id="tbAnh3" placeholder="Nhập link ảnh 3"
+                        <input type="text" class="form-control" id="tbAnh3" placeholder="Nhập link ảnh 3" autocomplete="off"
                                value="<% if(spData.Anh.AvtDetail2 != null){ %><%= spData.Anh.AvtDetail2 %><% } %>"
                                required>
                     </div>
@@ -96,12 +96,12 @@
                     </div>
                     <div class="form-group">
                         <label for="tbGia">Giá (VNĐ)</label>
-                        <input type="text" class="form-control" id="tbGia" placeholder="Nhập giá" name="tbGia"
+                        <input type="text" class="form-control" id="tbGia" placeholder="Nhập giá" name="tbGia" autocomplete="off"
                                value="<% if(spData.Gia != null){ %><%= spData.Gia %><% } %>" required>
                     </div>
                     <div class="form-group">
                         <label for="tbTiLeSale">Tỉ lệ sale ( Nhập số % muốn sale, nếu không sale vui lòng nhập 0) </label>
-                        <input type="text" class="form-control" id="tbTiLeSale" placeholder="Nhập tỉ lệ sale"
+                        <input type="text" class="form-control" id="tbTiLeSale" placeholder="Nhập tỉ lệ sale" autocomplete="off"
                                name="tbTiLeSale" value="<% if(spData.TiLeSale != null){ %><%= spData.TiLeSale %><% } %>"
                                required>
                     </div>
@@ -189,12 +189,12 @@
                     <form class="was-validated">
                         <div class="form-group">
                             <label for="TenSize">Tên size</label>
-                            <input type="text" class="form-control" id="TenSize" placeholder="Nhập tên size"
+                            <input type="text" class="form-control" id="TenSize" placeholder="Nhập tên size" autocomplete="off"
                                    required>
                         </div>
                         <div class="form-group">
                             <label for="SoLuong">Số lượng</label>
-                            <input type="text" class="form-control" id="SoLuong" placeholder="Nhập số lượng"
+                            <input type="text" class="form-control" id="SoLuong" placeholder="Nhập số lượng" autocomplete="off"
                                    required>
                         </div>
                     </form>
@@ -240,7 +240,8 @@
     var idTH = "<%= spData.ID_ThuongHieu %>";
     var idSP = "<%= spData.ID_SanPham %>";
     var trangThai = "<%= spData.TrangThaiBan %>";
-    LoadDanhMucThuongHieu();
+
+     LoadDanhMucThuongHieu();
 
     <% if(spData.TrangThaiBan == true){ %>
     $('#toggle-event').bootstrapToggle('on');
@@ -251,7 +252,7 @@
     <% } %>
 
     $(document).ready(function () {
-        CKEDT()
+        CKEDT();
     });
 
     function CKEDT() {
@@ -273,19 +274,34 @@
                 $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
             },
             success: function (data) {
-                $.each(data.DanhMuc, function (i, item) {
-                    if (item.ID_DanhMuc == idDM) {
-                        tenDM = item.TenDanhMuc.Ten;
-                        var html_to_append =
-                            '<option id="' + item.ID_DanhMuc + '" value="' + item.TenDanhMuc.Ten + '" class="itemDM" selected>' + item.TenDanhMuc.Ten + '</option>';
-                        $("#tbDanhMuc").append(html_to_append);
-                    } else {
-                        var html_to_append =
-                            '<option id="' + item.ID_DanhMuc + '" value="' + item.TenDanhMuc.Ten + '" class="itemDM">' + item.TenDanhMuc.Ten + '</option>';
-                        $("#tbDanhMuc").append(html_to_append);
-                    }
+                if(idDM == "null"){
+                    $.each(data.DanhMuc, function (i, item) {
+                        if (i == 0) {
+                            idDM = item.ID_DanhMuc;
+                            var html_to_append =
+                                '<option id="' + item.ID_DanhMuc + '" value="' + item.TenDanhMuc.Ten + '" class="itemDM" selected>' + item.TenDanhMuc.Ten + '</option>';
+                            $("#tbDanhMuc").append(html_to_append);
+                        } else {
+                            var html_to_append =
+                                '<option id="' + item.ID_DanhMuc + '" value="' + item.TenDanhMuc.Ten + '" class="itemDM">' + item.TenDanhMuc.Ten + '</option>';
+                            $("#tbDanhMuc").append(html_to_append);
+                        }
+                    });
+                }else {
+                    $.each(data.DanhMuc, function (i, item) {
+                        if (item.ID_DanhMuc == idDM) {
+                            tenDM = item.TenDanhMuc.Ten;
+                            var html_to_append =
+                                '<option id="' + item.ID_DanhMuc + '" value="' + item.TenDanhMuc.Ten + '" class="itemDM" selected>' + item.TenDanhMuc.Ten + '</option>';
+                            $("#tbDanhMuc").append(html_to_append);
+                        } else {
+                            var html_to_append =
+                                '<option id="' + item.ID_DanhMuc + '" value="' + item.TenDanhMuc.Ten + '" class="itemDM">' + item.TenDanhMuc.Ten + '</option>';
+                            $("#tbDanhMuc").append(html_to_append);
+                        }
+                    });
+                }
 
-                });
             },
         });
         $.ajax({
@@ -295,21 +311,35 @@
                 $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
             },
             success: function (data) {
+                if(idTH == "null"){
+                    $.each(data.ThuongHieu, function (i, item) {
+                        if (i == 0) {
+                            idTH = item.ID_ThuongHieu;
+                            var html_to_append =
+                                '<option id="' + item.ID_ThuongHieu + '" value="' + item.TenThuongHieu.Ten + '" class="itemTH" selected >' + item.TenThuongHieu.Ten + '</option>';
+                            $("#tbThuongHieu").append(html_to_append);
+                        } else {
+                            var html_to_append =
+                                '<option id="' + item.ID_ThuongHieu + '" value="' + item.TenThuongHieu.Ten + '" class="itemTH" >' + item.TenThuongHieu.Ten + '</option>';
+                            $("#tbThuongHieu").append(html_to_append);
+                        }
+                    });
+                }
+                else {
+                    $.each(data.ThuongHieu, function (i, item) {
+                        if (item.ID_ThuongHieu == idTH) {
+                            tenTH = item.TenThuongHieu.Ten;
+                            var html_to_append =
+                                '<option id="' + item.ID_ThuongHieu + '" value="' + item.TenThuongHieu.Ten + '" class="itemTH" selected >' + item.TenThuongHieu.Ten + '</option>';
+                            $("#tbThuongHieu").append(html_to_append);
+                        } else {
+                            var html_to_append =
+                                '<option id="' + item.ID_ThuongHieu + '" value="' + item.TenThuongHieu.Ten + '" class="itemTH" >' + item.TenThuongHieu.Ten + '</option>';
+                            $("#tbThuongHieu").append(html_to_append);
+                        }
+                    });
+                }
 
-                $.each(data.ThuongHieu, function (i, item) {
-                    if (item.ID_ThuongHieu == idTH) {
-                        tenTH = item.TenThuongHieu.Ten;
-                        var html_to_append =
-                            '<option id="' + item.ID_ThuongHieu + '" value="' + item.TenThuongHieu.Ten + '" class="itemTH" selected >' + item.TenThuongHieu.Ten + '</option>';
-                        $("#tbThuongHieu").append(html_to_append);
-                    } else {
-                        var html_to_append =
-                            '<option id="' + item.ID_ThuongHieu + '" value="' + item.TenThuongHieu.Ten + '" class="itemTH" >' + item.TenThuongHieu.Ten + '</option>';
-                        $("#tbThuongHieu").append(html_to_append);
-                    }
-
-
-                });
             },
         });
     }

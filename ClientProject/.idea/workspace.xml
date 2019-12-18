@@ -18,11 +18,13 @@
       <change beforePath="$PROJECT_DIR$/node_modules/btoa/test.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/ChiTietBaiViet.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/ChiTietBaiViet.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/Admin/DangNhap.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/DangNhap.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyBaiViet.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyBaiViet.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyCaiDatCauHinh.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyCaiDatCauHinh.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyCarousel.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyCarousel.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyDanhMuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyDanhMuc.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyDonHang_DangCho.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyDonHang_DangCho.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyFooterCH.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyFooterCH.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyFooterMenu.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyFooterMenu.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/Admin/QuanLyMaGiamGia.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Admin/QuanLyMaGiamGia.ejs" afterDir="false" />
@@ -208,6 +210,16 @@
       <workItem from="1576238492338" duration="3286000" />
       <workItem from="1576241952531" duration="44000" />
       <workItem from="1576249290817" duration="1460000" />
+      <workItem from="1576259311655" duration="5346000" />
+      <workItem from="1576304497158" duration="2022000" />
+      <workItem from="1576412315705" duration="2775000" />
+      <workItem from="1576415659450" duration="157000" />
+      <workItem from="1576417480806" duration="7922000" />
+      <workItem from="1576437263080" duration="528000" />
+      <workItem from="1576455959650" duration="86000" />
+      <workItem from="1576458356722" duration="1590000" />
+      <workItem from="1576656939981" duration="753000" />
+      <workItem from="1576678183484" duration="12000" />
     </task>
     <servers />
   </component>

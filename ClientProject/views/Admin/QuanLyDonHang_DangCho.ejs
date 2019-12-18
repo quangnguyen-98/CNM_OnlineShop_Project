@@ -274,6 +274,38 @@
     }
 
 
+    //Sự kiện hủy đơn hàng
+    $('body').on('click', '.btnXoaMoi', function () {
+        var modal = $(this).parent().parent().parent().parent(".modal").attr("id");
+        $.ajax({
+            url: "<%= domain %>/HoaDons/" + $(this).attr("id") + "/huy?token=" + $.cookie("token"),
+            method: "PUT",
+            error: function () {
+                $('#info').html('<h2>Máy chủ bị lỗi, Xin vui lòng quay lại sau. Xin cảm ơn :))</h2>');
+            },
+            success: function (data) {
+                if (data.status == "ok") {
+                    $("#" + modal).modal('toggle');
+                    $("#tableHD").fadeOut();
+                    $("#tableHD").empty();
+                    LoadHoaDon();
+                    $("#tableHD").fadeIn();
+                    TaiLaiPagination();
+                    toastr["success"](data.message);
+                    TongItem--;
+                    page = 1;
+                    TaiLaiPagination();
+
+
+                } else {
+                    toastr["error"](data.message);
+                }
+            }
+        });
+        /* SoTrang --;*/
+        return false;
+    });
+
     //Sự kiện chuyển trạng thái đơn hàng sang ship
     $('body').on('click', '.btnShipMoi', function () {
         var modal = $(this).parent().parent().parent().parent(".modal").attr("id");

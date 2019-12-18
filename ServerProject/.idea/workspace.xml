@@ -2,88 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29931dd8-b35f-4161-9625-b148465567bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyDonHang_DangCho.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyDonHang_Huy.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/ThongKe.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/Config/LinLoadingIMG.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyDonHang_DangShip.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/ClientProject.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/ClientProject.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/Config/ServerDomain.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/Config/ServerDomain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/bin/QLSPdemo.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/controller/Admin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/controller/Admin.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/controller/Login.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/controller/Login.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/controller/SanPham.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/controller/SanPham.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/node_modules/.bin/btoa" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/node_modules/.bin/btoa.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/node_modules/btoa/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/node_modules/btoa/LICENSE.DOCS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/node_modules/btoa/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/node_modules/btoa/bin/btoa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/node_modules/btoa/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/node_modules/btoa/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/node_modules/btoa/test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/routes/Admin.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/routes/Admin.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/routes/Login.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/routes/Login.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/routes/Sanpham.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/routes/Sanpham.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/ChiTietBaiViet.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/ChiTietBaiViet.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/DangNhap.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/DangNhap.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/MenuDashboard.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/MenuDashboard.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyBaiViet.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyBaiViet.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyCaiDatCauHinh.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyCaiDatCauHinh.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyCaiDatDoiMK.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyCaiDatDoiMK.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyCarousel.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyCarousel.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyDanhMuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyDanhMuc.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyDonHang.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyDonHang_HoanThanh.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyFooterCH.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyFooterCH.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyFooterMenu.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyFooterMenu.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyMaGiamGia.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyMaGiamGia.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLySanPham.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLySanPham.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyDonHang_DangCho.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyDonHang_DangCho.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLySanPhamChiTiet.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLySanPhamChiTiet.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyThuongHieu.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Admin/QuanLyThuongHieu.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutAdmin.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutAdmin.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutAdminQLSanPhamChiTiet.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutAdminQLSanPhamChiTiet.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutKhachHang.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/Layout/layoutKhachHang.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/SanPham/ChiTietSanPham.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/SanPham/ChiTietSanPham.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/SanPham/ThanhToan.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/SanPham/ThanhToan.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/SanPham/ThongBaoDatHang.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/SanPham/ThongBaoDatHang.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/danhmuc.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/danhmuc.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/demo.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/footer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/footer.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/ThanhPhanWeb/header.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientProject/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientProject/views/index.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/ClientDomain.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/ClientDomain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/ConfigAWS.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/ConfigAWS.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/CustomFunction.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/CustomFunction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DeleAllTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DeleAllTables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/LoadSampleData.js" beforeDir="false" afterPath="$PROJECT_DIR$/Config/LoadSampleData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/Carousel.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/Carousel.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/Footer.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/Footer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/HoaDon.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/HoaDon.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/SanPham.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/SanPham.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Validator/Auth.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/Validator/Auth.validate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerProject.zip" beforeDir="false" afterPath="$PROJECT_DIR$/ServerProject.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Validator/BaiViet.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/Validator/BaiViet.validate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Validator/CaiDat.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/Validator/CaiDat.validate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Validator/Carousel.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/Validator/Carousel.validate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Validator/DanhMuc.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/Validator/DanhMuc.validate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Validator/HoaDon.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/Validator/HoaDon.validate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Validator/MaGiamGia.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/Validator/MaGiamGia.validate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Validator/SanPham.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/Validator/SanPham.validate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Validator/ThuongHieu.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/Validator/ThuongHieu.validate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/aa.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/bb.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/Auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Auth.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/Carousel.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Carousel.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/DanhMuc.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/DanhMuc.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/Footer.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Footer.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/HoaDon.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/HoaDon.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/MaGiamGia.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/MaGiamGia.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/SanPham_Index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SanPham_Index.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/SanPham_QL.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SanPham_QL.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/Thuonghieu.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Thuonghieu.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.bin/btoa" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.bin/btoa.cmd" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/btoa/LICENSE" beforeDir="false" />
@@ -101,7 +43,6 @@
       <change beforePath="$PROJECT_DIR$/routes/DanhMuc.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/DanhMuc.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/Footer.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/Footer.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/HoaDon.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/HoaDon.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/Index.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/Index.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/MaGiamGia.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/MaGiamGia.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/SanPham.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/SanPham.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/ThuongHieu.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/ThuongHieu.route.js" afterDir="false" />
@@ -136,7 +77,7 @@
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -275,6 +216,18 @@
       <workItem from="1576235893042" duration="1304000" />
       <workItem from="1576237652701" duration="530000" />
       <workItem from="1576238888414" duration="2796000" />
+      <workItem from="1576259309671" duration="8000" />
+      <workItem from="1576263495662" duration="1887000" />
+      <workItem from="1576304253866" duration="2444000" />
+      <workItem from="1576313819186" duration="493000" />
+      <workItem from="1576412071786" duration="1144000" />
+      <workItem from="1576417088039" duration="4059000" />
+      <workItem from="1576422752832" duration="269000" />
+      <workItem from="1576423272994" duration="154000" />
+      <workItem from="1576423647412" duration="857000" />
+      <workItem from="1576425298093" duration="4590000" />
+      <workItem from="1576458377820" duration="1563000" />
+      <workItem from="1576656939948" duration="738000" />
     </task>
     <servers />
   </component>

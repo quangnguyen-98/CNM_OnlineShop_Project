@@ -213,8 +213,12 @@ module.exports = {
         var Anh1 = req.body.Anh1;
         var Anh2 = req.body.Anh2;
         var Anh3 = req.body.Anh3;
-        var Gia = parseInt( req.body.Gia);
+        var Gia = parseInt( req.body.Gia.replace(/^0+/, ''));
         var TiLeSale = parseInt(req.body.TiLeSale);
+        if(TiLeSale.length>=2){
+            TiLeSale = parseInt(req.body.TiLeSale.replace(/^0+/, ''));
+        }
+
         var TongQuan = req.body.TongQuan;
         var ChiTiet = req.body.ChiTiet;
 
@@ -448,12 +452,18 @@ module.exports = {
                 console.error(err);
                 res.end();
             } else {
+                var sortData = [];
+                sortData = data.Items.sort(function (b, a) {
+                    return  b.TenSize  - a.TenSize;
+                });
+
                 data.Items.forEach(function (item) {
                     tongSoSP += parseInt(item.SoLuong);
                 });
+
                  console.log("Thành công!");
                  res.json({
-                     Items:data.Items,
+                     Items:sortData,
                      TongSL:tongSoSP
                  });
             }
@@ -463,14 +473,14 @@ module.exports = {
         var idSize = ids.generate();
         var idSP = req.body.idsp;
         var tenSize = req.body.tensize;
-        var soLuong = req.body.soluong;
+        var soLuong = parseInt(req.body.soluong.replace(/^0+/, ''));
         var paramSP = {
             TableName: "Size",
             Item: {
                 "ID_Size": idSize,
                 "ID_SanPham": idSP,
                 "TenSize": tenSize,
-                "SoLuong": soLuong,
+                "SoLuong":soLuong
 
             }
         };
@@ -497,7 +507,7 @@ module.exports = {
     },
     SuaSize: function (req, res, next) {
         var idSize = req.body.idsize;
-        var soLuong = req.body.soluong;
+        var soLuong = parseInt(req.body.soluong.replace(/^0+/, ''));
         var param = {
             TableName: 'Size',
             Key: {
